@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "../components/Footer";
 import Admin from "./Admin";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
-function AppRouter() {
+const AppRouter = () => {
   return (
     <div className="AppRouter">
       <BrowserRouter>
@@ -18,6 +18,6 @@ function AppRouter() {
       </BrowserRouter>
     </div>
   );
-}
+};
 
 export default AppRouter;
