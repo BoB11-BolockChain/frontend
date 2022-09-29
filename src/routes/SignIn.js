@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const SignIn = () => {
   const [state, setState] = useState({ email: "", pw: "" });
@@ -22,11 +23,17 @@ const SignIn = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input onChange={onChange} name="email" type="text" />
-      <input onChange={onChange} name="pw" type="password" />
-      <input type="submit" />
-    </form>
+    <div>
+      <h1>signin</h1>
+      <form onSubmit={onSubmit}>
+        <input onChange={onChange} name="email" type="text" />
+        <input onChange={onChange} name="pw" type="password" />
+        <input type="submit" />
+      </form>
+      <NavLink to="/signup" activeClassName="selected">
+        create account
+      </NavLink>
+    </div>
   );
 };
 
