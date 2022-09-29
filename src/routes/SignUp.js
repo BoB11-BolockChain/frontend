@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const SignUp = () => {
-  const [state, setState] = useState({ email: "", pw: "", pwconfirm: "" });
+  const [state, setState] = useState({ email: "",id: "" ,pw: "", pwconfirm: "" });
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -23,12 +23,18 @@ const SignUp = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <p>your email</p>
+      <p>Sign Up</p>
       <input
         onChange={onChange}
         name="email"
         placeholder="example@company.com"
         type="text"
+      />
+      <input
+        onChange={onChange}
+        name="id"
+        placeholder="ID"
+        type="ID"
       />
       <input
         onChange={onChange}
