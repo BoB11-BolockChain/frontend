@@ -10,7 +10,7 @@ const SignUp = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("https://www.pdxf.tk/signup", {
+    const res = await fetch("http://www.pdxf.tk/signup", {
       method: "POST",
       headers: {
         Accept: "application/json",

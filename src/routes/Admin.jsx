@@ -1,6 +1,26 @@
+import React, { useState } from "react";
+import Layout from "../components/Layout/Layout"
+
 const Admin = () => {
   return (
-    <div>
+    <Layout>
+      <div>
+        <h1>PDxF</h1>
+        <p>
+          PDxF is <strong>CDX Framework</strong> fuck bitch
+        </p>
+        <div>
+          <a href="signup">Start</a>
+        </div>
+      </div>
+    </Layout> 
+  );
+};
+
+export default Admin;
+
+/*
+<div>
       <section class="section section bg-soft pb-5 overflow-hidden z-2">
         <div class="container z-2">
           <div class="row justify-content-center text-center pt-6">
@@ -102,7 +122,4 @@ const Admin = () => {
         </div>
       </section>
     </div>
-  );
-};
-
-export default Admin;
+*/

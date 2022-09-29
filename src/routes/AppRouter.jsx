@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Footer from "../components/Footer";
+import Layout from "../components/Layout/Layout"
 import Admin from "./Admin";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
@@ -14,7 +14,6 @@ const AppRouter = () => {
           <Route path="/admin" element={Admin()}></Route>
           <Route path="/signup" element={SignUp()}></Route>
         </Routes>
-        <Footer />
       </BrowserRouter>
     </div>
   );
