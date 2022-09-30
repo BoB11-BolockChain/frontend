@@ -1,7 +1,13 @@
 import React, { useState } from "react";
+import Layout from "../components/Layout/Layout";
 
 const SignUp = () => {
-  const [state, setState] = useState({ email: "",id: "" ,pw: "", pwconfirm: "" });
+  const [state, setState] = useState({
+    email: "",
+    id: "",
+    pw: "",
+    pwconfirm: "",
+  });
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -22,34 +28,31 @@ const SignUp = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <p>Sign Up</p>
-      <input
-        onChange={onChange}
-        name="email"
-        placeholder="example@company.com"
-        type="text"
-      />
-      <input
-        onChange={onChange}
-        name="id"
-        placeholder="ID"
-        type="ID"
-      />
-      <input
-        onChange={onChange}
-        name="pw"
-        placeholder="Password"
-        type="password"
-      />
-      <input
-        onChange={onChange}
-        name="pwconfirm"
-        placeholder="Password"
-        type="password"
-      />
-      <input type="submit" />
-    </form>
+    <Layout>
+      <form onSubmit={onSubmit}>
+        <p>Sign Up</p>
+        <input
+          onChange={onChange}
+          name="email"
+          placeholder="example@company.com"
+          type="text"
+        />
+        <input onChange={onChange} name="id" placeholder="ID" type="ID" />
+        <input
+          onChange={onChange}
+          name="pw"
+          placeholder="Password"
+          type="password"
+        />
+        <input
+          onChange={onChange}
+          name="pwconfirm"
+          placeholder="Password"
+          type="password"
+        />
+        <input type="submit" />
+      </form>
+    </Layout>
   );
 };
 
