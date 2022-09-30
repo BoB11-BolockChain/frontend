@@ -1,26 +1,37 @@
-import styles from './Header.module.scss'
+import { NavLink } from "react-router-dom";
+import styles from "./Header.module.scss";
 
 const Header = () => {
-    return (
-        <header className={styles.header}>
-            <div className={styles.contents}>
-                <div>
-                    PDxF Logo
-                    <img src="img\asdf.png" alt="logo"></img>
-                </div>
-                <nav className={styles.navigation}>
-                    <ul>
-                        <li>
-                            메뉴 1
-                        </li>
-                        <li>
-                            메뉴 2
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-    )
-}
+  return (
+    <header className={styles.header}>
+      <div className={styles.contents}>
+        <div>
+          PDxF Logo
+          <img src="img\asdf.png" alt="logo"></img>
+        </div>
+        <nav className={styles.navigation}>
+          <ul>
+            <li>
+              <NavLink to="/admin">Main</NavLink>
+            </li>
+            <li>
+              <NavLink to="/challenges">Challenges</NavLink>
+            </li>
+            <li>
+              <NavLink to="/admin">Admin</NavLink>
+            </li>
 
-export default Header
+            <li>
+              <NavLink to="/signup">Sign Up</NavLink>
+            </li>
+            <li>
+              <NavLink to="/">Sign In</NavLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
+};
+
+export default Header;
