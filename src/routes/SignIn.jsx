@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const [state, setState] = useState({ email: "", pw: "" });
 
   const onChange = (e) => {
@@ -21,10 +22,10 @@ const SignIn = () => {
       body: JSON.stringify(state),
     });
     console.log(res);
+    navigate("/admin");
   };
 
   //temp function
-  const navigate = useNavigate();
   const fastLoggin = () => {
     window.sessionStorage.setItem("sessionId", "fastlogginsession");
     navigate("/admin");

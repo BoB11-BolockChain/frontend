@@ -7,6 +7,7 @@ import Home from "./Home";
 import PrivateRouteLayout from "../components/PrivateRouteLayout";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import NotFound from "./NotFound";
 
 const AppRouter = () => {
   return (
@@ -26,6 +27,8 @@ const AppRouter = () => {
             <Route path=":id" element={<EditChallenge />}></Route>
           </Route>
         </Route>
+
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
     </BrowserRouter>
   );

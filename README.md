@@ -9,3 +9,5 @@ _admin route layout_ and _player route layout_
 from server : challenges, abilities, adversaries, dashboard data
 
 different page -> _user challenges_ and _admin challenges_
+
+empty tag <></>

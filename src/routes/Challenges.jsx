@@ -31,13 +31,13 @@ const Challenges = () => {
       <div>
         <h1>challenges</h1>
         {challenges.map((c, i) => (
-          <div>
+          <React.Fragment key={c.id}>
             <h2>{c.id}</h2>
             <p>challenge {c.id}</p>
             <button onClick={() => setModalState({ data: c, isOpen: true })}>
               popup
             </button>
-          </div>
+          </React.Fragment>
         ))}
         <ChallengeModal
           isOpen={modalState.isOpen}
