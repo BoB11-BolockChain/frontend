@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import ChallengeModal from "../components/ChallengeModal";
 import Layout from "../components/Layout/Layout";
 
 const Challenges = () => {
+  // const [dataLoaded, setDataLoaded] = useState(false)
   // useEffect(async () => {
   //   const res = await fetch("http://www.pdxf.tk/challenges", {
   //     method: "GET",
@@ -13,7 +15,7 @@ const Challenges = () => {
   //   console.log(res.json);
   // }, []);
 
-  const onClick = () => {};
+  const [modalState, setModalState] = useState({ data: {}, isOpen: false });
 
   const challenges = [
     { id: 1 },
@@ -29,11 +31,19 @@ const Challenges = () => {
       <div>
         <h1>challenges</h1>
         {challenges.map((c, i) => (
-          <div>
+          <React.Fragment key={c.id}>
             <h2>{c.id}</h2>
             <p>challenge {c.id}</p>
-          </div>
+            <button onClick={() => setModalState({ data: c, isOpen: true })}>
+              popup
+            </button>
+          </React.Fragment>
         ))}
+        <ChallengeModal
+          isOpen={modalState.isOpen}
+          setModalState={setModalState}
+          data={modalState.data}
+        />
       </div>
     </Layout>
   );

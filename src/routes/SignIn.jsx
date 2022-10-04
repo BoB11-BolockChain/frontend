@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const [state, setState] = useState({ email: "", pw: "" });
 
   const onChange = (e) => {
@@ -21,6 +22,13 @@ const SignIn = () => {
       body: JSON.stringify(state),
     });
     console.log(res);
+    navigate("/admin");
+  };
+
+  //temp function
+  const fastLoggin = () => {
+    window.sessionStorage.setItem("sessionId", "fastlogginsession");
+    navigate("/admin");
   };
 
   return (
@@ -34,6 +42,7 @@ const SignIn = () => {
         </form>
         <NavLink to="/signup">create account</NavLink>
       </div>
+      <button onClick={fastLoggin}>fastloggin</button>
     </Layout>
   );
 };
