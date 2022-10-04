@@ -7,11 +7,11 @@ const PrivateRouteLayout = ({ redirectTo }) => {
   return !sessionId ? (
     <Navigate to={redirectTo} />
   ) : (
-    <div>
+    <>
       <h1>header</h1>
       <Outlet />
       <h1>footer</h1>
-    </div>
+    </>
   );
 };
 

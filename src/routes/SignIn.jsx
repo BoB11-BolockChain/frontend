@@ -4,7 +4,7 @@ import Layout from "../components/Layout/Layout";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const [state, setState] = useState({ email: "", pw: "" });
+  const [state, setState] = useState({ id: "", pw: "" });
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -13,7 +13,7 @@ const SignIn = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://www.pdxf.tk/signin", {
+    const res = await fetch("http://www.pdxf.tk:8000/signin", {
       method: "POST",
       headers: {
         Accept: "application/json",

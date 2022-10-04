@@ -12,20 +12,20 @@ const Header = () => {
         <nav className={styles.navigation}>
           <ul>
             <li>
-              <NavLink to="/admin">Main</NavLink>
+              <NavLink to="/admin">admin</NavLink>
             </li>
             <li>
-              <NavLink to="/challenges">Challenges</NavLink>
+              <NavLink to="/admin/challenges">Challenges</NavLink>
             </li>
             <li>
-              <NavLink to="/admin">Admin</NavLink>
+              <NavLink to="/admin/editchallenges/fdsa">edit challenge</NavLink>
             </li>
 
             <li>
               <NavLink to="/signup">Sign Up</NavLink>
             </li>
             <li>
-              <NavLink to="/">Sign In</NavLink>
+              <NavLink to="/signin">Sign In</NavLink>
             </li>
           </ul>
         </nav>

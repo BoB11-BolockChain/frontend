@@ -6,7 +6,7 @@ const SignUp = () => {
     email: "",
     id: "",
     pw: "",
-    pwconfirm: "",
+    conpw: "",
   });
 
   const onChange = (e) => {
@@ -16,7 +16,7 @@ const SignUp = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://www.pdxf.tk/signup", {
+    const res = await fetch("http://www.pdxf.tk:8000/signup", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -37,7 +37,7 @@ const SignUp = () => {
           placeholder="example@company.com"
           type="text"
         />
-        <input onChange={onChange} name="id" placeholder="ID" type="ID" />
+        <input onChange={onChange} name="id" placeholder="ID" type="text" />
         <input
           onChange={onChange}
           name="pw"
@@ -46,7 +46,7 @@ const SignUp = () => {
         />
         <input
           onChange={onChange}
-          name="pwconfirm"
+          name="conpw"
           placeholder="Password"
           type="password"
         />
