@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import Switch from "react-switch";
@@ -33,6 +33,12 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
   };
   const handleImageChange = (checked) => {
     setImage(checked);
+  };
+
+  const navigate = useNavigate();
+  const onClick = () => {
+    window.sessionStorage.removeItem("sessionId");
+    navigate("/");
   };
 
   return (
@@ -91,7 +97,7 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
               Log In
               <NavLink to="/signup" />
             </MenuItem>
-            <MenuItem>PassWord</MenuItem>
+            <MenuItem onClick={onClick}>Log Out</MenuItem>
             <MenuItem>
               Sign In
               <NavLink to="/signin" />
