@@ -30,7 +30,9 @@ const SignUp = () => {
   return (
     <Layout>
       <form onSubmit={onSubmit}>
-        <h1>Sign Up</h1>
+        <header>
+          <h1>Sign Up</h1>
+        </header>
         <input
           onChange={onChange}
           name="email"

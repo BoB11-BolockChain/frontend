@@ -5,7 +5,9 @@ const Admin = () => {
   return (
     <Layout>
       <div>
-        <h1>PDxF</h1>
+        <header>
+          <h1>PDxF</h1>
+        </header>
         <p>
           PDxF is <strong>CDX Framework</strong> Admin Only Page
         </p>

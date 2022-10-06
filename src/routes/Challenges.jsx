@@ -28,7 +28,9 @@ const Challenges = () => {
 
   return (
     <Layout>
-      <h1>challenges</h1>
+      <header>
+        <h1>challenges</h1>
+      </header>
       {dataLoaded ? (
         data.map((d) => (
           <>

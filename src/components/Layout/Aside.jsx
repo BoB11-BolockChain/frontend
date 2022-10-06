@@ -23,6 +23,7 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
   const [rtl, setRtl] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [image, setImage] = useState(true);
+  const sessionId = window.sessionStorage.getItem("sessionId");
 
   const handleCollapsedChange = (checked) => {
     setCollapsed(checked);
@@ -65,6 +66,27 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
         >
           PDxF Project BoB 11th
         </div>
+        <Menu iconShape="circle">
+          <SubMenu title="User" icon={<AiOutlineUser />}>
+            {!sessionId ? (
+              <>
+                <MenuItem>
+                  Sign In
+                  <NavLink to="/signin" />
+                </MenuItem>
+                <MenuItem>
+                  Sign Up
+                  <NavLink to="/signup" />
+                </MenuItem>
+              </>
+            ) : (
+              <>
+                <MenuItem>ID : {sessionId}</MenuItem>
+                <MenuItem onClick={onClick}>Log Out</MenuItem>
+              </>
+            )}
+          </SubMenu>
+        </Menu>
       </SidebarHeader>
       <SidebarContent>
         <Menu iconShape="circle">
@@ -92,17 +114,6 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
           </MenuItem>
         </Menu>
         <Menu iconShape="circle">
-          <SubMenu title="User" icon={<AiOutlineUser />}>
-            <MenuItem>
-              Log In
-              <NavLink to="/signup" />
-            </MenuItem>
-            <MenuItem onClick={onClick}>Log Out</MenuItem>
-            <MenuItem>
-              Sign In
-              <NavLink to="/signin" />
-            </MenuItem>
-          </SubMenu>
           <SubMenu title="Profile" icon={<AiFillProfile />}>
             <MenuItem>
               My Profile
@@ -110,7 +121,7 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
             </MenuItem>
             <MenuItem>
               Team Profile
-              <NavLink to="/profile" />
+              <NavLink to="/teamprofile" />
             </MenuItem>
           </SubMenu>
           <SubMenu title="PDxF Management" icon={<FaList />}>
@@ -118,11 +129,11 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
               <SubMenu title="Create Challenges">
                 <MenuItem>
                   Basic
-                  <NavLink to="/admin/editchallenges" />
+                  <NavLink to="/admin/createchallengesbasic" />
                 </MenuItem>
                 <MenuItem>
                   Custom
-                  <NavLink to="/admin/editchallenges" />
+                  <NavLink to="/admin/createchallengescustom" />
                 </MenuItem>
               </SubMenu>
               <MenuItem>
@@ -131,16 +142,16 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
               </MenuItem>
               <MenuItem>
                 Delete Challenges
-                <NavLink to="/admin/editchallenges" />
+                <NavLink to="/admin/deletechallenges" />
               </MenuItem>
             </SubMenu>
             <MenuItem>
-              Homepage
-              <NavLink to="/admin/" />
+              Homepage Setting
+              <NavLink to="/admin/homepagesetting" />
             </MenuItem>
             <MenuItem>
-              User & Team
-              <NavLink to="/admin/admin" />
+              User & Team Setting
+              <NavLink to="/admin/userteamsetting" />
             </MenuItem>
           </SubMenu>
         </Menu>

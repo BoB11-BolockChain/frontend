@@ -38,7 +38,9 @@ const SignIn = () => {
     <>
       <Layout>
         <div>
-          <h1>signin</h1>
+          <header>
+            <h1>signin</h1>
+          </header>
           <form onSubmit={onSubmit}>
             <input onChange={onChange} name="id" type="text" />
             <input onChange={onChange} name="pw" type="password" />

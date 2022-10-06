@@ -44,7 +44,7 @@ const Main = ({ setLocale }) => {
           </h1>
           <p>PDxF Project BoB 11th</p>
         </header>
-        여기에 아무 내용이나 일단 메인 페이지 ㅎㅇ
+        Welcome to PDxF this is the PDxF Main home page plz log in
         <footer>
           <small>
             © {new Date().getFullYear()} made with{" "}

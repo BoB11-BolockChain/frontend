@@ -1,14 +1,16 @@
 import React from "react";
 import Layout from "src/components/Layout/Layout";
 
-const User = () => {
+const Scoreboard = () => {
   return (
     <Layout>
       <>
-        <h1>User</h1>
+        <header>
+          <h1>HomepageSetting</h1>
+        </header>
       </>
     </Layout>
   );
 };
 
-export default User;
+export default Scoreboard;

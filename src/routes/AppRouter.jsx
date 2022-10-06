@@ -6,14 +6,17 @@ import SignIn from "src/routes/SignIn";
 import SignUp from "src/routes/SignUp";
 import NotFound from "src/routes/NotFound";
 import Admin from "src/routes/private/Admin";
-import EditChallenges from "src/routes/private/EditChallenge";
-import PDxF_Management from "src/routes/private/PDxF_Management";
+import EditChallenges from "src/routes/private/EditChallenges";
+import CreateChallengesBasic from "src/routes/private/CreateChallengesBasic";
+import CreateChallengesCustom from "src/routes/private/CreateChallengesCustom";
+import DeleteChallenges from "src/routes/private/DeleteChallenges";
 import ScoreBoard from "src/routes/Scoreboard";
-import User from "src/routes/User";
 import Profile from "src/routes/Profile";
+import TeamProfile from "src/routes/TeamProfile";
 import Notifications from "src/routes/Notifications";
 import Challenges from "src/routes/Challenges";
-import EditChallenge from "src/routes/private/EditChallenge";
+import UserTeamSetting from "src/routes/UserTeamSetting";
+import HomepageSetting from "src/routes/HomepageSetting";
 
 const UserContext = createContext("");
 
@@ -29,20 +32,29 @@ const AppRouter = () => {
           <Route path="main" element={<Home />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="user" element={<User />} />
+          <Route path="teamprofile" element={<TeamProfile />} />
           <Route path="scoreboard" element={<ScoreBoard />} />
+
           <Route
             path="admin"
             element={<AdminRouteLayout redirectTo="/signin" />}
           >
             <Route index element={<Admin />} />
-            <Route path="pdxfmanagement" element={<PDxF_Management />}>
-              <Route path=":id" element={<PDxF_Management />}></Route>
-            </Route>
             <Route path="admin" element={<Admin />} />
             <Route path="editchallenges" element={<EditChallenges />}>
-              <Route path=":id" element={<EditChallenge />} />
+              <Route path=":id" element={<EditChallenges />} />
             </Route>
+            <Route path="homepagesetting" element={<HomepageSetting />} />
+            <Route path="userteamsetting" element={<UserTeamSetting />} />
+            <Route
+              path="createchallengesbasic"
+              element={<CreateChallengesBasic />}
+            />
+            <Route
+              path="createchallengescustom"
+              element={<CreateChallengesCustom />}
+            />
+            <Route path="deletechallenges" element={<DeleteChallenges />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />

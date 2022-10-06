@@ -1,14 +1,16 @@
 import React from "react";
 import Layout from "src/components/Layout/Layout";
 
-const PDxF_Management = () => {
+const Scoreboard = () => {
   return (
     <Layout>
       <>
-        <h1>PDxF Management</h1>
+        <header>
+          <h1>user & Team Setting</h1>
+        </header>
       </>
     </Layout>
   );
 };
 
-export default PDxF_Management;
+export default Scoreboard;

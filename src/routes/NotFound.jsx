@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "src/routes/NotFound.module.scss";
 import Layout from "src/components/Layout/Layout";
 
 const NotFound = () => {
@@ -21,9 +20,11 @@ const NotFound = () => {
         <div class="row">
           <div class="xs-12 md-6 mx-auto">
             <div id="countUp">
-              <div class="number" data-count="404">
-                <h1>{numberCount}</h1>
-              </div>
+              <header>
+                <div class="number" data-count="404">
+                  <h1>{numberCount}</h1>
+                </div>
+              </header>
               <div class="text">Page not found</div>
               <div class="text">This may not mean anything.</div>
               <div class="text">

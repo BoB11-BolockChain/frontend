@@ -27,7 +27,9 @@ const EditChallenge = () => {
   return (
     <Layout>
       <div>
-        <p>edit challenge</p>
+        <header>
+          <h1>edit challenge</h1>
+        </header>
         {dataLoaded ? <p>{data.id}</p> : <p>loading</p>}
         <AbilitiesBox />
       </div>

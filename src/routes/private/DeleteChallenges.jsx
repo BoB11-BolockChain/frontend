@@ -1,16 +1,16 @@
 import React from "react";
 import Layout from "src/components/Layout/Layout";
 
-const Scoreboard = () => {
+const DeleteChallenges = () => {
   return (
     <Layout>
       <>
         <header>
-          <h1>Scoreboard</h1>
+          <h1>DeleteChallenges</h1>
         </header>
       </>
     </Layout>
   );
 };
 
-export default Scoreboard;
+export default DeleteChallenges;
