@@ -4,7 +4,7 @@ import { FaHeart, FaBars } from "react-icons/fa";
 import Layout from "src/components/Layout/Layout";
 import { MenuItem } from "react-pro-sidebar";
 import { AiOutlineGithub, AiOutlineTwitter } from "react-icons/ai";
-import module from "src/components/Layout/module.scss"; //지우면 안됨
+import "src/components/Layout/module.scss"; //지우면 안됨
 
 const Main = ({ setLocale }) => {
   const [rtl, setRtl] = useState(false);
