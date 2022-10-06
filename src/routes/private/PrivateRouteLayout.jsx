@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, NavLink } from "react-router-dom";
 
 const PrivateRouteLayout = ({ redirectTo }) => {
   const sessionId = window.sessionStorage.getItem("sessionId");
@@ -7,11 +7,7 @@ const PrivateRouteLayout = ({ redirectTo }) => {
   return !sessionId ? (
     <Navigate to={redirectTo} />
   ) : (
-    <>
-      <h1>header</h1>
-      <Outlet />
-      <h1>footer</h1>
-    </>
+    <Navigate to={<NavLink to="/src/routes/private/Admin" />} />
   );
 };
 

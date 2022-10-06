@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../components/Layout/Layout";
+import Layout from "src/components/Layout/Layout";
 
 const SignUp = () => {
   const [state, setState] = useState({
@@ -30,7 +30,7 @@ const SignUp = () => {
   return (
     <Layout>
       <form onSubmit={onSubmit}>
-        <p>Sign Up</p>
+        <h1>Sign Up</h1>
         <input
           onChange={onChange}
           name="email"
