@@ -22,7 +22,9 @@ const SignIn = () => {
       },
       body: JSON.stringify(state),
     });
-    console.log(res);
+    const js = await res.json();
+    console.log(js);
+    window.sessionStorage.setItem("sessionId", "fdsa");
     navigate("/admin");
   };
 
@@ -38,7 +40,7 @@ const SignIn = () => {
         <div>
           <h1>signin</h1>
           <form onSubmit={onSubmit}>
-            <input onChange={onChange} name="email" type="text" />
+            <input onChange={onChange} name="id" type="text" />
             <input onChange={onChange} name="pw" type="password" />
             <input type="submit" />
           </form>

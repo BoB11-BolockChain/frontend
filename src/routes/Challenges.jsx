@@ -3,48 +3,50 @@ import ChallengeModal from "src/components/ChallengeModal";
 import Layout from "src/components/Layout/Layout";
 
 const Challenges = () => {
-  // const [dataLoaded, setDataLoaded] = useState(false)
-  // useEffect(async () => {
-  //   const res = await fetch("http://www.pdxf.tk/challenges", {
-  //     method: "GET",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   console.log(res.json);
-  // }, []);
-
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const [data, setData] = useState([]);
   const [modalState, setModalState] = useState({ data: {}, isOpen: false });
 
-  const challenges = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 },
-    { id: 6 },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("http://www.pdxf.tk:8000/info", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        const js = await res.json();
+        setData(js.data);
+        setDataLoaded(true);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <Layout>
-      <div>
-        <h1>challenges</h1>
-        {challenges.map((c, i) => (
-          <React.Fragment key={c.id}>
-            <h2>{c.id}</h2>
-            <p>challenge {c.id}</p>
-            <button onClick={() => setModalState({ data: c, isOpen: true })}>
+      <h1>challenges</h1>
+      {dataLoaded ? (
+        data.map((d) => (
+          <>
+            <p>{d.score}</p>
+            <p>{d.title}</p>
+            <button onClick={() => setModalState({ data: d, isOpen: true })}>
               popup
             </button>
-          </React.Fragment>
-        ))}
-        <ChallengeModal
-          isOpen={modalState.isOpen}
-          setModalState={setModalState}
-          data={modalState.data}
-        />
-      </div>
+          </>
+        ))
+      ) : (
+        <p>loading</p>
+      )}
+      <ChallengeModal
+        isOpen={modalState.isOpen}
+        setModalState={setModalState}
+        data={modalState.data}
+      />
     </Layout>
   );
 };

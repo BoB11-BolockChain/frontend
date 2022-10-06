@@ -1,13 +1,14 @@
 import React from "react";
 import ReactModal from "react-modal";
 
-const ChallengeModal = (props) => {
+const ChallengeModal = ({ isOpen, setModalState, data }) => {
   return (
     <ReactModal
-      isOpen={props.isOpen}
-      onRequestClose={() => props.setModalState({ data: {}, isOpen: false })}
+      isOpen={isOpen}
+      onRequestClose={() => setModalState({ data: {}, isOpen: false })}
     >
-      challenge id : {props.data.id}
+      <p>title : {data.title}</p>
+      <p>score : {data.score}</p>
     </ReactModal>
   );
 };
