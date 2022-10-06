@@ -1,11 +1,3 @@
-.layout {
-  padding-left: 80px;
-}
-
-.main {
-  min-height: calc(100vh - 180px);
-}
-
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
 $sidebar-bg-color: #0c1e35;
@@ -125,7 +117,10 @@ body {
     display: flex;
     margin-bottom: 24px;
     font-size: 14px;
-    color: #545454;
+    color: #b3b8d4;
+    padding: "24px";
+    //textTransform: "uppercase";
+    overflow: "hidden";
     > span {
       margin-left: 10px;
     }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import Layout from "../components/Layout/Layout";
+import Layout from "src/components/Layout/Layout";
+import "react-pro-sidebar/dist/css/styles.css";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -32,18 +33,20 @@ const SignIn = () => {
   };
 
   return (
-    <Layout>
-      <div>
-        <h1>signin</h1>
-        <form onSubmit={onSubmit}>
-          <input onChange={onChange} name="email" type="text" />
-          <input onChange={onChange} name="pw" type="password" />
-          <input type="submit" />
-        </form>
-        <NavLink to="/signup">create account</NavLink>
-      </div>
-      <button onClick={fastLoggin}>fastloggin</button>
-    </Layout>
+    <>
+      <Layout>
+        <div>
+          <h1>signin</h1>
+          <form onSubmit={onSubmit}>
+            <input onChange={onChange} name="email" type="text" />
+            <input onChange={onChange} name="pw" type="password" />
+            <input type="submit" />
+          </form>
+          <NavLink to="/signup">create account</NavLink>
+        </div>
+        <button onClick={fastLoggin}>fastloggin</button>
+      </Layout>
+    </>
   );
 };
 

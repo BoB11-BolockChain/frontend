@@ -1,14 +1,14 @@
 import React from "react";
 import Layout from "src/components/Layout/Layout";
 
-const NotFound = () => {
+const Profile = () => {
   return (
     <Layout>
       <>
-        <h1>Page not found</h1>
+        <h1>Profile</h1>
       </>
     </Layout>
   );
 };
 
-export default NotFound;
+export default Profile;

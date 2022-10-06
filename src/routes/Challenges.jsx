@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ChallengeModal from "../components/ChallengeModal";
-import Layout from "../components/Layout/Layout";
+import ChallengeModal from "src/components/ChallengeModal";
+import Layout from "src/components/Layout/Layout";
 
 const Challenges = () => {
   // const [dataLoaded, setDataLoaded] = useState(false)

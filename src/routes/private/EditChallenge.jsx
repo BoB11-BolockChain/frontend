@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import AbilitiesBox from "../components/AbilitiesBox";
+import AbilitiesBox from "src/components/AbilitiesBox";
 
 const EditChallenge = () => {
   const { id } = useParams();

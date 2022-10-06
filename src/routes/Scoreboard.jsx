@@ -1,14 +1,14 @@
 import React from "react";
 import Layout from "src/components/Layout/Layout";
 
-const NotFound = () => {
+const Scoreboard = () => {
   return (
     <Layout>
       <>
-        <h1>Page not found</h1>
+        <h1>Scoreboard</h1>
       </>
     </Layout>
   );
 };
 
-export default NotFound;
+export default Scoreboard;

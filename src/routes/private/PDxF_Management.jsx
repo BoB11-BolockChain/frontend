@@ -1,14 +1,14 @@
 import React from "react";
 import Layout from "src/components/Layout/Layout";
 
-const NotFound = () => {
+const PDxF_Management = () => {
   return (
     <Layout>
       <>
-        <h1>Page not found</h1>
+        <h1>PDxF Management</h1>
       </>
     </Layout>
   );
 };
 
-export default NotFound;
+export default PDxF_Management;
