@@ -1,5 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "src/components/Layout/Layout";
+
+const Info = () => {
+  const [dataLoaded, setDataLoaded] = userState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("http://www.pdxf.tk:8000/profile", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        const js = await res.json();
+        setData(js.data);
+        setDataLoaded(true);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+}
+
+
 
 function Profile({ user }) {
   const { email, id, pw } = user || {};
