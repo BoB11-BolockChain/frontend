@@ -33,25 +33,36 @@ const SignUp = () => {
         <header>
           <h1>Sign Up</h1>
         </header>
-        <input
-          onChange={onChange}
-          name="email"
-          placeholder="example@company.com"
-          type="text"
-        />
-        <input onChange={onChange} name="id" placeholder="ID" type="text" />
-        <input
-          onChange={onChange}
-          name="pw"
-          placeholder="Password"
-          type="password"
-        />
-        <input
-          onChange={onChange}
-          name="conpw"
-          placeholder="Password"
-          type="password"
-        />
+        <div>
+          <label>Email :</label>
+          <input
+            onChange={onChange}
+            name="email"
+            placeholder="example@company.com"
+            type="text"
+          />
+        </div>
+        <div>
+          <label> ID :</label>
+          <input onChange={onChange} name="id" placeholder="ID" type="text" />
+          <br />
+          <label>PW :</label>
+          <input
+            onChange={onChange}
+            name="pw"
+            placeholder="Password"
+            type="password"
+          />
+        </div>
+        <div>
+          <label>PW confirm :</label>
+          <input
+            onChange={onChange}
+            name="conpw"
+            placeholder="Password"
+            type="password"
+          />
+        </div>
         <input type="submit" />
       </form>
     </Layout>

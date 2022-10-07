@@ -50,6 +50,7 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
       toggled={toggled}
       breakPoint="md"
       onToggle={handleToggleSidebar}
+      style={{ position: "fixed" }}
     >
       <SidebarHeader>
         <div
@@ -112,8 +113,6 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
             Notifications
             <NavLink to="/notifications" />
           </MenuItem>
-        </Menu>
-        <Menu iconShape="circle">
           <SubMenu title="Profile" icon={<AiFillProfile />}>
             <MenuItem>
               My Profile
@@ -124,37 +123,47 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
               <NavLink to="/teamprofile" />
             </MenuItem>
           </SubMenu>
-          <SubMenu title="PDxF Management" icon={<FaList />}>
-            <SubMenu title="Challenges Management">
-              <SubMenu title="Create Challenges">
+        </Menu>
+
+        {!sessionId ? (
+          <></>
+        ) : (
+          <>
+            <Menu iconShape="circle">
+              <SubMenu title="PDxF Management" icon={<FaList />}>
+                <SubMenu title="Challenges Management">
+                  <SubMenu title="Create Challenges">
+                    <MenuItem>
+                      Basic
+                      <NavLink to="/admin/createchallengesbasic" />
+                    </MenuItem>
+                    <MenuItem>
+                      Custom
+                      <NavLink to="/admin/createchallengescustom" />
+                    </MenuItem>
+                  </SubMenu>
+                  <MenuItem>
+                    Edit Challenges
+                    <NavLink to="/admin/editchallenges" />
+                  </MenuItem>
+                  <MenuItem>
+                    Delete Challenges
+                    <NavLink to="/admin/deletechallenges" />
+                  </MenuItem>
+                </SubMenu>
                 <MenuItem>
-                  Basic
-                  <NavLink to="/admin/createchallengesbasic" />
+                  Homepage Setting
+                  <NavLink to="/admin/homepagesetting" />
                 </MenuItem>
                 <MenuItem>
-                  Custom
-                  <NavLink to="/admin/createchallengescustom" />
+                  User & Team Setting
+                  <NavLink to="/admin/userteamsetting" />
                 </MenuItem>
               </SubMenu>
-              <MenuItem>
-                Edit Challenges
-                <NavLink to="/admin/editchallenges" />
-              </MenuItem>
-              <MenuItem>
-                Delete Challenges
-                <NavLink to="/admin/deletechallenges" />
-              </MenuItem>
-            </SubMenu>
-            <MenuItem>
-              Homepage Setting
-              <NavLink to="/admin/homepagesetting" />
-            </MenuItem>
-            <MenuItem>
-              User & Team Setting
-              <NavLink to="/admin/userteamsetting" />
-            </MenuItem>
-          </SubMenu>
-        </Menu>
+            </Menu>
+          </>
+        )}
+
         <Menu iconShape="circle">
           <div>
             <MenuItem

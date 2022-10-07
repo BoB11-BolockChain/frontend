@@ -1,23 +1,13 @@
 import React, { useState } from "react";
 import Aside from "src/components/Layout/Aside";
 import styles from "src/components/Layout/Layout.module.scss";
+import Footer from "src/components/Layout/Footer";
 
 const Layout = (props) => {
-  const [rtl, setRtl] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
-  const [image, setImage] = useState(true);
+  const [rtl] = useState(false);
+  const [collapsed] = useState(false);
+  const [image] = useState(true);
   const [toggled, setToggled] = useState(false);
-
-  const handleCollapsedChange = (checked) => {
-    setCollapsed(checked);
-  };
-
-  const handleRtlChange = (checked) => {
-    setRtl(checked);
-  };
-  const handleImageChange = (checked) => {
-    setImage(checked);
-  };
 
   const handleToggleSidebar = (value) => {
     setToggled(value);
@@ -32,7 +22,10 @@ const Layout = (props) => {
         handleToggleSidebar={handleToggleSidebar}
       />
       <div className={styles.layout}>
-        <main className={styles.main}>{props.children}</main>
+        <main className={styles.main}>
+          {props.children}
+          <Footer />
+        </main>
       </div>
     </div>
   );
