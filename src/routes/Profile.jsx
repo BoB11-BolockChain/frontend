@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "src/components/Layout/Layout";
 
 const Info = () => {
-  const [dataLoaded, setDataLoaded] = userState(false);
+  const [dataLoaded, setDataLoaded] = useState(false);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -23,10 +23,7 @@ const Info = () => {
 
     fetchData();
   }, []);
-
-}
-
-
+};
 
 function Profile({ user }) {
   const { email, id, pw } = user || {};

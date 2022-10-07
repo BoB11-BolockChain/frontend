@@ -33,13 +33,13 @@ const Challenges = () => {
       </header>
       {dataLoaded ? (
         data.map((d) => (
-          <>
+          <div key={d.title}>
             <p>{d.score}</p>
             <p>{d.title}</p>
             <button onClick={() => setModalState({ data: d, isOpen: true })}>
               popup
             </button>
-          </>
+          </div>
         ))
       ) : (
         <p>loading</p>
