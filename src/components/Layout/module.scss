@@ -99,7 +99,9 @@ body {
     }
 
     footer {
-      margin-top: auto;
+      position: fixed;
+      bottom: 5%;
+      width: 50%;
       color: #888;
       text-align: center;
       a {
