@@ -1,5 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal";
+import VmCaller from "./VmCaller";
 
 const ChallengeModal = ({ isOpen, setModalState, data }) => {
   return (
@@ -39,6 +40,7 @@ const ChallengeModal = ({ isOpen, setModalState, data }) => {
     >
       <p>title : {data.title}</p>
       <p>score : {data.score}</p>
+      <VmCaller />
     </ReactModal>
   );
 };
