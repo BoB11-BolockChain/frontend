@@ -22,10 +22,8 @@ const Layout = (props) => {
         handleToggleSidebar={handleToggleSidebar}
       />
       <div className={styles.layout}>
-        <main className={styles.main}>
-          {props.children}
-          <Footer />
-        </main>
+        <main className={styles.main}>{props.children}</main>
+        <Footer />
       </div>
     </div>
   );
