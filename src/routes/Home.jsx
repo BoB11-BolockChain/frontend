@@ -19,7 +19,200 @@ const Home = () => {
           </h1>
           <p>PDxF Project BoB 11th</p>
         </header>
-        Welcome to PDxF this is the PDxF Main home page plz log in
+        Welcome to PDxF this is the PDxF Main home page plz log in PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br /> <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br /> <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br /> <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
       </main>
     </Layout>
   );
