@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "src/components/Layout/Layout";
 
 const SignUp = () => {
@@ -8,6 +9,7 @@ const SignUp = () => {
     pw: "",
     conpw: "",
   });
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -24,7 +26,10 @@ const SignUp = () => {
       },
       body: JSON.stringify(state),
     });
-    console.log(res);
+    if (res.ok) {
+      alert("signup success");
+      navigate("/main");
+    }
   };
 
   return (

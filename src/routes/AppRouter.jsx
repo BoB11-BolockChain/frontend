@@ -18,49 +18,42 @@ import Challenges from "src/routes/Challenges";
 import UserTeamSetting from "src/routes/UserTeamSetting";
 import HomepageSetting from "src/routes/HomepageSetting";
 
-const UserContext = createContext("");
-
 const AppRouter = () => {
   return (
-    <UserContext.Provider>
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="signin" element={<SignIn />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="challenges" element={<Challenges />} />
-          <Route path="main" element={<Home />} />
-          <Route path="notifications" element={<Notifications />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="teamprofile" element={<TeamProfile />} />
-          <Route path="scoreboard" element={<ScoreBoard />} />
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="signin" element={<SignIn />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="challenges" element={<Challenges />} />
+        <Route path="main" element={<Home />} />
+        <Route path="notifications" element={<Notifications />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="teamprofile" element={<TeamProfile />} />
+        <Route path="scoreboard" element={<ScoreBoard />} />
 
-          <Route
-            path="admin"
-            element={<AdminRouteLayout redirectTo="/signin" />}
-          >
-            <Route index element={<Admin />} />
-            <Route path="admin" element={<Admin />} />
-            <Route path="editchallenges" element={<EditChallenges />}>
-              <Route path=":id" element={<EditChallenges />} />
-            </Route>
-            <Route path="homepagesetting" element={<HomepageSetting />} />
-            <Route path="userteamsetting" element={<UserTeamSetting />} />
-            <Route
-              path="createchallengesbasic"
-              element={<CreateChallengesBasic />}
-            />
-            <Route
-              path="createchallengescustom"
-              element={<CreateChallengesCustom />}
-            />
-            <Route path="deletechallenges" element={<DeleteChallenges />} />
+        <Route path="admin" element={<AdminRouteLayout redirectTo="/signin" />}>
+          <Route index element={<Admin />} />
+          <Route path="admin" element={<Admin />} />
+          <Route path="editchallenges" element={<EditChallenges />}>
+            <Route path=":id" element={<EditChallenges />} />
           </Route>
+          <Route path="homepagesetting" element={<HomepageSetting />} />
+          <Route path="userteamsetting" element={<UserTeamSetting />} />
+          <Route
+            path="createchallengesbasic"
+            element={<CreateChallengesBasic />}
+          />
+          <Route
+            path="createchallengescustom"
+            element={<CreateChallengesCustom />}
+          />
+          <Route path="deletechallenges" element={<DeleteChallenges />} />
+        </Route>
 
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </UserContext.Provider>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
