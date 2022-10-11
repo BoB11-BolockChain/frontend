@@ -134,8 +134,8 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
                 <SubMenu title="Challenges Management">
                   <SubMenu title="Create Challenges">
                     <MenuItem>
-                      Basic
-                      <NavLink to="/admin/createchallengesbasic" />
+                      normal
+                      <NavLink to="/admin/selectoperation" />
                     </MenuItem>
                     <MenuItem>
                       Custom

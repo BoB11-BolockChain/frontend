@@ -17,6 +17,10 @@ import Notifications from "src/routes/Notifications";
 import Challenges from "src/routes/Challenges";
 import UserTeamSetting from "src/routes/UserTeamSetting";
 import HomepageSetting from "src/routes/HomepageSetting";
+<<<<<<< HEAD
+import SelectOperation from "src/routes/private/SelectOperation";
+=======
+>>>>>>> 1e0f24781fb6f1cd9cbf4c4871603e07396a88c5
 
 const AppRouter = () => {
   return (
@@ -40,6 +44,10 @@ const AppRouter = () => {
           </Route>
           <Route path="homepagesetting" element={<HomepageSetting />} />
           <Route path="userteamsetting" element={<UserTeamSetting />} />
+<<<<<<< HEAD
+          <Route path="selectoperation" element={<SelectOperation />} />
+=======
+>>>>>>> 1e0f24781fb6f1cd9cbf4c4871603e07396a88c5
           <Route
             path="createchallengesbasic"
             element={<CreateChallengesBasic />}
