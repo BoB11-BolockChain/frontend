@@ -9,7 +9,7 @@ const NotFound = () => {
   useEffect(() => {
     if (numberCount < 404) {
       for (let i = 0; i < 404; i++) {
-        setTimeout(() => setNumberCount(numberCount + 1), 5);
+        setTimeout(() => setNumberCount(numberCount + 4), 5);
       }
     }
   });

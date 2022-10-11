@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useState1 } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Layout from "src/components/Layout/Layout";
 import "react-pro-sidebar/dist/css/styles.css";
+import ReactiveButton from "reactive-button";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -34,6 +35,18 @@ const SignIn = () => {
     navigate("/admin");
   };
 
+  const [load_state, load_setState] = useState("idle");
+
+  const onClickHandler = () => {
+    load_setState("loading");
+
+    setTimeout(() => {
+      load_setState("success");
+      window.sessionStorage.setItem("sessionId", "fastlogginsession");
+      navigate("/admin");
+    }, 2000);
+  };
+
   return (
     <>
       <Layout>
@@ -44,11 +57,22 @@ const SignIn = () => {
           <form onSubmit={onSubmit}>
             <input onChange={onChange} name="id" type="text" />
             <input onChange={onChange} name="pw" type="password" />
-            <input type="submit" />
+
+            <ReactiveButton color="violet" type={"submit"} idleText="Submit" />
           </form>
-          <NavLink to="/signup">create account</NavLink>
+          <NavLink to="/signup">
+            <ReactiveButton color="dark" idleText="Create Account" />
+          </NavLink>
         </div>
-        <button onClick={fastLoggin}>fastloggin</button>
+        {/* <ReactiveButton onClick={fastLoggin} idleText="fastloggin" /> */}
+
+        <ReactiveButton
+          buttonState={load_state}
+          idleText="fastloggin"
+          loadingText="Loading"
+          successText="Done"
+          onClick={onClickHandler}
+        />
       </Layout>
     </>
   );

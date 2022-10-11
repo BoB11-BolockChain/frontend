@@ -55,7 +55,8 @@ const Profile = () => {
     <Layout>
       <button onClick={onClickDocker}>docker</button>
       <button onClick={onClickVagrant}>vag</button>
-      <p>docker ssh : "ssh pdxf.tk:{docker.ssh}"</p>
+      <p>docker ssh : "ssh -p {docker.ssh} root@pdxf.tk"</p>
+      <p>docker ID : root, PW : root</p>
       <p>vagrant rdp : "mstsc /v:pdxf.tk:{vagrant.rdp} /f"</p>
     </Layout>
   );

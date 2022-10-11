@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ChallengeModal from "src/components/ChallengeModal";
 import Layout from "src/components/Layout/Layout";
+import ReactiveButton from "reactive-button";
 
 const Challenges = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -36,9 +37,10 @@ const Challenges = () => {
           <>
             <p>{d.score}</p>
             <p>{d.title}</p>
-            <button onClick={() => setModalState({ data: d, isOpen: true })}>
-              popup
-            </button>
+            <ReactiveButton
+              onClick={() => setModalState({ data: d, isOpen: true })}
+              idleText="Solve The Problem"
+            />
           </>
         ))
       ) : (

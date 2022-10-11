@@ -49,6 +49,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
     .sidebar-btn {
       transition: width 0.3s;
       width: 150px;
@@ -62,7 +63,7 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      text-overflow: ellipsis;
+      // text-overflow: ellipsis;
       overflow: hidden;
       span {
         margin-left: 5px;
@@ -83,11 +84,18 @@ body {
   }
 
   main {
-    padding: 24px;
+    // position: absolute;
+    // margin: auto;
+    // top: 24px;
+    // left: 400px;
+    // right: 0;
+
+    padding-top: 24px;
+    padding-left: 24px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    // overflow-y: auto;
     header {
       margin-bottom: 40px;
       border-bottom: 1px solid #000;
@@ -167,6 +175,7 @@ body {
 
   @media (max-width: 767.98px) {
     overflow-x: hidden;
+
     header {
       h1 {
         font-size: 24px;
