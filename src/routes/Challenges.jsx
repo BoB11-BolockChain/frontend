@@ -34,14 +34,21 @@ const Challenges = () => {
       </header>
       {dataLoaded ? (
         data.map((d) => (
-          <>
+          <div key={d.title}>
             <p>{d.score}</p>
             <p>{d.title}</p>
+<<<<<<< HEAD
             <ReactiveButton
               onClick={() => setModalState({ data: d, isOpen: true })}
               idleText="Solve The Problem"
             />
           </>
+=======
+            <button onClick={() => setModalState({ data: d, isOpen: true })}>
+              popup
+            </button>
+          </div>
+>>>>>>> 1e0f24781fb6f1cd9cbf4c4871603e07396a88c5
         ))
       ) : (
         <p>loading</p>
