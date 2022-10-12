@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "src/components/Layout/Layout";
+import Loading from "src/components/Loading";
 
 const NotFound = () => {
   let numberState = useState(0);
@@ -34,6 +35,7 @@ const NotFound = () => {
           </div>
         </div>
       </div>
+      <Loading />
     </Layout>
   );
 };
