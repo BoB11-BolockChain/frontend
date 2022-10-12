@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Td from './Td';
 
-const Tr = ({ data, setModalState }) => {
+const Tr = ({ data, setModalState, handleRemove, admin }) => {
     return (
         <tbody>
             {
                 data.map((d) => {
                     return (
-                        <Td key={d.id} data={d} setModalState={setModalState} />
+                        <Td key={d.id} data={d} setModalState={setModalState} handleRemove={handleRemove} admin={admin} />
                     )
                 })
             }

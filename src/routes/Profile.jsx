@@ -8,11 +8,12 @@ const Info = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch("http://www.pdxf.tk:8000/profile", {
-        method: "GET",
+        method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ sessionid: window.sessionStorage.getItem("sessionId") })
       });
       if (res.ok) {
         const js = await res.json();
@@ -23,23 +24,23 @@ const Info = () => {
 
     fetchData();
   }, []);
-};
-
-function Profile({ user }) {
-  const { email, id, pw } = user || {};
   return (
     <Layout>
-      <header>
-        <h1>Profile</h1>
-      </header>
-      <dt>Email</dt>
-      <dd>{email}</dd>
-      <dt>id</dt>
-      <dd>{id}</dd>
-      <dt>pw</dt>
-      <dd>{pw}</dd>
+      <>
+        <header>
+          <h1>Profile</h1>
+        </header>
+        {dataLoaded ? (
+          <>
+            <p>Email: {data.email}</p>
+            <p>id: {data.id}</p>
+          </>
+        ) : (
+          <p>loading</p>
+        )}
+      </>
     </Layout>
   );
-}
+};
 
-export default Profile;
+export default Info;

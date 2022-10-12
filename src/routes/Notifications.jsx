@@ -28,7 +28,6 @@ const Notifications = () => {
         <div class="container">
           <header>
             <h1>Notifications</h1>
-            <p>{window.sessionStorage.getItem("sessionId")}</p>
           </header>
           {dataLoaded ? (
             <table>
