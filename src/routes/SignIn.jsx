@@ -25,7 +25,7 @@ const SignIn = () => {
     });
     const js = await res.json();
     console.log(js);
-    window.sessionStorage.setItem("sessionId", "fdsa");
+    window.sessionStorage.setItem("sessionId", js.sessionId);
     navigate("/admin");
   };
 
