@@ -1,8 +1,5 @@
 import React from "react";
-import { FaHeart } from "react-icons/fa";
 import Layout from "src/components/Layout/Layout";
-import { MenuItem } from "react-pro-sidebar";
-import { AiOutlineGithub, AiOutlineTwitter } from "react-icons/ai";
 import "src/components/Layout/module.scss";
 
 const Home = () => {
@@ -20,6 +17,199 @@ const Home = () => {
           <p>PDxF Project BoB 11th</p>
         </header>
         Welcome to PDxF this is the PDxF Main home page plz log in
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br /> <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br /> <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br /> <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
+        PDxF
+        <br />
       </main>
     </Layout>
   );
