@@ -16,7 +16,7 @@ const VmCaller = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: { id: window.sessionStorage.getItem("sessionId") },
+      body: JSON.stringify({ id: window.sessionStorage.getItem("sessionId") }),
     });
     const js = await res.json();
     console.log(js);
@@ -31,7 +31,7 @@ const VmCaller = () => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: { id: window.sessionStorage.getItem("sessionId") },
+      body: JSON.stringify({ id: window.sessionStorage.getItem("sessionId") }),
     });
     const js = await res.json();
     console.log(js);
