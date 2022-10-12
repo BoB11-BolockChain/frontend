@@ -34,19 +34,17 @@ const Notifications = () => {
               <th>조회수</th>
             </thead>
             <tbody>
-              {
-                data.map((d) => (
-                  <>
-                    <tr>
-                      <td>{d.num}</td>
-                      <td>{d.title}</td>
-                      <td>{d.author}</td>
-                      <td>{d.cdate}</td>
-                      <td>{d.views}</td>
-                    </tr>
-                  </>
-                ))
-              }
+              {data.map((d) => (
+                <>
+                  <tr>
+                    <td>{d.num}</td>
+                    <td>{d.title}</td>
+                    <td>{d.author}</td>
+                    <td>{d.cdate}</td>
+                    <td>{d.views}</td>
+                  </tr>
+                </>
+              ))}
             </tbody>
           </table>
         ) : (

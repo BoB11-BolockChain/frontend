@@ -7,8 +7,7 @@ import SignUp from "src/routes/SignUp";
 import NotFound from "src/routes/NotFound";
 import Admin from "src/routes/private/Admin";
 import EditChallenges from "src/routes/private/EditChallenges";
-import CreateChallengesBasic from "src/routes/private/CreateChallengesBasic";
-import CreateChallengesCustom from "src/routes/private/CreateChallengesCustom";
+import CreateChallenges from "src/routes/private/CreateChallenges";
 import DeleteChallenges from "src/routes/private/DeleteChallenges";
 import ScoreBoard from "src/routes/Scoreboard";
 import Profile from "src/routes/Profile";
@@ -42,14 +41,7 @@ const AppRouter = () => {
           <Route path="homepagesetting" element={<HomepageSetting />} />
           <Route path="userteamsetting" element={<UserTeamSetting />} />
           <Route path="selectoperation" element={<SelectOperation />} />
-          <Route
-            path="createchallengesbasic"
-            element={<CreateChallengesBasic />}
-          />
-          <Route
-            path="createchallengescustom"
-            element={<CreateChallengesCustom />}
-          />
+          <Route path="createchallenges" element={<CreateChallenges />} />
           <Route path="deletechallenges" element={<DeleteChallenges />} />
         </Route>
 
