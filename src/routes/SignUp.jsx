@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "src/components/Layout/Layout";
+import ReactiveButton from "reactive-button";
 
 const SignUp = () => {
   const [state, setState] = useState({
@@ -68,7 +69,8 @@ const SignUp = () => {
             type="password"
           />
         </div>
-        <input type="submit" />
+        <ReactiveButton type={"submit"} idleText="Submit" />
+        {/* <input type="submit" /> */}
       </form>
     </Layout>
   );

@@ -1,0 +1,140 @@
+// .dragbox {
+//   width: 400px;
+//   height: 300px;
+//   background: rgb(77, 77, 77);
+//   position: relative;
+// }
+
+// .dragbox::before,
+// .dragbox::after {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   background: linear-gradient(
+//     45deg,
+//     #ff0000,
+//     #00f0f0,
+//     #00ff00,
+//     #0000ff,
+//     #ff0000,
+//     #00f0f0,
+//     #00ff00,
+//     #0000ff,
+//     #f00f0f
+//   );
+//   width: 100%;
+//   height: 100%;
+//   background-size: 500%;
+//   z-index: -1;
+//   transform: scale(1.02);
+//   animation: animate 20s infinite;
+// }
+
+// .dragbox:after {
+//   filter: blur(20px);
+// }
+
+// @keyframes animate {
+//   0% {
+//     background-position: 0 0;
+//   }
+//   50% {
+//     background-position: 300% 0;
+//   }
+//   100% {
+//     background-position: 0 0;
+//   }
+// }
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.columns {
+  display: flex;
+}
+
+.column {
+  margin: calc(var(--grid) / 2);
+  border: var(--borderWidth) solid #0ff0fc;
+  border-radius: var(--borderRadius);
+  background-color: #2a2f41;
+}
+
+.columnTitle {
+  font-size: 30px;
+  color: var(--pink);
+  color: #08ff08;
+  text-shadow: 0px 0px 2px var(--pinkDark),
+    0px 0px 15px rgba(255, 110, 255, 0.5);
+  text-align: center;
+  margin: 0;
+}
+
+.columnTitle:hover {
+  color: red;
+  text-shadow: 0px 0px 2px var(--pinkDark),
+    0px 0px 15px rgba(255, 110, 255, 0.8);
+}
+
+.taskList {
+  /* this has no visible impact, but is in line with the absolute position spacing.
+  doing this ensures that dropping into an empty list will be in the correct visual position */
+  padding-left: var(--grid);
+  padding-right: var(--grid);
+  scrollbar-color: dark;
+}
+
+.taskList::-webkit-scrollbar {
+  width: 1em;
+}
+
+.taskList::-webkit-scrollbar-track {
+  background-color: var(--greyLight);
+  border-radius: var(--borderRadius);
+}
+
+.taskList::-webkit-scrollbar-thumb {
+  background-color: var(--pink);
+}
+
+.item {
+  //float left
+  color: red;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid red;
+  float: left;
+  //asdf
+  background: #c9cacf;
+  border: var(--borderWidth) solid mediumpurple;
+  box-sizing: border-box;
+  border-radius: var(--borderRadius);
+
+  font-size: 20px;
+  user-select: none;
+
+  /* center align text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item.nomal {
+  color: #08ff08;
+}
+
+.item.isDragging {
+  background: #ff0000;
+  border-color: #08ff08;
+  box-shadow: 0px 0px 2px rgb(8, 58, 30), 0px 0px 10px MediumSeaGreen;
+}
