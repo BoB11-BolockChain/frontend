@@ -10,7 +10,9 @@ const Progress = () => {
 
   useEffect(() => {
     if (msg) {
-      setSteps(JSON.parse(msg)["pauoik"]["steps"]);
+      const json = JSON.parse(msg);
+      const paw = json["host_group"][0]["paw"];
+      setSteps(json["steps"][paw]["steps"]);
     }
   }, [msg]);
 
