@@ -159,6 +159,10 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
                   User & Team Setting
                   <NavLink to="/admin/userteamsetting" />
                 </MenuItem>
+                <MenuItem>
+                  Dashboard
+                  <NavLink to="/admin/dashboard" />
+                </MenuItem>
               </SubMenu>
             </Menu>
           </>
