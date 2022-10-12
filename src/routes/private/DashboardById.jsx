@@ -4,8 +4,8 @@ import Loading from "src/components/Loading";
 import useGetFetch from "src/hooks/useGetFetch";
 import useWebSocket from "src/hooks/useWebSocket";
 
-const Progress = () => {
-  const msg = useWebSocket("ws://localhost:8000/progress");
+const DashboardById = () => {
+  const msg = useWebSocket("ws://localhost:8000/progress/fdsa");
   const [steps, setSteps] = useState(null);
 
   useEffect(() => {
@@ -33,4 +33,4 @@ const Progress = () => {
   );
 };
 
-export default Progress;
+export default DashboardById;
