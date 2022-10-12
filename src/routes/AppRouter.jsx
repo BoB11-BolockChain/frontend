@@ -18,6 +18,8 @@ import Challenges from "src/routes/Challenges";
 import UserTeamSetting from "src/routes/UserTeamSetting";
 import HomepageSetting from "src/routes/HomepageSetting";
 import SelectOperation from "src/routes/private/SelectOperation";
+import Dashboard from "./private/Dashboard";
+import DashboardById from "./private/DashboardById";
 
 const AppRouter = () => {
   return (
@@ -51,6 +53,9 @@ const AppRouter = () => {
             element={<CreateChallengesCustom />}
           />
           <Route path="deletechallenges" element={<DeleteChallenges />} />
+          <Route path="dashboard" element={<Dashboard />}>
+            <Route path=":id" element={<DashboardById />} />
+          </Route>
         </Route>
 
         <Route path="*" element={<NotFound />} />
