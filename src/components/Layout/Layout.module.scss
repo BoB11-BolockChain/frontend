@@ -1,8 +1,9 @@
 .layout {
-  padding-left: 400px;
+  padding-left: 335px;
 }
 
 .main {
   min-height: calc(100vh - 180px);
   min-width: calc(100vw - 35vw);
+  max-width: calc(100vw - 35vw);
 }

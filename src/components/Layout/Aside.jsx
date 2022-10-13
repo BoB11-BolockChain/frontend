@@ -132,16 +132,10 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
             <Menu iconShape="circle">
               <SubMenu title="PDxF Management" icon={<FaList />}>
                 <SubMenu title="Challenges Management">
-                  <SubMenu title="Create Challenges">
-                    <MenuItem>
-                      normal
-                      <NavLink to="/admin/selectoperation" />
-                    </MenuItem>
-                    <MenuItem>
-                      Custom
-                      <NavLink to="/admin/createchallengescustom" />
-                    </MenuItem>
-                  </SubMenu>
+                  <MenuItem>
+                    Create Challenges
+                    <NavLink to="/admin/createchallenges" />
+                  </MenuItem>
                   <MenuItem>
                     Edit Challenges
                     <NavLink to="/admin/editchallenges" />
