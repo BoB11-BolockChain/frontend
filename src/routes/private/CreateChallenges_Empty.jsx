@@ -4,7 +4,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 import DraggableElement from "src/components/drag/DraggableElement";
 import Layout from "src/components/Layout/Layout";
 import ReactiveButton from "reactive-button";
-import dumpdata from "./asdf.json";
+import dumpdata from "src/components/Empty.json";
 import { useNavigate } from "react-router-dom";
 
 const DragDropContextContainer = styled.div`
@@ -16,7 +16,7 @@ const DragDropContextContainer = styled.div`
 
 const ListGrid = styled.div`
   display: grid;
-  grid-template-columns: 33% 33% 32.5%;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 8px;
 `;
 const Button_ = styled.div`
@@ -31,7 +31,6 @@ const Inputcreate = styled.div`
 `;
 
 const Create_box = styled.div`
-  grid-template-columns: 33% 33% 32.5%;
   padding-top: 10px;
   width: 100%;
   height: 150px;
@@ -41,7 +40,7 @@ const Create_box = styled.div`
 
 const Abilitynamearea = styled.input`
   width: 20%;
-  margin-left: 6%;
+  margin-left: 90px;
   margin-top: 15px;
   height: 25px;
   font-size: 14px;
@@ -135,7 +134,7 @@ const make_json = (elements, info_data) => {
     },
   };
   const json = JSON.stringify(final_data);
-  console.log(json);
+  // console.log(json);
   // console.log(returndata);
   return json;
 };
@@ -302,22 +301,22 @@ function DragList() {
                   placeholder="  Input AbilityName"
                   type="text"
                 />
-                <Button_>
-                  <ReactiveButton
-                    onClick={() => onSubmit_()}
-                    color="violet"
-                    type={"submit"}
-                    idleText="Add Branch"
-                  />
-                  <a> </a>
-                  <ReactiveButton
-                    onClick={() => onSubmit()}
-                    color="violet"
-                    type={"submit"}
-                    idleText="Create"
-                  />
-                </Button_>
               </Inputcreate>
+              <Button_>
+                <ReactiveButton
+                  onClick={onSubmit_}
+                  color="violet"
+                  type={"submit"}
+                  idleText="Add Branch"
+                />
+                <a> </a>
+                <ReactiveButton
+                  onClick={onSubmit}
+                  color="violet"
+                  type={"submit"}
+                  idleText="Create"
+                />
+              </Button_>
             </Create_box>
           </Remotecon_box>
           <ListGrid>
@@ -337,7 +336,7 @@ function DragList() {
         color={"primary"}
         idleText={"CreateChallenges"}
         type={"submit"}
-        onClick={() => onSubmit_final()}
+        onClick={onSubmit_final}
         style={{
           borderRadius: "5px",
         }}

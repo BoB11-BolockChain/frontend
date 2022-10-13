@@ -58,6 +58,7 @@ const Profile = () => {
       <p>docker ssh : "ssh -p {docker.ssh} root@pdxf.tk"</p>
       <p>docker ID : root, PW : root</p>
       <p>vagrant rdp : "mstsc /v:pdxf.tk:{vagrant.rdp} /f"</p>
+      <p>vagrant ID : vagrant, PW : vagrant</p>
     </Layout>
   );
 };
