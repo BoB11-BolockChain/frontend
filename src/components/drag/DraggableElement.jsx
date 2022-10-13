@@ -4,7 +4,6 @@ import React from "react";
 import styled from "styled-components";
 
 const ColumnHeader = styled.div`
-  text-transform: uppercase;
   margin-bottom: 20px;
 `;
 
@@ -24,6 +23,7 @@ const DraggableElement = ({ prefix, elements }) => (
             <ListItem
               payload={item.payload}
               key={item.id}
+              name={item.AbilityName}
               item={item}
               index={index}
             />
