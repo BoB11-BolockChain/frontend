@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Layout from "src/components/Layout/Layout";
-import Tr from "src/components/Tr"
+import TableTr from "src/components/TableTr"
 import "src/components/Layout/Board.scss"
 import BoardModal from "src/components/BoardModal";
 
 const HomepageSetting = () => {
-  const [modalState, setModalState] = useState({ data: {}, isOpen: false });
+  const [modalState, setModalState] = useState({ data: {}, isOpen: false, ceState: "" });
   const [dataLoaded, setDataLoaded] = useState(false);
   const [data, setData] = useState([]);
   const admin = 1;
@@ -31,18 +31,21 @@ const HomepageSetting = () => {
             <h1>HomepageSetting</h1>
           </header>
           {dataLoaded ? (
-            <table>
-              <thead>
-                <th>번호</th>
-                <th>제목</th>
-                <th>글쓴이</th>
-                <th>작성일</th>
-                <th>조회수</th>
-                <th>수정</th>
-                <th>삭제</th>
-              </thead>
-              <Tr data={data} setModalState={setModalState} handleRemove={handleRemove} admin={admin} />
-            </table>
+            <>
+              <table>
+                <thead>
+                  <th>번호</th>
+                  <th>제목</th>
+                  <th>작성자</th>
+                  <th>작성일</th>
+                  <th>조회수</th>
+                  <th>수정</th>
+                  <th>삭제</th>
+                </thead>
+                <TableTr data={data} setModalState={setModalState} handleRemove={handleRemove} admin={admin} />
+              </table>
+              <button onClick={() => setModalState({ data: data, isOpen: true, ceState: "create" })}>글쓰기</button>
+            </>
           ) : (
             <p>loading</p>
           )}
@@ -50,6 +53,7 @@ const HomepageSetting = () => {
             isOpen={modalState.isOpen}
             setModalState={setModalState}
             data={modalState.data}
+            ceState={modalState.ceState}
           />
         </div>
       </>
@@ -73,12 +77,11 @@ const handleRemove = (removeData) => {
       ),
     });
     if (res.ok) {
-      // const js = await res.json();
-      // setData(js.data);
-      // setDataLoaded(true);
+      window.location.reload();
     }
   };
 
   fetchData();
 }
+
 export default HomepageSetting;

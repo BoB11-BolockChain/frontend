@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "src/components/Layout/Layout";
-import Tr from "src/components/Tr"
+import TableTr from "src/components/TableTr"
 import "src/components/Layout/Board.scss"
 import BoardModal from "src/components/BoardModal";
 
@@ -34,11 +34,11 @@ const Notifications = () => {
               <thead>
                 <th>번호</th>
                 <th>제목</th>
-                <th>글쓴이</th>
+                <th>작성자</th>
                 <th>작성일</th>
                 <th>조회수</th>
               </thead>
-              <Tr data={data} setModalState={setModalState} />
+              <TableTr data={data} setModalState={setModalState} />
             </table>
           ) : (
             <p>loading</p>
