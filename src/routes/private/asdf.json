@@ -1,0 +1,59 @@
+{
+  "Delete": [],
+  "Branch1": [
+    {
+      "Payload": "' or 1 = 1 #'",
+      "AbilityName": "Baby SQL Injection"
+    },
+    {
+      "Payload": "' and 1 = 1 #'",
+      "AbilityName": "blind SQL Injection"
+    }
+  ],
+  "Branch2": [
+    {
+      "Payload": "<scrtip>alert(document.cookies);</script>",
+      "AbilityName": "baby XSS"
+    },
+    {
+      "Payload": "<scrtip>alert('xss');</script>",
+      "AbilityName": "normal XSS"
+    },
+    {
+      "Payload": "<sddipt>",
+      "AbilityName": "ff XSS"
+    }
+  ],
+  "Branch3": [
+    {
+      "Payload": "<scrtipff</script>",
+      "AbilityName": "bassXSS"
+    },
+    {
+      "Payload": "<scrtipdddd);</script>",
+      "AbilityName": "no111S"
+    },
+    {
+      "Payload": "<sddipt>",
+      "AbilityName": "fsd22SS"
+    }
+  ],
+  "Branch4": [
+    {
+      "Payload": "<sfffipt>",
+      "AbilityName": "baaaS"
+    },
+    {
+      "Payload": "<scfadipt>",
+      "AbilityName": "nasdfasdfXSS"
+    },
+    {
+      "Payload": "<sfffipt>",
+      "AbilityName": "asdfsdf"
+    },
+    {
+      "Payload": "<scfadipt>",
+      "AbilityName": "asdf"
+    }
+  ]
+}

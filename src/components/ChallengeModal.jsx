@@ -1,6 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal";
-import VmCaller from "./VmCaller";
+import VmCaller from "src/components/VmCaller";
 
 const ChallengeModal = ({ isOpen, setModalState, data }) => {
   return (
@@ -39,11 +39,11 @@ const ChallengeModal = ({ isOpen, setModalState, data }) => {
         },
       }}
     >
-      <div style={{
-        marginLeft: "300px"
-      }}>
-
-      </div>
+      <div
+        style={{
+          marginLeft: "300px",
+        }}
+      ></div>
       <p>하이?</p>
       <p>title : {data.title}</p>
       <p>score : {data.score}</p>

@@ -29,7 +29,7 @@ const SelectOperation = () => {
           <p>PDxF Project BoB 11th</p>
         </header>
         <h2>Select Operation</h2>
-
+        <h3>Template : </h3>
         <NavLink to="/admin/createchallenges">
           <ReactiveButton idleText="APT Scenario Type 1" />
         </NavLink>
@@ -43,6 +43,10 @@ const SelectOperation = () => {
             color="violet"
             idleText="APT Network diffusion Scenario"
           />
+        </NavLink>
+        <h3>Empty Template : </h3>
+        <NavLink to="/admin/createchallengesempty">
+          <ReactiveButton color="violet" idleText="Empty File" />
         </NavLink>
         {/* <ReactiveButton
           buttonState={state}
