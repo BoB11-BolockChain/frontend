@@ -1,9 +1,12 @@
 import React from "react";
 import ReactModal from "react-modal";
+import ModalBoardCreate from "./ModalBoardCreate";
+import ModalBoardEdit from "./ModalBoardEdit";
 
-const BoardModal = ({ isOpen, setModalState, data }) => {
+const BoardModal = ({ isOpen, setModalState, data, ceState }) => {
     return (
         <ReactModal
+            ceState={ceState}
             isOpen={isOpen}
             marginLeft={"300px"}
             onRequestClose={() => setModalState({ data: {}, isOpen: false })}
@@ -25,7 +28,7 @@ const BoardModal = ({ isOpen, setModalState, data }) => {
                     left: "400px",
                     right: "15%",
                     bottom: "25%",
-                    boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
+                    boxShadow: "0px 0px 60px rgba(0, 0, 0, 0.3)",
                     border: "0px",
                     background: "#fff",
                     overflow: "auto",
@@ -45,19 +48,28 @@ const BoardModal = ({ isOpen, setModalState, data }) => {
 
             </div>
             <div class="modal">
-                <table>
-                    <tr>
-                        <td colspan="3">{data.title}</td>
-                    </tr>
-                    <tr>
-                        <td>{data.author}</td>
-                        <td>{data.cdate}</td>
-                        <th>조회수: {data.views}</th>
-                    </tr>
-                    <tr>
-                        <td colspan="3">{data.content}</td>
-                    </tr>
-                </table>
+                {
+                    (ceState === "create") ? (
+                        <ModalBoardCreate />
+                    ) : ((ceState === "edit") ? (
+                        <ModalBoardEdit data={data} />
+                    ) : (
+                        <table>
+                            <tr>
+                                <td id="title" colspan="5">{data.title}</td>
+                            </tr>
+                            <tr>
+                                <td id="author">{data.author}</td>
+                                <td id="divider">|</td>
+                                <td id="date">{data.cdate}</td>
+                                <td></td>
+                                <td id="view">조회수: {data.views}</td>
+                            </tr>
+                            <tr>
+                                <td id="content" colspan="5">{data.content}</td>
+                            </tr>
+                        </table>
+                    ))}
             </div>
         </ReactModal>
     );

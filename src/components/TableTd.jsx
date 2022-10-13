@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Td = ({ data, setModalState, handleRemove, admin }) => {
+const TableTd = ({ data, setModalState, handleRemove, admin }) => {
     const onRemove = (d) => {
         handleRemove(d)
     }
-    // if (admin) {
-    //     setDataLoaded(true);
-    // }
 
     return (
         <>
             <tr>
                 <td>{data.num}</td>
-                <td onClick={() => setModalState({ data: data, isOpen: true })}>{data.title}</td>
+                <td id="title" onClick={() => setModalState({ data: data, isOpen: true })}>{data.title}</td>
                 <td>{data.author}</td>
                 <td>{data.cdate}</td>
                 <td>{data.views}</td>
-                {(admin == 1) && (
+                {(admin === 1) && (
                     <>
-                        <td>Edit</td>
+                        <td onClick={() => setModalState({ data: data, isOpen: true, ceState: "edit" })}>Edit</td>
                         <td onClick={() => onRemove(data)}>Remove</td>
                     </>
                 )}
@@ -27,4 +24,4 @@ const Td = ({ data, setModalState, handleRemove, admin }) => {
     )
 };
 
-export default Td;
+export default TableTd;
