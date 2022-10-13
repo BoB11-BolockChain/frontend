@@ -30,15 +30,15 @@ const SelectOperation = () => {
         </header>
         <h2>Select Operation</h2>
 
-        <NavLink to="/admin/createchallengesbasic">
+        <NavLink to="/admin/createchallenges">
           <ReactiveButton idleText="APT Scenario Type 1" />
         </NavLink>
         <br />
-        <NavLink to="/admin/createchallengesbasic">
+        <NavLink to="/admin/createchallenges">
           <ReactiveButton color="secondary" idleText="APT Scenario Type 2" />
         </NavLink>
         <br />
-        <NavLink to="/admin/createchallengesbasic">
+        <NavLink to="/admin/createchallenges">
           <ReactiveButton
             color="violet"
             idleText="APT Network diffusion Scenario"

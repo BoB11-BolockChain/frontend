@@ -38,7 +38,7 @@ const DragItem = styled.div`
   flex-direction: column;
 `;
 
-const ListItem = ({ payload, item, index }) => {
+const ListItem = ({ name, payload, item, index }) => {
   return (
     <Draggable draggableId={item.id} index={index}>
       {(provided, snapshot) => {
@@ -55,7 +55,7 @@ const ListItem = ({ payload, item, index }) => {
             {/* <CardHeader>{randomHeader}</CardHeader> */}
             <CardFooter>
               <span> Seq:{index}</span>
-              <Author>{item.id}</Author>
+              <Author>{name}</Author>
             </CardFooter>
           </DragItem>
         );
