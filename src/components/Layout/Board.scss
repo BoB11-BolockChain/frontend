@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+.container table {
+    font-family: 'Noto Sans KR', sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border: 1px solid #CCC;
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
+}
+
+.container th {
+    background-color: rgba(24, 30, 52, 1.0);
+    padding: 12px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.container td {
+    border-bottom: 1px solid #CCC;
+    padding: 12px;
+    background-color: rgba(250, 250, 250, 1.0);
+    text-align: center;
+    color: #000;
+    font-size: 14px
+}
+
+.modal table {
+    font-family: 'Noto Sans KR', sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    // border: 1px solid #CCC;
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
+}
+
+.modal th {
+    background-color: #fff;
+    padding: 12px;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.modal td {
+    border-bottom: 1px solid #fff;
+    padding: 12px;
+    background-color: #fff;
+    text-align: center;
+    color: #000;
+    font-size: 14px
+}
