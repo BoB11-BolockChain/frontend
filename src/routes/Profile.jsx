@@ -9,6 +9,7 @@ import {
   MDBCardText,
   MDBCardBody,
   MDBCardImage,
+  MDBBtn,
   MDBBreadcrumb,
   MDBBreadcrumbItem,
   MDBProgress,
