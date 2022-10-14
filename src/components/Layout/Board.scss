@@ -91,10 +91,15 @@
     font-size: 14px
 }
 
-.modal #inputTitle {
+.modal input {
     width: 100%;
 }
 
-.modal #inputContent {
+.modal textarea {
+    width: 100%;
+}
+
+
+.modal-create {
     width: 100%;
 }

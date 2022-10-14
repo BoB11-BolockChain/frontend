@@ -44,8 +44,8 @@ const ChallengeModal = ({ isOpen, setModalState, data }) => {
           marginLeft: "300px",
         }}
       ></div>
-      <p>하이?</p>
-      <p>title : {data.title}</p>
+      <p>{data.title}</p>
+      <p>{data.desc}</p>
       <p>score : {data.score}</p>
       <VmCaller />
     </ReactModal>

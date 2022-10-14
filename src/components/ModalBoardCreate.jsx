@@ -21,17 +21,19 @@ const ModalBoardCreate = () => {
         }
     };
     return (
-        <>
+        <div class="modal-create">
             <form onSubmit={onCreateSubmit}>
-                <tr>
-                    <td id="inputTitle"><input onChange={onCreateChange} placeholder="제목" name="title" type="text" /></td>
-                </tr>
-                <tr>
-                    <td id="inputContent"><textarea onChange={onCreateChange} placeholder="내용" name="content" cols="50" rows="10" /></td>
-                </tr>
+                <table>
+                    <tr>
+                        <td id="inputTitle"><input onChange={onCreateChange} placeholder="제목" name="title" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td id="inputContent"><textarea onChange={onCreateChange} placeholder="내용" name="content" cols="50" rows="10" /></td>
+                    </tr>
+                </table>
                 <input type="submit" />
             </form>
-        </>
+        </div>
     )
 }
 
