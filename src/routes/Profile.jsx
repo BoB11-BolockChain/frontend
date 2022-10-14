@@ -9,7 +9,6 @@ import {
   MDBCardText,
   MDBCardBody,
   MDBCardImage,
-  MDBBtn,
   MDBBreadcrumb,
   MDBBreadcrumbItem,
   MDBProgress,
@@ -18,7 +17,6 @@ import {
   MDBListGroup,
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
-import Profile_ from "src/components/ChallengeModalCreate";
 
 function Profile() {
   return (

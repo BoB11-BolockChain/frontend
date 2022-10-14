@@ -50,11 +50,12 @@ const ListItem = ({ name, payload, item, index }) => {
             {...provided.dragHandleProps}
           >
             <span>
-              Payload :<Payload> {payload} </Payload>
+              Seq:{index}
+              {/* <a> </a>- Payload - */}
+              <Payload> {payload} </Payload>
             </span>
             {/* <CardHeader>{randomHeader}</CardHeader> */}
             <CardFooter>
-              <span> Seq:{index}</span>
               <Author>{name}</Author>
             </CardFooter>
           </DragItem>

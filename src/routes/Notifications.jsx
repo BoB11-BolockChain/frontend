@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Layout from "src/components/Layout/Layout";
-import TableTr from "src/components/TableTr"
-import "src/components/Layout/Board.scss"
+import TableTr from "src/components/TableTr";
+import "src/components/Layout/Board.scss";
 import BoardModal from "src/components/BoardModal";
+import Loading from "src/components/Loading";
 
 const Notifications = () => {
   const [modalState, setModalState] = useState({ data: {}, isOpen: false });
@@ -41,7 +42,7 @@ const Notifications = () => {
               <TableTr data={data} setModalState={setModalState} />
             </table>
           ) : (
-            <p>loading</p>
+            <Loading />
           )}
           <BoardModal
             isOpen={modalState.isOpen}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { DragDropContext } from "react-beautiful-dnd";
 import DraggableElement from "src/components/drag/DraggableElement";
@@ -6,6 +6,7 @@ import Layout from "src/components/Layout/Layout";
 import ReactiveButton from "reactive-button";
 import dumpdata from "./asdf.json";
 import { useNavigate } from "react-router-dom";
+import Loading from "src/components/Loading";
 
 const DragDropContextContainer = styled.div`
   padding: 20px;
@@ -68,7 +69,8 @@ const Remotecon_box = styled.div`
 `;
 
 // const data_list = JSON.parse(json_data);
-let data_list = dumpdata;
+// let data_list = dumpdata;
+let data_list = {};
 const getItems = (data, count, prefix) =>
   Array.from({ length: count, name: prefix }, (v, k) => k).map((k) => {
     const Branch_name = prefix;
@@ -125,12 +127,14 @@ const make_json = (elements, info_data) => {
     // console.log(returndata);
   }
   // console.log(returndata);
+  let tt = info_data.ChallengesScore;
+  tt *= 1;
   const final_data = {
     data: returndata,
     info: {
       Title: info_data.ChallengesName,
       Description: info_data.ChallengesInfo,
-      Score: info_data.ChallengesScore,
+      Score: tt,
       OS: info_data.ChallengesOS,
     },
   };
@@ -141,6 +145,47 @@ const make_json = (elements, info_data) => {
 };
 
 function DragList() {
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const [_data_, set_data_] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("http://www.pdxf.tk:3000/basic", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        let js = await res.json();
+        set_data_(js.data);
+        // console.log(js);
+        setDataLoaded(true);
+        // console.log(js);
+        // js["Branch" + addbranch_num] = [];
+        // js.unshift("d");
+        const delete_temp = [];
+        delete_temp["Delete"] = [];
+        // data_list = js;
+        // console.log(data_list);
+        const temp = { ...delete_temp, ...js };
+        // console.log(temp);
+        data_list = temp;
+        set_data_(data_list);
+        // console.log(Delete);
+        // data_list["Delete"] = [];
+        // console.log(data_list);
+        // console.log(data);
+        // console.log(js);
+        setElements(generateLists(data_list));
+        // console.log(elements);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const navigate = useNavigate();
   const [inputinfo, setinputinfo] = React.useState({
     ChallengesInfo: "",
@@ -151,7 +196,7 @@ function DragList() {
   const [elements, setElements] = React.useState(generateLists(data_list));
   useEffect(() => {
     setElements(generateLists(data_list));
-  }, []);
+  }, [data_list]);
   // make_json(elements, inputinfo)
   const [inputvalue, setinputvalue] = React.useState();
 
@@ -183,9 +228,33 @@ function DragList() {
     listCopy["Branch" + addbranch_num] = [];
     // console.log(json_data);
     // console.log(listCopy);
+    // generateLists(listCopy);
+    // console.log(elements);
+    // data_list = listCopy;
+    // console.log(data_list);
     setElements(listCopy);
+    // generateLists(data_list);
+    // console.log(_data_);
+    // _data_ = listCopy;
     data_list = listCopy;
+
+    // data_list = listCopy;
   };
+
+  // const onSubmit_delete = async () => {
+  //   const addbranch_num = Object.keys(data_list).length;
+  //   const listCopy = { ...elements };
+  //   for (var i = 0; i < addbranch_num; i++) {
+  //     console.log(listCopy);
+  //     console.log(i);
+  //     if (i === addbranch_num) {
+  //       listCopy.splice("Branch" + addbranch_num, 1);
+  //       i--;
+  //     }
+  //   }
+  //   setElements(listCopy);
+  //   data_list = listCopy;
+  // };
 
   const onChange_info = (e) => {
     const { name, value } = e.target;
@@ -193,7 +262,7 @@ function DragList() {
   };
 
   const onSubmit_final = async () => {
-    const res = await fetch("http://www.pdxf.tk:8000/createch2", {
+    const res = await fetch("http://www.pdxf.tk:8000/createchallenges", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -203,7 +272,9 @@ function DragList() {
     });
     if (res.ok) {
       alert("Create success");
-      navigate("/admin");
+      navigate("/challenges");
+    } else {
+      alert("Fail");
     }
   };
 
@@ -239,119 +310,125 @@ function DragList() {
       <header>
         <h1>Create Challenges</h1>
       </header>
-      <DragDropContextContainer>
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Remotecon_box>
-            <Create_box>
-              Challenges information
-              <Inputcreate>
-                <Payarea
-                  onChange={onChange_info}
-                  name="ChallengesInfo"
-                  placeholder="  Input Challenges Info"
-                  type="text"
-                />
-                <label>
-                  <input
-                    onChange={onChange_info}
-                    name="ChallengesOS"
-                    value="Windows"
-                    // checked={setinputinfo.OS === "Windows"}
-                    type="radio"
-                  />
-                  Windows
-                </label>
-                <label>
-                  <input
-                    onChange={onChange_info}
-                    name="ChallengesOS"
-                    value="Linux"
-                    // checked={setinputinfo.OS === "Linux"}
-                    type="radio"
-                  />
-                  Linux
-                </label>
-                <Abilitynamearea
-                  onChange={onChange_info}
-                  name="ChallengesScore"
-                  placeholder="  Input Challenges Score"
-                  type="number"
-                />
+      {dataLoaded ? (
+        <>
+          <DragDropContextContainer>
+            <DragDropContext onDragEnd={onDragEnd}>
+              <Remotecon_box>
+                <Create_box>
+                  Challenges information
+                  <Inputcreate>
+                    <Payarea
+                      onChange={onChange_info}
+                      name="ChallengesInfo"
+                      placeholder="  Input Challenges Info"
+                      type="text"
+                    />
+                    <label>
+                      <input
+                        onChange={onChange_info}
+                        name="ChallengesOS"
+                        value="Windows"
+                        // checked={setinputinfo.OS === "Windows"}
+                        type="radio"
+                      />
+                      Windows
+                    </label>
+                    <label>
+                      <input
+                        onChange={onChange_info}
+                        name="ChallengesOS"
+                        value="Linux"
+                        // checked={setinputinfo.OS === "Linux"}
+                        type="radio"
+                      />
+                      Linux
+                    </label>
+                    <Abilitynamearea
+                      onChange={onChange_info}
+                      name="ChallengesScore"
+                      placeholder="  Input Challenges Score"
+                      type="number"
+                    />
 
-                <Abilitynamearea
-                  onChange={onChange_info}
-                  name="ChallengesName"
-                  placeholder="  Input Challenges Name"
-                  type="text"
-                />
-              </Inputcreate>
-            </Create_box>
-          </Remotecon_box>
-          <Remotecon_box>
-            <Create_box>
-              Create
-              <Inputcreate>
-                <Payarea
-                  onChange={onChange}
-                  name="Payload"
-                  placeholder=" Payload: ' or 1 = 1 #'"
-                />
-                <Abilitynamearea
-                  onChange={onChange}
-                  name="AbilityName"
-                  placeholder="  Input AbilityName"
-                  type="text"
-                />
-                <Button_>
-                  <ReactiveButton
-                    onClick={() => onSubmit_()}
-                    color="violet"
-                    type={"submit"}
-                    idleText="Add Branch"
+                    <Abilitynamearea
+                      onChange={onChange_info}
+                      name="ChallengesName"
+                      placeholder="  Input Challenges Name"
+                      type="text"
+                    />
+                  </Inputcreate>
+                </Create_box>
+              </Remotecon_box>
+              <Remotecon_box>
+                <Create_box>
+                  Create
+                  <Inputcreate>
+                    <Payarea
+                      onChange={onChange}
+                      name="Payload"
+                      placeholder=" Payload: ' or 1 = 1 #'"
+                    />
+                    <Abilitynamearea
+                      onChange={onChange}
+                      name="AbilityName"
+                      placeholder="  Input AbilityName"
+                      type="text"
+                    />
+                    <Button_>
+                      <ReactiveButton
+                        onClick={() => onSubmit_()}
+                        color="violet"
+                        type={"submit"}
+                        idleText="Add Branch"
+                      />
+                      <a> </a>
+                      <ReactiveButton
+                        onClick={() => onSubmit()}
+                        color="violet"
+                        type={"submit"}
+                        idleText="Create"
+                      />
+                    </Button_>
+                  </Inputcreate>
+                </Create_box>
+              </Remotecon_box>
+              <ListGrid>
+                {Object.keys(data_list).map((listKey) => (
+                  <DraggableElement
+                    // payload={elements[listKey]}
+                    elements={elements[listKey]}
+                    key={listKey}
+                    prefix={listKey}
                   />
-                  <a> </a>
-                  <ReactiveButton
-                    onClick={() => onSubmit()}
-                    color="violet"
-                    type={"submit"}
-                    idleText="Create"
-                  />
-                </Button_>
-              </Inputcreate>
-            </Create_box>
-          </Remotecon_box>
-          <ListGrid>
-            {Object.keys(data_list).map((listKey) => (
-              <DraggableElement
-                // payload={elements[listKey]}
-                elements={elements[listKey]}
-                key={listKey}
-                prefix={listKey}
-              />
-            ))}
-          </ListGrid>
-        </DragDropContext>
-      </DragDropContextContainer>
-      <br />
-      <ReactiveButton
-        color={"primary"}
-        idleText={"CreateChallenges"}
-        type={"submit"}
-        onClick={() => onSubmit_final()}
-        style={{
-          borderRadius: "5px",
-        }}
-        outline={false}
-        shadow={false}
-        rounded={false}
-        size={"normal"}
-        block={false}
-        disabled={false}
-        buttonRef={null}
-        width={null}
-        height={50}
-        animation={true}
-      />
+                ))}
+              </ListGrid>
+            </DragDropContext>
+          </DragDropContextContainer>
+          <br />
+          <ReactiveButton
+            color={"primary"}
+            idleText={"CreateChallenges"}
+            type={"submit"}
+            onClick={() => onSubmit_final()}
+            style={{
+              borderRadius: "5px",
+            }}
+            outline={false}
+            shadow={false}
+            rounded={false}
+            size={"normal"}
+            block={false}
+            disabled={false}
+            buttonRef={null}
+            width={null}
+            // height={50}
+            animation={true}
+          />
+        </>
+      ) : (
+        <Loading />
+      )}
     </Layout>
   );
 }
