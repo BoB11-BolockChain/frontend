@@ -18,6 +18,7 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 
+import Profile_ from "src/components/ChallengeModalCreate";
 function Profile() {
   return (
     <Layout>
