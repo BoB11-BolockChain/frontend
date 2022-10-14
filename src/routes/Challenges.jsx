@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ChallengeModal from "src/components/ChallengeModal";
 import Layout from "src/components/Layout/Layout";
 import ReactiveButton from "reactive-button";
+import Loading from "src/components/Loading";
 
 const Challenges = () => {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -42,7 +43,7 @@ const Challenges = () => {
           </div>
         ))
       ) : (
-        <p>loading</p>
+        <Loading />
       )}
       <ChallengeModal
         isOpen={modalState.isOpen}
