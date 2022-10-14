@@ -50,7 +50,8 @@ const AppRouter = () => {
             element={<CreateChallengesEmpty />}
           />
           <Route path="deletechallenges" element={<DeleteChallenges />} />
-          <Route path="dashboard" element={<Dashboard />}>
+          <Route path="dashboard">
+            <Route index element={<Dashboard />} />
             <Route path=":id" element={<DashboardById />} />
           </Route>
         </Route>
