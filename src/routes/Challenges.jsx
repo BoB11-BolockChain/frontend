@@ -35,12 +35,10 @@ const Challenges = () => {
       {dataLoaded ? (
         data.map((d) => (
           <div key={d.title}>
-            <p>{d.score}</p>
-            <p>{d.title}</p>
-            <ReactiveButton
-              onClick={() => setModalState({ data: d, isOpen: true })}
-              idleText="Solve The Problem"
-            />
+            <p>
+              <ReactiveButton
+                onClick={() => setModalState({ data: d, isOpen: true })}
+                idleText={<>{d.title}<br />{d.score}</>} /></p>
           </div>
         ))
       ) : (

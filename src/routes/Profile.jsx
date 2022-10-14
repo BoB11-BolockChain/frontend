@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Layout from "src/components/Layout/Layout";
-import {
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBCard,
-  MDBCardText,
-  MDBCardBody,
-  MDBCardImage,
-  MDBBtn,
-  MDBBreadcrumb,
-  MDBBreadcrumbItem,
-  MDBProgress,
-  MDBProgressBar,
-  MDBIcon,
-  MDBListGroup,
-  MDBListGroupItem,
-} from "mdb-react-ui-kit";
+// import {
+//   // MDBCol,
+//   // MDBContainer,
+//   // MDBRow,
+//   // MDBCard,
+//   // MDBCardText,
+//   // MDBCardBody,
+//   // MDBCardImage,
+//   // MDBBtn,
+//   // MDBBreadcrumb,
+//   // MDBBreadcrumbItem,
+//   // MDBProgress,
+//   // MDBProgressBar,
+//   // MDBIcon,
+//   // MDBListGroup,
+//   // MDBListGroupItem,
+// } from "mdb-react-ui-kit";
 import Profile_ from "src/components/ChallengeModalCreate";
 
 function Profile() {
   return (
     <Layout>
       <section>
-        <MDBContainer className="py-5">
+        {/* <MDBContainer className="py-5">
           <MDBRow>
             <MDBCol>
               <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
@@ -326,7 +326,7 @@ function Profile() {
               </MDBRow>
             </MDBCol>
           </MDBRow>
-        </MDBContainer>
+        </MDBContainer> */}
       </section>
     </Layout>
   );
