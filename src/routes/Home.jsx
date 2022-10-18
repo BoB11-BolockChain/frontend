@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React from "react";
 import Layout from "src/components/Layout/Layout";
 import "src/components/Layout/module.scss";
@@ -5,6 +6,7 @@ import "src/components/Layout/module.scss";
 const Home = () => {
   return (
     <Layout>
+      <Button variant="text">Text</Button>
       <main>
         <header>
           <h1>
