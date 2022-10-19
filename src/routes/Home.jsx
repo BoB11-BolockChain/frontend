@@ -6,7 +6,6 @@ import "src/components/Layout/module.scss";
 const Home = () => {
   return (
     <Layout>
-      <Button variant="text">Text</Button>
       <main>
         <header>
           <h1>
