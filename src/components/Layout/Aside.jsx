@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
-import Switch from "react-switch";
 
 import { FaGem, FaList, FaGithub } from "react-icons/fa";
 import {
@@ -19,22 +18,8 @@ import {
   SidebarContent,
 } from "react-pro-sidebar";
 
-const Aside = ({ toggled, handleToggleSidebar }) => {
-  const [rtl, setRtl] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
-  const [image, setImage] = useState(true);
+const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
   const sessionId = window.sessionStorage.getItem("sessionId");
-
-  const handleCollapsedChange = (checked) => {
-    setCollapsed(checked);
-  };
-
-  const handleRtlChange = (checked) => {
-    setRtl(checked);
-  };
-  const handleImageChange = (checked) => {
-    setImage(checked);
-  };
 
   const navigate = useNavigate();
   const onClick = () => {
@@ -65,7 +50,7 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
             whiteSpace: "nowrap",
           }}
         >
-          PDxF
+          <img className="PDxF_Logo" alt="PDxF Logo" src="img/PDxF_icon.png" />
         </div>
         <Menu iconShape="circle">
           <SubMenu title="User" icon={<AiOutlineUser />}>
@@ -161,7 +146,7 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
             </Menu>
           </>
         )}
-
+        {/* 
         <Menu iconShape="circle">
           <div>
             <MenuItem
@@ -181,40 +166,7 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
               collapsed
             </MenuItem>
           </div>
-          <div>
-            {/* <MenuItem
-              icon={
-                <Switch
-                  height={16}
-                  width={30}
-                  checkedIcon={false}
-                  uncheckedIcon={false}
-                  onChange={handleImageChange}
-                  checked={image}
-                  onColor="#219de9"
-                  offColor="#bbbbbb"
-                />
-              }
-            >
-              Background image
-            </MenuItem> */}
-          </div>
-        </Menu>
-        {/*<MenuItem>
-              <div className="block">
-                <Switch
-                  height={16}
-                  width={30}
-                  checkedIcon={false}
-                  uncheckedIcon={false}
-                  onChange={handleRtlChange}
-                  checked={rtl}
-                  onColor="#219de9"
-                  offColor="#bbbbbb"
-                />
-                <span>RTL</span>
-              </div>
-        </MenuItem>*/}
+        </Menu> */}
       </SidebarContent>
       <SidebarFooter style={{ textAlign: "center" }}>
         <div

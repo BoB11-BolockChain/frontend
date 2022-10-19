@@ -99,6 +99,7 @@ body {
   background-repeat: no-repeat;
   color: rgba(0, 0, 0, 0.87);
   font-family: 'Montserrat', sans-serif;
+
 }
 
 #root {
@@ -165,17 +166,12 @@ body {
       display: inline-block;
       line-height: 40px;
       padding: 0;
+      padding-left: 100px;
     }
   }
 
   main {
-    // position: absolute;
-    // margin: auto;
-    // top: 24px;
-    // left: 400px;
-    // right: 0;
-
-    padding-top: 14px;
+    // padding-top: 14px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
