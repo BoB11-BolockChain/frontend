@@ -1,14 +1,18 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+// @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
-$sidebar-bg-color: #0c1e35;
-$submenu-bg-color: rgba(255, 255, 255, 0.05);
+// $sidebar-bg-color: #8581d2;
+$sidebar-bg-color: linear-gradient(to bottom, #6a82fb, #fc5c7d);
+
+$submenu-bg-color: rgba(255, 255, 255, 0.04);
 $submenu-bg-color-collapsed: rgba(#0c1e35, 0.95);
-$sidebar-color: #b3b8d4;
+// $sidebar-color: #b3b8d4;
+$sidebar-color: rgb(225, 225, 225);
 $highlight-color: #dee2ec;
 $icon-bg-color: rgba(255, 255, 255, 0.05);
 $icon-size: 35px;
 
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,500");
+// @import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,500");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
 @import "~react-pro-sidebar/dist/scss/styles.scss";
 
 body {
@@ -18,7 +22,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   color: rgba(0, 0, 0, 0.87);
-  font-family: "Roboto Mono", "Liberation Mono", Consolas, monospace;
+  // font-family: "Roboto Mono", "Liberation Mono", Consolas, monospace;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 #root {
@@ -203,7 +208,7 @@ body {
   border-radius: 15px;
   &.red {
     color: #ffffff;
-    background: #d63030;
+    background: #ed6e6e;
   }
   &.gray {
     color: #ffffff;
@@ -211,6 +216,6 @@ body {
   }
   &.yellow {
     color: #000000;
-    background: #ffd331;
+    background: #e1c970;
   }
 }
