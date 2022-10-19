@@ -12,7 +12,7 @@ import {
 } from "react-icons/ai";
 import { ImFire } from "react-icons/im";
 import { BsGraphUp } from "react-icons/bs";
-import sidebarBg from "./bg2.jpg";
+import sidebarBg from "./bg3.png";
 import {
   SidebarHeader,
   SidebarFooter,
@@ -58,14 +58,14 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
             padding: "24px",
             //textTransform: "uppercase",
             fontWeight: "bold",
-            fontSize: 14,
+            fontSize: 22,
             letterSpacing: "1px",
             overflow: "hidden",
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",
           }}
         >
-          PDxF Project BoB 11th
+          PDxF
         </div>
         <Menu iconShape="circle">
           <SubMenu title="User" icon={<AiOutlineUser />}>
@@ -182,7 +182,7 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
             </MenuItem>
           </div>
           <div>
-            <MenuItem
+            {/* <MenuItem
               icon={
                 <Switch
                   height={16}
@@ -197,7 +197,7 @@ const Aside = ({ toggled, handleToggleSidebar }) => {
               }
             >
               Background image
-            </MenuItem>
+            </MenuItem> */}
           </div>
         </Menu>
         {/*<MenuItem>
