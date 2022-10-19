@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Aside from "src/components/Layout/Aside";
 import styles from "src/components/Layout/Layout.module.scss";
 import Footer from "src/components/Layout/Footer";
+import Header from "src/components/Layout/Header";
 
 const Layout = (props) => {
   const [rtl] = useState(false);
@@ -22,6 +23,7 @@ const Layout = (props) => {
         handleToggleSidebar={handleToggleSidebar}
       />
       <div className={styles.layout}>
+        <Header />
         <main className={styles.main}>{props.children}</main>
         <Footer />
       </div>
