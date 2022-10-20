@@ -1,7 +1,11 @@
+import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import {
   Avatar,
   Box,
   Button,
+  Collapse,
+  Divider,
+  IconButton,
   Modal,
   Table,
   TableBody,
@@ -10,12 +14,9 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Layout from "src/components/Layout/Layout";
-import Loading from "src/components/Loading";
-import useGetFetch from "src/hooks/useGetFetch";
-import useWebSocket from "src/hooks/useWebSocket";
 
 const DashboardById = () => {
   const { id } = useParams();
@@ -51,24 +52,33 @@ const DashboardById = () => {
       seq: "whoami",
       time: "2022-22-22",
       status: 0,
+      detail: "detailcommandnddfd",
     },
     {
       id: "dsafdsafsafdsafa",
       seq: "superpowershell",
       time: "2022-22-22",
       status: 1,
+      detail: "decommmmanddddddfd",
     },
     {
       id: "dsafdsafsadsfafsaf",
       seq: "go home home",
       time: "2022-22-22",
       status: 1,
+      detail: "decommmddandandand",
     },
   ];
+
+  const [expanded, setExpanded] = useState({});
+  const handleExpand = (id) => {
+    setExpanded({ ...expanded, [id]: !expanded[id] });
+  };
 
   return (
     <Layout>
       <Typography variant="h3">Dashboard of {id}</Typography>
+      <Divider variant="middle" />
       <Box
         sx={{
           m: 4,
@@ -79,34 +89,57 @@ const DashboardById = () => {
       >
         <Table>
           <TableHead>
-            <TableCell></TableCell>
-            <TableCell>attack sequence</TableCell>
+            <TableCell style={{ width: 50 }}></TableCell>
+            <TableCell style={{ width: 300 }}>attack sequence</TableCell>
             <TableCell>timestamp</TableCell>
             <TableCell>see status</TableCell>
           </TableHead>
           <TableBody>
             {dummy.map((d, i) => (
-              <TableRow key={d.id}>
-                <TableCell>
-                  <Avatar
-                    variant="rounded"
-                    sx={{ bgcolor: d.status === 0 ? "green" : "red" }}
+              <>
+                <TableRow key={d.id}>
+                  <TableCell>
+                    <Avatar
+                      variant="rounded"
+                      sx={{ bgcolor: d.status === 0 ? "green" : "red" }}
+                    >
+                      {i}
+                    </Avatar>
+                  </TableCell>
+                  <TableCell>
+                    {d.seq}
+                    <IconButton onClick={() => handleExpand(d.id)}>
+                      {expanded[d.id] ? (
+                        <KeyboardArrowUp />
+                      ) : (
+                        <KeyboardArrowDown />
+                      )}
+                    </IconButton>
+                  </TableCell>
+                  <TableCell>{d.time}</TableCell>
+                  <TableCell>
+                    <Button
+                      onClick={() => setModalState({ data: d, isOpen: true })}
+                      variant="contained"
+                      color="secondary"
+                    >
+                      see status
+                    </Button>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell
+                    style={{ paddingBottom: 0, paddingTop: 0 }}
+                    colSpan={4}
                   >
-                    {i}
-                  </Avatar>
-                </TableCell>
-                <TableCell>{d.seq}</TableCell>
-                <TableCell>{d.time}</TableCell>
-                <TableCell>
-                  <Button
-                    onClick={() => setModalState({ data: d, isOpen: true })}
-                    variant="contained"
-                    color="secondary"
-                  >
-                    see status
-                  </Button>
-                </TableCell>
-              </TableRow>
+                    <Collapse in={expanded[d.id]} unmountOnExit>
+                      <Typography variant="h3" component="div">
+                        {d.detail}
+                      </Typography>
+                    </Collapse>
+                  </TableCell>
+                </TableRow>
+              </>
             ))}
           </TableBody>
         </Table>

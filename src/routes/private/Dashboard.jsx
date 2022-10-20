@@ -9,11 +9,8 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Layout from "src/components/Layout/Layout";
-import Loading from "src/components/Loading";
-import useWebSocket from "src/hooks/useWebSocket";
 
 const Dashboard = () => {
   // const msg = useWebSocket("ws://www.pdxf.tk:8000/dashboard");
@@ -69,7 +66,7 @@ const Dashboard = () => {
       >
         <Table>
           <TableHead>
-            <TableCell></TableCell>
+            <TableCell style={{ width: 50 }}></TableCell>
             <TableCell>name</TableCell>
             <TableCell>time</TableCell>
             <TableCell>scenario</TableCell>
@@ -97,26 +94,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-{
-  /* <Typography variant="h3">Dashboard</Typography>
-      <List sx={{ border: "2px solid grey", "border-radius": "15px" }}>
-        <ListItem>
-          <ListItemText primary="username" />
-          <ListItemText primary="time" />
-          <ListItemText primary="scenario" />
-          <ListItemText primary="progress" />
-        </ListItem>
-        {dummy.map((d) => (
-          <ListItemButton>
-            <Avatar>
-              <Image />
-            </Avatar>
-            <ListItemText primary={d.userName} />
-            <ListItemText primary={d.time} />
-            <ListItemText primary={d.scenario} />
-            <ListItemText primary={d.progress} />
-          </ListItemButton>
-        ))}
-      </List> */
-}
