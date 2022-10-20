@@ -18,22 +18,26 @@ const Footer = () => {
           PDxF BoB 11th Project
         </a>
       </small>
-      <div>
+      <div class="flex">
+        <div class="sns">
         <MenuItem icon={<AiOutlineGithub />}>
           <a
             target="_blank"
             rel="noopener noreferrer"
             href="https://github.com/BoB11-BolockChain/PDxF"
           >
-            Our Github
+            Github
           </a>
         </MenuItem>
+        </div>
+        <div class="sns">
         <MenuItem icon={<AiOutlineTwitter />}>
           {" "}
           <a target="_blank" rel="noopener noreferrer" href="notyet">
-            Our Twitter
+            Twitter
           </a>
         </MenuItem>
+        </div>  
       </div>
     </footer>
   );
