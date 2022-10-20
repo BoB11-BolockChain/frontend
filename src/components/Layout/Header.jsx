@@ -14,6 +14,10 @@ const Hcontainer = styled.div`
 
 const Swtich_ = styled.div``;
 
+const Icon_ = styled.div`
+  padding-top: 15px;
+`;
+
 const Item = styled.div`
   padding: 5px;
   float: left;
@@ -31,7 +35,7 @@ const Item_last = styled.div`
   white-space: nowrap;
 `;
 
-const Aside = ({ collapsed, handleCollapsedChange }) => {
+const Header = ({ collapsed, handleCollapsedChange }) => {
   const sessionId = window.sessionStorage.getItem("sessionId");
   const navigate = useNavigate();
   const onClick = () => {
@@ -41,6 +45,15 @@ const Aside = ({ collapsed, handleCollapsedChange }) => {
   return (
     <>
       <Hcontainer>
+        <Item>
+          <Icon_>
+            <img
+              className="PDxF_Logo"
+              alt="PDxF Logo"
+              src="img/PDxF_icon.png"
+            />
+          </Icon_>
+        </Item>
         <Item>
           <Swtich_>
             collapsed
@@ -88,4 +101,4 @@ const Aside = ({ collapsed, handleCollapsedChange }) => {
   );
 };
 
-export default Aside;
+export default Header;

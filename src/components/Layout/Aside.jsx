@@ -50,7 +50,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
             whiteSpace: "nowrap",
           }}
         >
-          <img className="PDxF_Logo" alt="PDxF Logo" src="img/PDxF_icon.png" />
+          PDxF
         </div>
         <Menu iconShape="circle">
           <SubMenu title="User" icon={<AiOutlineUser />}>
