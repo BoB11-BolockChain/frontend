@@ -12,7 +12,13 @@ $highlight-color: #dee2ec;
 $icon-bg-color: rgba(255, 255, 255, 0.05);
 $icon-size: 35px;
 
+
 @import "~react-pro-sidebar/dist/scss/styles.scss";
+
+
+.margin-plus {
+  margin-bottom: 3px;
+}
 
 h2, .h2 {
   font-weight : 500;
@@ -53,6 +59,7 @@ h2, .h2 {
 
 .inputbox {
   border : 0.8px solid #FA678C !important;
+  width: 80%;
 }
 
 .forblank {
@@ -75,6 +82,20 @@ h2, .h2 {
   margin-left : 10px;
 }
 
+// select box
+
+.custom-select {
+  position: relative;
+}
+
+.select-box{
+  width: 100%;
+  border : 0.8px solid #FA678C !important;
+  height: 34px;
+  border-radius: 0.25rem;
+  padding: 6px 6px;
+}
+
 .col-md-6, .col-md-12 {
   margin-bottom: 15px;
   padding-left: 0;
@@ -94,12 +115,11 @@ body {
   margin: 0;
   height: 100vh;
   // background-color: #dee2ec;
-   background-color: F8F9FA;
+   background-color: #F8F9FA !important;
   background-size: cover;
   background-repeat: no-repeat;
   color: rgba(0, 0, 0, 0.87);
-  font-family: 'Montserrat', sans-serif;
-
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 #root {

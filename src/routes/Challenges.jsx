@@ -7,32 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Challenges = () => {
-  const [dataLoaded, setDataLoaded] = useState(false);
-  const [data, setData] = useState([]);
-  const [modalState, setModalState] = useState({ data: {}, isOpen: false });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("http://www.pdxf.tk:8000/info", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-      if (res.ok) {
-        const js = await res.json();
-        setData(js.data);
-        setDataLoaded(true);
-      }
-    };
-
-    fetchData();
-  }, []);
-
   return (
-    
     <Layout>
+    <script src="multiselect-dropdown.js" ></script>
       <div class="Title">
         <h2>Create Scenario</h2>
       </div>
@@ -46,10 +23,19 @@ const Challenges = () => {
                     <span class="box-subtitle">description</span></div>
                 </div>
                 <div class="box-body">
-                <div>asdf</div>
+                <div class="custom-select">
+                <select class="select-box">
+                <option value="0">Select OS Version</option>
+                <option value="1">Windows 11</option>
+                <option value="2">Windows 10</option>
+                <option value="3">Linux Ubuntu 22.04</option>
+                <option value="4">Linux Ubuntu 20.04</option>
+                <option value="5">Linux Ubuntu 18.04</option>
+                </select>
+                </div>
                 </div>
                 <div class="box-bottom">
-                    <div class="forblank"><input class="form-control inputbox" placeholder="title"></input></div>
+                    <div class="forblank"><input class="form-control inputbox" placeholder="OS version"></input></div>
                     <div class="forbtn"> <button type="button" class="btn btn-primary">Add</button></div>
                 </div>
             </div>
@@ -61,10 +47,20 @@ const Challenges = () => {
                     <span class="box-subtitle">description</span></div>
                 </div>
                 <div class="box-body">
-                    <div>select</div>
+                {/* <div class="custom-select"> */}
+                <select multiple multiselect-search="true"
+                multiselect-hide-x = "false"
+                class="select-box">
+                <option value="1">Microsoft word</option>
+                <option value="2">Hangeul</option>
+                <option value="3">Program1</option>
+                <option value="4">Program2</option>
+                <option value="5">Program3</option>
+                </select>
+                {/* </div> */}
                 </div>
                 <div class="box-bottom">
-                    <div class="forblank"><input class="form-control inputbox" placeholder="title"></input></div>
+                    <div class="forblank"><input class="form-control inputbox" placeholder="URL"></input></div>
                     <div class="forbtn"> <button type="button" class="btn btn-primary">Add</button></div>
                 </div>
             </div>
@@ -92,8 +88,27 @@ const Challenges = () => {
                 <span class="box-subtitle">description</span></div>
                 </div>
             <div class="box-body">
-                    <textarea class="form-control inputbox" placeholder="title"></textarea>
+                    <textarea class="form-control inputbox" placeholder="description"></textarea>
                 </div>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+        <div class="wt-box">
+            <div class="box-top">
+                <div class="box-title">Add Attack Payload
+                <span class="box-subtitle">description</span></div>
+                </div>
+            <div class="box-body">
+            <input class="form-control inputbox" placeholder="title"></input>
+            <div class="margin-plus"></div>
+                    <textarea class="form-control inputbox" placeholder="description"></textarea>
+                </div>
+                <div class="row bottom-btn">
+            <div class="col-md-9"></div>
+            <div class="col-md-3"><button class="btn btn-primary pagebtn">Add</button></div>
+        </div>
             </div>
         </div>
         </div>
