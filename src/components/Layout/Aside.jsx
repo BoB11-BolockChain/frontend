@@ -1,22 +1,21 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { Menu, MenuItem, ProSidebar, SubMenu } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
+import { NavLink, useNavigate } from "react-router-dom";
 
-import { FaGem, FaList, FaGithub } from "react-icons/fa";
 import {
   AiFillNotification,
-  AiOutlineUser,
   AiFillProfile,
+  AiOutlineUser,
 } from "react-icons/ai";
-import { ImFire } from "react-icons/im";
 import { BsGraphUp } from "react-icons/bs";
-import sidebarBg from "./bg3.png";
+import { FaGem, FaGithub, FaList } from "react-icons/fa";
+import { ImFire } from "react-icons/im";
 import {
-  SidebarHeader,
-  SidebarFooter,
   SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
 } from "react-pro-sidebar";
+import sidebarBg from "./bg3.png";
 
 const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
   const sessionId = window.sessionStorage.getItem("sessionId");
@@ -85,7 +84,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
             suffix={<span className="badge red">New</span>}
           >
             Challenges
-            <NavLink to="/challenges" />
+            <NavLink to="/user/challenges" />
           </MenuItem>
           <MenuItem icon={<BsGraphUp />}>
             Score Board
@@ -101,7 +100,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
           <SubMenu title="Profile" icon={<AiFillProfile />}>
             <MenuItem>
               My Profile
-              <NavLink to="/profile" />
+              <NavLink to="user/profile" />
             </MenuItem>
             <MenuItem>
               Team Profile

@@ -11,7 +11,6 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import Layout from "src/components/Layout/Layout";
 
 const CreateChallenge = () => {
   const dummy = [
@@ -38,7 +37,7 @@ const CreateChallenge = () => {
   };
 
   return (
-    <Layout>
+    <>
       <Typography variant="h3">Create Challenge</Typography>
       <Divider />
       <Stack spacing={2} mt={2}>
@@ -87,7 +86,7 @@ const CreateChallenge = () => {
           </Stack>
         </Box>
       </Stack>
-    </Layout>
+    </>
   );
 };
 
