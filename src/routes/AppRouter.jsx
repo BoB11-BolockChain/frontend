@@ -1,25 +1,23 @@
-import React, { createContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "src/routes/Home";
-import AdminRouteLayout from "src/routes/private/AdminRouteLayout";
-import SignIn from "src/routes/SignIn";
-import SignUp from "src/routes/SignUp";
-import NotFound from "src/routes/NotFound";
-import Admin from "src/routes/private/Admin";
-import EditChallenges from "src/routes/private/EditChallenges";
-import CreateChallenges from "src/routes/private/CreateChallenges";
-import DeleteChallenges from "src/routes/private/DeleteChallenges";
-import ScoreBoard from "src/routes/Scoreboard";
-import Profile from "src/routes/Profile";
-import TeamProfile from "src/routes/TeamProfile";
-import Notifications from "src/routes/Notifications";
 import Challenges from "src/routes/Challenges";
-import UserTeamSetting from "src/routes/UserTeamSetting";
-import HomepageSetting from "src/routes/private/HomepageSetting";
-import SelectOperation from "src/routes/private/SelectOperation";
+import Home from "src/routes/Home";
+import NotFound from "src/routes/NotFound";
+import Notifications from "src/routes/Notifications";
+import Admin from "src/routes/private/Admin";
+import AdminRouteLayout from "src/routes/private/AdminRouteLayout";
+import CreateChallenge from "src/routes/private/CreateChallenge";
 import Dashboard from "src/routes/private/Dashboard";
 import DashboardById from "src/routes/private/DashboardById";
-import CreateChallengesEmpty from "src/routes/private/CreateChallenges_Empty";
+import DeleteChallenges from "src/routes/private/DeleteChallenges";
+import EditChallenges from "src/routes/private/EditChallenges";
+import HomepageSetting from "src/routes/private/HomepageSetting";
+import SelectOperation from "src/routes/private/SelectOperation";
+import Profile from "src/routes/Profile";
+import ScoreBoard from "src/routes/Scoreboard";
+import SignIn from "src/routes/SignIn";
+import SignUp from "src/routes/SignUp";
+import TeamProfile from "src/routes/TeamProfile";
+import UserTeamSetting from "src/routes/UserTeamSetting";
 
 const AppRouter = () => {
   return (
@@ -44,11 +42,7 @@ const AppRouter = () => {
           <Route path="homepagesetting" element={<HomepageSetting />} />
           <Route path="userteamsetting" element={<UserTeamSetting />} />
           <Route path="selectoperation" element={<SelectOperation />} />
-          <Route path="createchallenges" element={<CreateChallenges />} />
-          <Route
-            path="createchallengesempty"
-            element={<CreateChallengesEmpty />}
-          />
+          <Route path="createchallenge" element={<CreateChallenge />} />
           <Route path="deletechallenges" element={<DeleteChallenges />} />
           <Route path="dashboard">
             <Route index element={<Dashboard />} />
