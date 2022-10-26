@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "src/components/Layout/Layout";
 
+
 const Challenges = () => {
   // const [modalState, setModalState] = useState({ data: {}, isOpen: false });
   // const [isFetched, data] = useGetFetch("http://www.pdxf.tk:8000/info");
