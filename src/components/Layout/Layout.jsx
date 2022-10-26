@@ -9,6 +9,10 @@ let Layout_ = styled.div`
   margin-left: 335px;
 `;
 
+const Header_ = styled.div`
+  background-color: red;
+`;
+
 const Layout = (props) => {
   const [rtl, setRtl] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
@@ -49,14 +53,16 @@ const Layout = (props) => {
       />
 
       <Layout_>
-        <Header
-          image={image}
-          toggled={toggled}
-          collapsed={collapsed}
-          handleToggleSidebar={handleToggleSidebar}
-          handleCollapsedChange={handleCollapsedChange}
-          handleImageChange={handleImageChange}
-        />
+        <Header_>
+          <Header
+            image={image}
+            toggled={toggled}
+            collapsed={collapsed}
+            handleToggleSidebar={handleToggleSidebar}
+            handleCollapsedChange={handleCollapsedChange}
+            handleImageChange={handleImageChange}
+          />
+        </Header_>
         <main className={styles.main}>{props.children}</main>
         <Footer />
       </Layout_>

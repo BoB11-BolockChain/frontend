@@ -15,3 +15,6 @@ empty tag <></>
 useref() direct element access (no jquery, getelementbyid) or non-changing state
 
 You shouldn't use log.Fatal in the server's read loop, as that calls os.Exit
+
+// #FA678C
+// #F8F9FA

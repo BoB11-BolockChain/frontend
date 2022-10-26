@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
-import ChallengeModal from "src/components/ChallengeModal";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "src/components/Layout/Layout";
-import ReactiveButton from "reactive-button";
-import Loading from "src/components/Loading";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Challenges = () => {
+
   return (
     <Layout>
     <script src="multiselect-dropdown.js" ></script>
@@ -16,11 +13,12 @@ const Challenges = () => {
 
       <div class="container">
         <div class="row">
-        <div class="col-md-6">
+          <div class="col-md-6">
             <div class="wt-box">
-            <div class="box-top">
-                    <div class="box-title">OS version
-                    <span class="box-subtitle">description</span></div>
+              <div class="box-top">
+                <div class="box-title">
+                  OS version
+                  <span class="box-subtitle">description</span>
                 </div>
                 <div class="box-body">
                 <div class="custom-select">
@@ -37,14 +35,17 @@ const Challenges = () => {
                 <div class="box-bottom">
                     <div class="forblank"><input class="form-control inputbox" placeholder="OS version"></input></div>
                     <div class="forbtn"> <button type="button" class="btn btn-primary">Add</button></div>
+
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="col-md-6">
+          </div>
+          <div class="col-md-6">
             <div class="wt-box">
-            <div class="box-top">
-                    <div class="box-title">VM option
-                    <span class="box-subtitle">description</span></div>
+              <div class="box-top">
+                <div class="box-title">
+                  VM option
+                  <span class="box-subtitle">description</span>
                 </div>
                 <div class="box-body">
                 {/* <div class="custom-select"> */}
@@ -63,22 +64,28 @@ const Challenges = () => {
                     <div class="forblank"><input class="form-control inputbox" placeholder="URL"></input></div>
                     <div class="forbtn"> <button type="button" class="btn btn-primary">Add</button></div>
                 </div>
+              </div>
             </div>
-        </div>
+          </div>
         </div>
 
         <div class="row">
-        <div class="col-md-12">
+          <div class="col-md-12">
             <div class="wt-box">
-                <div class="box-top">
-                    <div class="box-title">Scenario Title
-                    <span class="box-subtitle">description</span></div>
+              <div class="box-top">
+                <div class="box-title">
+                  Scenario Title
+                  <span class="box-subtitle">description</span>
                 </div>
-                <div class="box-body">
-                    <input class="form-control inputbox" placeholder="title"></input>
-                </div>
+              </div>
+              <div class="box-body">
+                <input
+                  class="form-control inputbox"
+                  placeholder="title"
+                ></input>
+              </div>
             </div>
-        </div>
+          </div>
         </div>
         <div class="row">
         <div class="col-md-12">
@@ -90,8 +97,15 @@ const Challenges = () => {
             <div class="box-body">
                     <textarea class="form-control inputbox" placeholder="description"></textarea>
                 </div>
+              </div>
+              <div class="box-body">
+                <textarea
+                  class="form-control inputbox"
+                  placeholder="title"
+                ></textarea>
+              </div>
             </div>
-        </div>
+          </div>
         </div>
         <div class="row">
         <div class="col-md-12">
@@ -113,16 +127,12 @@ const Challenges = () => {
         </div>
         </div>
         <div class="row bottom-btn">
-            <div class="col-md-9"></div>
-            <div class="col-md-3"><button class="btn btn-primary pagebtn">Next</button></div>
+          <div class="col-md-9"></div>
+          <div class="col-md-3">
+            <button class="btn btn-primary pagebtn">Next</button>
+          </div>
         </div>
-       
-
       </div>
-
-
-
-
 
       {/* {dataLoaded ? (
         data.map((d) => (
@@ -143,6 +153,30 @@ const Challenges = () => {
       /> */}
     </Layout>
   );
+  // return (
+  //   <Layout>
+  //     <header>
+  //       <h1>challenges</h1>
+  //     </header>
+  //     {dataLoaded ? (
+  //       data.map((d) => (
+  //         <div key={d.title}>
+  //           <p>
+  //             <ReactiveButton
+  //               onClick={() => setModalState({ data: d, isOpen: true })}
+  //               idleText={<>{d.title}<br />{d.score}</>} /></p>
+  //         </div>
+  //       ))
+  //     ) : (
+  //       <Loading />
+  //     )}
+  //     <ChallengeModal
+  //       isOpen={modalState.isOpen}
+  //       setModalState={setModalState}
+  //       data={modalState.data}
+  //     />
+  //   </Layout>
+  // );
 };
 
 export default Challenges;
