@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Layout from "src/components/Layout/Layout";
-import Loading from "src/components/Loading";
+import { useEffect, useState } from "react";
 
 const NotFound = () => {
   let numberState = useState(0);
@@ -16,27 +14,24 @@ const NotFound = () => {
   });
 
   return (
-    <Layout>
-      <div class="container">
-        <div class="row">
-          <div class="xs-12 md-6 mx-auto">
-            <div id="countUp">
-              <header>
-                <div class="number" data-count="404">
-                  <h1>{numberCount}</h1>
-                </div>
-              </header>
-              <div class="text">Page not found</div>
-              <div class="text">This may not mean anything.</div>
-              <div class="text">
-                I'm probably working on something that has blown up.
+    <div class="container">
+      <div class="row">
+        <div class="xs-12 md-6 mx-auto">
+          <div id="countUp">
+            <header>
+              <div class="number" data-count="404">
+                <h1>{numberCount}</h1>
               </div>
+            </header>
+            <div class="text">Page not found</div>
+            <div class="text">This may not mean anything.</div>
+            <div class="text">
+              I'm probably working on something that has blown up.
             </div>
           </div>
         </div>
       </div>
-      <Loading />
-    </Layout>
+    </div>
   );
 };
 

@@ -1,19 +1,18 @@
-import "src/routes/sign.scss";
-import Layout from "src/components/Layout/Layout";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   MDBBtn,
-  MDBContainer,
   MDBCard,
   MDBCardBody,
-  MDBInput,
-  MDBIcon,
-  MDBRow,
-  MDBCol,
   MDBCheckbox,
+  MDBCol,
+  MDBContainer,
+  MDBInput,
+  MDBRow,
 } from "mdb-react-ui-kit";
+import { useState } from "react";
 import { BsFacebook, BsGithub, BsGoogle, BsTwitter } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import Layout from "src/components/Layout/Layout";
+import "src/routes/sign.scss";
 
 function SignUp() {
   const [state, setState] = useState({
@@ -170,55 +169,3 @@ function SignUp() {
 }
 
 export default SignUp;
-
-// import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import Layout from "src/components/Layout/Layout";
-// import ReactiveButton from "reactive-button";
-
-// const SignUp = () => {
-
-//   return (
-//     <Layout>
-//       <form onSubmit={onSubmit}>
-//         <header>
-//           <h1>Sign Up</h1>
-//         </header>
-//         <div>
-//           <label>Email :</label>
-//           <input
-//             onChange={onChange}
-//             name="email"
-//             placeholder="example@company.com"
-//             type="text"
-//           />
-//         </div>
-//         <div>
-//           <label> ID :</label>
-//           <input onChange={onChange} name="id" placeholder="ID" type="text" />
-//           <br />
-//           <label>PW :</label>
-//           <input
-//             onChange={onChange}
-//             name="pw"
-//             placeholder="Password"
-//             type="password"
-//           />
-//         </div>
-//         <div>
-//           <label>PW confirm :</label>
-//           <input
-//             onChange={onChange}
-//             name="conpw"
-//             placeholder="Password"
-//             type="password"
-//           />
-//         </div>
-//         <ReactiveButton type={"submit"} idleText="Submit" />
-//         {/* <input type="submit" /> */}
-//       </form>
-//     </Layout>
-//   );
-// };
-
-// export default SignUp;

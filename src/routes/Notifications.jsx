@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Layout from "src/components/Layout/Layout";
-import TableTr from "src/components/TableTr";
-import "src/components/Layout/Board.scss";
+import { useEffect, useState } from "react";
 import BoardModal from "src/components/BoardModal";
+import "src/components/Layout/Board.scss";
 import Loading from "src/components/Loading";
+import TableTr from "src/components/TableTr";
 
 const Notifications = () => {
   const [modalState, setModalState] = useState({ data: {}, isOpen: false });
@@ -24,34 +23,30 @@ const Notifications = () => {
   }, []);
 
   return (
-    <Layout>
-      <>
-        <div class="container">
-          <header>
-            <h1>Notifications</h1>
-          </header>
-          {dataLoaded ? (
-            <table>
-              <thead>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회수</th>
-              </thead>
-              <TableTr data={data} setModalState={setModalState} />
-            </table>
-          ) : (
-            <Loading />
-          )}
-          <BoardModal
-            isOpen={modalState.isOpen}
-            setModalState={setModalState}
-            data={modalState.data}
-          />
-        </div>
-      </>
-    </Layout>
+    <div class="container">
+      <header>
+        <h1>Notifications</h1>
+      </header>
+      {dataLoaded ? (
+        <table>
+          <thead>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회수</th>
+          </thead>
+          <TableTr data={data} setModalState={setModalState} />
+        </table>
+      ) : (
+        <Loading />
+      )}
+      <BoardModal
+        isOpen={modalState.isOpen}
+        setModalState={setModalState}
+        data={modalState.data}
+      />
+    </div>
   );
 };
 
