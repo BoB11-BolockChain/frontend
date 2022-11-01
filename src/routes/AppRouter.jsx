@@ -2,13 +2,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "src/components/Layout/Layout";
 import Admin from "src/routes/admin/Admin";
 import AdminRouteLayout from "src/routes/admin/AdminRouteLayout";
-import CreateChallenge from "src/routes/admin/CreateChallenge";
+import CreateScenario from "src/routes/admin/CreateScenario";
 import Dashboard from "src/routes/admin/Dashboard";
 import DashboardById from "src/routes/admin/DashboardById";
-import DeleteChallenges from "src/routes/admin/DeleteChallenges";
 import EditChallenges from "src/routes/admin/EditChallenges";
 import HomepageSetting from "src/routes/admin/HomepageSetting";
 import SelectOperation from "src/routes/admin/SelectOperation";
+import CreateChallenge from "./admin/CreateChallenge";
 import Home from "./Home";
 import NotFound from "./NotFound";
 import Notifications from "./Notifications";
@@ -45,13 +45,14 @@ const AppRouter = () => {
             </Route>
             <Route path="homepagesetting" element={<HomepageSetting />} />
             <Route path="selectoperation" element={<SelectOperation />} />
+            <Route path="createscenario" element={<CreateScenario />} />
             <Route path="createchallenge" element={<CreateChallenge />} />
-            <Route path="deletechallenges" element={<DeleteChallenges />} />
             <Route path="dashboard">
               <Route index element={<Dashboard />} />
               <Route path=":id" element={<DashboardById />} />
             </Route>
           </Route>
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

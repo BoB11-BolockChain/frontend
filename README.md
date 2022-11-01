@@ -1,5 +1,21 @@
 # PDxF frontend
 
+## env file
+
+.env.development -> used in `npm start`
+
+.env.production -> used in `npm run build`
+
+.env.test -> used in `npm run test` jest or sth
+
+## image files
+
+go to src/assets
+
+---
+
+## etc
+
 admin route -> admin dashboard with current challenging state
 
 admin route -> home route

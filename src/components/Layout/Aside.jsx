@@ -100,7 +100,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
           <SubMenu title="Profile" icon={<AiFillProfile />}>
             <MenuItem>
               My Profile
-              <NavLink to="user/profile" />
+              <NavLink to="/user/profile" />
             </MenuItem>
             <MenuItem>
               Team Profile
