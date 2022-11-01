@@ -1,15 +1,12 @@
 import { useState } from "react";
 import Aside from "src/components/Layout/Aside";
+import Resize from "src/components/Layout/ResizeAside";
 import Footer from "src/components/Layout/Footer";
 import styles from "src/components/Layout/Layout.module.scss";
 import styled from "styled-components";
 
 let Layout_ = styled.div`
   margin-left: 300px;
-`;
-
-const Header_ = styled.div`
-  background-color: red;
 `;
 
 const Layout = (props) => {
@@ -22,20 +19,13 @@ const Layout = (props) => {
     setCollapsed(checked);
     if (checked === true) {
       Layout_ = styled.div`
-        margin-left: 150px;
+        margin-left: 120px;
       `;
     } else {
       Layout_ = styled.div`
-        margin-left: 335px;
+        margin-left: 300px;
       `;
     }
-  };
-
-  const handleRtlChange = (checked) => {
-    setRtl(checked);
-  };
-  const handleImageChange = (checked) => {
-    setImage(checked);
   };
 
   const handleToggleSidebar = (value) => {
@@ -49,12 +39,16 @@ const Layout = (props) => {
         collapsed={collapsed}
         toggled={toggled}
         handleToggleSidebar={handleToggleSidebar}
+        handleCollapsedChange={handleCollapsedChange}
       />
 
       <Layout_>
         <main className={styles.main}>{props.children}</main>
         <Footer />
       </Layout_>
+      <Resize
+        handleCollapsedChange={handleCollapsedChange}
+      />
     </div>
   );
 };

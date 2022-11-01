@@ -54,7 +54,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <Layout>
+    <>
       <Typography variant="h3">Dashboard</Typography>
       <Box
         sx={{
@@ -89,7 +89,7 @@ const Dashboard = () => {
           </TableBody>
         </Table>
       </Box>
-    </Layout>
+    </>
   );
 };
 

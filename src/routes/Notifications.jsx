@@ -24,10 +24,10 @@ const Notifications = () => {
 
   return (
     <>
+      <header>
+        <h1 className="h2 fw-bold my-4">Notifications</h1>
+      </header>
       <div class="container">
-        <header>
-          <h1>Notifications</h1>
-        </header>
         {dataLoaded ? (
           <table>
             <thead>

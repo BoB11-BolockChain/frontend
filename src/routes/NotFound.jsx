@@ -20,7 +20,7 @@ const NotFound = () => {
           <div id="countUp">
             <header>
               <div class="number" data-count="404">
-                <h1>{numberCount}</h1>
+                <h1 className="h2 fw-bold my-4">{numberCount}</h1>
               </div>
             </header>
             <div class="text">Page not found</div>

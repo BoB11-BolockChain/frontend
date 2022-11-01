@@ -25,10 +25,10 @@ const HomepageSetting = () => {
 
   return (
     <>
+      <header>
+        <h1 className="h2 fw-bold my-4">Homepage Setting</h1>
+      </header>
       <div class="container">
-        <header>
-          <h1>HomepageSetting</h1>
-        </header>
         {dataLoaded ? (
           <>
             <table>

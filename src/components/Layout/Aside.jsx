@@ -1,7 +1,7 @@
 import { Menu, MenuItem, ProSidebar, SubMenu } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import Switch from "react-switch";
 import {
   AiFillNotification,
   AiFillProfile,
@@ -17,7 +17,7 @@ import {
 } from "react-pro-sidebar";
 import sidebarBg from "./bg3.png";
 
-const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
+const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleCollapsedChange }) => {
   const sessionId = window.sessionStorage.getItem("sessionId");
 
   const navigate = useNavigate();
@@ -25,14 +25,13 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
     window.sessionStorage.removeItem("sessionId");
     navigate("/");
   };
-
   return (
     <ProSidebar
       image={image ? sidebarBg : false}
       rtl={rtl}
       collapsed={collapsed}
       toggled={toggled}
-      breakPoint="md"
+      // breakPoint="md"
       onToggle={handleToggleSidebar}
       style={{ position: "fixed" }}
     >
@@ -145,7 +144,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
             </Menu>
           </>
         )}
-        {/* 
+
         <Menu iconShape="circle">
           <div>
             <MenuItem
@@ -161,11 +160,14 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
                   offColor="#bbbbbb"
                 />
               }
+              style={{
+                display: "none"
+              }}
             >
               collapsed
             </MenuItem>
           </div>
-        </Menu> */}
+        </Menu>
       </SidebarContent>
       <SidebarFooter style={{ textAlign: "center" }}>
         <div
