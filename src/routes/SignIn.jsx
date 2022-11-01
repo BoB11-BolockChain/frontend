@@ -2,15 +2,14 @@ import {
   MDBBtn,
   MDBCard,
   MDBCardBody,
-  MDBCol,
   MDBContainer,
   MDBInput,
-  MDBRow,
 } from "mdb-react-ui-kit";
 import { useState } from "react";
 import { BsFacebook, BsGithub, BsGoogle, BsTwitter } from "react-icons/bs";
 import "react-pro-sidebar/dist/css/styles.css";
 import { useNavigate } from "react-router-dom";
+import "src/routes/sign.scss";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -38,103 +37,92 @@ const SignIn = () => {
   };
 
   return (
-    <MDBContainer fluid>
-      <MDBRow className="d-flex justify-content-center align-items-center h-100">
-        <MDBCol col="12">
-          <MDBCard
-            className="bg-dark text-white my-5 mx-auto"
-            style={{ borderRadius: "1rem", maxWidth: "400px" }}
-          >
-            <form onSubmit={onSubmit}>
-              <MDBCardBody className="p-5 d-flex flex-column align-items-center mx-auto w-100">
-                <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
-                <p className="text-white-50 mb-5">
-                  Please enter your ID and Password!
-                </p>
+    <MDBContainer
+      fluid
+      className="my-5"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <MDBCard className="my-5 card-body">
+        <MDBCardBody className="p-5 shadow-5 text-center">
+          <h2 className="fw-bold mb-5 text-uppercase">SIGN IN</h2>
+          <form onSubmit={onSubmit}>
+            <MDBInput
+              onChange={onChange}
+              wrapperClass="mb-3"
+              placeholder="ID"
+              name="id"
+              id="formControlLg"
+              type="text"
+            />
+            <MDBInput
+              onChange={onChange}
+              wrapperClass="mb-3"
+              placeholder="Password"
+              name="pw"
+              id="formControlLg"
+              type="password"
+            />
 
-                <MDBInput
-                  onChange={onChange}
-                  wrapperClass="mb-4 mx-5 w-100"
-                  labelClass="text-white"
-                  label="ID"
-                  placeholder="ID"
-                  name="id"
-                  id="formControlLg"
-                  type="text"
-                  size="lg"
-                />
-                <MDBInput
-                  onChange={onChange}
-                  wrapperClass="mb-4 mx-5 w-100"
-                  labelClass="text-white"
-                  label="Password"
-                  placeholder="Password"
-                  name="pw"
-                  id="formControlLg"
-                  type="password"
-                  size="lg"
-                />
+            <p className="small mb-3 pb-lg-2">
+              <a class="text-black-50" href="#!">
+                Forgot password?
+              </a>
+            </p>
+            <MDBBtn className="w-100 mb-4 fw-bold text-uppercase" size="md">
+              sign in
+            </MDBBtn>
 
-                <p className="small mb-3 pb-lg-2">
-                  <a class="text-white-50" href="#!">
-                    Forgot password?
-                  </a>
-                </p>
+            <div className="text-center mb-4">
+              <p>or sign in with:</p>
 
-                <MDBBtn outline className="mx-2 px-5" color="white" size="lg">
-                  <p className="text-white-50 mb-5">Login</p>
-                </MDBBtn>
+              <MDBBtn
+                tag="a"
+                color="none"
+                className="mx-3"
+                style={{ color: "#4267b2" }}
+              >
+                {<BsFacebook />}
+              </MDBBtn>
+              <MDBBtn
+                tag="a"
+                color="none"
+                className="mx-3"
+                style={{ color: "#1da1f2" }}
+              >
+                {<BsTwitter />}
+              </MDBBtn>
+              <MDBBtn
+                tag="a"
+                color="none"
+                className="mx-3"
+                style={{ color: "#ea4335" }}
+              >
+                {<BsGoogle />}
+              </MDBBtn>
+              <MDBBtn
+                tag="a"
+                color="none"
+                className="mx-3"
+                style={{ color: "#211f1f" }}
+              >
+                {<BsGithub />}
+              </MDBBtn>
+            </div>
 
-                <div className="d-flex flex-row mt-3 mb-5">
-                  <MDBBtn
-                    tag="a"
-                    color="white"
-                    className="m-3"
-                    style={{ color: "white" }}
-                  >
-                    {<BsFacebook />}
-                  </MDBBtn>
-
-                  <MDBBtn
-                    tag="a"
-                    color="white"
-                    className="m-3"
-                    style={{ color: "white" }}
-                  >
-                    {<BsTwitter />}
-                  </MDBBtn>
-
-                  <MDBBtn
-                    tag="a"
-                    color="white"
-                    className="m-3"
-                    style={{ color: "white" }}
-                  >
-                    {<BsGoogle />}
-                  </MDBBtn>
-                  <MDBBtn
-                    tag="a"
-                    color="white"
-                    className="m-3"
-                    style={{ color: "white" }}
-                  >
-                    {<BsGithub />}
-                  </MDBBtn>
-                </div>
-
-                <div>
-                  <p className="mb-0">
-                    Don't have an account?{" "}
-                    <a href="#!" class="text-white-50 fw-bold">
-                      Sign Up
-                    </a>
-                  </p>
-                </div>
-              </MDBCardBody>
-            </form>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
+            <div>
+              <p>
+                Don't have an account?{" "}
+                <a href="#!" class="text-black-50 fw-bold text-uppercase">
+                  Sign Up
+                </a>
+              </p>
+            </div>
+          </form>
+        </MDBCardBody>
+      </MDBCard>
     </MDBContainer>
   );
 };

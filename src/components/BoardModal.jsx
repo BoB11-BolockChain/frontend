@@ -8,6 +8,7 @@ const BoardModal = ({ isOpen, setModalState, data, ceState }) => {
         <ReactModal
             ceState={ceState}
             isOpen={isOpen}
+            ariaHideApp={false}
             marginLeft={"300px"}
             onRequestClose={() => setModalState({ data: {}, isOpen: false })}
             style={{
@@ -42,12 +43,7 @@ const BoardModal = ({ isOpen, setModalState, data, ceState }) => {
                 },
             }}
         >
-            <div style={{
-                marginLeft: "300px"
-            }}>
-
-            </div>
-            <div class="modal">
+            <div class="boardmodal">
                 {
                     (ceState === "create") ? (
                         <ModalBoardCreate />
@@ -66,12 +62,23 @@ const BoardModal = ({ isOpen, setModalState, data, ceState }) => {
                                 <td id="view">조회수: {data.views}</td>
                             </tr>
                             <tr>
-                                <td id="content" colspan="5">{data.content}</td>
+                                <td id="content" colspan="5">
+                                    <div>
+                                        {(data.content || '').split("\n").map((line) => {
+                                            return (
+                                                <span>
+                                                    {line}
+                                                    <br />
+                                                </span>
+                                            );
+                                        })}
+                                    </div>
+                                </td>
                             </tr>
                         </table>
                     ))}
             </div>
-        </ReactModal>
+        </ReactModal >
     );
 };
 

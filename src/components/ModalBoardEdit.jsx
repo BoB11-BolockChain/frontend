@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { MDBInput, MDBTextArea, MDBBtn } from "mdb-react-ui-kit";
 
 const ModalBoardEdit = ({ data }) => {
     const [editState, setEditState] = useState({ num: data.num, title: data.title, content: data.content, id: window.sessionStorage.getItem("sessionId") });
@@ -23,15 +24,42 @@ const ModalBoardEdit = ({ data }) => {
         }
     };
     return (
-        <form onSubmit={onEditSubmit}>
-            <tr>
-                <td><input onChange={onEditChange} placeholder="제목" name="title" type="text" defaultValue={editState.title} /></td>
-            </tr>
-            <tr>
-                <td><textarea onChange={onEditChange} placeholder="내용" name="content" cols="50" rows="10" defaultValue={editState.content} /></td>
-            </tr>
-            <input type="submit" />
-        </form>
+        <div class="boardmodal-submit">
+            <form onSubmit={onEditSubmit}>
+                <table>
+                    <tr>
+                        <td id="inputTitle">
+                            <MDBInput
+                                onChange={onEditChange}
+                                placeholder="Title"
+                                name="title"
+                                type="text"
+                                defaultValue={editState.title}
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="inputContent">
+                            <MDBTextArea
+                                onChange={onEditChange}
+                                placeholder="Content"
+                                name="content"
+                                cols="50"
+                                rows="7"
+                                defaultValue={editState.content}
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <MDBBtn className="w-100 fw-bold text-uppercase" size="md">
+                                submit
+                            </MDBBtn>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     )
 }
 export default ModalBoardEdit;
