@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Aside from "src/components/Layout/Aside";
-import styled from "styled-components";
-import styles from "src/components/Layout/Layout.module.scss";
 import Footer from "src/components/Layout/Footer";
 import Header from "src/components/Layout/Header";
+import styles from "src/components/Layout/Layout.module.scss";
+import styled from "styled-components";
 
 let Layout_ = styled.div`
-  margin-left: 335px;
+  margin-left: 300px;
 `;
 
 const Header_ = styled.div`

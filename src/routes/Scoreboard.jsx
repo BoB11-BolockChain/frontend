@@ -1,18 +1,17 @@
-import React, { PureComponent } from "react";
-import Layout from "src/components/Layout/Layout";
+import { PureComponent } from "react";
 import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
   CartesianGrid,
-  Tooltip,
-  Legend, //line chart import
+  Legend,
+  Line,
+  LineChart,
+  PolarAngleAxis,
+  PolarGrid,
+  PolarRadiusAxis, //line chart import
   Radar,
   RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis, //redar chart import
+  Tooltip,
+  XAxis,
+  YAxis,
 } from "recharts";
 
 const line_data = [
@@ -101,7 +100,7 @@ const redar_data = [
 class Scoreboard extends PureComponent {
   render() {
     return (
-      <Layout>
+      <>
         <header>
           <h1>ScoreBoard</h1>
         </header>
@@ -161,7 +160,7 @@ class Scoreboard extends PureComponent {
           <Legend wrapperStyle={{ top: 30, left: 10, fontSize: 20 }} />
           <Tooltip />
         </RadarChart>
-      </Layout>
+      </>
     );
   }
 }
