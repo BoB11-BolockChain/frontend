@@ -16,8 +16,12 @@ const TableTd = ({ data, setModalState, handleRemove, admin }) => {
                 <td>{data.views}</td>
                 {(admin === 1) && (
                     <>
-                        <td class="icon" onClick={() => setModalState({ data: data, isOpen: true, ceState: "edit" })}><FaRegEdit /></td>
-                        <td class="icon" onClick={() => onRemove(data)}><FaRegTrashAlt /></td>
+                        <td class="icon" onClick={() => setModalState({ data: data, isOpen: true, ceState: "edit" })}>
+                            <FaRegEdit />
+                        </td>
+                        <td class="icon" onClick={() => onRemove(data)}>
+                            <FaRegTrashAlt />
+                        </td>
                     </>
                 )}
             </tr>

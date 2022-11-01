@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Aside from "src/components/Layout/Aside";
 import Footer from "src/components/Layout/Footer";
-import Header from "src/components/Layout/Header";
 import styles from "src/components/Layout/Layout.module.scss";
 import styled from "styled-components";
 
@@ -53,16 +52,6 @@ const Layout = (props) => {
       />
 
       <Layout_>
-        <Header_>
-          <Header
-            image={image}
-            toggled={toggled}
-            collapsed={collapsed}
-            handleToggleSidebar={handleToggleSidebar}
-            handleCollapsedChange={handleCollapsedChange}
-            handleImageChange={handleImageChange}
-          />
-        </Header_>
         <main className={styles.main}>{props.children}</main>
         <Footer />
       </Layout_>
