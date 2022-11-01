@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
 
 const TableTd = ({ data, setModalState, handleRemove, admin }) => {
     const onRemove = (d) => {
@@ -15,8 +16,8 @@ const TableTd = ({ data, setModalState, handleRemove, admin }) => {
                 <td>{data.views}</td>
                 {(admin === 1) && (
                     <>
-                        <td onClick={() => setModalState({ data: data, isOpen: true, ceState: "edit" })}>Edit</td>
-                        <td onClick={() => onRemove(data)}>Remove</td>
+                        <td class="icon" onClick={() => setModalState({ data: data, isOpen: true, ceState: "edit" })}><FaRegEdit /></td>
+                        <td class="icon" onClick={() => onRemove(data)}><FaRegTrashAlt /></td>
                     </>
                 )}
             </tr>
