@@ -60,7 +60,12 @@ button:focus {
 
 .container .icon {
     color: #fa678c;
+    text-align: center;
     cursor: pointer;
+}
+
+.icon svg {
+    display: inline;
 }
 
 .boardmodal table {

@@ -102,7 +102,7 @@ class Scoreboard extends PureComponent {
     return (
       <>
         <header>
-          <h1>ScoreBoard</h1>
+          <h1 className="h2 fw-bold my-4">ScoreBoard</h1>
         </header>
         <LineChart
           width={500}

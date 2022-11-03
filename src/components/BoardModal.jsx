@@ -3,20 +3,17 @@ import ReactModal from "react-modal";
 import ModalBoardCreate from "./ModalBoardCreate";
 import ModalBoardEdit from "./ModalBoardEdit";
 
-const BoardModal = ({ isOpen, setModalState, data, ceState }) => {
+const BoardModal = ({ isOpen, setModalState, data, ceState, margin }) => {
     return (
         <ReactModal
             ceState={ceState}
             isOpen={isOpen}
             ariaHideApp={false}
-            marginLeft={"300px"}
             onRequestClose={() => setModalState({ data: {}, isOpen: false })}
             style={{
                 overlay: {
                     position: "fixed",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
+                    marginLeft: [margin],
                     height: "100%",
                     backgroundcolor: "rgba(0, 0, 0, 0.4)",
                     display: "flex",
@@ -25,10 +22,10 @@ const BoardModal = ({ isOpen, setModalState, data, ceState }) => {
                 },
                 content: {
                     position: "absolute",
-                    top: "25%",
-                    left: "400px",
+                    top: "20%",
+                    left: "10%",
                     right: "15%",
-                    bottom: "25%",
+                    bottom: "20%",
                     boxShadow: "0px 0px 60px rgba(0, 0, 0, 0.3)",
                     border: "0px",
                     background: "#fff",

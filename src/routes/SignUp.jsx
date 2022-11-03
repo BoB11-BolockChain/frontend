@@ -51,7 +51,7 @@ function SignUp() {
     >
       <MDBCard className="my-5 card-body">
         <MDBCardBody className="p-5 shadow-5 text-center">
-          <h2 className="fw-bold mb-5 text-uppercase">SIGN UP</h2>
+          <h2 className="fw-bold mb-5 text-uppercase h2">SIGN UP</h2>
           <form onSubmit={onSubmit}>
             <MDBInput
               onChange={onChange}
@@ -96,39 +96,50 @@ function SignUp() {
           </form>
           <div className="text-center">
             <p>or sign up with:</p>
-
-            <MDBBtn
-              tag="a"
-              color="none"
-              className="mx-3"
-              style={{ color: "#4267b2" }}
-            >
-              {<BsFacebook />}
-            </MDBBtn>
-            <MDBBtn
-              tag="a"
-              color="none"
-              className="mx-3"
-              style={{ color: "#1da1f2" }}
-            >
-              {<BsTwitter />}
-            </MDBBtn>
-            <MDBBtn
-              tag="a"
-              color="none"
-              className="mx-3"
-              style={{ color: "#ea4335" }}
-            >
-              {<BsGoogle />}
-            </MDBBtn>
-            <MDBBtn
-              tag="a"
-              color="none"
-              className="mx-3"
-              style={{ color: "#211f1f" }}
-            >
-              {<BsGithub />}
-            </MDBBtn>
+            <table class="icon-table">
+              <tr>
+                <td>
+                  <MDBBtn
+                    tag="a"
+                    color="none"
+                    className="mx-3"
+                    style={{ color: "#4267b2" }}
+                  >
+                    {<BsFacebook />}
+                  </MDBBtn>
+                </td>
+                <td>
+                  <MDBBtn
+                    tag="a"
+                    color="none"
+                    className="mx-3"
+                    style={{ color: "#1da1f2" }}
+                  >
+                    {<BsTwitter />}
+                  </MDBBtn>
+                </td>
+                <td>
+                  <MDBBtn
+                    tag="a"
+                    color="none"
+                    className="mx-3"
+                    style={{ color: "#ea4335" }}
+                  >
+                    {<BsGoogle />}
+                  </MDBBtn>
+                </td>
+                <td>
+                  <MDBBtn
+                    tag="a"
+                    color="none"
+                    className="mx-3"
+                    style={{ color: "#211f1f" }}
+                  >
+                    {<BsGithub />}
+                  </MDBBtn>
+                </td>
+              </tr>
+            </table>
           </div>
         </MDBCardBody>
       </MDBCard>

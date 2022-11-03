@@ -1,15 +1,12 @@
 import { Menu, MenuItem, ProSidebar, SubMenu } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import Switch from "react-switch";
 import {
-  AiFillNotification,
-  AiFillProfile,
-  AiOutlineUser,
-} from "react-icons/ai";
-import { BsGraphUp } from "react-icons/bs";
-import { FaGem, FaGithub, FaList } from "react-icons/fa";
-import { ImFire } from "react-icons/im";
+  MdPerson, MdSettings, MdHome,
+  MdFlag, MdAreaChart, MdNotifications
+} from "react-icons/md";
+import { GoMarkGithub } from "react-icons/go";
 import {
   SidebarContent,
   SidebarFooter,
@@ -17,7 +14,7 @@ import {
 } from "react-pro-sidebar";
 import sidebarBg from "./bg3.png";
 
-const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
+const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleCollapsedChange }) => {
   const sessionId = window.sessionStorage.getItem("sessionId");
 
   const navigate = useNavigate();
@@ -25,16 +22,17 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
     window.sessionStorage.removeItem("sessionId");
     navigate("/");
   };
-
   return (
     <ProSidebar
       image={image ? sidebarBg : false}
       rtl={rtl}
       collapsed={collapsed}
       toggled={toggled}
-      breakPoint="md"
+      // breakPoint="md"
       onToggle={handleToggleSidebar}
-      style={{ position: "fixed" }}
+      style={{
+        position: "fixed",
+      }}
     >
       <SidebarHeader>
         <div
@@ -52,100 +50,88 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
           PDxF
         </div>
         <Menu iconShape="circle">
-          <SubMenu title="User" icon={<AiOutlineUser />}>
-            {!sessionId ? (
-              <>
-                <MenuItem>
-                  Sign In
-                  <NavLink to="/signin" />
-                </MenuItem>
-                <MenuItem>
-                  Sign Up
-                  <NavLink to="/signup" />
-                </MenuItem>
-              </>
-            ) : (
-              <>
-                <MenuItem>ID : {sessionId}</MenuItem>
-                <MenuItem onClick={onClick}>Log Out</MenuItem>
-              </>
-            )}
-          </SubMenu>
+          {!sessionId ? (
+            <SubMenu title="User" icon={<MdPerson />}>
+              <MenuItem>
+                Sign In
+                <NavLink to="/signin" />
+              </MenuItem>
+              <MenuItem>
+                Sign Up
+                <NavLink to="/signup" />
+              </MenuItem>
+            </SubMenu>
+          ) : (
+            <SubMenu title={sessionId} icon={<MdPerson />}>
+              <MenuItem>
+                My Profile
+                <NavLink to="/user/profile" />
+              </MenuItem>
+              <MenuItem>
+                Team Profile
+                <NavLink to="/teamprofile" />
+              </MenuItem>
+              <MenuItem onClick={onClick}>Log Out</MenuItem>
+            </SubMenu>
+          )}
         </Menu>
-      </SidebarHeader>
+      </SidebarHeader >
+      <Menu iconShape="circle">
+        <SubMenu title="PDxF Management" icon={<MdSettings />}>
+          <SubMenu title="Challenges Management">
+            <MenuItem>
+              Create Challenges
+              <NavLink to="/admin/selectoperation" />
+            </MenuItem>
+            <MenuItem>
+              Edit Challenges
+              <NavLink to="/admin/editchallenges" />
+            </MenuItem>
+            <MenuItem>
+              Delete Challenges
+              <NavLink to="/admin/deletechallenges" />
+            </MenuItem>
+          </SubMenu>
+          <MenuItem>
+            Homepage Setting
+            <NavLink to="/admin/homepagesetting" />
+          </MenuItem>
+          <MenuItem>
+            User & Team Setting
+            <NavLink to="/admin/userteamsetting" />
+          </MenuItem>
+          <MenuItem>
+            Dashboard
+            <NavLink to="/admin/dashboard" />
+          </MenuItem>
+        </SubMenu>
+      </Menu>
       <SidebarContent>
         <Menu iconShape="circle">
-          <MenuItem icon={<FaGem />}>
+          <MenuItem icon={<MdHome />}>
             Main
             <NavLink to="/main" />
           </MenuItem>
           <MenuItem
-            icon={<ImFire />}
+            icon={<MdFlag />}
             suffix={<span className="badge red">New</span>}
           >
             Challenges
             <NavLink to="/user/challenges" />
           </MenuItem>
-          <MenuItem icon={<BsGraphUp />}>
+          <MenuItem icon={<MdAreaChart />}>
             Score Board
             <NavLink to="/scoreboard" />
           </MenuItem>
           <MenuItem
             suffix={<span className="badge yellow">3</span>}
-            icon={<AiFillNotification />}
+            icon={<MdNotifications />}
           >
             Notifications
             <NavLink to="/notifications" />
           </MenuItem>
-          <SubMenu title="Profile" icon={<AiFillProfile />}>
-            <MenuItem>
-              My Profile
-              <NavLink to="/user/profile" />
-            </MenuItem>
-            <MenuItem>
-              Team Profile
-              <NavLink to="/teamprofile" />
-            </MenuItem>
-          </SubMenu>
         </Menu>
 
-        {!sessionId ? (
-          <></>
-        ) : (
-          <>
-            <Menu iconShape="circle">
-              <SubMenu title="PDxF Management" icon={<FaList />}>
-                <SubMenu title="Challenges Management">
-                  <MenuItem>
-                    Create Challenges
-                    <NavLink to="/admin/selectoperation" />
-                  </MenuItem>
-                  <MenuItem>
-                    Edit Challenges
-                    <NavLink to="/admin/editchallenges" />
-                  </MenuItem>
-                  <MenuItem>
-                    Delete Challenges
-                    <NavLink to="/admin/deletechallenges" />
-                  </MenuItem>
-                </SubMenu>
-                <MenuItem>
-                  Homepage Setting
-                  <NavLink to="/admin/homepagesetting" />
-                </MenuItem>
-                <MenuItem>
-                  User & Team Setting
-                  <NavLink to="/admin/userteamsetting" />
-                </MenuItem>
-                <MenuItem>
-                  Dashboard
-                  <NavLink to="/admin/dashboard" />
-                </MenuItem>
-              </SubMenu>
-            </Menu>
-          </>
-        )}
-        {/* 
         <Menu iconShape="circle">
           <div>
             <MenuItem
@@ -161,11 +147,14 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
                   offColor="#bbbbbb"
                 />
               }
+              style={{
+                display: "none"
+              }}
             >
               collapsed
             </MenuItem>
           </div>
-        </Menu> */}
+        </Menu>
       </SidebarContent>
       <SidebarFooter style={{ textAlign: "center" }}>
         <div
@@ -180,7 +169,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
             className="sidebar-btn"
             rel="noopener noreferrer"
           >
-            <FaGithub />
+            <GoMarkGithub />
             <span
               style={{
                 whiteSpace: "nowrap",
@@ -193,7 +182,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar }) => {
           </a>
         </div>
       </SidebarFooter>
-    </ProSidebar>
+    </ProSidebar >
   );
 };
 

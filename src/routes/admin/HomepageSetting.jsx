@@ -24,40 +24,38 @@ const HomepageSetting = () => {
   }, []);
 
   return (
-    <Layout>
-      <>
-        <div class="container">
-          <header>
-            <h1>HomepageSetting</h1>
-          </header>
-          {dataLoaded ? (
-            <>
-              <table>
-                <thead>
-                  <th>No.</th>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Created Date</th>
-                  <th>Views</th>
-                  <th>Edit</th>
-                  <th>Remove</th>
-                </thead>
-                <TableTr data={data} setModalState={setModalState} handleRemove={handleRemove} admin={admin} />
-              </table>
-              <button onClick={() => setModalState({ data: data, isOpen: true, ceState: "create" })}>글쓰기</button>
-            </>
-          ) : (
-            <p>loading</p>
-          )}
-          <BoardModal
-            isOpen={modalState.isOpen}
-            setModalState={setModalState}
-            data={modalState.data}
-            ceState={modalState.ceState}
-          />
-        </div>
-      </>
-    </Layout>
+    <>
+      <header>
+        <h1 className="h2 fw-bold my-4">Homepage Setting</h1>
+      </header>
+      <div class="container">
+        {dataLoaded ? (
+          <>
+            <table>
+              <thead>
+                <th>No.</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Created Date</th>
+                <th>Views</th>
+                <th>Edit</th>
+                <th>Remove</th>
+              </thead>
+              <TableTr data={data} setModalState={setModalState} handleRemove={handleRemove} admin={admin} />
+            </table>
+            <button onClick={() => setModalState({ data: data, isOpen: true, ceState: "create" })}>글쓰기</button>
+          </>
+        ) : (
+          <p>loading</p>
+        )}
+        <BoardModal
+          isOpen={modalState.isOpen}
+          setModalState={setModalState}
+          data={modalState.data}
+          ceState={modalState.ceState}
+        />
+      </div>
+    </>
   );
 };
 const handleRemove = (removeData) => {

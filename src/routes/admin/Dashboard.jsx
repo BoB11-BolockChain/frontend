@@ -10,7 +10,6 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Layout from "src/components/Layout/Layout";
 
 const Dashboard = () => {
   // const msg = useWebSocket("ws://www.pdxf.tk:8000/dashboard");
@@ -54,7 +53,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <Layout>
+    <>
       <Typography variant="h3">Dashboard</Typography>
       <Box
         sx={{
@@ -89,7 +88,7 @@ const Dashboard = () => {
           </TableBody>
         </Table>
       </Box>
-    </Layout>
+    </>
   );
 };
 
