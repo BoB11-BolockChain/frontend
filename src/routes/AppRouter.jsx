@@ -8,16 +8,16 @@ import DashboardById from "src/routes/admin/DashboardById";
 import EditChallenges from "src/routes/admin/EditChallenges";
 import HomepageSetting from "src/routes/admin/HomepageSetting";
 import SelectOperation from "src/routes/admin/SelectOperation";
-import CreateChallenge from "./admin/CreateChallenge";
-import Home from "./Home";
-import NotFound from "./NotFound";
-import Notifications from "./Notifications";
-import Scoreboard from "./Scoreboard";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
-import Challenges from "./user/Challenges";
-import Profile from "./user/Profile";
-import UserRouteLayout from "./user/UserRouteLayout";
+import CreateChallenge from "src/routes/admin/CreateChallenge";
+import Home from "src/routes/Home";
+import NotFound from "src/routes/NotFound";
+import Notifications from "src/routes/Notifications";
+import Scoreboard from "src/routes/Scoreboard";
+import SignIn from "src/routes/SignIn";
+import SignUp from "src/routes/SignUp";
+import Challenges from "src/routes/user/Challenges";
+import Profile from "src/routes/user/Profile";
+import UserRouteLayout from "src/routes/user/UserRouteLayout";
 
 const AppRouter = () => {
   return (
@@ -25,6 +25,7 @@ const AppRouter = () => {
       <Layout>
         <Routes>
           <Route index element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="signin" element={<SignIn />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="notifications" element={<Notifications />} />
