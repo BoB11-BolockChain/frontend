@@ -37,3 +37,7 @@ You shouldn't use log.Fatal in the server's read loop, as that calls os.Exit
 #FA678C tailwind custom color "pdxf-pink"
 
 #F8F9FA tailwind custom color "pdxf-blue"
+
+### optimizable parts
+
+createchallenge assign data to each droppable, not route component
