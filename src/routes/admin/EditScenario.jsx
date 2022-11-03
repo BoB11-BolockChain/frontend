@@ -1,7 +1,33 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import CreateChallenge from "./CreateChallenge";
 
-const CreateScenario = () => {
+const dummy = [
+  { tactic: "temp", droppableId: "temp", list: [] },
+  { tactic: "explore", droppableId: "fdsa", list: ["fdsa", "adsf"] },
+  { tactic: "sometactic", droppableId: "asdf", list: ["qwer", "rewq"] },
+];
+
+const EditScenario = () => {
+  const { id } = useParams();
+  useEffect(() => {
+    if (id) {
+      // fetch
+    } else {
+      // use dummy
+    }
+  }, [id]);
+
+  const [state, setState] = useState({ title: id });
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setState({ ...state, [name]: value });
+  };
+
+  const postHandler = () => {};
+
   return (
     <>
       <script src="multiselect-dropdown.js"></script>
@@ -27,6 +53,9 @@ const CreateScenario = () => {
                   <input
                     class="form-control inputbox"
                     placeholder="title"
+                    name="title"
+                    onChange={onChange}
+                    value={state.title}
                   ></input>
                 </div>
                 <div class="forbtn">
@@ -110,9 +139,10 @@ const CreateScenario = () => {
           </div>
         </div>
       </div>
-      <CreateChallenge />
+      <CreateChallenge data={id ? dummy : undefined} />
+      <button onClick={postHandler}>save</button>
     </>
   );
 };
 
-export default CreateScenario;
+export default EditScenario;

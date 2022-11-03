@@ -1,24 +1,14 @@
 import { useEffect, useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
-import { useParams } from "react-router-dom";
 import ChallengeDroppable from "../../components/ChallengeDroppable";
 
-const dummy = [
-  { tactic: "temp", droppableId: "temp", list: [] },
-  { tactic: "explore", droppableId: "fdsa", list: ["fdsa", "adsf"] },
-  { tactic: "sometactic", droppableId: "asdf", list: ["qwer", "rewq"] },
-];
-
-const CreateChallenge = () => {
-  const { id } = useParams();
+const CreateChallenge = ({ data }) => {
   const [items, setItems] = useState([]);
   useEffect(() => {
-    if (id) {
-      // fetch
-    } else {
-      setItems(dummy);
+    if (data) {
+      setItems(data);
     }
-  }, [id]);
+  }, [data]);
 
   const [state, setState] = useState({ name: "", desc: "" });
 

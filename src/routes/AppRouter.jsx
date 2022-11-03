@@ -2,13 +2,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "src/components/Layout/Layout";
 import Admin from "src/routes/admin/Admin";
 import AdminRouteLayout from "src/routes/admin/AdminRouteLayout";
-import CreateScenario from "src/routes/admin/CreateScenario";
 import Dashboard from "src/routes/admin/Dashboard";
 import DashboardById from "src/routes/admin/DashboardById";
-import EditChallenges from "src/routes/admin/EditChallenges";
+import EditScenario from "src/routes/admin/EditScenario";
 import HomepageSetting from "src/routes/admin/HomepageSetting";
 import SelectOperation from "src/routes/admin/SelectOperation";
 import CreateChallenge from "./admin/CreateChallenge";
+import ManageScenario from "./admin/ManageScenario";
 import Home from "./Home";
 import NotFound from "./NotFound";
 import Notifications from "./Notifications";
@@ -40,12 +40,17 @@ const AppRouter = () => {
             element={<AdminRouteLayout redirectTo="/signin" />}
           >
             <Route index element={<Admin />} />
+            <Route path="managescenario" element={<ManageScenario />} />
+            <Route path="editscenario">
+              <Route index element={<EditScenario />} />
+              <Route path=":id" element={<EditScenario />} />
+            </Route>
             <Route path="homepagesetting" element={<HomepageSetting />} />
             <Route path="selectoperation" element={<SelectOperation />} />
-            <Route path="createscenario" element={<CreateScenario />} />
-            <Route path="editchallenges" element={<EditChallenges />}>
+            <Route path="createscenario" element={<EditScenario />} />
+            {/* <Route path="editchallenges" element={<EditChallenges />}>
               <Route path=":id" element={<EditChallenges />} />
-            </Route>
+            </Route> */}
             <Route path="createchallenge">
               <Route index element={<CreateChallenge />} />
               <Route path=":id" element={<CreateChallenge />} />
