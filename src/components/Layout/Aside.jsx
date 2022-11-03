@@ -3,8 +3,7 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import Switch from "react-switch";
 import {
-  MdPerson, MdSettings, MdHome,
-  MdFlag, MdAreaChart, MdNotifications
+  MdPerson, MdSettings, MdFlag, MdAreaChart, MdNotifications
 } from "react-icons/md";
 import { GoMarkGithub } from "react-icons/go";
 import {
@@ -13,6 +12,15 @@ import {
   SidebarHeader,
 } from "react-pro-sidebar";
 import sidebarBg from "./bg3.png";
+import styled from "styled-components";
+
+const Logo = styled.img`
+  margin: 15px 20px 5px 20px;
+  padding: 5px;
+  width: 100px;
+  height: 55px;
+  filter: invert(100%) sepia(6%) saturate(0%) hue-rotate(131deg) brightness(94%) contrast(88%);
+`;
 
 const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleCollapsedChange }) => {
   const sessionId = window.sessionStorage.getItem("sessionId");
@@ -35,20 +43,9 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
       }}
     >
       <SidebarHeader>
-        <div
-          style={{
-            padding: "24px",
-            //textTransform: "uppercase",
-            fontWeight: "bold",
-            fontSize: 22,
-            letterSpacing: "1px",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-          }}
-        >
-          PDxF
-        </div>
+        <a href="/main">
+          <Logo src="/img/PDxF_logo.svg" />
+        </a>
         {!sessionId ? (
           <Menu iconShape="circle">
             <SubMenu title="User" icon={<MdPerson />}>
@@ -112,10 +109,6 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
       </SidebarHeader >
       <SidebarContent>
         <Menu iconShape="circle">
-          <MenuItem icon={<MdHome />}>
-            Main
-            <NavLink to="/main" />
-          </MenuItem>
           <MenuItem
             icon={<MdFlag />}
             suffix={<span className="badge red">New</span>}
