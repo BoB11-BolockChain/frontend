@@ -49,8 +49,8 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
         >
           PDxF
         </div>
-        <Menu iconShape="circle">
-          {!sessionId ? (
+        {!sessionId ? (
+          <Menu iconShape="circle">
             <SubMenu title="User" icon={<MdPerson />}>
               <MenuItem>
                 Sign In
@@ -61,51 +61,55 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
                 <NavLink to="/signup" />
               </MenuItem>
             </SubMenu>
-          ) : (
-            <SubMenu title={sessionId} icon={<MdPerson />}>
-              <MenuItem>
-                My Profile
-                <NavLink to="/user/profile" />
-              </MenuItem>
-              <MenuItem>
-                Team Profile
-                <NavLink to="/teamprofile" />
-              </MenuItem>
-              <MenuItem onClick={onClick}>Log Out</MenuItem>
-            </SubMenu>
-          )}
-        </Menu>
+          </Menu>
+        ) : (
+          <>
+            <Menu iconShape="circle">
+              <SubMenu title={sessionId} icon={<MdPerson />}>
+                <MenuItem>
+                  My Profile
+                  <NavLink to="/user/profile" />
+                </MenuItem>
+                <MenuItem>
+                  Team Profile
+                  <NavLink to="/teamprofile" />
+                </MenuItem>
+                <MenuItem onClick={onClick}>Log Out</MenuItem>
+              </SubMenu>
+            </Menu>
+            <Menu iconShape="circle">
+              <SubMenu title="PDxF Management" icon={<MdSettings />}>
+                <SubMenu title="Challenges Management">
+                  <MenuItem>
+                    Create Challenges
+                    <NavLink to="/admin/selectoperation" />
+                  </MenuItem>
+                  <MenuItem>
+                    Edit Challenges
+                    <NavLink to="/admin/editchallenges" />
+                  </MenuItem>
+                  <MenuItem>
+                    Delete Challenges
+                    <NavLink to="/admin/deletechallenges" />
+                  </MenuItem>
+                </SubMenu>
+                <MenuItem>
+                  Homepage Setting
+                  <NavLink to="/admin/homepagesetting" />
+                </MenuItem>
+                <MenuItem>
+                  User & Team Setting
+                  <NavLink to="/admin/userteamsetting" />
+                </MenuItem>
+                <MenuItem>
+                  Dashboard
+                  <NavLink to="/admin/dashboard" />
+                </MenuItem>
+              </SubMenu>
+            </Menu>
+          </>
+        )}
       </SidebarHeader >
-      <Menu iconShape="circle">
-        <SubMenu title="PDxF Management" icon={<MdSettings />}>
-          <SubMenu title="Challenges Management">
-            <MenuItem>
-              Create Challenges
-              <NavLink to="/admin/selectoperation" />
-            </MenuItem>
-            <MenuItem>
-              Edit Challenges
-              <NavLink to="/admin/editchallenges" />
-            </MenuItem>
-            <MenuItem>
-              Delete Challenges
-              <NavLink to="/admin/deletechallenges" />
-            </MenuItem>
-          </SubMenu>
-          <MenuItem>
-            Homepage Setting
-            <NavLink to="/admin/homepagesetting" />
-          </MenuItem>
-          <MenuItem>
-            User & Team Setting
-            <NavLink to="/admin/userteamsetting" />
-          </MenuItem>
-          <MenuItem>
-            Dashboard
-            <NavLink to="/admin/dashboard" />
-          </MenuItem>
-        </SubMenu>
-      </Menu>
       <SidebarContent>
         <Menu iconShape="circle">
           <MenuItem icon={<MdHome />}>
