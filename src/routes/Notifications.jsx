@@ -5,6 +5,7 @@ import Loading from "src/components/Loading";
 import TableTr from "src/components/TableTr";
 
 const Notifications = () => {
+  const [width, setWidth] = useState("");
   const [modalState, setModalState] = useState({ data: {}, isOpen: false });
   const [dataLoaded, setDataLoaded] = useState(false);
   const [data, setData] = useState([]);
@@ -13,17 +14,27 @@ const Notifications = () => {
       const res = await fetch("http://www.pdxf.tk:8000/notification");
       if (res.ok) {
         const js = await res.json();
-        console.log(js);
+        const windowWidth = window.innerWidth;
         setData(js.data);
         setDataLoaded(true);
+        setWidth("270px");
+        if (windowWidth < 768) {
+          setWidth("80px");
+        }
       }
     };
 
     fetchData();
-  }, []);
+  }, [width]);
 
   return (
     <>
+      <BoardModal
+        isOpen={modalState.isOpen}
+        setModalState={setModalState}
+        data={modalState.data}
+        margin={width}
+      />
       <header>
         <h1 className="h2 fw-bold my-4">Notifications</h1>
       </header>
@@ -42,11 +53,6 @@ const Notifications = () => {
         ) : (
           <Loading />
         )}
-        <BoardModal
-          isOpen={modalState.isOpen}
-          setModalState={setModalState}
-          data={modalState.data}
-        />
       </div>
     </>
   );

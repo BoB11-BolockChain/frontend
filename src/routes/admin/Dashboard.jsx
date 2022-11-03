@@ -10,7 +10,6 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Layout from "src/components/Layout/Layout";
 
 const Dashboard = () => {
   // const msg = useWebSocket("ws://www.pdxf.tk:8000/dashboard");

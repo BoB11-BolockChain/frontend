@@ -2,37 +2,63 @@ import React from "react";
 import ReactModal from "react-modal";
 import VmCaller from "src/components/VmCaller";
 
-const ChallengeModal = ({ isOpen, setModalState, data }) => {
+const ChallengeModal = ({ isOpen, setModalState, data, margin }) => {
   return (
     <ReactModal
       isOpen={isOpen}
-      marginLeft={"300px"}
       onRequestClose={() => setModalState({ data: {}, isOpen: false })}
       style={{
+        // overlay: {
+        //   // position: "fixed",
+        //   // top: 0,
+        //   // left: 0,
+        //   width: "100%",
+        //   height: "100%",
+        //   backgroundcolor: "rgba(0, 0, 0, 0.4)",
+        //   // display: "flex",
+        //   justifycontent: "center",
+        //   alignitems: "center",
+        // },
         overlay: {
           position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
+          marginLeft: [margin],
           height: "100%",
           backgroundcolor: "rgba(0, 0, 0, 0.4)",
           display: "flex",
           justifycontent: "center",
           alignitems: "center",
         },
+        // content: {
+        //   // position: "absolute",
+        //   // top: "25%",
+        //   // left: "400px",
+        //   // right: "15%",
+        //   // bottom: "25%",
+        //   border: "1px solid #ccc",
+        //   background: "#fff",
+        //   overflow: "auto",
+        //   WebkitOverflowScrolling: "touch",
+        //   borderRadius: "4px",
+        //   outline: "none",
+        //   padding: "20px",
+        //   textalign: "center",
+        //   verticalalign: "middle",
+        //   textAlign: "center",
+        // },
         content: {
           position: "absolute",
-          top: "25%",
-          left: "400px",
+          top: "20%",
+          left: "10%",
           right: "15%",
-          bottom: "25%",
-          border: "1px solid #ccc",
+          bottom: "20%",
+          boxShadow: "0px 0px 60px rgba(0, 0, 0, 0.3)",
+          border: "0px",
           background: "#fff",
           overflow: "auto",
           WebkitOverflowScrolling: "touch",
           borderRadius: "4px",
           outline: "none",
-          padding: "20px",
+          padding: "0px",
           textalign: "center",
           verticalalign: "middle",
           textAlign: "center",
