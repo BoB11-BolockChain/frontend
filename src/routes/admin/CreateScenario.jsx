@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import CreateChallenge from "./CreateChallenge";
 
 const CreateScenario = () => {
   return (
@@ -109,6 +110,7 @@ const CreateScenario = () => {
           </div>
         </div>
       </div>
+      <CreateChallenge />
     </>
   );
 };

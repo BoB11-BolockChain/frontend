@@ -1,5 +1,4 @@
 import { Draggable } from "react-beautiful-dnd";
-import React from "react";
 import styled from "styled-components";
 
 const Author = styled.div`
@@ -51,10 +50,8 @@ const ListItem = ({ name, payload, item, index }) => {
           >
             <span>
               Seq:{index}
-              {/* <a> </a>- Payload - */}
               <Payload> {payload} </Payload>
             </span>
-            {/* <CardHeader>{randomHeader}</CardHeader> */}
             <CardFooter>
               <Author>{name}</Author>
             </CardFooter>

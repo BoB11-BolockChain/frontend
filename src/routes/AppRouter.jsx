@@ -40,13 +40,16 @@ const AppRouter = () => {
             element={<AdminRouteLayout redirectTo="/signin" />}
           >
             <Route index element={<Admin />} />
-            <Route path="editchallenges" element={<EditChallenges />}>
-              <Route path=":id" element={<EditChallenges />} />
-            </Route>
             <Route path="homepagesetting" element={<HomepageSetting />} />
             <Route path="selectoperation" element={<SelectOperation />} />
             <Route path="createscenario" element={<CreateScenario />} />
-            <Route path="createchallenge" element={<CreateChallenge />} />
+            <Route path="editchallenges" element={<EditChallenges />}>
+              <Route path=":id" element={<EditChallenges />} />
+            </Route>
+            <Route path="createchallenge">
+              <Route index element={<CreateChallenge />} />
+              <Route path=":id" element={<CreateChallenge />} />
+            </Route>
             <Route path="dashboard">
               <Route index element={<Dashboard />} />
               <Route path=":id" element={<DashboardById />} />
