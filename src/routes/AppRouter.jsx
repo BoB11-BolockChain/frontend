@@ -13,7 +13,7 @@ import Notifications from "src/routes/Notifications";
 import Scoreboard from "src/routes/Scoreboard";
 import SignIn from "src/routes/SignIn";
 import SignUp from "src/routes/SignUp";
-import Challenges from "src/routes/user/Challenges";
+import Training from "src/routes/user/Training";
 import Profile from "src/routes/user/Profile";
 import UserRouteLayout from "src/routes/user/UserRouteLayout";
 
@@ -30,7 +30,7 @@ const AppRouter = () => {
           <Route path="scoreboard" element={<Scoreboard />} />
 
           <Route path="user" element={<UserRouteLayout redirectTo="/signin" />}>
-            <Route path="challenges" element={<Challenges />} />
+            <Route path="training" element={<Training />} />
             <Route path="profile" element={<Profile />} />
           </Route>
 
