@@ -1,12 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import CreateChallenge from "./CreateChallenge";
+import CreateChallenge from "src/routes/admin/CreateChallenge";
 
-const CreateScenario = () => {
+const CreateTraining = () => {
   return (
     <>
       <script src="multiselect-dropdown.js"></script>
       <div class="Title">
-        <h2>Create Scenario</h2>
+        <h2>Create Trainging</h2>
       </div>
 
       <div class="container">
@@ -103,16 +103,19 @@ const CreateScenario = () => {
             </div>
           </div>
         </div>
+      </div>
+      <CreateChallenge />
+      <br />
+      <div class="container">
         <div class="row bottom-btn">
           <div class="col-md-9"></div>
           <div class="col-md-3">
-            <button class="btn btn-primary pagebtn">Next</button>
+            <button class="btn btn-primary pagebtn">Create Training</button>
           </div>
         </div>
       </div>
-      <CreateChallenge />
     </>
   );
 };
 
-export default CreateScenario;
+export default CreateTraining;

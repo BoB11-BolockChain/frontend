@@ -1,14 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "src/components/Layout/Layout";
-import Admin from "src/routes/admin/Admin";
+import TrainingManagement from "src/routes/admin/TrainingManagement";
+import CreateTraining from "src/routes/admin/CreateTraining";
 import AdminRouteLayout from "src/routes/admin/AdminRouteLayout";
-import CreateScenario from "src/routes/admin/CreateScenario";
 import Dashboard from "src/routes/admin/Dashboard";
 import DashboardById from "src/routes/admin/DashboardById";
-import EditChallenges from "src/routes/admin/EditChallenges";
+import EditTraining from "src/routes/admin/EditTraining";
 import HomepageSetting from "src/routes/admin/HomepageSetting";
-import SelectOperation from "src/routes/admin/SelectOperation";
-import CreateChallenge from "src/routes/admin/CreateChallenge";
 import Home from "src/routes/Home";
 import NotFound from "src/routes/NotFound";
 import Notifications from "src/routes/Notifications";
@@ -40,17 +38,14 @@ const AppRouter = () => {
             path="admin"
             element={<AdminRouteLayout redirectTo="/signin" />}
           >
-            <Route index element={<Admin />} />
+            <Route index element={<Dashboard />} />
             <Route path="homepagesetting" element={<HomepageSetting />} />
-            <Route path="selectoperation" element={<SelectOperation />} />
-            <Route path="createscenario" element={<CreateScenario />} />
-            <Route path="editchallenges" element={<EditChallenges />}>
-              <Route path=":id" element={<EditChallenges />} />
+            <Route path="edittraining" element={<EditTraining />} />
+            <Route path="createtraining" element={<CreateTraining />} />
+            <Route path="trainingmanagement" element={<TrainingManagement />}>
+              <Route path=":id" element={<EditTraining />} />
             </Route>
-            <Route path="createchallenge">
-              <Route index element={<CreateChallenge />} />
-              <Route path=":id" element={<CreateChallenge />} />
-            </Route>
+
             <Route path="dashboard">
               <Route index element={<Dashboard />} />
               <Route path=":id" element={<DashboardById />} />
