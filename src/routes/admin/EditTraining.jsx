@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Layout from "src/components/Layout/Layout";
 import ReactiveButton from "reactive-button";
 import Loading from "src/components/Loading";
 
@@ -27,7 +26,7 @@ const EditChallenge = () => {
   }, []);
 
   return (
-    <Layout>
+    <>
       <header>
         <h1>EditChallenges</h1>
       </header>
@@ -36,13 +35,18 @@ const EditChallenge = () => {
           <div key={d.title}>
             <p>{d.score}</p>
             <p>{d.title}</p>
-            <ReactiveButton onClick={() => {}} idleText="Solve The Problem" />
+
+            <ReactiveButton
+              color="secondary"
+              onClick={() => {}}
+              idleText="Solve The Problem"
+            />
           </div>
         ))
       ) : (
         <Loading />
       )}
-    </Layout>
+    </>
   );
 };
 

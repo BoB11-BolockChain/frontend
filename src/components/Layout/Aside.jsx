@@ -3,7 +3,12 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import Switch from "react-switch";
 import {
-  MdPerson, MdSettings, MdFlag, MdAreaChart, MdNotifications
+  MdPerson,
+  MdSettings,
+  MdFlag,
+  MdAreaChart,
+  MdNotifications,
+  MdHome,
 } from "react-icons/md";
 import { GoMarkGithub } from "react-icons/go";
 import {
@@ -19,10 +24,18 @@ const Logo = styled.img`
   padding: 5px;
   width: 100px;
   height: 55px;
-  filter: invert(100%) sepia(6%) saturate(0%) hue-rotate(131deg) brightness(94%) contrast(88%);
+  filter: invert(100%) sepia(6%) saturate(0%) hue-rotate(131deg) brightness(94%)
+    contrast(88%);
 `;
 
-const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleCollapsedChange }) => {
+const Aside = ({
+  image,
+  collapsed,
+  rtl,
+  toggled,
+  handleToggleSidebar,
+  handleCollapsedChange,
+}) => {
   const sessionId = window.sessionStorage.getItem("sessionId");
 
   const navigate = useNavigate();
@@ -76,20 +89,10 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
             </Menu>
             <Menu iconShape="circle">
               <SubMenu title="PDxF Management" icon={<MdSettings />}>
-                <SubMenu title="Challenges Management">
-                  <MenuItem>
-                    Create Challenges
-                    <NavLink to="/admin/selectoperation" />
-                  </MenuItem>
-                  <MenuItem>
-                    Edit Challenges
-                    <NavLink to="/admin/editchallenges" />
-                  </MenuItem>
-                  <MenuItem>
-                    Delete Challenges
-                    <NavLink to="/admin/deletechallenges" />
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  Training Management
+                  <NavLink to="/admin/TrainingManagement" />
+                </MenuItem>
                 <MenuItem>
                   Homepage Setting
                   <NavLink to="/admin/homepagesetting" />
@@ -106,15 +109,19 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
             </Menu>
           </>
         )}
-      </SidebarHeader >
+      </SidebarHeader>
       <SidebarContent>
         <Menu iconShape="circle">
+          <MenuItem icon={<MdHome />}>
+            Main
+            <NavLink to="/home" />
+          </MenuItem>
           <MenuItem
             icon={<MdFlag />}
             suffix={<span className="badge red">New</span>}
           >
-            Challenges
-            <NavLink to="/user/challenges" />
+            Training
+            <NavLink to="/user/training" />
           </MenuItem>
           <MenuItem icon={<MdAreaChart />}>
             Score Board
@@ -145,7 +152,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
                 />
               }
               style={{
-                display: "none"
+                display: "none",
               }}
             >
               collapsed
@@ -179,7 +186,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
           </a>
         </div>
       </SidebarFooter>
-    </ProSidebar >
+    </ProSidebar>
   );
 };
 
