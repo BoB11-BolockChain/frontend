@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Layout from "src/components/Layout/Layout";
 import TableTr from "src/components/TableTr"
 import "src/components/Layout/Board.scss"
 import BoardModal from "src/components/BoardModal";
 
 const HomepageSetting = () => {
+  const [width, setWidth] = useState("");
   const [modalState, setModalState] = useState({ data: {}, isOpen: false, ceState: "" });
   const [dataLoaded, setDataLoaded] = useState(false);
   const [data, setData] = useState([]);
@@ -15,13 +15,18 @@ const HomepageSetting = () => {
       const res = await fetch("http://www.pdxf.tk:8000/notification");
       if (res.ok) {
         const js = await res.json();
+        const windowWidth = window.innerWidth;
         setData(js.data);
         setDataLoaded(true);
+        setWidth("270px");
+        if (windowWidth < 768) {
+          setWidth("80px");
+        }
       }
     };
 
     fetchData();
-  }, []);
+  }, [width]);
 
   return (
     <>
@@ -53,6 +58,7 @@ const HomepageSetting = () => {
           setModalState={setModalState}
           data={modalState.data}
           ceState={modalState.ceState}
+          margin={width}
         />
       </div>
     </>
