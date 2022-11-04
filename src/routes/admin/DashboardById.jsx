@@ -76,7 +76,7 @@ const DashboardById = () => {
   };
 
   return (
-    <Layout>
+    <>
       <Typography variant="h3">Dashboard of {id}</Typography>
       <Divider variant="middle" />
       <Box
@@ -153,7 +153,7 @@ const DashboardById = () => {
           <Typography align="center">{modalState.data.status}</Typography>
         </Box>
       </Modal>
-    </Layout>
+    </>
   );
 };
 

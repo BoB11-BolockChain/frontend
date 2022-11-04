@@ -89,20 +89,10 @@ const Aside = ({
             </Menu>
             <Menu iconShape="circle">
               <SubMenu title="PDxF Management" icon={<MdSettings />}>
-                <SubMenu title="Challenges Management">
-                  <MenuItem>
-                    Create Challenges
-                    <NavLink to="/admin/selectoperation" />
-                  </MenuItem>
-                  <MenuItem>
-                    Edit Challenges
-                    <NavLink to="/admin/editchallenges" />
-                  </MenuItem>
-                  <MenuItem>
-                    Delete Challenges
-                    <NavLink to="/admin/deletechallenges" />
-                  </MenuItem>
-                </SubMenu>
+                <MenuItem>
+                  Training Management
+                  <NavLink to="/admin/TrainingManagement" />
+                </MenuItem>
                 <MenuItem>
                   Homepage Setting
                   <NavLink to="/admin/homepagesetting" />
@@ -130,7 +120,7 @@ const Aside = ({
             icon={<MdFlag />}
             suffix={<span className="badge red">New</span>}
           >
-            Challenges
+            Training
             <NavLink to="/user/challenges" />
           </MenuItem>
           <MenuItem icon={<MdAreaChart />}>

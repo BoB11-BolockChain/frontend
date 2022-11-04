@@ -111,6 +111,7 @@ const CreateChallenge = () => {
           name="desc"
           onChange={onChange}
         />
+
         <button
           className="w-1/5 h-8 rounded-lg bg-pdxf-pink text-white place-self-end"
           onClick={onClick}
@@ -118,6 +119,7 @@ const CreateChallenge = () => {
           add
         </button>
       </div>
+      <br />
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="temp"></div>
         <div className="p-2 flex flex-col gap-2 rounded-lg border-2 border-grey-300">
