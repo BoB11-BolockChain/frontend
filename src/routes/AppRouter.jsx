@@ -15,6 +15,7 @@ import SignIn from "src/routes/SignIn";
 import SignUp from "src/routes/SignUp";
 import Training from "src/routes/user/Training";
 import Profile from "src/routes/user/Profile";
+import Training from "src/routes/user/Training";
 import UserRouteLayout from "src/routes/user/UserRouteLayout";
 
 const AppRouter = () => {
@@ -32,6 +33,7 @@ const AppRouter = () => {
           <Route path="user" element={<UserRouteLayout redirectTo="/signin" />}>
             <Route path="training" element={<Training />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="Training" element={<Training />} />
           </Route>
 
           <Route

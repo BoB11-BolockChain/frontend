@@ -1,0 +1,51 @@
+.scenario-list {
+    display: contents;
+    margin: 20px;
+}
+
+.scenario-list button {
+    padding: 10px;
+    margin: 10px;
+    background: hsla(0, 0%, 100%, 0.55);
+    text-align: left;
+    color: rgba(24, 30, 52, 0.9);
+    font-size: 14px;
+    // border: 1px solid #fa678c;
+    border-bottom: 2px solid #fa678c;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.scenario-list button:hover,
+button:focus {
+    background: #fa678c;
+    border-top: 2px solid #943d52;
+    color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.modal-item {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.modal-chall-content {
+    border-top: 1px solid #888;
+    text-align: left;
+    padding: 20px;
+}
+
+.modal-chall-content table {
+    width: 100%;
+}
+
+
+
+.modal-chall-title {}
+
+.modal-chall-score {}
