@@ -3,8 +3,12 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import Switch from "react-switch";
 import {
-  MdPerson, MdSettings, MdHome,
-  MdFlag, MdAreaChart, MdNotifications
+  MdPerson,
+  MdSettings,
+  MdHome,
+  MdFlag,
+  MdAreaChart,
+  MdNotifications,
 } from "react-icons/md";
 import { GoMarkGithub } from "react-icons/go";
 import {
@@ -14,7 +18,14 @@ import {
 } from "react-pro-sidebar";
 import sidebarBg from "./bg3.png";
 
-const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleCollapsedChange }) => {
+const Aside = ({
+  image,
+  collapsed,
+  rtl,
+  toggled,
+  handleToggleSidebar,
+  handleCollapsedChange,
+}) => {
   const sessionId = window.sessionStorage.getItem("sessionId");
 
   const navigate = useNavigate();
@@ -109,12 +120,12 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
             </Menu>
           </>
         )}
-      </SidebarHeader >
+      </SidebarHeader>
       <SidebarContent>
         <Menu iconShape="circle">
           <MenuItem icon={<MdHome />}>
             Main
-            <NavLink to="/main" />
+            <NavLink to="/home" />
           </MenuItem>
           <MenuItem
             icon={<MdFlag />}
@@ -152,7 +163,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
                 />
               }
               style={{
-                display: "none"
+                display: "none",
               }}
             >
               collapsed
@@ -186,7 +197,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
           </a>
         </div>
       </SidebarFooter>
-    </ProSidebar >
+    </ProSidebar>
   );
 };
 

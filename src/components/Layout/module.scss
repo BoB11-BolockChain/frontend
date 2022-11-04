@@ -1,8 +1,8 @@
 // @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,500,200&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,500,200&display=swap");
 
 // $sidebar-bg-color: #8581d2;
-$sidebar-bg-color: linear-gradient(to bottom, #6a82fb, #fc5c7d);
+$sidebar-bg-color: linear-gradient(to bottom, #6a82fb, #000);
 
 $submenu-bg-color: rgba(255, 255, 255, 0.04);
 $submenu-bg-color-collapsed: rgba(#0c1e35, 0.95);
@@ -12,9 +12,7 @@ $highlight-color: #dee2ec;
 $icon-bg-color: rgba(255, 255, 255, 0.05);
 $icon-size: 35px;
 
-
 @import "~react-pro-sidebar/dist/scss/styles.scss";
-
 
 .margin-plus {
   margin-bottom: 3px;
@@ -60,7 +58,7 @@ h2,
 }
 
 .inputbox {
-  border: 0.8px solid #FA678C !important;
+  border: 0.8px solid #fa678c !important;
   width: 80%;
 }
 
@@ -73,8 +71,8 @@ h2,
 }
 
 .btn-primary {
-  background-color: #FA678C !important;
-  border: #FA678C !important;
+  background-color: #fa678c !important;
+  border: #fa678c !important;
 }
 
 .box-subtitle {
@@ -92,7 +90,7 @@ h2,
 
 .select-box {
   width: 100%;
-  border: 0.8px solid #FA678C !important;
+  border: 0.8px solid #fa678c !important;
   height: 34px;
   border-radius: 0.25rem;
   padding: 6px 6px;
@@ -106,23 +104,22 @@ h2,
 
 .wt-box {
   border-radius: 0.25rem;
-  border: 1px solid rgba(0, 0, 0, .125);
+  border: 1px solid rgba(0, 0, 0, 0.125);
   background-color: #fff;
   // padding-right: 16px;
   // padding-left: 16px;
   padding: 20px;
-
 }
 
 body {
   margin: 0;
   height: 100vh;
   // background-color: #dee2ec;
-  background-color: #F8F9FA !important;
+  background-color: #f8f9fa !important;
   background-size: cover;
   background-repeat: no-repeat;
   color: rgba(0, 0, 0, 0.87);
-  font-family: 'Montserrat', sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 #root {
@@ -251,7 +248,7 @@ body {
     //textTransform: "uppercase";
     overflow: "hidden";
 
-    >span {
+    > span {
       margin-left: 10px;
     }
   }
@@ -269,7 +266,7 @@ body {
     .block {
       direction: rtl;
 
-      >span {
+      > span {
         margin-left: 0;
         margin-right: 10px;
       }
