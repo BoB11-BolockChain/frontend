@@ -121,7 +121,7 @@ const Aside = ({
             suffix={<span className="badge red">New</span>}
           >
             Training
-            <NavLink to="/user/challenges" />
+            <NavLink to="/user/training" />
           </MenuItem>
           <MenuItem icon={<MdAreaChart />}>
             Score Board
