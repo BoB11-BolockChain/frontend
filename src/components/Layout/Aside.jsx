@@ -22,7 +22,14 @@ const Logo = styled.img`
   filter: invert(100%) sepia(6%) saturate(0%) hue-rotate(131deg) brightness(94%) contrast(88%);
 `;
 
-const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleCollapsedChange }) => {
+const Aside = ({
+  image,
+  collapsed,
+  rtl,
+  toggled,
+  handleToggleSidebar,
+  handleCollapsedChange,
+}) => {
   const sessionId = window.sessionStorage.getItem("sessionId");
 
   const navigate = useNavigate();
@@ -106,9 +113,13 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
             </Menu>
           </>
         )}
-      </SidebarHeader >
+      </SidebarHeader>
       <SidebarContent>
         <Menu iconShape="circle">
+          <MenuItem icon={<MdHome />}>
+            Main
+            <NavLink to="/home" />
+          </MenuItem>
           <MenuItem
             icon={<MdFlag />}
             suffix={<span className="badge red">New</span>}
@@ -145,7 +156,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
                 />
               }
               style={{
-                display: "none"
+                display: "none",
               }}
             >
               collapsed
@@ -179,7 +190,7 @@ const Aside = ({ image, collapsed, rtl, toggled, handleToggleSidebar, handleColl
           </a>
         </div>
       </SidebarFooter>
-    </ProSidebar >
+    </ProSidebar>
   );
 };
 
