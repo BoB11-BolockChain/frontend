@@ -3,7 +3,12 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import Switch from "react-switch";
 import {
-  MdPerson, MdSettings, MdFlag, MdAreaChart, MdNotifications
+  MdPerson,
+  MdSettings,
+  MdFlag,
+  MdAreaChart,
+  MdNotifications,
+  MdHome,
 } from "react-icons/md";
 import { GoMarkGithub } from "react-icons/go";
 import {
@@ -19,7 +24,8 @@ const Logo = styled.img`
   padding: 5px;
   width: 100px;
   height: 55px;
-  filter: invert(100%) sepia(6%) saturate(0%) hue-rotate(131deg) brightness(94%) contrast(88%);
+  filter: invert(100%) sepia(6%) saturate(0%) hue-rotate(131deg) brightness(94%)
+    contrast(88%);
 `;
 
 const Aside = ({
