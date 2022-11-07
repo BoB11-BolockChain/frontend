@@ -15,7 +15,6 @@ import SignIn from "src/routes/SignIn";
 import SignUp from "src/routes/SignUp";
 import Training from "src/routes/user/Training";
 import Profile from "src/routes/user/Profile";
-import Training from "src/routes/user/Training";
 import UserRouteLayout from "src/routes/user/UserRouteLayout";
 
 const AppRouter = () => {

@@ -7,6 +7,7 @@ const training_data = [
     {
         "id": "scenario1",
         "system": "Windows",
+        "desc": "windows scenario test입니덩기덩쿵더러러러러러럴커vadvczczczcscczczsczxxzxsxzxsxzsxsz",
         "data": [
             {
                 "title": "chall1",
@@ -28,11 +29,21 @@ const training_data = [
                 "title": "chall5",
                 "score": 200,
                 "desc": "test1vdzsz aedxwAE"
+            }, {
+                "title": "chall11",
+                "score": 200,
+                "desc": "test1vdzsz aeasfsaavawAE"
+            }
+            , {
+                "title": "chall114414112",
+                "score": 200,
+                "desc": "test1vdzsz aeasfsaavawAE"
             }
         ]
     }, {
         "id": "scenario2",
         "system": "Linux",
+        "desc": "Linux scenario test입니덕구",
         "data": [
             {
                 "title": "chall6",
@@ -56,7 +67,7 @@ const training_data = [
 ]
 
 const Training = () => {
-    const [modalState, setModalState] = useState({ isOpen: false, data: {}, system: "" });
+    const [modalState, setModalState] = useState({ isOpen: false, data: {} });
     const [width, setWidth] = useState("");
     useEffect(() => {
         const windowWidth = window.innerWidth;
@@ -77,7 +88,7 @@ const Training = () => {
 
                         <button
                             class="border-[#FA678C]"
-                            onClick={() => setModalState({ isOpen: true, data: d.data, system: d.system })}
+                            onClick={() => setModalState({ isOpen: true, data: d })}
                         >
                             <p className="text-lg">{d.id}</p>
                             <p>{d.system}</p>
