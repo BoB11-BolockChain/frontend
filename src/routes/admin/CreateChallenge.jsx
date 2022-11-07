@@ -94,7 +94,34 @@ const CreateChallenge = () => {
 
   return (
     <>
-      <p className="text-2xl pt-4 pb-4">Create Challenge</p>
+    <div class="Title">
+      <h2>Create Challenge</h2></div>
+    <div class="container">
+    <div class="row">
+          <div class="col-md-12">
+            <div class="wt-box">
+              <div class="box-top">
+                <div class="box-title">
+                  Add attack
+                  <span class="box-subtitle"></span>
+                </div>
+              </div>
+              <div class="box-body">
+              <input
+                  class="form-control inputbox"
+                  placeholder="title"
+                ></input>
+                <div class="forblank-bt"></div>
+                <textarea
+                  class="form-control inputbox"
+                  placeholder="description"
+                ></textarea>
+                 
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
       <div className="p-2 flex flex-col gap-2 rounded-lg border-2 border-grey-300">
         <p>add attack</p>
         <input
@@ -135,6 +162,7 @@ const CreateChallenge = () => {
           ))}
         </div>
       </DragDropContext>
+      
     </>
   );
 };

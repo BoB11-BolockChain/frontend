@@ -24,6 +24,13 @@ h2,
   margin-bottom: 30px;
 }
 
+.Title {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
 .box-top,
 .box-bottom {
   display: flex;
@@ -62,6 +69,9 @@ h2,
   width: 80%;
 }
 
+.forblank-bt {
+  margin-bottom: 4px;
+}
 .forblank {
   margin-right: 4px;
 }

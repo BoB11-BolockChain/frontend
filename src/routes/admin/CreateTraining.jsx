@@ -3,8 +3,8 @@ import CreateChallenge from "src/routes/admin/CreateChallenge";
 
 const CreateTraining = () => {
   return (
+    
     <>
-      <script src="multiselect-dropdown.js"></script>
       <div class="Title">
         <h2>Create Trainging</h2>
       </div>
@@ -20,7 +20,7 @@ const CreateTraining = () => {
                 </div>
               </div>
               <div class="box-body">
-                <div>asdf</div>
+              hi
               </div>
               <div class="box-bottom">
                 <div class="forblank">
@@ -31,9 +31,7 @@ const CreateTraining = () => {
                 </div>
                 <div class="forbtn">
                   {" "}
-                  <button type="button" class="btn btn-primary">
-                    Add
-                  </button>
+                  <button type="button" class="btn btn-primary">Add</button>
                 </div>
               </div>
             </div>
@@ -57,7 +55,7 @@ const CreateTraining = () => {
                   ></input>
                 </div>
                 <div class="forbtn">
-                  {" "}
+                  {/* {" "} */}
                   <button type="button" class="btn btn-primary">
                     Add
                   </button>
@@ -97,7 +95,7 @@ const CreateTraining = () => {
               <div class="box-body">
                 <textarea
                   class="form-control inputbox"
-                  placeholder="title"
+                  placeholder="description"
                 ></textarea>
               </div>
             </div>
@@ -114,6 +112,7 @@ const CreateTraining = () => {
           </div>
         </div>
       </div>
+      <script src="multiselect-dropdown.js"></script>
     </>
   );
 };
