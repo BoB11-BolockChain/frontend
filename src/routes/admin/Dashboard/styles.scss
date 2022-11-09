@@ -1,0 +1,51 @@
+@import "/src/assets/_colors.scss";
+
+.title {
+  font-size: 2rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.x-overflow {
+  overflow-x: auto;
+}
+
+.dashboard-table {
+  width: 100%;
+  text-align: left;
+
+  thead {
+    text-transform: uppercase;
+    background-color: $pdxf-pink;
+  }
+
+  .tritem {
+    border-bottom-width: 2px;
+    border-color: $pdxf-pink;
+    &:hover {
+      background-color: gray;
+    }
+  }
+
+  th,
+  td {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.scenarios {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .item {
+    width: 33%;
+    padding: 1rem;
+    border-width: 2px;
+    border-color: $pdxf-pink;
+    border-radius: 0.5rem;
+  }
+}

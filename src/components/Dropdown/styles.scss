@@ -1,0 +1,26 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.selected-items-display {
+  height: 2rem;
+}
+
+.items {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  input {
+    &[type="checkbox"] {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
+
+.item {
+  width: 12rem;
+  background-color: gray;
+}

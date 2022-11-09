@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import Dropdown from "src/components/Dropdown";
 import CreateChallenge from "src/routes/admin/CreateChallenge";
 
 const CreateTraining = () => {
@@ -40,7 +41,7 @@ const CreateTraining = () => {
           </div>
           <div class="col-md-6">
             <div class="wt-box">
-              <div class="box-top">
+              {/* <div class="box-top">
                 <div class="box-title">
                   VM option
                   <span class="box-subtitle">description</span>
@@ -62,7 +63,9 @@ const CreateTraining = () => {
                     Add
                   </button>
                 </div>
-              </div>
+              </div> */}
+              <p>vm option</p>
+              <Dropdown />
             </div>
           </div>
         </div>

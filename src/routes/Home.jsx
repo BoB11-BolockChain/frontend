@@ -1,3 +1,4 @@
+import Dropdown from "src/components/Dropdown";
 import "src/components/Layout/module.scss";
 import "src/routes/home.scss";
 
@@ -42,6 +43,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <Dropdown />
     </main>
   );
 };
