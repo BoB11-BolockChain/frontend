@@ -6,7 +6,7 @@ const CreateTraining = () => {
     
     <>
       <div class="Title">
-        <h2>Create Trainging</h2>
+        <h2>Create Traing</h2>
       </div>
 
       <div class="container">
@@ -20,13 +20,15 @@ const CreateTraining = () => {
                 </div>
               </div>
               <div class="box-body">
-              hi
+              <select>
+                <option value="1">1</option>
+              </select>
               </div>
               <div class="box-bottom">
                 <div class="forblank">
                   <input
                     class="form-control inputbox"
-                    placeholder="title"
+                    placeholder="write OS version"
                   ></input>
                 </div>
                 <div class="forbtn">
@@ -34,6 +36,7 @@ const CreateTraining = () => {
                   <button type="button" class="btn btn-primary">Add</button>
                 </div>
               </div>
+              {/* <p>ex: Ubuntu 22.04</p> */}
             </div>
           </div>
           <div class="col-md-6">
@@ -51,7 +54,7 @@ const CreateTraining = () => {
                 <div class="forblank">
                   <input
                     class="form-control inputbox"
-                    placeholder="title"
+                    placeholder="vm option"
                   ></input>
                 </div>
                 <div class="forbtn">
@@ -112,7 +115,7 @@ const CreateTraining = () => {
           </div>
         </div>
       </div>
-      <script src="multiselect-dropdown.js"></script>
+     
     </>
   );
 };
