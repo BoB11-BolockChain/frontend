@@ -49,19 +49,19 @@ const TrainingModal = ({ isOpen, setModalState, data, margin }) => {
           (isOpen === true) ?
             <>
               <div class="modal-scenario">
-                <p id="modal_scene_title">{data.id}</p>
+                <p id="modal_scene_title">{data.scene_title}</p>
                 <p id="modal_scene_system">SYSTEM: {data.system}</p>
-                <p id="modal_scene_desc">{data.desc}</p>
+                <p id="modal_scene_desc">{data.scene_desc}</p>
               </div>
               <div class="modal-challenge">
                 <p id="modal_chall_list">Challenge List</p>
                 <div className="flex-auto flex-row flex-wrap justify-between align-items-center p-2">
-                  {chall_data.data.map((d) => (
+                  {chall_data.challenge.map((d) => (
                     <button
-                      className="flex-auto flex-grow-0 justify-center rounded-lg border-2 border-[#FA678C] p-2 m-2"
-                      onClick={() => setChallState({ title: d.title, desc: d.desc, score: d.score, isClick: true })}
+                      class="modal_chall_list_button"
+                      onClick={() => setChallState({ title: d.chall_title, desc: d.chall_desc, score: d.score, isClick: true })}
                     >
-                      <p>{d.title}</p>
+                      <p>{d.chall_title}</p>
                       <p>{d.score}</p>
                     </button>
                   ))}

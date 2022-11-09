@@ -110,6 +110,24 @@ button:focus {
     line-height: 0px;
 }
 
+.modal_chall_list_button {
+    flex: 1 1 auto;
+    flex-grow: 0;
+    justify-content: center;
+    border: 2px solid #4860b0;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    background: hsla(0, 0%, 100%, 0);
+    color: #212e57;
+}
+
+.modal_chall_list_button:hover,
+.modal_chall_list_button:focus {
+    background-color: #4860b0;
+    color: hsl(0, 0%, 100%);
+}
+
 .modal-chall-content {
     border-top: 1px solid #999;
     padding: 10px;
