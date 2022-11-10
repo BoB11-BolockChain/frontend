@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OptionModal from "src/components/OptionModal";
 
 import "./styles.scss";
@@ -8,6 +8,12 @@ const dummy = ["option1", "option2", "option3", "option4"];
 const Dropdown = () => {
   const [opened, setOpened] = useState(false);
   const [selected, setSelected] = useState([]);
+
+  //fetch
+  const [options, setOptions] = useState([]);
+  useEffect(() => {
+    setOptions(dummy);
+  }, []);
 
   const onClick = () => {
     setOpened((prev) => !prev);
@@ -30,36 +36,42 @@ const Dropdown = () => {
     <div className="dropdown">
       <div className="selected-items-display">
         {selected.map((d) => (
-          <span>{d}</span>
+          <span className="selected-item">{d}</span>
         ))}
       </div>
       <div className="multiselect">
-        <button onClick={onClick}>drop</button>
-        <div>--select--</div>
+        <div className="select-head" onClick={onClick}>
+          --select--
+        </div>
         {opened ? (
-          <div>
-            <div className="items">
-              {dummy.map((d) => (
-                <label className="item">
-                  <input type="checkbox" onChange={onCheck} name={d} />
-                  {d}
-                </label>
-              ))}
-              <div className="item">
-                <button
-                  onClick={() => setModalState({ data: {}, isOpen: true })}
-                >
-                  create option
-                </button>
-              </div>
-            </div>
+          <div className="items">
+            {options.map((d) => (
+              <label>
+                <input
+                  type="checkbox"
+                  onChange={onCheck}
+                  name={d}
+                  checked={selected.includes(d)}
+                />
+                {d}
+              </label>
+            ))}
+            <button
+              className="create-button"
+              onClick={() => {
+                setModalState({ data: {}, isOpen: true });
+                setOpened(false);
+              }}
+            >
+              create option
+            </button>
           </div>
         ) : null}
       </div>
       <OptionModal
         isOpen={modalState.isOpen}
         setModalState={setModalState}
-        data=""
+        data={setOptions}
       />
     </div>
   );

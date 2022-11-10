@@ -7,7 +7,7 @@ const CreateTraining = () => {
     <>
       <script src="multiselect-dropdown.js"></script>
       <div class="Title">
-        <h2>Create Trainging</h2>
+        <h2>Create Training</h2>
       </div>
 
       <div class="container">
@@ -64,7 +64,7 @@ const CreateTraining = () => {
                   </button>
                 </div>
               </div> */}
-              <p>vm option</p>
+              <p className="box-title">vm option</p>
               <Dropdown />
             </div>
           </div>

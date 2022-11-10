@@ -5,6 +5,8 @@
 - training management > create scenario and edit scenario combine
 - dashboard remake
 - combine design to scss, remove tailwind and styled component
+- combine modal components
+- divide layout css files and `home.scss` and `sign.scss`
 
 ## env file
 
