@@ -4,10 +4,10 @@ import CreateChallenge from "src/routes/admin/CreateChallenge";
 
 const CreateTraining = () => {
   return (
+    
     <>
-      <script src="multiselect-dropdown.js"></script>
       <div class="Title">
-        <h2>Create Training</h2>
+      <h2>Create Training</h2>
       </div>
 
       <div class="container">
@@ -21,22 +21,23 @@ const CreateTraining = () => {
                 </div>
               </div>
               <div class="box-body">
-                <div>asdf</div>
+              <select>
+                <option value="1">1</option>
+              </select>
               </div>
               <div class="box-bottom">
                 <div class="forblank">
                   <input
                     class="form-control inputbox"
-                    placeholder="title"
+                    placeholder="write OS version"
                   ></input>
                 </div>
                 <div class="forbtn">
                   {" "}
-                  <button type="button" class="btn btn-primary">
-                    Add
-                  </button>
+                  <button type="button" class="btn btn-primary">Add</button>
                 </div>
               </div>
+              {/* <p>ex: Ubuntu 22.04</p> */}
             </div>
           </div>
           <div class="col-md-6">
@@ -54,11 +55,11 @@ const CreateTraining = () => {
                 <div class="forblank">
                   <input
                     class="form-control inputbox"
-                    placeholder="title"
+                    placeholder="vm option"
                   ></input>
                 </div>
                 <div class="forbtn">
-                  {" "}
+                  {/* {" "} */}
                   <button type="button" class="btn btn-primary">
                     Add
                   </button>
@@ -100,7 +101,7 @@ const CreateTraining = () => {
               <div class="box-body">
                 <textarea
                   class="form-control inputbox"
-                  placeholder="title"
+                  placeholder="description"
                 ></textarea>
               </div>
             </div>
@@ -117,6 +118,7 @@ const CreateTraining = () => {
           </div>
         </div>
       </div>
+     
     </>
   );
 };
