@@ -1,20 +1,20 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "src/components/Layout/Layout";
-import TrainingManagement from "src/routes/admin/TrainingManagement";
-import CreateTraining from "src/routes/admin/CreateTraining";
 import AdminRouteLayout from "src/routes/admin/AdminRouteLayout";
+import CreateTraining from "src/routes/admin/CreateTraining";
 import Dashboard from "src/routes/admin/Dashboard";
 import DashboardById from "src/routes/admin/DashboardById";
 import CreateVM from "src/routes/admin/Create_VM";
 import HomepageSetting from "src/routes/admin/HomepageSetting";
+import TrainingManagement from "src/routes/admin/TrainingManagement";
 import Home from "src/routes/Home";
 import NotFound from "src/routes/NotFound";
 import Notifications from "src/routes/Notifications";
 import Scoreboard from "src/routes/Scoreboard";
 import SignIn from "src/routes/SignIn";
 import SignUp from "src/routes/SignUp";
-import Training from "src/routes/user/Training";
 import Profile from "src/routes/user/Profile";
+import Training from "src/routes/user/Training";
 import UserRouteLayout from "src/routes/user/UserRouteLayout";
 
 const AppRouter = () => {
@@ -32,6 +32,7 @@ const AppRouter = () => {
           <Route path="user" element={<UserRouteLayout redirectTo="/signin" />}>
             <Route path="training" element={<Training />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="Training" element={<Training />} />
           </Route>
 
           <Route
@@ -48,7 +49,8 @@ const AppRouter = () => {
 
             <Route path="dashboard">
               <Route index element={<Dashboard />} />
-              <Route path=":id" element={<DashboardById />} />
+              {/* <Route path=":id" element={<DashboardById />} /> */}
+              <Route path=":userId/:scenarioId" element={<Dashboard />} />
             </Route>
           </Route>
 
