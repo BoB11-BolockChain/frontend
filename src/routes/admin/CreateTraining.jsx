@@ -28,13 +28,11 @@ const CreateTraining = () => {
                   ></input>
                 </div>
                 <div class="forbtn">
-                  {" "}
                   <button type="button" class="btn btn-primary">
                     Add
                   </button>
                 </div>
               </div>
-              {/* <p>ex: Ubuntu 22.04</p> */}
             </div>
           </div>
           <div class="col-md-6">

@@ -3,6 +3,7 @@ import Layout from "src/components/Layout/Layout";
 import AdminRouteLayout from "src/routes/admin/AdminRouteLayout";
 import CreateTraining from "src/routes/admin/CreateTraining";
 import Dashboard from "src/routes/admin/Dashboard";
+import DashboardByUser from "src/routes/admin/Dashboard/DashboardByUser";
 import EditTraining from "src/routes/admin/EditTraining";
 import HomepageSetting from "src/routes/admin/HomepageSetting";
 import TrainingManagement from "src/routes/admin/TrainingManagement";
@@ -48,8 +49,7 @@ const AppRouter = () => {
 
             <Route path="dashboard">
               <Route index element={<Dashboard />} />
-              {/* <Route path=":id" element={<DashboardById />} /> */}
-              <Route path=":userId/:scenarioId" element={<Dashboard />} />
+              <Route path=":userId" element={<DashboardByUser />} />
             </Route>
           </Route>
 

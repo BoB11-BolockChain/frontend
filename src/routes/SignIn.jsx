@@ -32,7 +32,7 @@ const SignIn = () => {
     });
     const js = await res.json();
     console.log(js);
-    window.sessionStorage.setItem("sessionId", js.sessionId);
+    window.localStorage.setItem("sessionId", js.sessionId);
     navigate("/admin");
   };
 

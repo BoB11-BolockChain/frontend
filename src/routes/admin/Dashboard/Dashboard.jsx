@@ -48,12 +48,6 @@ const Dashboard = () => {
           </tbody>
         </table>
       </div>
-      <div className="scenarios">
-        <div className="item">scenario 1</div>
-        <div className="item">scenario 1</div>
-        <div className="item">scenario 1</div>
-        <div className="item">scenario 1</div>
-      </div>
     </>
   );
 };
