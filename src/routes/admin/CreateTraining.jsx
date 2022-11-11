@@ -4,10 +4,9 @@ import CreateChallenge from "src/routes/admin/CreateChallenge";
 
 const CreateTraining = () => {
   return (
-    
     <>
       <div class="Title">
-      <h2>Create Training</h2>
+        <h2>Create Training</h2>
       </div>
 
       <div class="container">
@@ -20,11 +19,7 @@ const CreateTraining = () => {
                   <span class="box-subtitle">description</span>
                 </div>
               </div>
-              <div class="box-body">
-              <select>
-                <option value="1">1</option>
-              </select>
-              </div>
+              <div class="box-body"></div>
               <div class="box-bottom">
                 <div class="forblank">
                   <input
@@ -34,7 +29,9 @@ const CreateTraining = () => {
                 </div>
                 <div class="forbtn">
                   {" "}
-                  <button type="button" class="btn btn-primary">Add</button>
+                  <button type="button" class="btn btn-primary">
+                    Add
+                  </button>
                 </div>
               </div>
               {/* <p>ex: Ubuntu 22.04</p> */}
@@ -42,29 +39,6 @@ const CreateTraining = () => {
           </div>
           <div class="col-md-6">
             <div class="wt-box">
-              {/* <div class="box-top">
-                <div class="box-title">
-                  VM option
-                  <span class="box-subtitle">description</span>
-                </div>
-              </div>
-              <div class="box-body">
-                <div>select</div>
-              </div>
-              <div class="box-bottom">
-                <div class="forblank">
-                  <input
-                    class="form-control inputbox"
-                    placeholder="vm option"
-                  ></input>
-                </div>
-                <div class="forbtn">
-                  {/* {" "} */}
-                  <button type="button" class="btn btn-primary">
-                    Add
-                  </button>
-                </div>
-              </div> */}
               <p className="box-title">vm option</p>
               <Dropdown />
             </div>
@@ -118,7 +92,6 @@ const CreateTraining = () => {
           </div>
         </div>
       </div>
-     
     </>
   );
 };
