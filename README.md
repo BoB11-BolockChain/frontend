@@ -1,5 +1,13 @@
 # PDxF frontend
 
+## ToDo
+
+- training management > create scenario and edit scenario combine
+- dashboard remake
+- combine design to scss, remove tailwind and styled component
+- combine modal components
+- divide layout css files and `home.scss` and `sign.scss`
+
 ## env file
 
 .env.development -> used in `npm start`
@@ -41,3 +49,9 @@ You shouldn't use log.Fatal in the server's read loop, as that calls os.Exit
 ### optimizable parts
 
 createchallenge assign data to each droppable, not route component
+
+### CSS, HTML, REACT
+
+Link -> just link
+
+NavLink -> highlight with activeclassname
