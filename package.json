@@ -26,6 +26,8 @@
     "font-awesome-icons": "^1.6.0",
     "generate-avatar": "^1.4.10",
     "jquery": "^3.6.1",
+    "list-files": "^1.1.4",
+    "list-react-files": "^0.2.0",
     "lorem-ipsum": "^2.0.8",
     "mdb-react-ui-kit": "^4.2.0",
     "react": "^18.2.0",

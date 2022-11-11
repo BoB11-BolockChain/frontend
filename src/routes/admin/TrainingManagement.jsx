@@ -37,11 +37,11 @@ const TrainingManagement = () => {
           <div class="col-md-6">
             <div class="wt-box">
               <div class="box-top">
-                <div class="box-title">Edit Your Training</div>
+                <div class="box-title">Create VM</div>
               </div>
               <div class="box-bottom">
                 <div class="forbtn">
-                  <NavLink to="/admin/edittraining">
+                  <NavLink to="/admin/createvm">
                     <button type="button" class="btn btn-primary">
                       Go to
                     </button>

@@ -5,7 +5,7 @@ import CreateTraining from "src/routes/admin/CreateTraining";
 import AdminRouteLayout from "src/routes/admin/AdminRouteLayout";
 import Dashboard from "src/routes/admin/Dashboard";
 import DashboardById from "src/routes/admin/DashboardById";
-import EditTraining from "src/routes/admin/EditTraining";
+import CreateVM from "src/routes/admin/Create_VM";
 import HomepageSetting from "src/routes/admin/HomepageSetting";
 import Home from "src/routes/Home";
 import NotFound from "src/routes/NotFound";
@@ -40,10 +40,10 @@ const AppRouter = () => {
           >
             <Route index element={<Dashboard />} />
             <Route path="homepagesetting" element={<HomepageSetting />} />
-            <Route path="edittraining" element={<EditTraining />} />
+            <Route path="createvm" element={<CreateVM />} />
             <Route path="createtraining" element={<CreateTraining />} />
             <Route path="trainingmanagement" element={<TrainingManagement />}>
-              <Route path=":id" element={<EditTraining />} />
+              <Route path=":id" element={<CreateVM />} />
             </Route>
 
             <Route path="dashboard">
