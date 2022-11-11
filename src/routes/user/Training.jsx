@@ -25,7 +25,7 @@ const Training = () => {
             }
         }
         fetchData();
-    }, [data, width])
+    }, [width])
 
     return (
         <>

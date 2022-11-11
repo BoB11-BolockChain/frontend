@@ -56,7 +56,7 @@ button:focus {
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 #modal_scene_button {
@@ -87,7 +87,7 @@ button:focus {
     border-radius: 5px;
 }
 
-#modal_chall_list {
+.modal-chall-divider {
     width: 100%;
     display: flex;
     flex-basis: 100%;
@@ -98,8 +98,8 @@ button:focus {
     justify-content: center;
 }
 
-#modal_chall_list::before,
-#modal_chall_list::after {
+.modal-chall-divider::before,
+.modal-chall-divider::after {
     content: "";
     flex-basis: 30%;
     margin: 0px 16px;
@@ -140,27 +140,80 @@ button:focus {
 
 #modal_chall_title {
     text-align: left;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 15px;
 }
 
 #modal_chall_score {
     text-align: right;
+    font-size: 14px;
+}
+
+#modal_chall_desc {
+    text-align: left;
+    font-size: 13px;
 }
 
 #modal_chall_button {
     font-weight: 600;
-    width: 100%;
+    width: 95%;
     padding: 10px;
     margin-top: 10px;
     text-align: center;
     background: hsl(0, 0%, 100%);
     border: 2px solid #4860b0;
     border-radius: 5px;
-    color: #4860b0;
+    color: hsl(226, 42%, 49%);
+}
+
+.modal-chall-flag {
+    padding: 10px 10px 0px 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-chall-flag input {
+    font-size: 14px;
+    background: hsl(0, 0%, 100%);
+    padding: 10px;
+    border: 2px solid #4860b0;
+    border-radius: 0px;
+    flex-grow: 2;
+}
+
+.modal-chall-flag input:hover,
+.modal-chall-flag input:focus {
+    border: 2px solid #4860b0;
+    border-radius: 0px;
+    outline: none;
+}
+
+.modal-chall-flag button {
+    padding: 10px;
+    background: hsl(226, 42%, 49%);
+    color: hsl(0, 0%, 100%);
 }
 
 #modal_chall_button:hover,
 #modal_chall_button:focus {
     background-color: #4860b0;
     color: hsl(0, 0%, 100%);
+}
+
+.modal-chall-check {
+    width: 100%;
+    padding: 0px 10px 0px 10px;
+    text-align: center;
+}
+
+.modal-chall-check p {
+    width: 100%;
+    padding: 8px;
+    color: hsl(0, 0%, 100%);
+}
+
+.modal-chall-connect {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
 }
