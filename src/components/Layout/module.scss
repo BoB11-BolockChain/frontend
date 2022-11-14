@@ -24,10 +24,21 @@ h2,
   margin-bottom: 30px;
 }
 
+.Title {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
 .box-top,
 .box-bottom {
   display: flex;
   margin-bottom: 3px;
+}
+
+.box-bottom {
+  justify-content: space-between;
 }
 
 .flex {
@@ -59,9 +70,15 @@ h2,
 
 .inputbox {
   border: 0.8px solid #fa678c !important;
-  width: 80%;
+  width: 100% !important; 
+  height: 100%;
+  margin-top: 4px;
+  margin-bottom : 5px;
 }
 
+.forblank-bt {
+  margin-bottom: 1px;
+}
 .forblank {
   margin-right: 4px;
 }
@@ -73,6 +90,14 @@ h2,
 .btn-primary {
   background-color: #fa678c !important;
   border: #fa678c !important;
+}
+
+.attbtn {
+  margin: auto 0 0 auto;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  line-height: 100% !important;
 }
 
 .box-subtitle {
