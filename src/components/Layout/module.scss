@@ -273,7 +273,7 @@ body {
     //textTransform: "uppercase";
     overflow: "hidden";
 
-    > span {
+    >span {
       margin-left: 10px;
     }
   }
@@ -291,7 +291,7 @@ body {
     .block {
       direction: rtl;
 
-      > span {
+      >span {
         margin-left: 0;
         margin-right: 10px;
       }
@@ -350,4 +350,13 @@ body {
     color: #000000;
     background: #e1c970;
   }
+}
+
+.footer-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-icon a {
+  padding: 7px;
 }

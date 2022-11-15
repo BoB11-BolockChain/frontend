@@ -26,7 +26,7 @@ const HomepageSetting = () => {
     };
 
     fetchData();
-  }, [width]);
+  }, [data, width]);
 
   return (
     <>
