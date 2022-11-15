@@ -6,6 +6,7 @@ import Dashboard from "src/routes/admin/Dashboard";
 import EditTraining from "src/routes/admin/EditTraining";
 import HomepageSetting from "src/routes/admin/HomepageSetting";
 import TrainingManagement from "src/routes/admin/TrainingManagement";
+import Training from "src/routes/user/Training";
 import Home from "src/routes/Home";
 import NotFound from "src/routes/NotFound";
 import Notifications from "src/routes/Notifications";

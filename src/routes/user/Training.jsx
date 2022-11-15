@@ -7,10 +7,21 @@ const Training = () => {
     const [dataLoaded, setDataLoaded] = useState(false);
     const [data, setData] = useState([]);
     const [width, setWidth] = useState("");
+    const [solveCheck, setSolveCheck] = useState(false);
 
     useEffect(() => {
+        const sessionId = window.sessionStorage.getItem("sessionId");
         const fetchData = async () => {
-            const res = await fetch("http://www.pdxf.tk:8000/training");
+            const res = await fetch("http://www.pdxf.tk:8000/training", {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    id: sessionId,
+                }),
+            });
             if (res.ok) {
                 const js = await res.json();
                 // console.log(js.scenario);
@@ -25,7 +36,7 @@ const Training = () => {
             }
         }
         fetchData();
-    }, [width])
+    }, [width, solveCheck])
 
     return (
         <>
@@ -57,6 +68,7 @@ const Training = () => {
                 data={modalState.data}
                 margin={width}
                 system={modalState.system}
+                solveCheck={setSolveCheck}
             />
         </>
     );

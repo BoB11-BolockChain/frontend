@@ -110,7 +110,7 @@ button:focus {
     line-height: 0px;
 }
 
-.modal_chall_list_button {
+.modal-chall-list-button {
     flex: 1 1 auto;
     flex-grow: 0;
     justify-content: center;
@@ -122,11 +122,25 @@ button:focus {
     color: #212e57;
 }
 
-.modal_chall_list_button:hover,
-.modal_chall_list_button:focus {
+.modal-chall-list-button:hover,
+.modal-chall-list-button:focus {
     background-color: #4860b0;
     color: hsl(0, 0%, 100%);
 }
+
+.modal_chall_list_button-solved {
+    flex: 1 1 auto;
+    flex-grow: 0;
+    justify-content: center;
+    border: 2px solid #2ead7f;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    background: hsla(0, 0%, 100%, 0);
+    color: #e4e9f8;
+}
+
+
 
 .modal-chall-content {
     border-top: 1px solid #999;

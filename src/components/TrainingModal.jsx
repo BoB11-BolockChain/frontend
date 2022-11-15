@@ -2,7 +2,7 @@ import { useState } from "react";
 import ReactModal from "react-modal";
 // import VmCaller from "src/components/VmCaller";
 
-const TrainingModal = ({ isOpen, setModalState, data, margin }) => {
+const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
   const [challState, setChallState] = useState({ id: 0, title: "", desc: "", score: 0, sequence: 0, isClick: false });
   const [state, setState] = useState({ flag: "" });
   const [solve, setSolve] = useState({ check: "", isClick: false })
@@ -37,34 +37,17 @@ const TrainingModal = ({ isOpen, setModalState, data, margin }) => {
   const challCheck = (check) => {
     switch (check) {
       case 'Solve a Challenge':
-        return <p style={{ background: '#4caf50' }}>Solve a Challenge</p>
+        solveCheck(true);
+        window.location.reload();
+        return (
+          <p style={{ background: '#4caf50' }}>Solve a Challenge</p>
+        )
       case 'Aleady Solved':
         return <p style={{ background: '#4860b0' }}>Aleady Solved</p>
       default:
         return <p style={{ background: '#e53935' }}>False</p>
     }
   }
-
-  const challengeState = async (challid, challsequence) => {
-    const sessionId = window.sessionStorage.getItem("sessionId");
-    const res = await fetch("http://www.pdxf.tk:8000/trainingcheck", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: sessionId,
-        chall_id: challid,
-        chall_sequence: challsequence
-      }),
-    });
-    const js = await res.json();
-    console.log(js);
-    console.log(js.view_state);
-    return [js.view_state, js.solve_state];
-  }
-
   return (
     <ReactModal
       ariaHideApp={false}
@@ -118,30 +101,24 @@ const TrainingModal = ({ isOpen, setModalState, data, margin }) => {
                 <p class="modal-chall-divider">Challenge List</p>
                 <div className="flex-auto flex-row flex-wrap justify-between align-items-center p-2">
                   {chall_data.challenge.map((d) => {
-                    challengeState(d.chall_id, d.sequence)
-                    // const [a, b] = await challengeState(d.chall_id, d.sequence)
-                    // console.log(a);
-                    // console.log(b);
-                    // let border;
-                    // let display;
-                    // if (view_state === "False") {
-                    //   display = "none";
-                    // } else {
-                    //   display = "";
-                    // }
-                    // if (solve_state === "True") {
-                    //   border = "2px solid #4caf50";
-                    // } else {
-                    //   border = "2px solid #4860b0";
-                    // }
+                    let solved_check_style = {};
+                    if (d.solved === "True") {
+                      solved_check_style = {
+                        border: "2px solid #2ead7f",
+                        background: "hsl(158, 58%, 43%)",
+                        color: "hsl(0, 0%, 100%)",
+                      };
+                    } else {
+                      solved_check_style = {
+                        border: "2px solid #4860b0",
+                        background: "hsl(226, 42%, 49%, 0)",
+                        color: "hsl(0, 0%, 0%)",
+                      };
+                    }
                     return (
-                      // (view_state === "True") ?
-                      //   (solve_state === "False") ?
-
-                      //   :
-                      // : {const display ="none"}
                       <button
-                        class="modal_chall_list_button"
+                        class="modal-chall-list-button"
+                        style={solved_check_style}
                         onClick={() => {
                           setChallState({ id: d.chall_id, title: d.chall_title, desc: d.chall_desc, score: d.score, sequence: d.sequence, isClick: true })
                           setSolve({ isClick: false })
