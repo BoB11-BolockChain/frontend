@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
-import TableTr from "src/components/TableTr"
-import "src/components/Layout/Board.scss"
+import { useEffect, useState } from "react";
 import BoardModal from "src/components/BoardModal";
+import "src/components/Layout/Board.scss";
+import TBody from "src/components/TBody";
 
 const HomepageSetting = () => {
   const [width, setWidth] = useState("");
-  const [modalState, setModalState] = useState({ data: {}, isOpen: false, ceState: "" });
+  const [modalState, setModalState] = useState({
+    data: {},
+    isOpen: false,
+    ceState: "",
+  });
   const [dataLoaded, setDataLoaded] = useState(false);
   const [data, setData] = useState([]);
   const admin = 1;
@@ -46,9 +50,20 @@ const HomepageSetting = () => {
                 <th>Edit</th>
                 <th>Remove</th>
               </thead>
-              <TableTr data={data} setModalState={setModalState} handleRemove={handleRemove} admin={admin} />
+              <TBody
+                data={data}
+                setModalState={setModalState}
+                handleRemove={handleRemove}
+                admin={admin}
+              />
             </table>
-            <button onClick={() => setModalState({ data: data, isOpen: true, ceState: "create" })}>글쓰기</button>
+            <button
+              onClick={() =>
+                setModalState({ data: data, isOpen: true, ceState: "create" })
+              }
+            >
+              글쓰기
+            </button>
           </>
         ) : (
           <p>loading</p>
@@ -73,12 +88,10 @@ const handleRemove = (removeData) => {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(
-        {
-          num: removeData.num,
-          crud: "Remove"
-        }
-      ),
+      body: JSON.stringify({
+        num: removeData.num,
+        crud: "Remove",
+      }),
     });
     if (res.ok) {
       window.location.reload();
@@ -86,6 +99,6 @@ const handleRemove = (removeData) => {
   };
 
   fetchData();
-}
+};
 
 export default HomepageSetting;

@@ -14,24 +14,25 @@ const dummy = [
 const DashboardByUser = () => {
   const { userId } = useParams();
   const [modalState, setModalState] = useState({ data: {}, isOpen: false });
-  const onClick = () => {
-    setModalState({ data: {}, isOpen: true });
+  const openModal = (training) => {
+    setModalState({ data: { training }, isOpen: true });
   };
 
   return (
     <>
-      <p className="title">{userId}</p>
+      <p className="title">dashboard of {userId}</p>
       <div className="scenarios">
         {dummy.map((d) => (
           <div className="item">
             <p>{d}</p>
-            <button onClick={onClick}>go</button>
+            <button onClick={() => openModal(d)}>go</button>
           </div>
         ))}
       </div>
       <DashboardModal
         isOpen={modalState.isOpen}
         setModalState={setModalState}
+        data={modalState.data}
       />
     </>
   );
