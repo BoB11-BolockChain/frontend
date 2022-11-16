@@ -7,6 +7,7 @@ import EditChallenge from "src/routes/admin/EditChallenge";
 import EditTraining from "src/routes/admin/EditTraining";
 import HomepageSetting from "src/routes/admin/HomepageSetting";
 import ManageTraining from "src/routes/admin/ManageTraining";
+import Training from "src/routes/user/Training";
 import Home from "src/routes/Home";
 import NotFound from "src/routes/NotFound";
 import Notifications from "src/routes/Notifications";
@@ -14,7 +15,6 @@ import Scoreboard from "src/routes/Scoreboard";
 import SignIn from "src/routes/SignIn";
 import SignUp from "src/routes/SignUp";
 import Profile from "src/routes/user/Profile";
-import Training from "src/routes/user/Training";
 import UserRouteLayout from "src/routes/user/UserRouteLayout";
 
 const AppRouter = () => {

@@ -2,69 +2,41 @@ import { useState, useEffect } from "react";
 import TrainingModal from "../../components/TrainingModal";
 import "./training.scss";
 
-
-const training_data = [
-    {
-        "id": "scenario1",
-        "system": "Windows",
-        "data": [
-            {
-                "title": "chall1",
-                "score": 100,
-                "desc": "test1"
-            }, {
-                "title": "chall2",
-                "score": 50,
-                "desc": "test12"
-            }, {
-                "title": "chall3",
-                "score": 150,
-                "desc": "test134"
-            }, {
-                "title": "chall4",
-                "score": 50,
-                "desc": "test12343511"
-            }, {
-                "title": "chall5",
-                "score": 200,
-                "desc": "test1vdzsz aedxwAE"
-            }
-        ]
-    }, {
-        "id": "scenario2",
-        "system": "Linux",
-        "data": [
-            {
-                "title": "chall6",
-                "score": 120,
-                "desc": "testsacas1"
-            }, {
-                "title": "chall7",
-                "score": 30,
-                "desc": "tscaasest12"
-            }, {
-                "title": "chall8",
-                "score": 110,
-                "desc": "tessacat134"
-            }, {
-                "title": "chall9",
-                "score": 40,
-                "desc": "test1xz2343511"
-            }
-        ]
-    }
-]
-
 const Training = () => {
-    const [modalState, setModalState] = useState({ isOpen: false, data: {}, system: "" });
+    const [modalState, setModalState] = useState({ isOpen: false, data: {} });
+    const [dataLoaded, setDataLoaded] = useState(false);
+    const [data, setData] = useState([]);
     const [width, setWidth] = useState("");
+    const [solveCheck, setSolveCheck] = useState(false);
+
     useEffect(() => {
-        const windowWidth = window.innerWidth;
-        setWidth("270px");
-        if (windowWidth < 768) {
-            setWidth("80px");
+        const sessionId = window.sessionStorage.getItem("sessionId");
+        const fetchData = async () => {
+            const res = await fetch("http://www.pdxf.tk:8000/training", {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    id: sessionId,
+                }),
+            });
+            if (res.ok) {
+                const js = await res.json();
+                // console.log(js.scenario);
+                const windowWidth = window.innerWidth;
+                setData(js.scenario);
+                setDataLoaded(true);
+                console.log(data);
+                setWidth("270px");
+                if (windowWidth < 768) {
+                    setWidth("80px");
+                }
+            }
         }
-    }, [width])
+        fetchData();
+    }, [width, solveCheck])
 
     return (
         <>
@@ -72,18 +44,22 @@ const Training = () => {
                 <h1 className="h2 fw-bold my-4">Training</h1>
             </header>
             <div class="scenario-list">
-                {training_data.map((d) => (
-                    <>
+                {dataLoaded ? (
+                    data.map((d) => (
+                        <>
 
-                        <button
-                            class="border-[#FA678C]"
-                            onClick={() => setModalState({ isOpen: true, data: d.data, system: d.system })}
-                        >
-                            <p className="text-lg">{d.id}</p>
-                            <p>{d.system}</p>
-                        </button>
-                    </>
-                ))}
+                            <button
+                                class="border-[#FA678C]"
+                                onClick={() => setModalState({ isOpen: true, data: d })}
+                            >
+                                <p className="text-lg">{d.scene_title}</p>
+                                <p>{d.system}</p>
+                            </button>
+                        </>
+                    ))
+                ) : (
+                    <p>loading</p>
+                )}
             </div>
             <TrainingModal
                 modalState={modalState}
@@ -92,6 +68,7 @@ const Training = () => {
                 data={modalState.data}
                 margin={width}
                 system={modalState.system}
+                solveCheck={setSolveCheck}
             />
         </>
     );
