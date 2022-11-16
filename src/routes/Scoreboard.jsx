@@ -1,112 +1,113 @@
-import { PureComponent } from "react";
+import { PureComponent, useEffect, useState } from "react";
 import {
   CartesianGrid,
   Legend,
   Line,
   LineChart,
-  PolarAngleAxis,
-  PolarGrid,
-  PolarRadiusAxis, //line chart import
-  Radar,
-  RadarChart,
+  // PolarAngleAxis,
+  // PolarGrid,
+  // PolarRadiusAxis, //line chart import
+  // Radar,
+  // RadarChart,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
+import BoardModal from "src/components/BoardModal";
+import "src/components/Layout/Board.scss";
+import Loading from "src/components/Loading";
+import ScoreTr from "src/components/ScoreTr";
 
 const line_data = [
   {
-    name: "1 Day",
-    B_Team: 4000,
-    A_Team: 2400,
+    name: "14:00",
+    C : 0,
+    B_Team: 0,
+    A_Team: 0,
     amt: 2400,
   },
   {
-    name: "2 Day",
-    B_Team: 3000,
-    A_Team: 1398,
+    name: "15:00",
+    C : 0,
+    B_Team: 800,
+    A_Team: 1300,
     amt: 2210,
   },
   {
-    name: "3 Day",
-    B_Team: 2000,
-    A_Team: 9800,
+    name: "16:00",
+    C : 0,
+    B_Team: 2100,
+    A_Team: 1900,
     amt: 2290,
   },
   {
-    name: "4 Day",
-    B_Team: 2780,
-    A_Team: 3908,
+    name: "17:00",
+    C : 0,
+    B_Team: 3000,
+    A_Team: 2900,
     amt: 2000,
   },
   {
-    name: "5 Day",
-    B_Team: 1890,
-    A_Team: 4800,
+    name: "18:00",
+    C : 1000,
+    B_Team: 3000,
+    A_Team: 3800,
     amt: 2181,
   },
   {
-    name: "6 Day",
-    B_Team: 2390,
-    A_Team: 3800,
+    name: "19:00",
+    C : 1500,
+    B_Team: 3500,
+    A_Team: 4400,
     amt: 2500,
   },
   {
-    name: "7 Day",
-    B_Team: 3490,
-    A_Team: 4300,
+    name: "20:00",
+    C : 2000,
+    B_Team: 3800,
+    A_Team: 4400,
     amt: 2100,
   },
 ];
+const Scoreboard = () => {
+  console.log("sdds");
+  const [width, setWidth] = useState("");
+  const [modalState, setModalState] = useState({ data: {}, isOpen: false });
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("http://www.pdxf.tk:3000/scorelist");
+      if (res.ok) {
+        console.log("asasa")
+        const js = await res.json();
+        const windowWidth = window.innerWidth;
+        setData(js.data);
+        setDataLoaded(true);
+        console.log(js);
+        setWidth("270px");
+        if (windowWidth < 768) {
+          setWidth("80px");
+        }
+      }
+    };
 
-const redar_data = [
-  {
-    subject: "Forensics",
-    A: 150,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: "Web",
-    A: 130,
-    B: 110,
-    fullMark: 150,
-  },
-  {
-    subject: "Misc",
-    A: 110,
-    B: 130,
-    fullMark: 150,
-  },
-  {
-    subject: "Window",
-    A: 120,
-    B: 40,
-    fullMark: 150,
-  },
-  {
-    subject: "Linux",
-    A: 120,
-    B: 90,
-    fullMark: 150,
-  },
-  {
-    subject: "PDxF",
-    A: 120,
-    B: 120,
-    fullMark: 150,
-  },
-];
-class Scoreboard extends PureComponent {
-  render() {
-    return (
-      <>
-        <header>
+    fetchData();
+  }, [width]);
+ return (
+ <>
+  <BoardModal
+        isOpen={modalState.isOpen}
+        setModalState={setModalState}
+        data={modalState.data}
+        margin={width}
+      />
+      <header>
           <h1 className="h2 fw-bold my-4">ScoreBoard</h1>
         </header>
         <LineChart
-          width={500}
-          height={300}
+          width={800}
+          height={350}
           data={line_data}
           margin={{
             top: 5,
@@ -127,42 +128,24 @@ class Scoreboard extends PureComponent {
             activeDot={{ r: 8 }}
           />
           <Line type="monotone" dataKey="B_Team" stroke="#82ca9d" />
+          <Line type="monotone" dataKey="C" stroke="#2e2e77" />
         </LineChart>
-
-        <RadarChart
-          cx={250}
-          cy={250}
-          outerRadius={150}
-          width={500}
-          height={500}
-          data={redar_data}
-        >
-          <PolarGrid stroke="black" />
-          <PolarAngleAxis dataKey="subject" />
-          <PolarRadiusAxis angle={30} domain={[0, 150]} />
-
-          <Radar
-            name="H4uN"
-            dataKey="A"
-            stroke="#8884d8"
-            fill="#8884d8"
-            fillOpacity={0.6}
-          />
-
-          <Radar
-            name="rbap"
-            dataKey="B"
-            stroke="#82ca9d"
-            fill="#82ca9d"
-            fillOpacity={0.6}
-          />
-
-          <Legend wrapperStyle={{ top: 30, left: 10, fontSize: 20 }} />
-          <Tooltip />
-        </RadarChart>
-      </>
-    );
-  }
-}
+  <div class="container">
+  {dataLoaded ? (
+    <table>
+      <thead>
+        <th width="10%">No.</th>
+        <th width="20%">User</th>
+        <th width="40%">Score</th>
+      </thead>
+      <ScoreTr data={data} setModalState={setModalState} />
+    </table>
+  ) : ( 
+     <Loading /> 
+  )} 
+</div>
+</>
+ )
+};
 
 export default Scoreboard;

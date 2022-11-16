@@ -1,0 +1,33 @@
+.items {
+  z-index: 1;
+  background-color: skyblue;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-width: 0px 1px 1px 1px;
+  // width: calc(100% - 350px);
+
+  input {
+    &[type="checkbox"] {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+
+.select-head {
+  border-style: solid;
+  border-width: 2px;
+}
+
+.create-button {
+  justify-self: center;
+}
+
+.selected-item {
+  margin: 0 1px 0 1px;
+  padding: 0 1px 0 1px;
+  background-color: aqua;
+  border-radius: 0.5rem;
+}

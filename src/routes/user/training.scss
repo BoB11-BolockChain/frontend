@@ -1,0 +1,233 @@
+.scenario-list {
+    display: contents;
+    margin: 20px;
+}
+
+.scenario-list button {
+    padding: 10px;
+    margin: 10px;
+    background: hsla(0, 0%, 100%, 0.55);
+    text-align: left;
+    color: rgba(24, 30, 52, 0.9);
+    font-size: 14px;
+    // border: 1px solid #fa678c;
+    border-bottom: 2px solid #fa678c;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.scenario-list button:hover,
+button:focus {
+    background: #fa678c;
+    border-top: 2px solid #943d52;
+    color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.modal-item {
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: left;
+}
+
+.modal-scenario {
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+#modal_scene_title {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#modal_scene_system {
+    width: 100%;
+    font-size: 12px;
+    border-bottom: 1px solid #888;
+}
+
+#modal_scene_desc {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    font-size: 14px;
+}
+
+#modal_scene_button {
+    font-weight: 600;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    color: hsl(345, 94%, 69%);
+    background: hsl(0, 0%, 100%);
+    border: 2px solid hsl(345, 94%, 69%);
+    border-radius: 5px;
+}
+
+#modal_scene_button:hover,
+#modal_scene_button:focus {
+    color: hsl(0, 0%, 100%);
+    background: hsl(345, 94%, 69%);
+    border: 2px solid hsl(345, 94%, 69%);
+}
+
+
+
+.modal-challenge {
+    padding: 10px;
+    width: 100%;
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.modal-chall-divider {
+    width: 100%;
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 15px;
+    font-weight: 600;
+    justify-content: center;
+}
+
+.modal-chall-divider::before,
+.modal-chall-divider::after {
+    content: "";
+    flex-basis: 30%;
+    margin: 0px 16px;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+}
+
+.modal-chall-list-button {
+    flex: 1 1 auto;
+    flex-grow: 0;
+    justify-content: center;
+    border: 2px solid #4860b0;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    background: hsla(0, 0%, 100%, 0);
+    color: #212e57;
+}
+
+.modal-chall-list-button:hover,
+.modal-chall-list-button:focus {
+    background-color: #4860b0;
+    color: hsl(0, 0%, 100%);
+}
+
+.modal_chall_list_button-solved {
+    flex: 1 1 auto;
+    flex-grow: 0;
+    justify-content: center;
+    border: 2px solid #2ead7f;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    background: hsla(0, 0%, 100%, 0);
+    color: #e4e9f8;
+}
+
+
+
+.modal-chall-content {
+    border-top: 1px solid #999;
+    padding: 10px;
+    width: 100%;
+}
+
+.modal-chall-content table {
+    width: 100%;
+}
+
+#modal_chall_title {
+    text-align: left;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+#modal_chall_score {
+    text-align: right;
+    font-size: 14px;
+}
+
+#modal_chall_desc {
+    text-align: left;
+    font-size: 13px;
+}
+
+#modal_chall_button {
+    font-weight: 600;
+    width: 95%;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    background: hsl(0, 0%, 100%);
+    border: 2px solid #4860b0;
+    border-radius: 5px;
+    color: hsl(226, 42%, 49%);
+}
+
+.modal-chall-flag {
+    padding: 10px 10px 0px 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-chall-flag input {
+    font-size: 14px;
+    background: hsl(0, 0%, 100%);
+    padding: 10px;
+    border: 2px solid #4860b0;
+    border-radius: 0px;
+    flex-grow: 2;
+}
+
+.modal-chall-flag input:hover,
+.modal-chall-flag input:focus {
+    border: 2px solid #4860b0;
+    border-radius: 0px;
+    outline: none;
+}
+
+.modal-chall-flag button {
+    padding: 10px;
+    background: hsl(226, 42%, 49%);
+    color: hsl(0, 0%, 100%);
+}
+
+#modal_chall_button:hover,
+#modal_chall_button:focus {
+    background-color: #4860b0;
+    color: hsl(0, 0%, 100%);
+}
+
+.modal-chall-check {
+    width: 100%;
+    padding: 0px 10px 0px 10px;
+    text-align: center;
+}
+
+.modal-chall-check p {
+    width: 100%;
+    padding: 8px;
+    color: hsl(0, 0%, 100%);
+}
+
+.modal-chall-connect {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
