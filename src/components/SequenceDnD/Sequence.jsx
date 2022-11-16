@@ -1,23 +1,25 @@
-const { Droppable } = require("react-beautiful-dnd");
-const { default: ChallengeDraggable } = require("./ChallengeDraggable");
+import { Close, Edit } from "@mui/icons-material";
 
-const ChallengeDroppable = ({
-  droppableId,
-  list,
-  index,
-  tactic,
-  removeItem,
-  editItem,
-}) => {
+import "./styles.scss";
+
+const { Droppable } = require("react-beautiful-dnd");
+const { default: ChallengeDraggable } = require("./Payload");
+
+const Sequence = ({ droppableId, list, index, tactic, removeItem }) => {
   return (
     <Droppable droppableId={droppableId}>
       {(provided, snapshot) => (
-        <div>
-          <span className="inline-flex justify-center items-center w-4 h-4 p-3 text-xl border-4 rounded-xl border-pdxf-pink">
-            {index}
-          </span>
+        <div className="droppable">
+          <span className="seq-index">{index}</span>
           <span>{tactic}</span>
+          <button className="icon-btn">
+            <Close />
+          </button>
+          <button className="icon-btn">
+            <Edit />
+          </button>
           <div
+            className="draggable-list"
             {...provided.droppableProps}
             ref={provided.innerRef}
             // style={{
@@ -32,15 +34,14 @@ const ChallengeDroppable = ({
                 index={i}
                 data={d}
                 removeItem={removeItem}
-                editItem={editItem}
               />
             ))}
+            {provided.placeholder}
           </div>
-          {provided.placeholder}
         </div>
       )}
     </Droppable>
   );
 };
 
-export default ChallengeDroppable;
+export default Sequence;
