@@ -55,3 +55,9 @@ createchallenge assign data to each droppable, not route component
 Link -> just link
 
 NavLink -> highlight with activeclassname
+
+### front-back connect
+
+- dashboard and its modal
+- edittraining and editchallenge
+- managetraining
