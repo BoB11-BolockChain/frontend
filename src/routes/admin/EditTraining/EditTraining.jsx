@@ -120,7 +120,7 @@ const EditTraining = () => {
 
   const navigate = useNavigate();
   const move = () => {
-    navigate("/editchallenge", { state: items });
+    navigate("/admin/editchallenge", { state: items });
   };
 
   return (
