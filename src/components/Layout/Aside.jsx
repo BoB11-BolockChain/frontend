@@ -56,7 +56,7 @@ const Aside = ({
       }}
     >
       <SidebarHeader>
-        <a href="/main">
+        <a href="/home">
           <Logo src="/img/PDxF_logo.svg" />
         </a>
         {!sessionId ? (
