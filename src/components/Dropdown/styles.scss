@@ -1,21 +1,12 @@
-.dropdown {
-  display: flex;
-  flex-direction: column;
-}
-
-.selected-items-display {
-  height: 2rem;
-}
-
 .items {
-  width: 100%;
   z-index: 1;
   background-color: skyblue;
   position: absolute;
   display: flex;
   flex-direction: column;
   border-style: solid;
-  border-width: 0px 2px 2px 2px;
+  border-width: 0px 1px 1px 1px;
+  // width: calc(100% - 350px);
 
   input {
     &[type="checkbox"] {

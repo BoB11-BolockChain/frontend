@@ -1,0 +1,35 @@
+@import "/src/assets/_colors.scss";
+
+.droppable {
+  background-color: wheat;
+  padding: 0.5rem;
+}
+
+.draggable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.draggable {
+  background-color: aqua;
+  border-radius: 0.5rem;
+}
+
+.seq-index {
+  box-sizing: border-box;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid $pdxf-pink;
+  border-radius: 0.5rem;
+  background-color: white;
+}
+
+.icon-btn {
+  height: 25px;
+  width: 25px;
+  border: 0;
+  padding: 0;
+  float: right;
+  // background: none;
+}

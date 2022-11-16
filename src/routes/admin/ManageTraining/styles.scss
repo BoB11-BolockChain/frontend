@@ -1,0 +1,21 @@
+@import "/src/assets/_colors.scss";
+
+.managetraining {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid $pdxf-pink;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+}

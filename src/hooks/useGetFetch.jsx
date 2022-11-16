@@ -21,7 +21,7 @@ const useGetFetch = (url) => {
       // error handle : try-catch or res.ok else
     };
     fetchData();
-  }, []);
+  }, [url]);
 
   return [isFetched, data];
 };

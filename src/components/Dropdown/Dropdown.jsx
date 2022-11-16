@@ -7,6 +7,8 @@ const dummy = ["option1", "option2", "option3", "option4"];
 
 const Dropdown = () => {
   const [opened, setOpened] = useState(false);
+
+  // selected === options?
   const [selected, setSelected] = useState([]);
 
   //fetch
@@ -33,15 +35,12 @@ const Dropdown = () => {
   const [modalState, setModalState] = useState({ data: {}, isOpen: false });
 
   return (
-    <div className="dropdown">
-      <div className="selected-items-display">
-        {selected.map((d) => (
-          <span className="selected-item">{d}</span>
-        ))}
-      </div>
+    <>
       <div className="multiselect">
         <div className="select-head" onClick={onClick}>
-          --select--
+          {selected.length === 0
+            ? "select option"
+            : selected.map((d) => <span className="selected-item">{d}</span>)}
         </div>
         {opened ? (
           <div className="items">
@@ -73,7 +72,7 @@ const Dropdown = () => {
         setModalState={setModalState}
         data={setOptions}
       />
-    </div>
+    </>
   );
 };
 

@@ -29,23 +29,24 @@
 
   th,
   td {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 1rem;
   }
 }
 
 .scenarios {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem 1rem;
 
   .item {
-    width: 33%;
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
-    border-width: 2px;
-    border-color: $pdxf-pink;
+    border: 2px solid $pdxf-pink;
     border-radius: 0.5rem;
   }
+}
+
+.solved {
+  background-color: green;
 }

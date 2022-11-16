@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "src/components/Layout/Layout";
 import AdminRouteLayout from "src/routes/admin/AdminRouteLayout";
-import CreateTraining from "src/routes/admin/CreateTraining";
 import Dashboard from "src/routes/admin/Dashboard";
 import DashboardByUser from "src/routes/admin/Dashboard/DashboardByUser";
+import EditChallenge from "src/routes/admin/EditChallenge";
 import EditTraining from "src/routes/admin/EditTraining";
 import HomepageSetting from "src/routes/admin/HomepageSetting";
-import TrainingManagement from "src/routes/admin/TrainingManagement";
+import ManageTraining from "src/routes/admin/ManageTraining";
 import Home from "src/routes/Home";
 import NotFound from "src/routes/NotFound";
 import Notifications from "src/routes/Notifications";
@@ -23,7 +23,6 @@ const AppRouter = () => {
       <Layout>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/home" element={<Home />} />
           <Route path="signin" element={<SignIn />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="notifications" element={<Notifications />} />
@@ -32,7 +31,6 @@ const AppRouter = () => {
           <Route path="user" element={<UserRouteLayout redirectTo="/signin" />}>
             <Route path="training" element={<Training />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="Training" element={<Training />} />
           </Route>
 
           <Route
@@ -41,11 +39,13 @@ const AppRouter = () => {
           >
             <Route index element={<Dashboard />} />
             <Route path="homepagesetting" element={<HomepageSetting />} />
-            <Route path="edittraining" element={<EditTraining />} />
-            <Route path="createtraining" element={<CreateTraining />} />
-            <Route path="trainingmanagement" element={<TrainingManagement />}>
+            {/* <Route path="createtraining" element={<EditTraining />} /> */}
+            <Route path="managetraining" element={<ManageTraining />} />
+            <Route path="edittraining">
+              <Route index element={<EditTraining />} />
               <Route path=":id" element={<EditTraining />} />
             </Route>
+            <Route path="editchallenge" element={<EditChallenge />} />
 
             <Route path="dashboard">
               <Route index element={<Dashboard />} />
