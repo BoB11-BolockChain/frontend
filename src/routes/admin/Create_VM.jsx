@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import BoardModal from "src/components/VMModal";
+import { useEffect, useState } from "react";
 import BoardModal1 from "src/components/DockerListModal";
-import Loading from "src/components/Loading";
-import TableTr from "src/components/TableTr";
 import DockerlistTableTr from "src/components/DockerlistTableTr";
+import Loading from "src/components/Loading";
+import TBody from "src/components/TBody";
+import BoardModal from "src/components/VMModal";
 
 const Create_VM = () => {
   const [state, setState] = useState({});
@@ -136,7 +136,7 @@ const Create_VM = () => {
                       <th>No.</th>
                       <th>FileName</th>
                     </thead>
-                    <TableTr data={data} setModalState={setModalState} />
+                    <TBody data={data} setModalState={setModalState} />
                   </table>
                 ) : (
                   <Loading />
