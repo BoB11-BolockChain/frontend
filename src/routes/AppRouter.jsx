@@ -2,9 +2,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "src/components/Layout/Layout";
 import AdminRouteLayout from "src/routes/admin/AdminRouteLayout";
 import Dashboard from "src/routes/admin/Dashboard";
+<<<<<<< HEAD
+import DashboardById from "src/routes/admin/DashboardById";
+import CreateVM from "src/routes/admin/Create_VM";
+=======
 import DashboardByUser from "src/routes/admin/Dashboard/DashboardByUser";
 import EditChallenge from "src/routes/admin/EditChallenge";
 import EditTraining from "src/routes/admin/EditTraining";
+>>>>>>> main
 import HomepageSetting from "src/routes/admin/HomepageSetting";
 import ManageTraining from "src/routes/admin/ManageTraining";
 import Training from "src/routes/user/Training";
@@ -39,6 +44,9 @@ const AppRouter = () => {
           >
             <Route index element={<Dashboard />} />
             <Route path="homepagesetting" element={<HomepageSetting />} />
+
+            <Route path="createvm" element={<CreateVM />} />
+
             {/* <Route path="createtraining" element={<EditTraining />} /> */}
             <Route path="managetraining" element={<ManageTraining />} />
             <Route path="edittraining">

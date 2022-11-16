@@ -27,6 +27,11 @@ const ManageTraining = () => {
       <button onClick={() => navigate("/admin/edittraining")}>
         create training
       </button>
+      <NavLink to="/admin/createvm">
+        <button type="button" class="btn btn-primary">
+          Go to
+        </button>
+      </NavLink>
     </div>
   );
 };
