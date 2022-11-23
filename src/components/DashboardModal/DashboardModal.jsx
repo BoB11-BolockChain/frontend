@@ -34,11 +34,6 @@ const dummy = {
   ],
 };
 
-const steps = [
-  { name: "powrshell b", output: "Resource temporarily unavailable" },
-  { name: "process discovery", output: "unavailable" },
-];
-
 const DashboardModal = ({ isOpen, setModalState, data }) => {
   //websocket
   //if incident finished, server will close socket
@@ -46,47 +41,53 @@ const DashboardModal = ({ isOpen, setModalState, data }) => {
   return (
     <ReactModal
       isOpen={isOpen}
-      onRequestClose={() => setModalState({ data: {}, isOpen: false })}
+      onRequestClose={() => setModalState({ data: undefined, isOpen: false })}
+      ariaHideApp={false}
       style={{
         content: {
           marginLeft: "300px",
           display: "flex",
           flexDirection: "column",
           gap: "1rem",
+          border: "1px solid #888",
         },
       }}
     >
-      <p className="title">results of {data.training}</p>
-      <div className="big">
-        <p>challenge progress</p>
-        <div className="challenges">
-          {dummy.challenge.map((d) => (
-            <div
-              className={`item ${d.solved === "True" ? "solved" : "notsolved"}`}
-            >
-              <p>{d.chall_title}</p>
-              <p>{d.score}</p>
+      {!!data && (
+        <>
+          <p className="dashboard-title">Results of {data.ScenarioTitle}</p>
+          <div className="big">
+            <p className="dashboard-small-title">Challenge Progress</p>
+            <div className="challenges">
+              {data.Challenges.map((d) => (
+                <div
+                  className={`item ${
+                    d.Solved === "true" ? "solved" : "notsolved"
+                  }`}
+                >
+                  <p>{d.ChallengeTitle}</p>
+                  <p>{100}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-      <div className="big">
-        <p>incident response for this scenario</p>
-        <div className="incident">
-          {steps.map((d, i) => (
-            <div className="process">
-              <span className="order">{i}</span>
-              {d.name}
-              <p>result : {d.output}</p>
-            </div>
-          ))}
-          <div className="process">
-            <span className="solved">2</span>
-            lateral move
-            <p>result : failed</p>
           </div>
-        </div>
-      </div>
+          <div className="divider"></div>
+          <div className="big">
+            <p className="dashboard-small-title">Incident Response Result</p>
+            <div className="incident">
+              {data?.Challenges?.map((d, i) => (
+                <div className="process">
+                  <div className="tactic">
+                    <div className="order notsolved">{i}</div>
+                    <p>{d.ChallengeTitle}</p>
+                  </div>
+                  <p>RESULT : {d.Solved}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </ReactModal>
   );
 };

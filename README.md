@@ -59,5 +59,6 @@ NavLink -> highlight with activeclassname
 ### front-back connect
 
 - dashboard and its modal
-- edittraining and editchallenge
-- managetraining
+- get training , create training, remove training
+- edit training -> remove and create
+- get all trainings
