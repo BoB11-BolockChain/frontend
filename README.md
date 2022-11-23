@@ -40,11 +40,11 @@ useref() direct element access (no jquery, getelementbyid) or non-changing state
 
 You shouldn't use log.Fatal in the server's read loop, as that calls os.Exit
 
-!!!tailwind changed default tags style!!!
+### bootstrap changed default tags style
 
-#FA678C tailwind custom color "pdxf-pink"
+#FA678C custom color "pdxf-pink"
 
-#F8F9FA tailwind custom color "pdxf-blue"
+at asset/\_colors.scss
 
 ### optimizable parts
 
@@ -55,3 +55,10 @@ createchallenge assign data to each droppable, not route component
 Link -> just link
 
 NavLink -> highlight with activeclassname
+
+### front-back connect
+
+- dashboard and its modal
+- get training , create training, remove training
+- edit training -> remove and create
+- get all trainings

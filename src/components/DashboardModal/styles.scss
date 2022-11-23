@@ -1,0 +1,67 @@
+@import "/src/assets/_colors.scss";
+
+.dashboard-title {
+  font-size: 2rem;
+  margin: 0 !important;
+  border-bottom: 1px solid $pdxf-blue;
+}
+
+.dashboard-small-title {
+  font-size: 1.5rem;
+}
+
+.challenges {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    background-color: $pdxf-blue;
+  }
+}
+
+.divider {
+  border: 1px solid $pdxf-blue;
+}
+
+.solved {
+  background-color: green;
+}
+
+.notsolved {
+  background-color: orange;
+}
+
+.incident {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.process {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid $pdxf-blue;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.tactic {
+  display: flex;
+}
+
+.order {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 50%;
+  color: white;
+  margin-right: 0.5rem;
+}

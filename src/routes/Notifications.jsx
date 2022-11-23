@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import BoardModal from "src/components/BoardModal";
 import "src/components/Layout/Board.scss";
 import Loading from "src/components/Loading";
-import TableTr from "src/components/TableTr";
+import TBody from "src/components/TBody";
 
 const Notifications = () => {
   const [width, setWidth] = useState("");
@@ -48,7 +48,7 @@ const Notifications = () => {
               <th>Created Date</th>
               <th>Views</th>
             </thead>
-            <TableTr data={data} setModalState={setModalState} />
+            <TBody data={data} setModalState={setModalState} />
           </table>
         ) : (
           <Loading />

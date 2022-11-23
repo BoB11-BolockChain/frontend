@@ -37,8 +37,8 @@ function SignUp() {
     });
     if (res.ok) {
       alert("signup success");
-      navigate("/main");
-    }
+      navigate("/Home");
+    } else if (!res.ok) throw new Error(res);
   };
   return (
     <MDBContainer
@@ -57,6 +57,7 @@ function SignUp() {
               onChange={onChange}
               wrapperClass="mb-3"
               placeholder="ID"
+              name="id"
               id="form4"
               type="text"
             />
@@ -64,6 +65,7 @@ function SignUp() {
               onChange={onChange}
               wrapperClass="mb-3"
               placeholder="Email"
+              name="email"
               id="form3"
               type="email"
             />
@@ -71,6 +73,7 @@ function SignUp() {
               onChange={onChange}
               wrapperClass="mb-3"
               placeholder="Password"
+              name="pw"
               id="form1"
               type="Password"
             />
@@ -78,6 +81,7 @@ function SignUp() {
               onChange={onChange}
               wrapperClass="mb-3"
               placeholder="Password Confirm"
+              name="conpw"
               id="form2"
               type="Password"
             />

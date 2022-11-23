@@ -1,23 +1,26 @@
-import { Menu, MenuItem, ProSidebar, SubMenu } from "react-pro-sidebar";
-import "react-pro-sidebar/dist/css/styles.css";
-import { NavLink, useNavigate } from "react-router-dom";
-import Switch from "react-switch";
-import {
-  MdPerson,
-  MdSettings,
-  MdFlag,
-  MdAreaChart,
-  MdNotifications,
-  MdHome,
-} from "react-icons/md";
 import { GoMarkGithub } from "react-icons/go";
 import {
+  MdAreaChart,
+  MdFlag,
+  MdHome,
+  MdNotifications,
+  MdPerson,
+  MdSettings,
+} from "react-icons/md";
+import {
+  Menu,
+  MenuItem,
+  ProSidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
+  SubMenu,
 } from "react-pro-sidebar";
-import sidebarBg from "./bg3.png";
+import "react-pro-sidebar/dist/css/styles.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import Switch from "react-switch";
 import styled from "styled-components";
+import sidebarBg from "./bg3.png";
 
 const Logo = styled.img`
   margin: 15px 20px 5px 20px;
@@ -56,7 +59,7 @@ const Aside = ({
       }}
     >
       <SidebarHeader>
-        <a href="/main">
+        <a href="/home">
           <Logo src="/img/PDxF_logo.svg" />
         </a>
         {!sessionId ? (
@@ -91,7 +94,7 @@ const Aside = ({
               <SubMenu title="PDxF Management" icon={<MdSettings />}>
                 <MenuItem>
                   Training Management
-                  <NavLink to="/admin/TrainingManagement" />
+                  <NavLink to="/admin/managetraining" />
                 </MenuItem>
                 <MenuItem>
                   Homepage Setting
@@ -114,7 +117,7 @@ const Aside = ({
         <Menu iconShape="circle">
           <MenuItem icon={<MdHome />}>
             Main
-            <NavLink to="/home" />
+            <NavLink to="/" />
           </MenuItem>
           <MenuItem
             icon={<MdFlag />}
