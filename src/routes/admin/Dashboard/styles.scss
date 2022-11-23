@@ -2,51 +2,35 @@
 
 .title {
   font-size: 2rem;
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
+  margin: 1rem 0 !important;
 }
 
 .x-overflow {
   overflow-x: auto;
 }
 
+.users {
+  background-color: white;
+  border: 1px solid $border-grey;
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.current-users {
+  border-bottom: 1px solid $border-grey;
+  text-align: end;
+}
+
 .dashboard-table {
   width: 100%;
-  text-align: left;
+  text-align: center;
 
-  thead {
-    text-transform: uppercase;
-    background-color: $pdxf-pink;
-  }
-
-  .tritem {
-    border-bottom-width: 2px;
-    border-color: $pdxf-pink;
-    &:hover {
-      background-color: gray;
-    }
-  }
-
-  th,
-  td {
-    padding: 1rem;
+  tr {
+    height: 3rem;
+    border-top: 1px solid $border-grey;
   }
 }
 
-.scenarios {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem 1rem;
-
-  .item {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    border: 2px solid $pdxf-pink;
-    border-radius: 0.5rem;
-  }
-}
-
-p {
-  margin: 0 !important;
+.user-img {
+  height: 3rem;
 }
