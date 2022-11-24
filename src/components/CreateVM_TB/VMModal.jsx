@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import ReactModal from "react-modal";
-import ModalBoardCreate from "./ModalBoardCreate";
-import ModalBoardEdit from "./ModalBoardEdit";
+import ModalBoardCreate from "../ModalBoardCreate";
+import ModalBoardEdit from "../ModalBoardEdit";
 
 var isolist = [];
 const BoardModal = ({ isOpen, setModalState, data, ceState, margin }) => {
@@ -81,48 +81,50 @@ const BoardModal = ({ isOpen, setModalState, data, ceState, margin }) => {
         },
       }}
     >
-      <div class="boardmodal">
+      <div className="boardmodal">
         {ceState === "create" ? (
           <ModalBoardCreate />
         ) : ceState === "edit" ? (
           <ModalBoardEdit data={data} />
         ) : (
           <table>
-            <tr>
-              <td id="title" colspan="5">
-                {data.title}
-              </td>
-            </tr>
-            <tr>
-              <td id="content" colspan="5">
-                1. The "Make VM file" button is the "{data.title}" Convert to a
-                vm file called ".qcow2". <br />
-                <br />
-                2. The Access Link then returns a VNC address that is accessible
-                to the created vm.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                {!searchtitle(data.title) ? (
-                  <div class="forbtn">
-                    <button
-                      onClick={onClick}
-                      value={data.title}
-                      type="submit"
-                      class="btn btn-primary"
-                    >
-                      Convert ISO file to qcow2 file
-                    </button>
-                  </div>
-                ) : (
-                  <div class="forbtn">
-                    VNC Access <br /> Password : test <br />
-                    "pdxf.tk:{searchtitle(data.title).ISO__Port}"
-                  </div>
-                )}
-              </td>
-            </tr>
+            <thead>
+              <tr>
+                <td id="title" colSpan="5">
+                  {data.title}
+                </td>
+              </tr>
+              <tr>
+                <td id="content" colSpan="5">
+                  1. The "Make VM file" button is the "{data.title}" Convert to
+                  a vm file called ".qcow2". <br />
+                  <br />
+                  2. The Access Link then returns a VNC address that is
+                  accessible to the created vm.
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  {!searchtitle(data.title) ? (
+                    <div className="forbtn">
+                      <button
+                        onClick={onClick}
+                        value={data.title}
+                        type="submit"
+                        className="btn btn-primary"
+                      >
+                        Convert ISO file to qcow2 file
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="forbtn">
+                      VNC Access <br /> Password : test <br />
+                      "pdxf.tk:{searchtitle(data.title).ISO__Port}"
+                    </div>
+                  )}
+                </td>
+              </tr>
+            </thead>
           </table>
         )}
       </div>

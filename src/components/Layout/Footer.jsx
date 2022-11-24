@@ -20,21 +20,19 @@ const Footer = () => {
         </a>
       </small>
 
-      <div class="footer-icon">
+      <div className="footer-icon">
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="https://github.com/BoB11-BolockChain/PDxF">
+          href="https://github.com/BoB11-BolockChain/PDxF"
+        >
           {<AiOutlineGithub />}
         </a>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="notyet">
+        <a target="_blank" rel="noopener noreferrer" href="notyet">
           {<AiOutlineTwitter />}
         </a>
       </div>
-    </footer >
+    </footer>
   );
 };
 

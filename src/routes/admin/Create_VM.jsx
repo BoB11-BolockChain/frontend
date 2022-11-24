@@ -1,32 +1,47 @@
 import { useEffect, useState } from "react";
-import BoardModal1 from "src/components/DockerListModal";
-import DockerlistTableTr from "src/components/DockerlistTableTr";
+import DockerlistTableTr from "src/components/CreateVM_TB/DockerlistTableTr";
 import Loading from "src/components/Loading";
 import TBody from "src/components/TBody";
-import BoardModal from "src/components/VMModal";
+import BoardModal from "src/components/CreateVM_TB/VMModal";
+import DockerimagelistTableTr from "src/components/CreateVM_TB/DockerimagelistTableTr";
+import Swal from "sweetalert2";
 
 const Create_VM = () => {
-  const [state, setState] = useState({});
-  const onChange = (e) => {
-    const { value } = e.target;
-    setState({ ...state, docker_name: value });
-  };
-  const onClick = async (e) => {
-    e.preventDefault();
-    console.log(state);
-    const res = await fetch("http://www.pdxf.tk:8000/makedocker", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+  const EditDockerName = async (e) => {
+    Swal.fire({
+      title: "Submit Docker Image name",
+      text: 'Input "ubuntu or debian"',
+      input: "text",
+      inputAttributes: {
+        autocapitalize: "off",
       },
-      body: JSON.stringify(state),
+      showCancelButton: true,
+      confirmButtonText: "Create!!",
+      showLoaderOnConfirm: true,
+      preConfirm: async (dockerid) => {
+        const sdata = { docker_name: dockerid };
+        console.log(sdata);
+        e.preventDefault();
+        const res = await fetch("http://www.pdxf.tk:8000/makedocker", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(sdata),
+        });
+        if (res.ok) {
+          Swal.fire({
+            icon: "success",
+            title: "Docker Create Success.",
+            confirmButtonText: "OK",
+            preConfirm: () => {
+              window.location.reload();
+            },
+          });
+        }
+      },
     });
-    if (res.ok) {
-      alert("Docker Create success");
-      const js = await res.json();
-      console.log(js);
-    }
   };
 
   const [width, setWidth] = useState("");
@@ -40,7 +55,6 @@ const Create_VM = () => {
         const js = await res.json();
         const windowWidth = window.innerWidth;
         setData(js.data);
-        console.log(data);
         setDataLoaded(true);
         setWidth("270px");
         if (windowWidth < 768) {
@@ -52,7 +66,6 @@ const Create_VM = () => {
     fetchData();
   }, [width]);
 
-  const [modalState1, setModalState1] = useState({ data1: {}, isOpen: false });
   const [dataLoaded1, setDataLoaded1] = useState(false);
   const [data1, setData1] = useState([]);
   useEffect(() => {
@@ -63,7 +76,26 @@ const Create_VM = () => {
         const windowWidth = window.innerWidth;
         setData1(js.data);
         setDataLoaded1(true);
-        console.log(data1);
+        setWidth("270px");
+        if (windowWidth < 768) {
+          setWidth("80px");
+        }
+      }
+    };
+
+    fetchData();
+  }, [width]);
+
+  const [dataLoaded2, setDataLoaded2] = useState(false);
+  const [data2, setData2] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("http://www.pdxf.tk:8000/dockerimagelist");
+      if (res.ok) {
+        const js = await res.json();
+        const windowWidth = window.innerWidth;
+        setData2(js.data);
+        setDataLoaded2(true);
         setWidth("270px");
         if (windowWidth < 768) {
           setWidth("80px");
@@ -81,37 +113,34 @@ const Create_VM = () => {
         data={modalState.data}
         margin={width}
       />
-      <BoardModal1
-        isOpen={modalState1.isOpen}
-        setModalState={setModalState1}
-        data={modalState1.data1}
-        margin={width}
-      />
       <script src="multiselect-dropdown.js"></script>
-      <div class="Title">
+      <div className="Title">
         <h2>Create VM</h2>
       </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="wt-box">
-              <div class="box-top">
-                <div class="box-title">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">
                   Upload your Windows or Linux Docker file
-                  <span class="box-subtitle">only .iso .tar</span>
+                  <span className="box-subtitle">only .iso .tar</span>
                 </div>
               </div>
               <br />
-              <div class="box-body">
+              <div className="box-body">
                 <form
                   action="http://www.pdxf.tk:8000/makevm"
                   method="POST"
-                  accept-charset="utf-8"
-                  enctype="multipart/form-data"
+                  encType="multipart/form-data"
                 >
                   <input type="file" id="upload_file" name="upload_file" />
-                  <button type="submit" name="upload" class="btn btn-primary">
+                  <button
+                    type="submit"
+                    name="upload"
+                    className="btn btn-primary"
+                  >
                     Upload
                   </button>
                 </form>
@@ -119,22 +148,24 @@ const Create_VM = () => {
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="wt-box">
-              <div class="box-top">
-                <div class="box-title">
+        <div className="row">
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">
                   Make New Windows VM
                   <br />
-                  <span class="box-subtitle">Make iso file to New VM</span>
+                  <span className="box-subtitle">Make iso file to New VM</span>
                 </div>
               </div>
-              <div class="box-bottom">
+              <div className="box-bottom">
                 {dataLoaded ? (
                   <table>
                     <thead>
-                      <th>No.</th>
-                      <th>FileName</th>
+                      <tr>
+                        <th>No.</th>
+                        <th>FileName</th>
+                      </tr>
                     </thead>
                     <TBody data={data} setModalState={setModalState} />
                   </table>
@@ -144,27 +175,22 @@ const Create_VM = () => {
               </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="wt-box">
-              <div class="box-top">
-                <div class="box-title">
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">
                   Make New Linux Docker
                   <br />
-                  <span class="box-subtitle">ex) ubuntu</span>
+                  <span className="box-subtitle">Copy in Docker Hub</span>
                   <img src="\img\linux_ex.png" />
                 </div>
               </div>
-              <div class="box-bottom">
-                <input
-                  onChange={onChange}
-                  class="form-control inputbox"
-                  placeholder="docker Hub Name"
-                ></input>
-                <div class="forbtn">
+              <div className="box-bottom">
+                <div className="forbtn">
                   <button
-                    onClick={onClick}
+                    onClick={EditDockerName}
                     type="button"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                   >
                     Add
                   </button>
@@ -173,33 +199,73 @@ const Create_VM = () => {
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="wt-box">
-              <div class="box-top">
-                <div class="box-title">Windows Running VM</div>
+        <div className="row">
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">Windows Running VM</div>
               </div>
-              <div class="box-bottom">윈도우 리스트 출력</div>
+              <div className="box-bottom">윈도우 리스트 출력</div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="wt-box">
-              <div class="box-top">
-                <div class="box-title">Linux Running Docker</div>
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">
+                  Linux Running Docker
+                  <br />
+                  <span className="box-subtitle">
+                    Default Docker Password : root
+                  </span>
+                </div>
               </div>
-              <div class="box-bottom">
+              <div className="box-bottom">
                 {dataLoaded1 ? (
                   <table>
                     <thead>
-                      <th>IMAGE </th>
-                      <th>PORTS </th>
-                      <th>STATUS </th>
-                      <th>ContainerID</th>
+                      <tr>
+                        <th>ContainerID</th>
+                        <th>IMAGE </th>
+                        <th>PORTS </th>
+                        <th>STATUS </th>
+                        <th>info</th>
+                      </tr>
                     </thead>
-                    <DockerlistTableTr
-                      data={data1}
-                      setModalState={setModalState1}
-                    />
+                    <DockerlistTableTr data={data1} />
+                  </table>
+                ) : (
+                  <Loading />
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">Windows Images List</div>
+              </div>
+              <div className="box-bottom">윈도우 이미지 리스트 출력</div>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">Linux Docker Images list</div>
+              </div>
+              <div className="box-bottom">
+                {dataLoaded2 ? (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>REPOSITORY:TAG</th>
+                        <th>IMAGE ID</th>
+                        <th>CREATED</th>
+                        <th>info</th>
+                      </tr>
+                    </thead>
+                    <DockerimagelistTableTr data={data2} />
                   </table>
                 ) : (
                   <Loading />
