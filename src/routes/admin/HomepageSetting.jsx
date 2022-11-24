@@ -37,7 +37,7 @@ const HomepageSetting = () => {
       <header>
         <h1 className="h2 fw-bold my-4">Homepage Setting</h1>
       </header>
-      <div class="container">
+      <div class="board-container">
         {dataLoaded ? (
           <>
             <table>

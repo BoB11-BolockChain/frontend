@@ -38,7 +38,7 @@ const Notifications = () => {
       <header>
         <h1 className="h2 fw-bold my-4">Notifications</h1>
       </header>
-      <div className="container">
+      <div class="board-container">
         {dataLoaded ? (
           <table>
             <thead>

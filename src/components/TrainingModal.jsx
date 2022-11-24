@@ -148,112 +148,119 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
                   );
                 })}
               </div>
-              {connect.isClick === true ? (
-                <>
-                  <p className="modal-chall-divider">Connect Info</p>
-                  <table className="modal-chall-connect">
-                    <tr>
-                      <td>
-                        VNC - {connect.ip}:{connect.vncPort}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        RDP - {connect.ip}:{connect.rdpPort}
-                      </td>
-                    </tr>
-                  </table>
-                </>
-              ) : null}
-              {challState.isClick === true ? (
-                <div className="modal-chall-content">
-                  <table>
-                    <tr>
-                      <td id="modal_chall_title">{challState.title}</td>
-                      <td id="modal_chall_score">Score: {challState.score}</td>
-                    </tr>
-                    <tr>
-                      <td id="modal_chall_desc" colspan="2">
-                        {challState.desc}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        {challState.sequence === 0 ? (
-                          connect.isClick === true ? (
-                            <form
-                              onSubmit={onSubmit}
-                              className="modal-chall-flag"
-                            >
-                              <input
-                                onChange={onChange}
-                                value={state.flag}
-                                placeholder="FLAG"
-                                name="flag"
-                                type="text"
-                              />
-                              <button
-                                className="fw-bold text-uppercase"
-                                size="md"
-                              >
-                                Submit
-                              </button>
-                            </form>
-                          ) : (
-                            <center>
-                              <button
-                                id="modal_chall_button"
-                                onClick={() => {
-                                  setConnect({
-                                    ip: "127.0.0.1",
-                                    vncPort: 5000,
-                                    rdpPort: 5001,
-                                    isClick: true,
-                                  });
-                                }}
-                              >
-                                Analysis
-                              </button>
-                            </center>
-                          )
-                        ) : (
-                          <form
-                            onSubmit={onSubmit}
-                            className="modal-chall-flag"
-                          >
-                            <input
-                              onChange={onChange}
-                              value={state.flag}
-                              placeholder="FLAG"
-                              name="flag"
-                              type="text"
-                            />
-                            <button
-                              className="fw-bold text-uppercase"
-                              size="md"
-                            >
-                              Submit
-                            </button>
-                          </form>
-                        )}
-                      </td>
-                    </tr>
-                    {solve.isClick === true ? (
+              {
+                (connect.isClick === true) ?
+                  <>
+                    <p class="modal-chall-divider">Connect Info</p>
+                    <table class="modal-chall-connect">
                       <tr>
-                        <td colspan="2">
-                          <div className="modal-chall-check">
-                            {challCheck(solve.check)}
-                          </div>
-                        </td>
+                        <td>VNC - {connect.ip}:{connect.vncPort}</td>
                       </tr>
-                    ) : null}
-                  </table>
+                      <tr>
+                        <td>RDP - {connect.ip}:{connect.rdpPort}</td>
+                      </tr>
+                    </table>
+                  </>
+                  : null
+              }
+              <div class="modal-challenge">
+                <p class="modal-chall-divider">Challenge List</p>
+                <div className="flex-auto flex-row flex-wrap justify-between align-items-center p-2">
+                  {chall_data.challenge.map((d) => {
+                    let solved_check_style = {};
+                    if (d.solved === "True") {
+                      solved_check_style = {
+                        border: "2px solid #2ead7f",
+                        background: "hsl(158, 58%, 43%)",
+                        color: "hsl(0, 0%, 100%)",
+                      };
+                    } else {
+                      solved_check_style = {
+                        border: "2px solid #4860b0",
+                        background: "hsl(226, 42%, 49%, 0)",
+                        color: "hsl(0, 0%, 0%)",
+                      };
+                    }
+                    return (
+                      <button
+                        class="modal-chall-list-button"
+                        style={solved_check_style}
+                        onClick={() => {
+                          setChallState({ id: d.chall_id, title: d.chall_title, desc: d.chall_desc, score: d.score, sequence: d.sequence, isClick: true })
+                          setSolve({ isClick: false })
+                          setState({ flag: "" })
+                        }}
+                      >
+                        <p>{d.chall_title}</p>
+                        <p>{d.score}</p>
+                      </button>
+                    )
+                  })}
                 </div>
-              ) : null}
-            </div>
-            <button id="modal_scene_button">Incident Response</button>
-          </>
-        ) : null}
+                {
+                  (challState.isClick === true) ?
+                    <div class="modal-chall-content">
+                      <table>
+                        <tr>
+                          <td id="modal_chall_title">{challState.title}</td>
+                          <td id="modal_chall_score">Score: {challState.score}</td>
+                        </tr>
+                        <tr>
+                          <td id="modal_chall_desc" colspan="2">{challState.desc}</td>
+                        </tr>
+                        <tr>
+                          <td colspan="2">
+                            {
+                              (challState.sequence === 0) ?
+                                (connect.isClick === true) ?
+                                  <form onSubmit={onSubmit} class="modal-chall-flag">
+                                    <input onChange={onChange} value={state.flag} placeholder="FLAG" name="flag" type="text" />
+                                    <button className="fw-bold text-uppercase" size="md">
+                                      Submit
+                                    </button>
+                                  </form>
+                                  :
+                                  <center>
+                                    <button
+                                      id="modal_chall_button"
+                                      onClick={() => {
+                                        setConnect({ ip: "127.0.0.1", vncPort: 5000, rdpPort: 5001, isClick: true })
+                                      }}>
+                                      Analysis
+                                    </button>
+                                  </center>
+                                :
+                                <form onSubmit={onSubmit} class="modal-chall-flag">
+                                  <input onChange={onChange} value={state.flag} placeholder="FLAG" name="flag" type="text" />
+                                  <button className="fw-bold text-uppercase" size="md">
+                                    Submit
+                                  </button>
+                                </form>
+                            }
+                          </td>
+                        </tr>
+                        {
+                          (solve.isClick === true) ?
+                            <tr>
+                              <td colspan="2">
+                                <div class="modal-chall-check">
+                                  {challCheck(solve.check)}
+                                </div>
+                              </td>
+                            </tr>
+                            : null
+                        }
+                      </table>
+                    </div>
+                    : null
+                }
+              </div>
+              <button id="modal_scene_button">
+                Incident Response
+              </button>
+            </>
+            : null
+        }
       </div>
     </ReactModal>
   );
