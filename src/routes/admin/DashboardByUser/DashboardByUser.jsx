@@ -53,10 +53,7 @@ const DashboardByUser = () => {
                 <p className="scenario-title">{d.ScenarioTitle}</p>
                 <p className="scenario-progress">{i}</p>
               </div>
-              <button
-                onClick={() => openModal(d)}
-                className="dash-modal-button"
-              >
+              <button onClick={() => openModal(d)} className="pdxf-button">
                 Details
               </button>
             </div>
@@ -65,7 +62,6 @@ const DashboardByUser = () => {
       ) : (
         <Loading />
       )}
-
       <DashboardModal
         isOpen={modalState.isOpen}
         setModalState={setModalState}

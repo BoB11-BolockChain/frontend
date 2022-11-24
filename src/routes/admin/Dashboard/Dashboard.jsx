@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Loading from "src/components/Loading";
 
 import tempImg from "src/assets/user1.png";
-import "./styles.scss";
+import styles from "./dashboard.module.scss";
 
 const Dashboard = () => {
   const [isFetched, setIsFetched] = useState(false);
@@ -38,9 +38,11 @@ const Dashboard = () => {
     <>
       <p className="title">Dashboard</p>
       {isFetched ? (
-        <div className="x-overflow users">
-          <div className="current-users">{data.length} Users online</div>
-          <table className="dashboard-table">
+        <div className={`${styles.users}`}>
+          <div className={`${styles.currentusers}`}>
+            {data.length} Users online
+          </div>
+          <table className={styles.dashboard}>
             <thead>
               <tr>
                 <th colSpan="2"></th>
@@ -54,7 +56,11 @@ const Dashboard = () => {
                 <tr key={d.id} className="tritem" onClick={() => onClick(d.id)}>
                   <td>{i + 1}</td>
                   <td>
-                    <img src={tempImg} alt="user-img" className="user-img" />
+                    <img
+                      src={tempImg}
+                      alt="user profile"
+                      className={`${styles.userimg}`}
+                    />
                   </td>
                   <td>{d.id}</td>
                   <td>{d.state}</td>

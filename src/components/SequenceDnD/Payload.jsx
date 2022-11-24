@@ -11,7 +11,7 @@ const Payload = ({ droppableId, draggableId, index, data, removeItem }) => {
           ref={provided.innerRef}
           {...provided.draggableProps}
         >
-          <span {...provided.dragHandleProps}>{data.payload}</span>
+          <p {...provided.dragHandleProps}>{data.payload}</p>
           <div className="btn-group">
             <button
               className="icon-btn"

@@ -8,29 +8,12 @@ import useInputState from "src/hooks/useInputState";
 
 import "./styles.scss";
 
-const dummy = [
-  { tactic: "temp", droppableId: "temp", list: [] },
-  { tactic: "explore", droppableId: "fdsa", list: ["fdsa", "adsf"] },
-  { tactic: "sometactic", droppableId: "asdf", list: ["qwer", "rewq"] },
-];
-
-// creating process current => tactic to challenge
-// this can be challenge to tactic
 const EditTraining = () => {
   const { trainingId } = useParams();
 
   const [state, setState, onChange] = useInputState();
 
   const [items, setItems] = useState([]);
-  // useEffect(() => {
-  //   if (trainingId) {
-  //     // fetch
-  //     console.log(trainingId);
-  //   } else {
-  //     console.log(trainingId);
-  //     setItems(dummy);
-  //   }
-  // }, [trainingId]);
 
   const [isFetched, setIsFetched] = useState(false);
   const [data, setData] = useState();
@@ -56,8 +39,7 @@ const EditTraining = () => {
           description: jsonBody.scenario.description,
         });
 
-        // smelly code
-        // see problems above
+        // challenge should be revisable with remove tactic
         const tactics = [];
         jsonBody.challenges.forEach((element) => {
           tactics.push(...element.tactics);
@@ -155,14 +137,14 @@ const EditTraining = () => {
           <input
             className="input"
             name="name"
-            placeholder="name"
+            placeholder="Title"
             onChange={onChange}
             value={state.name}
           />
           <input
             className="input"
             name="description"
-            placeholder="description"
+            placeholder="Description"
             onChange={onChange}
             value={state.description}
           />
@@ -170,19 +152,20 @@ const EditTraining = () => {
       ) : (
         <Loading />
       )}
-
       <div className="box">
         <p className="small-title">Attack Sequence</p>
         {isFetched ? (
           <DragDropContext onDragEnd={onDragEnd}>
-            {items.map((d, i) => (
-              <Sequence
-                key={d.droppableId}
-                tactic={d}
-                index={i}
-                removeItem={removeItem}
-              />
-            ))}
+            {items.length === 0
+              ? "No Tactics Created"
+              : items.map((d, i) => (
+                  <Sequence
+                    key={d.droppableId}
+                    tactic={d}
+                    index={i}
+                    removeItem={removeItem}
+                  />
+                ))}
           </DragDropContext>
         ) : (
           <Loading />
