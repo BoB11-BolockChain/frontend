@@ -1,78 +1,31 @@
-import { useEffect, useState } from "react";
-import OptionModal from "src/components/OptionModal";
+import { useState } from "react";
 
-import "./styles.scss";
+import styles from "./dropdown.module.scss";
 
-const dummy = ["option1", "option2", "option3", "option4"];
+const options = ["option1", "option2", "option3", "option4"];
 
-const Dropdown = () => {
-  const [opened, setOpened] = useState(false);
-
-  // selected === options?
-  const [selected, setSelected] = useState([]);
-
-  //fetch
-  const [options, setOptions] = useState([]);
-  useEffect(() => {
-    setOptions(dummy);
-  }, []);
-
-  const onClick = () => {
-    setOpened((prev) => !prev);
-  };
-
-  const onCheck = (e) => {
-    const prev = [...selected];
-    if (e.target.checked) {
-      prev.push(e.target.name);
-      setSelected(prev);
-    } else {
-      const deleted = prev.filter((v) => e.target.name !== v);
-      setSelected(deleted);
-    }
-  };
-
-  const [modalState, setModalState] = useState({ data: {}, isOpen: false });
+const Dropdown = ({ ops, stdata }) => {
+  // from props
+  const [selected, setSelected] = useState(-1);
 
   return (
-    <>
-      <div className="multiselect">
-        <div className="select-head" onClick={onClick}>
-          {selected.length === 0
-            ? "select option"
-            : selected.map((d) => <span className="selected-item">{d}</span>)}
-        </div>
-        {opened ? (
-          <div className="items">
-            {options.map((d) => (
-              <label>
-                <input
-                  type="checkbox"
-                  onChange={onCheck}
-                  name={d}
-                  checked={selected.includes(d)}
-                />
-                {d}
-              </label>
-            ))}
-            <button
-              className="create-button"
-              onClick={() => {
-                setModalState({ data: {}, isOpen: true });
-                setOpened(false);
-              }}
-            >
-              create option
-            </button>
-          </div>
-        ) : null}
+    <div className={styles.dropdown}>
+      <div className={styles.head}>
+        {selected < 0 ? "Select" : options[selected]}
       </div>
-      <OptionModal
-        isOpen={modalState.isOpen}
-        setModalState={setModalState}
-        data={setOptions}
-      />
-    </>
+      <div className={styles.content}>
+        {options.map((d, i) => (
+          <div
+            className={`${styles.option} ${
+              selected === i ? styles.selected : ""
+            }`}
+            onClick={() => setSelected(i)}
+          >
+            {d}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

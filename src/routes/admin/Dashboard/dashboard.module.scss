@@ -1,14 +1,5 @@
 @import "/src/assets/_colors.scss";
 
-.title {
-  font-size: 2rem;
-  margin: 1rem 0 !important;
-}
-
-.x-overflow {
-  overflow-x: auto;
-}
-
 .users {
   background-color: white;
   border: 1px solid $border-grey;
@@ -16,21 +7,22 @@
   padding: 0.5rem;
 }
 
-.current-users {
+.currentusers {
   border-bottom: 1px solid $border-grey;
   text-align: end;
 }
 
-.dashboard-table {
+.dashboard {
   width: 100%;
   text-align: center;
+  border-collapse: collapse;
 
   tr {
     height: 3rem;
-    border-top: 1px solid $border-grey;
+    border-top: 1px solid black;
   }
 }
 
-.user-img {
-  height: 3rem;
+.userimg {
+  height: 2rem;
 }

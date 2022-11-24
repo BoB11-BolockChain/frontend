@@ -1,0 +1,65 @@
+@import "/src/assets/_colors.scss";
+@import "/src/assets/global.scss";
+
+.editchallenge {
+  @include flex-page;
+}
+
+.smallinputs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chall-input {
+  padding: 0.5rem;
+  border: 1px solid $pdxf-blue;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  flex-grow: 1;
+}
+
+.pbutton {
+  @include pdxf-button;
+}
+
+.tactics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .tacticitem {
+    border: 1px solid $pdxf-blue;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .tacticinfo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .payload {
+      border: 1px solid $pdxf-blue;
+      border-radius: 0.25rem;
+      padding: 0.25rem;
+    }
+  }
+
+  .selected {
+    background-color: $pdxf-blue;
+    color: white;
+  }
+}
+
+.order {
+  border: 2px solid $pdxf-blue;
+  border-radius: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

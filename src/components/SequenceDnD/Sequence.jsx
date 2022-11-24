@@ -12,7 +12,7 @@ const Sequence = ({ id, index, tactic, removeItem }) => {
           <div className="tactic-header">
             <div className="tactic-info">
               <div className="tactic-order">{index}</div>
-              <p>{tactic.title}</p>
+              <p className="text">{tactic.title}</p>
             </div>
             <div className="btn-group">
               <button className="icon-btn">

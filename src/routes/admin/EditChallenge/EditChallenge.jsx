@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useInputState from "src/hooks/useInputState";
 
-import "./styles.scss";
+import styles from "./styles.module.scss";
 
 const EditChallenge = () => {
   const { state } = useLocation();
@@ -59,59 +59,70 @@ const EditChallenge = () => {
   //  }
 
   return (
-    <div className="editchallenge">
-      <p className="title">edit challenge</p>
+    <div className={`${styles.editchallenge}`}>
+      <p className="title">Edit Challenge</p>
       <div className="box">
-        <p className="text">create challenge</p>
-        <input
-          name="title"
-          onChange={onChange}
-          value={inputs.title}
-          placeholder="title"
-        />
-        <input
-          name="desc"
-          onChange={onChange}
-          value={inputs.desc}
+        <p className="small-title">Challenge Info</p>
+        <div className={styles.smallinputs}>
+          <input
+            className={`${styles["chall-input"]}`}
+            name="title"
+            onChange={onChange}
+            value={inputs.title}
+            placeholder="title"
+          />
+          <input
+            className={`${styles["chall-input"]}`}
+            name="score"
+            onChange={onChange}
+            value={inputs.score}
+            placeholder="score"
+          />
+        </div>
+        <textarea
+          name="description"
+          rows="5"
+          className={`${styles["chall-input"]}`}
           placeholder="description"
-        />
-        <p className="text">tactics</p>
-        {state.map((d, i) => (
-          <div className="tactic-item">
-            <label>
-              <input
-                type="checkbox"
-                name={d.tactic}
-                onChange={(e) => onCheck(e, i)}
-                checked={selected.find((e) => e.name === d.tactic)}
-              />
-              {d.tactic}
-            </label>
-            {d.list.map((d) => (
-              <div>{d}</div>
-            ))}
-          </div>
-        ))}
-        <button onClick={addChallenge}>add challenge</button>
+        ></textarea>
+        <p className="small-title">Select Tactics</p>
+        <div className={styles.tactics}>
+          {state.map((d, i) => (
+            <div className={styles.tacticitem}>
+              <div className={styles.tacticinfo}>
+                <div className={styles.order}>{i}</div>
+                <p>{d.title}</p>
+              </div>
+              {d.payloads.map((p) => (
+                <div className={styles.payload}>{p.payload}</div>
+              ))}
+            </div>
+          ))}
+        </div>
+        <button className={styles.pbutton} onClick={addChallenge}>
+          Add Challenge
+        </button>
       </div>
       <div className="box">
-        <p className="text">challenges</p>
-        {challenges.length !== 0
-          ? challenges.map((d, i) => (
+        <p className="small-title">Challenges</p>
+        {challenges.length === 0
+          ? "no challenges created"
+          : challenges.map((d, i) => (
               <div className="created">
                 <p className="text ">
                   {i}:{d.title}
                 </p>
-                <p className="text">desc:{d.desc}</p>
+                <p className="text">desc:{}</p>
                 <p className="text">tactics:</p>
                 {d.tactics.map((e) => (
                   <p className="text">{e.name}</p>
                 ))}
               </div>
-            ))
-          : "no challenges created"}
+            ))}
       </div>
-      <button onClick={finishEdit}>finish</button>
+      <button className={styles.pbutton} onClick={finishEdit}>
+        FINISH
+      </button>
     </div>
   );
 };

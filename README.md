@@ -62,3 +62,9 @@ NavLink -> highlight with activeclassname
 - get training , create training, remove training
 - edit training -> remove and create
 - get all trainings
+
+### problems
+
+- create scenario and challenge reverse?
+- dashboard show online users only?
+- createchallenge table or sth else?
