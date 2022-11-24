@@ -54,7 +54,7 @@ const SignIn = () => {
               wrapperClass="mb-3"
               placeholder="ID"
               name="id"
-              id="formControlLg"
+              id="formControlLgid"
               type="text"
             />
             <MDBInput
@@ -67,7 +67,7 @@ const SignIn = () => {
             />
 
             <p className="small mb-3 pb-lg-2">
-              <a class="text-black-50" href="#!">
+              <a className="text-black-50" href="#!">
                 Forgot password?
               </a>
             </p>
@@ -77,56 +77,58 @@ const SignIn = () => {
 
             <div className="text-center mb-4">
               <p>or sign in with:</p>
-              <table class="icon-table">
-                <tr>
-                  <td>
-                    <MDBBtn
-                      tag="a"
-                      color="none"
-                      className="mx-3"
-                      style={{ color: "#4267b2" }}
-                    >
-                      {<BsFacebook />}
-                    </MDBBtn>
-                  </td>
-                  <td>
-                    <MDBBtn
-                      tag="a"
-                      color="none"
-                      className="mx-3"
-                      style={{ color: "#1da1f2" }}
-                    >
-                      {<BsTwitter />}
-                    </MDBBtn>
-                  </td>
-                  <td>
-                    <MDBBtn
-                      tag="a"
-                      color="none"
-                      className="mx-3"
-                      style={{ color: "#ea4335" }}
-                    >
-                      {<BsGoogle />}
-                    </MDBBtn>
-                  </td>
-                  <td>
-                    <MDBBtn
-                      tag="a"
-                      color="none"
-                      className="mx-3"
-                      style={{ color: "#211f1f" }}
-                    >
-                      {<BsGithub />}
-                    </MDBBtn>
-                  </td>
-                </tr>
+              <table className="icon-table">
+                <thead>
+                  <tr>
+                    <td>
+                      <MDBBtn
+                        tag="a"
+                        color="none"
+                        className="mx-3"
+                        style={{ color: "#4267b2" }}
+                      >
+                        {<BsFacebook />}
+                      </MDBBtn>
+                    </td>
+                    <td>
+                      <MDBBtn
+                        tag="a"
+                        color="none"
+                        className="mx-3"
+                        style={{ color: "#1da1f2" }}
+                      >
+                        {<BsTwitter />}
+                      </MDBBtn>
+                    </td>
+                    <td>
+                      <MDBBtn
+                        tag="a"
+                        color="none"
+                        className="mx-3"
+                        style={{ color: "#ea4335" }}
+                      >
+                        {<BsGoogle />}
+                      </MDBBtn>
+                    </td>
+                    <td>
+                      <MDBBtn
+                        tag="a"
+                        color="none"
+                        className="mx-3"
+                        style={{ color: "#211f1f" }}
+                      >
+                        {<BsGithub />}
+                      </MDBBtn>
+                    </td>
+                  </tr>
+                </thead>
               </table>
             </div>
 
             <div>
               <p>
                 Don't have an account?{" "}
-                <a href="#!" class="text-black-50 fw-bold text-uppercase">
+                <a href="#!" className="text-black-50 fw-bold text-uppercase">
                   Sign Up
                 </a>
               </p>

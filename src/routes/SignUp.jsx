@@ -100,49 +100,51 @@ function SignUp() {
           </form>
           <div className="text-center">
             <p>or sign up with:</p>
-            <table class="icon-table">
-              <tr>
-                <td>
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="mx-3"
-                    style={{ color: "#4267b2" }}
-                  >
-                    {<BsFacebook />}
-                  </MDBBtn>
-                </td>
-                <td>
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="mx-3"
-                    style={{ color: "#1da1f2" }}
-                  >
-                    {<BsTwitter />}
-                  </MDBBtn>
-                </td>
-                <td>
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="mx-3"
-                    style={{ color: "#ea4335" }}
-                  >
-                    {<BsGoogle />}
-                  </MDBBtn>
-                </td>
-                <td>
-                  <MDBBtn
-                    tag="a"
-                    color="none"
-                    className="mx-3"
-                    style={{ color: "#211f1f" }}
-                  >
-                    {<BsGithub />}
-                  </MDBBtn>
-                </td>
-              </tr>
+            <table className="icon-table">
+              <thead>
+                <tr>
+                  <td>
+                    <MDBBtn
+                      tag="a"
+                      color="none"
+                      className="mx-3"
+                      style={{ color: "#4267b2" }}
+                    >
+                      {<BsFacebook />}
+                    </MDBBtn>
+                  </td>
+                  <td>
+                    <MDBBtn
+                      tag="a"
+                      color="none"
+                      className="mx-3"
+                      style={{ color: "#1da1f2" }}
+                    >
+                      {<BsTwitter />}
+                    </MDBBtn>
+                  </td>
+                  <td>
+                    <MDBBtn
+                      tag="a"
+                      color="none"
+                      className="mx-3"
+                      style={{ color: "#ea4335" }}
+                    >
+                      {<BsGoogle />}
+                    </MDBBtn>
+                  </td>
+                  <td>
+                    <MDBBtn
+                      tag="a"
+                      color="none"
+                      className="mx-3"
+                      style={{ color: "#211f1f" }}
+                    >
+                      {<BsGithub />}
+                    </MDBBtn>
+                  </td>
+                </tr>
+              </thead>
             </table>
           </div>
         </MDBCardBody>

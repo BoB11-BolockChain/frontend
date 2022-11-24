@@ -37,7 +37,7 @@ const Dashboard = () => {
           </thead>
           <tbody>
             {dummy.map((d) => (
-              <tr className="tritem">
+              <tr className="tritem" key={d.userName}>
                 <th>{d.userName}</th>
                 <td>{d.state}</td>
                 <td>

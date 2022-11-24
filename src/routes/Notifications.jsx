@@ -38,15 +38,17 @@ const Notifications = () => {
       <header>
         <h1 className="h2 fw-bold my-4">Notifications</h1>
       </header>
-      <div class="container">
+      <div className="container">
         {dataLoaded ? (
           <table>
             <thead>
-              <th>No.</th>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Created Date</th>
-              <th>Views</th>
+              <tr>
+                <th>No.</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Created Date</th>
+                <th>Views</th>
+              </tr>
             </thead>
             <TBody data={data} setModalState={setModalState} />
           </table>

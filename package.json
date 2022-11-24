@@ -40,6 +40,7 @@
     "react-intl": "^6.1.2",
     "react-loader-spinner": "^5.3.4",
     "react-modal": "^3.15.1",
+    "react-native-dialog-input": "^1.0.8",
     "react-pro-sidebar": "^0.7.1",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
@@ -50,6 +51,7 @@
     "recharts": "^2.1.14",
     "sass": "^1.55.0",
     "styled-components": "^5.3.6",
+    "sweetalert2": "^11.0.11",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
