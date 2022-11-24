@@ -1,14 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "src/components/Layout/Layout";
 import AdminRouteLayout from "src/routes/admin/AdminRouteLayout";
-import Dashboard from "src/routes/admin/Dashboard";
 import CreateVM from "src/routes/admin/Create_VM";
-import DashboardByUser from "src/routes/admin/Dashboard/DashboardByUser";
+import Dashboard from "src/routes/admin/Dashboard";
+import DashboardByUser from "src/routes/admin/DashboardByUser";
 import EditChallenge from "src/routes/admin/EditChallenge";
 import EditTraining from "src/routes/admin/EditTraining";
 import HomepageSetting from "src/routes/admin/HomepageSetting";
 import ManageTraining from "src/routes/admin/ManageTraining";
-import Training from "src/routes/user/Training";
 import Home from "src/routes/Home";
 import NotFound from "src/routes/NotFound";
 import Notifications from "src/routes/Notifications";
@@ -16,6 +15,7 @@ import Scoreboard from "src/routes/Scoreboard";
 import SignIn from "src/routes/SignIn";
 import SignUp from "src/routes/SignUp";
 import Profile from "src/routes/user/Profile";
+import Training from "src/routes/user/Training";
 import UserRouteLayout from "src/routes/user/UserRouteLayout";
 
 const AppRouter = () => {
@@ -47,7 +47,7 @@ const AppRouter = () => {
             <Route path="managetraining" element={<ManageTraining />} />
             <Route path="edittraining">
               <Route index element={<EditTraining />} />
-              <Route path=":id" element={<EditTraining />} />
+              <Route path=":trainingId" element={<EditTraining />} />
             </Route>
             <Route path="editchallenge" element={<EditChallenge />} />
 

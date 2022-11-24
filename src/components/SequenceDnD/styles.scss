@@ -1,8 +1,21 @@
 @import "/src/assets/_colors.scss";
 
 .droppable {
-  background-color: wheat;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   padding: 0.5rem;
+  border: 1px solid $pdxf-blue;
+  border-radius: 0.5rem;
+
+  .tactic-header {
+    display: flex;
+    justify-content: space-between;
+
+    .tactic-info {
+      display: flex;
+    }
+  }
 }
 
 .draggable-list {
@@ -12,17 +25,21 @@
 }
 
 .draggable {
-  background-color: aqua;
+  display: flex;
+  justify-content: space-between;
   border-radius: 0.5rem;
+  border: 1px solid $pdxf-blue;
+  padding: 0.25rem;
 }
 
-.seq-index {
-  box-sizing: border-box;
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid $pdxf-pink;
+.tactic-order {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid $pdxf-blue;
   border-radius: 0.5rem;
-  background-color: white;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .icon-btn {
@@ -30,6 +47,6 @@
   width: 25px;
   border: 0;
   padding: 0;
-  float: right;
-  // background: none;
+  background-color: white;
+  color: black;
 }
