@@ -4,7 +4,7 @@ const TBody = ({ data, setModalState, handleRemove, admin }) => {
   return (
     <tbody>
       {data.map((data) => (
-        <tr>
+        <tr key={data.title}>
           <td>{data.num}</td>
           <td
             id="title"
@@ -18,14 +18,14 @@ const TBody = ({ data, setModalState, handleRemove, admin }) => {
           {admin === 1 && (
             <>
               <td
-                class="icon"
+                className="icon"
                 onClick={() =>
                   setModalState({ data: data, isOpen: true, ceState: "edit" })
                 }
               >
                 <FaRegEdit />
               </td>
-              <td class="icon" onClick={() => handleRemove(data)}>
+              <td className="icon" onClick={() => handleRemove(data)}>
                 <FaRegTrashAlt />
               </td>
             </>

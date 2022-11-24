@@ -42,11 +42,13 @@ const Notifications = () => {
         {dataLoaded ? (
           <table>
             <thead>
-              <th>No.</th>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Created Date</th>
-              <th>Views</th>
+              <tr>
+                <th>No.</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Created Date</th>
+                <th>Views</th>
+              </tr>
             </thead>
             <TBody data={data} setModalState={setModalState} />
           </table>

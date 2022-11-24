@@ -48,7 +48,6 @@ const ManageTraining = () => {
         </div>
       ))}
     </>
-
   );
 };
 
