@@ -97,6 +97,21 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
                 <p id="modal_scene_system">SYSTEM: {data.system}</p>
                 <p id="modal_scene_desc">{data.scene_desc}</p>
               </div>
+              {
+                (connect.isClick === true) ?
+                  <>
+                    <p class="modal-chall-divider">Connect Info</p>
+                    <table class="modal-chall-connect">
+                      <tr>
+                        <td>VNC - {connect.ip}:{connect.vncPort}</td>
+                      </tr>
+                      <tr>
+                        <td>RDP - {connect.ip}:{connect.rdpPort}</td>
+                      </tr>
+                    </table>
+                  </>
+                  : null
+              }
               <div class="modal-challenge">
                 <p class="modal-chall-divider">Challenge List</p>
                 <div className="flex-auto flex-row flex-wrap justify-between align-items-center p-2">
@@ -131,21 +146,6 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
                     )
                   })}
                 </div>
-                {
-                  (connect.isClick === true) ?
-                    <>
-                      <p class="modal-chall-divider">Connect Info</p>
-                      <table class="modal-chall-connect">
-                        <tr>
-                          <td>VNC - {connect.ip}:{connect.vncPort}</td>
-                        </tr>
-                        <tr>
-                          <td>RDP - {connect.ip}:{connect.rdpPort}</td>
-                        </tr>
-                      </table>
-                    </>
-                    : null
-                }
                 {
                   (challState.isClick === true) ?
                     <div class="modal-chall-content">

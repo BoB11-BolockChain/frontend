@@ -1,10 +1,3 @@
-import {
-  MDBBtn,
-  MDBCard,
-  MDBCardBody,
-  MDBContainer,
-  MDBInput,
-} from "mdb-react-ui-kit";
 import { useState } from "react";
 import { BsFacebook, BsGithub, BsGoogle, BsTwitter } from "react-icons/bs";
 import "react-pro-sidebar/dist/css/styles.css";
@@ -37,104 +30,87 @@ const SignIn = () => {
   };
 
   return (
-    <MDBContainer
-      fluid
-      className="my-5"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <MDBCard className="my-5 card-body">
-        <MDBCardBody className="p-5 shadow-5 text-center">
-          <h2 className="fw-bold mb-5 text-uppercase h2">SIGN IN</h2>
-          <form onSubmit={onSubmit}>
-            <MDBInput
-              onChange={onChange}
-              wrapperClass="mb-3"
-              placeholder="ID"
-              name="id"
-              id="formControlLg"
-              type="text"
-            />
-            <MDBInput
-              onChange={onChange}
-              wrapperClass="mb-3"
-              placeholder="Password"
-              name="pw"
-              id="formControlLg"
-              type="password"
-            />
+    <div className="card-body">
+      <h2 className="card-title">SIGN IN</h2>
+      <form onSubmit={onSubmit}>
+        <div className="input-container">
+          <input type="text" onChange={onChange} id="id" name="id" aria-labelledby="placeholder-id" required />
+          <label className="placeholder-text" for="id" id="placeholder-id">
+            <div className="text">ID</div>
+          </label>
+        </div>
+        <div className="input-container">
+          <input type="password" onChange={onChange} id="pw" name="pw" aria-labelledby="placeholder-pw" required />
+          <label className="placeholder-text" for="pw" id="placeholder-pw">
+            <div className="text">Password</div>
+          </label>
+        </div>
 
-            <p className="small mb-3 pb-lg-2">
-              <a class="text-black-50" href="#!">
-                Forgot password?
-              </a>
-            </p>
-            <MDBBtn className="w-100 mb-4 fw-bold text-uppercase" size="md">
-              sign in
-            </MDBBtn>
+        <p><a className="forgot-pw" href="#!">
+          Forgot Password?
+        </a></p>
+        <button className="submit-btn" size="md">
+          sign in
+        </button>
 
-            <div className="text-center mb-4">
-              <p>or sign in with:</p>
-              <table class="icon-table">
-                <tr>
-                  <td>
-                    <MDBBtn
-                      tag="a"
-                      color="none"
-                      className="mx-3"
-                      style={{ color: "#4267b2" }}
-                    >
-                      {<BsFacebook />}
-                    </MDBBtn>
-                  </td>
-                  <td>
-                    <MDBBtn
-                      tag="a"
-                      color="none"
-                      className="mx-3"
-                      style={{ color: "#1da1f2" }}
-                    >
-                      {<BsTwitter />}
-                    </MDBBtn>
-                  </td>
-                  <td>
-                    <MDBBtn
-                      tag="a"
-                      color="none"
-                      className="mx-3"
-                      style={{ color: "#ea4335" }}
-                    >
-                      {<BsGoogle />}
-                    </MDBBtn>
-                  </td>
-                  <td>
-                    <MDBBtn
-                      tag="a"
-                      color="none"
-                      className="mx-3"
-                      style={{ color: "#211f1f" }}
-                    >
-                      {<BsGithub />}
-                    </MDBBtn>
-                  </td>
-                </tr>
-              </table>
-            </div>
+        <div className="signin-platform">
+          <p>or sign in with:</p>
+          <table className="icon-table">
+            <tr>
+              <td>
+                <button
+                  tag="a"
+                  color="none"
+                  className="mx-3"
+                  style={{ color: "#4267b2" }}
+                >
+                  {<BsFacebook />}
+                </button>
+              </td>
+              <td>
+                <button
+                  tag="a"
+                  color="none"
+                  className="mx-3"
+                  style={{ color: "#1da1f2" }}
+                >
+                  {<BsTwitter />}
+                </button>
+              </td>
+              <td>
+                <button
+                  tag="a"
+                  color="none"
+                  className="mx-3"
+                  style={{ color: "#ea4335" }}
+                >
+                  {<BsGoogle />}
+                </button>
+              </td>
+              <td>
+                <button
+                  tag="a"
+                  color="none"
+                  className="mx-3"
+                  style={{ color: "#211f1f" }}
+                >
+                  {<BsGithub />}
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
 
-            <div>
-              <p>
-                Don't have an account?{" "}
-                <a href="#!" class="text-black-50 fw-bold text-uppercase">
-                  Sign Up
-                </a>
-              </p>
-            </div>
-          </form>
-        </MDBCardBody>
-      </MDBCard>
-    </MDBContainer>
+        <div className="account">
+          <p>
+            Don't have an account?{" "}
+            <a href="#!" className="signup">
+              Sign Up
+            </a>
+          </p>
+        </div>
+      </form>
+    </div>
   );
 };
 

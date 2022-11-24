@@ -1,6 +1,6 @@
 .scenario-list {
     display: flex;
-    width: 100%;
+    width: auto;
     margin: 8px;
     padding: 8px;
     background: hsl(0, 0%, 100%);
@@ -12,23 +12,24 @@
 .scenario-list button {
     padding: 8px 16px 8px 16px;
     margin: 10px;
-    background: hsl(249, 55%, 62%);
+    background: hsl(230, 95%, 70%);
     text-align: left;
     color: rgb(255, 255, 255);
     font-size: 14px;
-    border: 0px solid hsl(249, 55%, 62%);
+    border: 0px solid hsl(230, 95%, 70%);
     border-radius: 5px;
 }
 
 .scenario-list button:hover,
 button:focus {
-    background: hsl(249, 43%, 49%);
+    background: hsl(230, 95%, 70%);
     color: rgba(255, 255, 255, 0.9);
 }
 
 .scenario-desc {
     display: flex;
     align-items: center;
+    margin: 10px;
 }
 
 .scenario-desc-title {
