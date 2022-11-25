@@ -19,6 +19,7 @@ const BoardModal = ({ isOpen, setModalState, data, ceState, margin }) => {
 
   const onClick = async (e) => {
     e.preventDefault();
+
     const res = await fetch("http://www.pdxf.tk:8000/isotoqcow2", {
       method: "POST",
       headers: {
