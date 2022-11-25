@@ -70,7 +70,7 @@ const line_data = [
   },
 ];
 const Scoreboard = () => {
-  console.log("sdds");
+  // console.log("sdds");
   const [width, setWidth] = useState("");
   const [modalState, setModalState] = useState({ data: {}, isOpen: false });
   const [dataLoaded, setDataLoaded] = useState(false);

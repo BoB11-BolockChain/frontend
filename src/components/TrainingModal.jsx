@@ -3,23 +3,10 @@ import ReactModal from "react-modal";
 // import VmCaller from "src/components/VmCaller";
 
 const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
-  const [challState, setChallState] = useState({
-    id: 0,
-    title: "",
-    desc: "",
-    score: 0,
-    sequence: 0,
-    isClick: false,
-  });
+  const [challState, setChallState] = useState({ id: 0, title: "", desc: "", score: 0, sequence: 0, isClick: false });
   const [state, setState] = useState({ flag: "" });
-  const [solve, setSolve] = useState({ check: "", isClick: false });
-  const [connect, setConnect] = useState({
-    ip: "",
-    vncPort: 0,
-    rdpPort: 0,
-    sshPort: 0,
-    isClick: false,
-  });
+  const [solve, setSolve] = useState({ check: "", isClick: false })
+  const [connect, setConnect] = useState({ ip: "", vncPort: 0, rdpPort: 0, sshPort: 0, isClick: false })
   const chall_data = data;
 
   const onChange = (e) => {
@@ -39,35 +26,36 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
       body: JSON.stringify({
         id: sessionId,
         flag: state.flag,
-        chall_id: challState.id,
+        chall_id: challState.id
       }),
     });
     const js = await res.json();
     setSolve({ check: js.chall_id, isClick: true });
-    console.log(js);
   };
 
   const challCheck = (check) => {
     switch (check) {
-      case "Solve a Challenge":
+      case 'Solve a Challenge':
         solveCheck(true);
         window.location.reload();
-        return <p style={{ background: "#4caf50" }}>Solve a Challenge</p>;
-      case "Aleady Solved":
-        return <p style={{ background: "#4860b0" }}>Aleady Solved</p>;
+        return (
+          <p style={{ background: '#4caf50' }}>Solve a Challenge</p>
+        )
+      case 'Aleady Solved':
+        return <p style={{ background: '#4860b0' }}>Aleady Solved</p>
       default:
-        return <p style={{ background: "#e53935" }}>False</p>;
+        return <p style={{ background: '#e53935' }}>False</p>
     }
-  };
+  }
   return (
     <ReactModal
       ariaHideApp={false}
       isOpen={isOpen}
       onRequestClose={() => {
-        setModalState({ data: {}, isOpen: false });
-        setChallState({ isClick: false });
-        setSolve({ isClick: false });
-        setState({ flag: "" });
+        setModalState({ data: {}, isOpen: false })
+        setChallState({ isClick: false })
+        setSolve({ isClick: false })
+        setState({ flag: "" })
       }}
       style={{
         overlay: {
@@ -99,54 +87,14 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
         },
       }}
     >
-      <div className="modal-item">
-        {isOpen === true ? (
-          <>
-            <div className="modal-scenario">
-              <p id="modal_scene_title">{data.scene_title}</p>
-              <p id="modal_scene_system">SYSTEM: {data.system}</p>
-              <p id="modal_scene_desc">{data.scene_desc}</p>
-            </div>
-            <div className="modal-challenge">
-              <p className="modal-chall-divider">Challenge List</p>
-              <div className="flex-auto flex-row flex-wrap justify-between align-items-center p-2">
-                {chall_data.challenge.map((d) => {
-                  let solved_check_style = {};
-                  if (d.solved === "True") {
-                    solved_check_style = {
-                      border: "2px solid #2ead7f",
-                      background: "hsl(158, 58%, 43%)",
-                      color: "hsl(0, 0%, 100%)",
-                    };
-                  } else {
-                    solved_check_style = {
-                      border: "2px solid #4860b0",
-                      background: "hsl(226, 42%, 49%, 0)",
-                      color: "hsl(0, 0%, 0%)",
-                    };
-                  }
-                  return (
-                    <button
-                      className="modal-chall-list-button"
-                      style={solved_check_style}
-                      onClick={() => {
-                        setChallState({
-                          id: d.chall_id,
-                          title: d.chall_title,
-                          desc: d.chall_desc,
-                          score: d.score,
-                          sequence: d.sequence,
-                          isClick: true,
-                        });
-                        setSolve({ isClick: false });
-                        setState({ flag: "" });
-                      }}
-                    >
-                      <p>{d.chall_title}</p>
-                      <p>{d.score}</p>
-                    </button>
-                  );
-                })}
+      <div class="modal-item">
+        {
+          (isOpen === true) ?
+            <>
+              <div class="modal-scenario">
+                <p id="modal_scene_title">{data.scene_title}</p>
+                <p id="modal_scene_system">SYSTEM: {data.system}</p>
+                <p id="modal_scene_desc">{data.scene_desc}</p>
               </div>
               {
                 (connect.isClick === true) ?
@@ -262,7 +210,7 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
             : null
         }
       </div>
-    </ReactModal>
+    </ReactModal >
   );
 };
 

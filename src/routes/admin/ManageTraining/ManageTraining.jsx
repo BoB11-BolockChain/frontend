@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { HiOutlineFlag, HiOutlineCube } from "react-icons/hi";
 import "./styles.scss";
 
