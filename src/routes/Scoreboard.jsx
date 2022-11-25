@@ -130,7 +130,7 @@ const Scoreboard = () => {
         <Line type="monotone" dataKey="B_Team" stroke="#82ca9d" />
         <Line type="monotone" dataKey="C" stroke="#2e2e77" />
       </LineChart>
-      <div class="container">
+      <div class="board-container">
         {dataLoaded ? (
           <table>
             <thead>
