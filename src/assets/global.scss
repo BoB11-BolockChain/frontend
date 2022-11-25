@@ -1,0 +1,18 @@
+@import "./colors";
+
+// global modules can be exported to index.jsx
+
+@mixin flex-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@mixin pdxf-button {
+  font-size: 1rem;
+  background-color: $pdxf-blue;
+  color: white;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}

@@ -70,14 +70,14 @@ const line_data = [
   },
 ];
 const Scoreboard = () => {
-  console.log("sdds");
+  // console.log("sdds");
   const [width, setWidth] = useState("");
   const [modalState, setModalState] = useState({ data: {}, isOpen: false });
   const [dataLoaded, setDataLoaded] = useState(false);
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("http://www.pdxf.tk:3000/scorelist");
+      const res = await fetch("http://www.pdxf.tk:8000/scorelist");
       if (res.ok) {
         console.log("asasa");
         const js = await res.json();
@@ -130,7 +130,7 @@ const Scoreboard = () => {
         <Line type="monotone" dataKey="B_Team" stroke="#82ca9d" />
         <Line type="monotone" dataKey="C" stroke="#2e2e77" />
       </LineChart>
-      <div class="container">
+      <div class="board-container">
         {dataLoaded ? (
           <table>
             <thead>

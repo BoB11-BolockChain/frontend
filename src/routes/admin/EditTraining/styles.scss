@@ -1,34 +1,50 @@
 @import "/src/assets/_colors.scss";
 
+.title {
+  margin: 0 !important;
+  font-size: 2rem;
+}
+
+.small-title {
+  font-size: 1.5rem;
+}
+
 .edit-training {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.title {
-  font-size: 2rem;
-  margin: 0;
-}
-
 .box {
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
-  border: 2px solid $pdxf-pink;
+  border: 1px solid $border-grey;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: white;
+}
+
+.addform {
+  display: flex;
+  gap: 1rem;
+
+  .input {
+    flex-grow: 1;
+  }
+}
+
+.input {
+  font-size: 1rem;
+  border: 1px solid $pdxf-blue;
   border-radius: 0.5rem;
   padding: 0.5rem;
 }
 
-.input {
-  border: 1px solid $pdxf-pink;
-  border-radius: 0.5rem;
-  padding: 0.25rem 0.5rem;
-}
-
 // make component?
 .pdxf-button {
-  background-color: $pdxf-pink;
+  font-size: 1rem;
+  background-color: $pdxf-blue;
   color: white;
   border: 0;
   border-radius: 0.5rem;

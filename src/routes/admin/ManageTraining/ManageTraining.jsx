@@ -1,5 +1,5 @@
-import { NavLink, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import { HiOutlineFlag, HiOutlineCube } from "react-icons/hi";
 import "./styles.scss";
 
 const dummy = [
@@ -12,28 +12,42 @@ const dummy = [
 const ManageTraining = () => {
   const navigate = useNavigate();
   return (
-    <div className="managetraining">
-      <p className="title">manage training</p>
-      <div className="grid">
-        {dummy.map((d) => (
-          <div className="item">
-            <p>{d}</p>
-            <button onClick={() => navigate(`/admin/edittraining/${d}`)}>
-              edit
-            </button>
-          </div>
-        ))}
+    <>
+      <header>
+        <h1 className="h2 fw-bold my-4">Manage Training</h1>
+      </header>
+      <div className="managetraining">
+        <p class="edit-list">Training List</p>
+        <div>
+          <button onClick={() => navigate("/admin/edittraining")}>
+            <table>
+              <tr>
+                <td class="create-desc">Create Training</td>
+                <td class="create-border" />
+                <td class="create-icon">{<HiOutlineFlag />}</td>
+              </tr>
+            </table>
+          </button>
+          <button type="button" onClick={() => navigate("/admin/createvm")}>
+            <table>
+              <td class="create-desc">Create VM</td>
+              <td class="create-border" />
+              <td class="create-icon">{<HiOutlineCube />}</td>
+            </table>
+          </button>
+        </div>
       </div>
-      <button onClick={() => navigate("/admin/edittraining")}>
-        create training
-      </button>
-      <p className="title">VM Management</p>
-      <NavLink to="/admin/createvm">
-        <button type="button" class="btn btn-primary">
-          Go to
-        </button>
-      </NavLink>
-    </div>
+      {dummy.map((d) => (
+        <div className="item">
+          <div className="item-title">
+            <p>{d}</p>
+          </div>
+          <button onClick={() => navigate(`/admin/edittraining/${d}`)}>
+            EDIT
+          </button>
+        </div>
+      ))}
+    </>
   );
 };
 

@@ -24,11 +24,9 @@ const Training = () => {
             });
             if (res.ok) {
                 const js = await res.json();
-                // console.log(js.scenario);
                 const windowWidth = window.innerWidth;
                 setData(js.scenario);
                 setDataLoaded(true);
-                console.log(data);
                 setWidth("270px");
                 if (windowWidth < 768) {
                     setWidth("80px");
@@ -43,24 +41,27 @@ const Training = () => {
             <header>
                 <h1 className="h2 fw-bold my-4">Training</h1>
             </header>
-            <div class="scenario-list">
-                {dataLoaded ? (
-                    data.map((d) => (
-                        <>
+            {dataLoaded ? (
+                data.map((d) => (
+                    <div class="scenario-list">
+                        <div class="scenario-desc">
+                            <div>
+                                <p class="scenario-desc-title">{d.scene_title}</p>
+                                <p class="scenario-desc-system">{d.system}</p>
+                            </div>
+                        </div>
+                        <button
+                            class="border-[#FA678C]"
+                            onClick={() => setModalState({ isOpen: true, data: d })}
+                        >
+                            START
+                        </button>
+                    </div>
+                ))
+            ) : (
+                <p>loading</p>
+            )}
 
-                            <button
-                                class="border-[#FA678C]"
-                                onClick={() => setModalState({ isOpen: true, data: d })}
-                            >
-                                <p className="text-lg">{d.scene_title}</p>
-                                <p>{d.system}</p>
-                            </button>
-                        </>
-                    ))
-                ) : (
-                    <p>loading</p>
-                )}
-            </div>
             <TrainingModal
                 modalState={modalState}
                 isOpen={modalState.isOpen}

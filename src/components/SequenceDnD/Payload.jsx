@@ -11,16 +11,18 @@ const Payload = ({ droppableId, draggableId, index, data, removeItem }) => {
           ref={provided.innerRef}
           {...provided.draggableProps}
         >
-          <span {...provided.dragHandleProps}>{data}</span>
-          <button
-            className="icon-btn"
-            onClick={() => removeItem(droppableId, draggableId)}
-          >
-            <Close />
-          </button>
-          <button className="icon-btn">
-            <Edit />
-          </button>
+          <p {...provided.dragHandleProps}>{data.payload}</p>
+          <div className="btn-group">
+            <button
+              className="icon-btn"
+              onClick={() => removeItem(droppableId, draggableId)}
+            >
+              <Close />
+            </button>
+            <button className="icon-btn">
+              <Edit />
+            </button>
+          </div>
         </div>
       )}
     </Draggable>

@@ -1,11 +1,3 @@
-import {
-  MDBBtn,
-  MDBCard,
-  MDBCardBody,
-  MDBCheckbox,
-  MDBContainer,
-  MDBInput,
-} from "mdb-react-ui-kit";
 import { useState } from "react";
 import { BsFacebook, BsGithub, BsGoogle, BsTwitter } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
@@ -41,115 +33,90 @@ function SignUp() {
     } else if (!res.ok) throw new Error(res);
   };
   return (
-    <MDBContainer
-      fluid
-      className="my-5"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <MDBCard className="my-5 card-body">
-        <MDBCardBody className="p-5 shadow-5 text-center">
-          <h2 className="fw-bold mb-5 text-uppercase h2">SIGN UP</h2>
-          <form onSubmit={onSubmit}>
-            <MDBInput
-              onChange={onChange}
-              wrapperClass="mb-3"
-              placeholder="ID"
-              name="id"
-              id="form4"
-              type="text"
-            />
-            <MDBInput
-              onChange={onChange}
-              wrapperClass="mb-3"
-              placeholder="Email"
-              name="email"
-              id="form3"
-              type="email"
-            />
-            <MDBInput
-              onChange={onChange}
-              wrapperClass="mb-3"
-              placeholder="Password"
-              name="pw"
-              id="form1"
-              type="Password"
-            />
-            <MDBInput
-              onChange={onChange}
-              wrapperClass="mb-3"
-              placeholder="Password Confirm"
-              name="conpw"
-              id="form2"
-              type="Password"
-            />
-            <div className="d-flex justify-content-center mb-4">
-              <MDBCheckbox
-                name="flexCheck"
-                value=""
-                id="flexCheckDefault"
-                label="Subscribe to our newsletter"
-              />
-            </div>
-
-            <MDBBtn className="w-100 mb-4 fw-bold text-uppercase" size="md">
-              sign up
-            </MDBBtn>
-          </form>
-          <div className="text-center">
-            <p>or sign up with:</p>
-            <table className="icon-table">
-              <thead>
-                <tr>
-                  <td>
-                    <MDBBtn
-                      tag="a"
-                      color="none"
-                      className="mx-3"
-                      style={{ color: "#4267b2" }}
-                    >
-                      {<BsFacebook />}
-                    </MDBBtn>
-                  </td>
-                  <td>
-                    <MDBBtn
-                      tag="a"
-                      color="none"
-                      className="mx-3"
-                      style={{ color: "#1da1f2" }}
-                    >
-                      {<BsTwitter />}
-                    </MDBBtn>
-                  </td>
-                  <td>
-                    <MDBBtn
-                      tag="a"
-                      color="none"
-                      className="mx-3"
-                      style={{ color: "#ea4335" }}
-                    >
-                      {<BsGoogle />}
-                    </MDBBtn>
-                  </td>
-                  <td>
-                    <MDBBtn
-                      tag="a"
-                      color="none"
-                      className="mx-3"
-                      style={{ color: "#211f1f" }}
-                    >
-                      {<BsGithub />}
-                    </MDBBtn>
-                  </td>
-                </tr>
-              </thead>
-            </table>
+    <>
+      <div className="card-body">
+        <h2 className="card-title">SIGN UP</h2>
+        <form onSubmit={onSubmit}>
+          <div className="input-container">
+            <input type="text" onChange={onChange} id="id" name="id" aria-labelledby="placeholder-id" required />
+            <label className="placeholder-text" for="id" id="placeholder-id">
+              <div className="text">ID</div>
+            </label>
           </div>
-        </MDBCardBody>
-      </MDBCard>
-    </MDBContainer>
+          <div className="input-container">
+            <input type="text" onChange={onChange} id="email" name="email" aria-labelledby="placeholder-email" required />
+            <label className="placeholder-text" for="email" id="placeholder-email">
+              <div className="text">Email</div>
+            </label>
+          </div>
+          <div className="input-container">
+            <input type="password" onChange={onChange} id="pw" name="pw" aria-labelledby="placeholder-pw" required />
+            <label className="placeholder-text" for="pw" id="placeholder-pw">
+              <div className="text">Password</div>
+            </label>
+          </div>
+          <div className="input-container">
+            <input type="password" onChange={onChange} id="conpw" name="conpw" aria-labelledby="placeholder-conpw" required />
+            <label className="placeholder-text" for="conpw" id="placeholder-conpw">
+              <div className="text">Password Confirm</div>
+            </label>
+          </div>
+              <div>
+              <input type="checkbox" name="news" value="" />Subscribe to our newsletter
+              </div>
+          <button className="submit-btn" size="md">
+            sign up
+          </button>
+        </form>
+        <div className="signin-platform">
+          <p>or sign up with:</p>
+          <table className="icon-table">
+            <tr>
+              <td>
+                <button
+                  tag="a"
+                  color="none"
+                  className="mx-3"
+                  style={{ color: "#4267b2" }}
+                >
+                  {<BsFacebook />}
+                </button>
+              </td>
+              <td>
+                <button
+                  tag="a"
+                  color="none"
+                  className="mx-3"
+                  style={{ color: "#1da1f2" }}
+                >
+                  {<BsTwitter />}
+                </button>
+              </td>
+              <td>
+                <button
+                  tag="a"
+                  color="none"
+                  className="mx-3"
+                  style={{ color: "#ea4335" }}
+                >
+                  {<BsGoogle />}
+                </button>
+              </td>
+              <td>
+                <button
+                  tag="a"
+                  color="none"
+                  className="mx-3"
+                  style={{ color: "#211f1f" }}
+                >
+                  {<BsGithub />}
+                </button>
+              </td>
+            </tr>
+          </table>
+  </div>
+      </div>
+    </>
   );
 }
 
