@@ -61,25 +61,16 @@ function SignUp() {
               <div className="text">Password Confirm</div>
             </label>
           </div>
-          <div className="d-flex justify-content-center mb-4">
-            <label>
-
-              <input type="checkbox"
-                name="flexCheck"
-                value="check"
-                id="flexCheckDefault"
-              >
-                Subscribe to our newsletter
-              </input>
-            </label>
-          </div>
+              <div>
+              <input type="checkbox" name="news" value="" />Subscribe to our newsletter
+              </div>
           <button className="submit-btn" size="md">
             sign up
           </button>
         </form>
-        <div className="text-center">
+        <div className="signin-platform">
           <p>or sign up with:</p>
-          <table class="icon-table">
+          <table className="icon-table">
             <tr>
               <td>
                 <button
@@ -123,7 +114,7 @@ function SignUp() {
               </td>
             </tr>
           </table>
-        </div>
+  </div>
       </div>
     </>
   );
