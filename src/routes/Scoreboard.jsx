@@ -77,7 +77,7 @@ const Scoreboard = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("http://www.pdxf.tk:3000/scorelist");
+      const res = await fetch("http://www.pdxf.tk:8000/scorelist");
       if (res.ok) {
         console.log("asasa");
         const js = await res.json();
