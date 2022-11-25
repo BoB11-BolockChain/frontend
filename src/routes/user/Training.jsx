@@ -24,11 +24,9 @@ const Training = () => {
             });
             if (res.ok) {
                 const js = await res.json();
-                // console.log(js.scenario);
                 const windowWidth = window.innerWidth;
                 setData(js.scenario);
                 setDataLoaded(true);
-                console.log(data);
                 setWidth("270px");
                 if (windowWidth < 768) {
                     setWidth("80px");
