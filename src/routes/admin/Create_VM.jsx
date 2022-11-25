@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import DockerlistTableTr from "src/components/CreateVM_TB/DockerlistTableTr";
+import WindowslistTableTr from "src/components/CreateVM_TB/WindowslistTableTr";
 import Loading from "src/components/Loading";
-import TBody from "src/components/TBody";
 import BoardModal from "src/components/CreateVM_TB/VMModal";
 import DockerimagelistTableTr from "src/components/CreateVM_TB/DockerimagelistTableTr";
 import Swal from "sweetalert2";
@@ -120,7 +120,7 @@ const Create_VM = () => {
 
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-6">
             <div className="wt-box">
               <div className="box-top">
                 <div className="box-title">
@@ -144,34 +144,6 @@ const Create_VM = () => {
                     Upload
                   </button>
                 </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-6">
-            <div className="wt-box">
-              <div className="box-top">
-                <div className="box-title">
-                  Make New Windows VM
-                  <br />
-                  <span className="box-subtitle">Make iso file to New VM</span>
-                </div>
-              </div>
-              <div className="box-bottom">
-                {dataLoaded ? (
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>No.</th>
-                        <th>FileName</th>
-                      </tr>
-                    </thead>
-                    <TBody data={data} setModalState={setModalState} />
-                  </table>
-                ) : (
-                  <Loading />
-                )}
               </div>
             </div>
           </div>
@@ -244,9 +216,23 @@ const Create_VM = () => {
           <div className="col-md-6">
             <div className="wt-box">
               <div className="box-top">
-                <div className="box-title">Windows Images List</div>
+                <div className="box-title">Windows ISO images list</div>
               </div>
-              <div className="box-bottom">윈도우 이미지 리스트 출력</div>
+              <div className="box-bottom">
+                {dataLoaded ? (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>No.</th>
+                        <th>ISO Name</th>
+                      </tr>
+                    </thead>
+                    <WindowslistTableTr data={data} />
+                  </table>
+                ) : (
+                  <Loading />
+                )}
+              </div>
             </div>
           </div>
           <div className="col-md-6">
