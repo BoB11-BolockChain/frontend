@@ -69,7 +69,7 @@ return (
   {dataLoaded ? (
     <table>
       <thead>
-        <th width="10%">No.</th>
+        <th width="10%">No</th>
         <th width="20%">User</th>
         <th width="40%">Score</th>
       </thead>
