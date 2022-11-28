@@ -62,7 +62,6 @@ return (
       <header>
           <h1 className="h2 fw-bold my-4">ScoreBoard</h1>
         </header>
-        <div class="subtitle">top 10</div>
         <Line {...config} />
 
         <div></div>

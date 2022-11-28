@@ -10,7 +10,7 @@ import HomepageSetting from "src/routes/admin/HomepageSetting";
 import Home from "src/routes/Home";
 import NotFound from "src/routes/NotFound";
 import Notifications from "src/routes/Notifications";
-import Scoreboard from "src/routes/user/Scoreboard";
+import Scoreboard from "src/routes/Scoreboard";
 import SignIn from "src/routes/SignIn";
 import SignUp from "src/routes/SignUp";
 import Profile from "src/routes/user/Profile";
