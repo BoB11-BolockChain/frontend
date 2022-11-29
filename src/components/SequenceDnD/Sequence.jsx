@@ -4,18 +4,21 @@ import Payload from "src/components/SequenceDnD/Payload";
 
 import "./styles.scss";
 
-const Sequence = ({ id, index, tactic, removeItem }) => {
+const Sequence = ({ index, data, removeTactic, removePayload }) => {
   return (
-    <Droppable droppableId={id}>
+    <Droppable droppableId={data.hash}>
       {(provided, snapshot) => (
         <div className="droppable">
           <div className="tactic-header">
             <div className="tactic-info">
               <div className="tactic-order">{index}</div>
-              <p className="text">{tactic.title}</p>
+              <p className="text">{data.title}</p>
             </div>
             <div className="btn-group">
-              <button className="icon-btn">
+              <button
+                className="icon-btn"
+                onClick={() => removeTactic(data.hash)}
+              >
                 <Close />
               </button>
               <button className="icon-btn">
@@ -31,14 +34,13 @@ const Sequence = ({ id, index, tactic, removeItem }) => {
             //   backgroundColor: snapshot.isDraggingOver ? "blue" : "grey",
             // }}
           >
-            {tactic.payloads.map((d, i) => (
+            {data.payloads.map((d, i) => (
               <Payload
-                key={d.id}
-                droppableId={id}
-                draggableId={d.id}
+                key={d.hash}
+                droppableId={data.hash}
                 index={i}
                 data={d}
-                removeItem={removeItem}
+                removePayload={removePayload}
               />
             ))}
             {provided.placeholder}

@@ -5,6 +5,8 @@ import Loading from "src/components/Loading";
 import tempImg from "src/assets/user1.png";
 import styles from "./dashboard.module.scss";
 
+// last activity and time
+//
 const Dashboard = () => {
   const [isFetched, setIsFetched] = useState(false);
   const [data, setData] = useState(null);

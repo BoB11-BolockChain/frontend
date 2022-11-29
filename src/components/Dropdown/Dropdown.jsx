@@ -4,9 +4,8 @@ import styles from "./dropdown.module.scss";
 
 const options = ["option1", "option2", "option3", "option4"];
 
-const Dropdown = ({ ops, stdata }) => {
-  // from props
-  const [selected, setSelected] = useState(-1);
+const Dropdown = ({ defaultValue, setData }) => {
+  const [selected, setSelected] = useState(defaultValue);
 
   return (
     <div className={styles.dropdown}>
@@ -19,7 +18,10 @@ const Dropdown = ({ ops, stdata }) => {
             className={`${styles.option} ${
               selected === i ? styles.selected : ""
             }`}
-            onClick={() => setSelected(i)}
+            onClick={() => {
+              setSelected(i);
+              setData(d);
+            }}
           >
             {d}
           </div>

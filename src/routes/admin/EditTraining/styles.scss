@@ -1,7 +1,8 @@
 @import "/src/assets/_colors.scss";
+@import "/src/assets/global.scss";
 
 .title {
-  margin: 0 !important;
+  margin-top: 2rem;
   font-size: 2rem;
 }
 
@@ -12,12 +13,13 @@
 .edit-training {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .box {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   flex-direction: column;
   border: 1px solid $border-grey;
   border-radius: 0.5rem;
@@ -26,6 +28,15 @@
 }
 
 .addform {
+  display: flex;
+  gap: 1rem;
+
+  .input {
+    flex-grow: 1;
+  }
+}
+
+.flex-row {
   display: flex;
   gap: 1rem;
 
@@ -48,4 +59,15 @@
   color: white;
   border: 0;
   border-radius: 0.5rem;
+}
+
+.divider {
+  // border: 2px solid $pdxf-blue;
+  background-color: $pdxf-blue;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+.pbutton {
+  @include pdxf-button;
 }
