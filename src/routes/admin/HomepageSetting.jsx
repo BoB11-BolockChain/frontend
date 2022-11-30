@@ -62,7 +62,7 @@ const HomepageSetting = () => {
                 setModalState({ data: data, isOpen: true, ceState: "create" })
               }
             >
-              글쓰기
+              CREATE POST
             </button>
           </>
         ) : (
