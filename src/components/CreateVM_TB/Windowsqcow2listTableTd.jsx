@@ -156,17 +156,17 @@ const TableTd = ({ data }) => {
     <>
       <tr key={data.title}>
         <td>{data.title}</td>
-        <td style={{ background: "#e53935" }} onClick={startqcow2}>
-          Start qcow2
+        <td onClick={startqcow2}>
+          <button className="option-btn">Start qcow2</button>
         </td>
-        <td style={{ background: "#c53935" }} onClick={cloneqcow2}>
-          Clone qcow2
+        <td onClick={cloneqcow2} >
+          <button className="option-btn">Clone qcow2</button>
         </td>
-        <td style={{ background: "#353935" }} onClick={editqcow2}>
-          Edit qcow2 Name
+        <td onClick={editqcow2}>
+          <button className="option-btn">Edit qcow2 Name</button>
         </td>
-        <td style={{ background: "#853935" }} onClick={delqcow2}>
-          Delete qcow2
+        <td onClick={delqcow2}>
+          <button className="option-btn">Delete qcow2</button>
         </td>
       </tr>
     </>
