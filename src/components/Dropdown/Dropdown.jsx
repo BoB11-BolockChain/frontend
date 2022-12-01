@@ -2,9 +2,7 @@ import { useState } from "react";
 
 import styles from "./dropdown.module.scss";
 
-const options = ["option1", "option2", "option3", "option4"];
-
-const Dropdown = ({ defaultValue, setData }) => {
+const Dropdown = ({ defaultValue, setData, options }) => {
   const [selected, setSelected] = useState(defaultValue);
 
   return (

@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("http://pdxf.tk:8000/dashboard", {
+      const res = await fetch("http://pdxf.tk:9000/dashboard", {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -49,8 +49,9 @@ const Dashboard = () => {
               <tr>
                 <th colSpan="2"></th>
                 <th>ID</th>
-                <th>current state</th>
-                <th></th>
+                <th>State</th>
+                {/* online, some time ago */}
+                <th>Last Solution</th>
               </tr>
             </thead>
             <tbody>
@@ -65,7 +66,7 @@ const Dashboard = () => {
                     />
                   </td>
                   <td>{d.id}</td>
-                  <td>{d.state}</td>
+                  <td>{d.lastSolution}</td>
                 </tr>
               ))}
             </tbody>

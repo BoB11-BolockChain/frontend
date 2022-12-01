@@ -8,6 +8,8 @@ import useInputState from "src/hooks/useInputState";
 
 import "./styles.scss";
 
+const dummy = ["option1", "option2", "option3", "option4"];
+
 const EditTraining = () => {
   const { trainingId } = useParams();
 
@@ -52,7 +54,7 @@ const EditTraining = () => {
 
   const getPayloads = (from, target) => {
     const tacticIndex = from.findIndex((el) => el.hash === target);
-    console.log(tacticIndex, target);
+    console.log(from[tacticIndex].payloads);
     const payloads = [...from[tacticIndex].payloads];
     return [tacticIndex, payloads];
   };
@@ -149,6 +151,7 @@ const EditTraining = () => {
         <Dropdown
           defaultValue={-1}
           setData={(data) => setState({ ...state, system: data })}
+          options={dummy}
         />
       </div>
       {isFetched ? (

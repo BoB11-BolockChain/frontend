@@ -1,5 +1,5 @@
 import { Close } from "@mui/icons-material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useInputState from "src/hooks/useInputState";
 
@@ -15,12 +15,33 @@ const EditChallenge = () => {
 
   const onClick = (hash) => {
     setSelected({ ...selected, [hash]: !selected[hash] });
+    console.log(challenges);
   };
+
+  //check tactics and challenges
+  useEffect(() => {
+    console.log(state);
+    const beforeChallenges = [...challenges];
+    beforeChallenges.forEach((ch) => {
+      const afterTactics = [];
+      ch.tactics.forEach((bt) => {
+        const sameATacticFound = state.tactics.find(
+          (at) => at.hash === bt.hash
+        );
+        if (sameATacticFound) {
+          afterTactics.push(sameATacticFound);
+        }
+      });
+      ch.tactics = afterTactics;
+    });
+    setChallenges(beforeChallenges);
+  }, []);
 
   const navigate = useNavigate();
   const finishEdit = async () => {
-    // const url = trainingId ? `edittraining/${trainingId}` : "createtraining";
-    const url = "createtraining";
+    const url = trainingId
+      ? `edittraining?trainingId=${trainingId}`
+      : "createtraining";
     const res = await fetch(`http://pdxf.tk:9000/${url}`, {
       method: "POST",
       headers: {
@@ -28,17 +49,16 @@ const EditChallenge = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        scenario: {
-          title: state.title,
-          description: state.description,
-          score: Number(state.score),
-          system: "dummysystem",
-        },
+        id: Number(trainingId),
+        title: state.title,
+        description: state.description,
+        score: Number(state.score),
+        system: "dummysystem",
         challenges: challenges.map((d) => ({ ...d, score: Number(d.score) })),
       }),
     });
+    alert(res.status, res.statusText);
     if (res.ok) {
-      alert(res.status, res.statusText);
       navigate("/admin/managetraining");
     }
   };
@@ -164,9 +184,6 @@ const EditChallenge = () => {
       <button className={styles.pbutton} onClick={finishEdit}>
         FINISH
       </button>
-      {challenges.map((d) => {
-        return console.log(d);
-      })}
     </div>
   );
 };
