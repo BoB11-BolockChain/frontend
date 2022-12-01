@@ -108,18 +108,19 @@ const TableTd = ({ data }) => {
         <td>{ImageName(data.IMAGE)}</td>
         <td>{showport(data)}</td>
         <td>{data.STATUS}</td>
-        <td onClick={accessSSH} style={{ background: "#4caf50" }}>
-          Access SSH
+        <td onClick={accessSSH} style={{ background: "white" }}>
+        <button className="option-btn">Access SSH</button>
         </td>
         <td
           onClick={CreateDockerImage}
           colSpan="2"
-          style={{ background: "#4860b0" }}
+          style={{ background: "white" }}
         >
-          Create Docker Images
+          <button className="option-btn">Create Docker Images</button>
         </td>
-        <td onClick={DockerDestroy} style={{ background: "#e53935" }}>
-          Destory
+        <td onClick={DockerDestroy} style={{ background: "white" }}>
+        <button className="option-btn">Destory</button>
+          
         </td>
       </tr>
     </>

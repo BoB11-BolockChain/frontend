@@ -138,17 +138,17 @@ const Create_VM = () => {
             </div>
           </div>
           <br />
-          <div className="box-body">
-            <form
+          <div className="box-body flex">
+            <form 
               action="http://www.pdxf.tk:8000/makevm"
               method="POST"
               encType="multipart/form-data"
             >
-              <input type="file" id="upload_file" name="upload_file" />
-              <button type="submit" name="upload" className="btn btn-primary">
+              <input className="form" type="file" id="upload_file" name="upload_file" />
+            </form>
+            <button type="submit" name="upload" className=" btn-primary">
                 Upload
               </button>
-            </form>
           </div>
         </div>
       </div>
@@ -158,19 +158,21 @@ const Create_VM = () => {
         options={seldata}
       />
 
+      <div className="margin-box"></div>
       {selected === "Windows" ? (
         <>
           <div className="col-md-6">
             <div className="wt-box">
               <div className="box-top">
                 <div className="box-title">
-                  Windows Running VM <br />
+                  Windows Running VM
                   <span className="box-subtitle">
                     Default VM Password : pdxf
                   </span>
                 </div>
               </div>
-              <div className="box-bottom">
+              <div className="margin-10"></div>
+              <div className="box-table">
                 {dataLoaded3 ? (
                   <table>
                     <thead>
@@ -178,6 +180,11 @@ const Create_VM = () => {
                         <th>Port</th>
                         <th>VM Name</th>
                         <th>State</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <WindowsVMlistTableTr data={data3} />
@@ -214,12 +221,16 @@ const Create_VM = () => {
               <div className="box-top">
                 <div className="box-title">Windows ISO images list</div>
               </div>
-              <div className="box-bottom">
+              <div className="margin-10"></div>
+              <div className="box-table">
                 {dataLoaded ? (
                   <table>
                     <thead>
                       <tr>
                         <th>ISO Name</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <WindowslistTableTr data={data} />
@@ -238,21 +249,19 @@ const Create_VM = () => {
               <div className="box-top">
                 <div className="box-title">
                   Make New Linux Docker
-                  <br />
                   <span className="box-subtitle">Copy in Docker Hub</span>
+                  <div className="margin-10"></div>
                   <img src="\img\linux_ex.png" alt="profile" />
                 </div>
               </div>
-              <div className="box-bottom">
-                <div className="forbtn">
+              <div className="margin-10"></div>
+              <div className="box-bottom fordocker">
                   <button
                     onClick={EditDockerName}
                     type="button"
-                    className="btn btn-primary"
-                  >
-                    Add
+                    className="btn-primary docker-btn">
+                    Click and Make your Linux Docker
                   </button>
-                </div>
               </div>
             </div>
           </div>
@@ -261,13 +270,14 @@ const Create_VM = () => {
               <div className="box-top">
                 <div className="box-title">
                   Linux Running Docker
-                  <br />
                   <span className="box-subtitle">
                     Default Docker Password : pdxf
                   </span>
                 </div>
+                
               </div>
-              <div className="box-bottom">
+              <div className="margin-10"></div>
+              <div className="box-table">
                 {dataLoaded1 ? (
                   <table>
                     <thead>
@@ -276,6 +286,10 @@ const Create_VM = () => {
                         <th>IMAGE </th>
                         <th>PORTS </th>
                         <th>STATUS </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <DockerlistTableTr data={data1} />
@@ -291,7 +305,8 @@ const Create_VM = () => {
               <div className="box-top">
                 <div className="box-title">Linux Docker Images list</div>
               </div>
-              <div className="box-bottom">
+              <div className="margin-10"></div>
+              <div className="box-table">
                 {dataLoaded2 ? (
                   <table>
                     <thead>
@@ -299,6 +314,10 @@ const Create_VM = () => {
                         <th>REPOSITORY:TAG</th>
                         <th>IMAGE ID</th>
                         <th>CREATED</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <DockerimagelistTableTr data={data2} />
