@@ -116,25 +116,23 @@ const TableTd = ({ data }) => {
       <tr key={data.title}>
         <td>{data.title}</td>
         <td
-          style={{ background: "#e53935" }}
+          style={{ background: "white" }}
           onClick={createVM}
           value={data.title}
-        >
-          Make Windows VM
+        ><button className="option-btn">Make Windows VM</button>
         </td>
         <td
-          style={{ background: "#353935" }}
+          style={{ background: "white" }}
           onClick={editISO}
           value={data.title}
         >
-          Edit ISO Name
+          <button className="option-btn">Edit ISO Name</button>
         </td>
         <td
-          style={{ background: "#853935" }}
+          style={{ background: "white" }}
           onClick={delISO}
           value={data.title}
-        >
-          Delete ISO
+        ><button className="option-btn"> Delete ISO</button>
         </td>
       </tr>
     </>
