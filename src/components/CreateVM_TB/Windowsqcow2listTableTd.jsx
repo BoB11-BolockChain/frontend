@@ -96,7 +96,7 @@ const TableTd = ({ data }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        ISO_name: data.title,
+        Filename: data.title,
       }),
     });
     Swal.showLoading();
@@ -112,6 +112,46 @@ const TableTd = ({ data }) => {
     }
   };
 
+  const cloneqcow2 = async (e) => {
+    Swal.fire({
+      title: "Submit Clone qcow2 name",
+      text: 'Do not enter ".qcow2"',
+      input: "text",
+      inputAttributes: {
+        autocapitalize: "off",
+      },
+      showCancelButton: true,
+      confirmButtonText: "Submit",
+      showLoaderOnConfirm: true,
+      preConfirm: async (windowsid) => {
+        const Sdata = {
+          Clonefilename: windowsid + ".qcow2",
+          Filename: data.title,
+        };
+        e.preventDefault();
+        console.log(Sdata);
+        const res = await fetch("http://www.pdxf.tk:8000/cloneqcow2", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(Sdata),
+        });
+        if (res.ok) {
+          Swal.fire({
+            icon: "success",
+            title: "Clone qcow2 Success.",
+            confirmButtonText: "OK",
+            preConfirm: () => {
+              window.location.reload();
+            },
+          });
+        }
+      },
+    });
+  };
+
   return (
     <>
       <tr key={data.title}>
@@ -119,8 +159,8 @@ const TableTd = ({ data }) => {
         <td onClick={startqcow2}>
           <button className="option-btn">Start qcow2</button>
         </td>
-        <td
-        ><button className="option-btn">Clone qcow2</button>
+        <td onClick={cloneqcow2} >
+          <button className="option-btn">Clone qcow2</button>
         </td>
         <td onClick={editqcow2}>
           <button className="option-btn">Edit qcow2 Name</button>
