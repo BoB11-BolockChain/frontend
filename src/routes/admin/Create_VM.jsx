@@ -164,17 +164,17 @@ const Create_VM = () => {
             </div>
           </div>
           <br />
-          <div className="box-body">
-            <form
+          <div className="box-body flex">
+            <form 
               action="http://www.pdxf.tk:8000/makevm"
               method="POST"
               encType="multipart/form-data"
             >
-              <input type="file" id="upload_file" name="upload_file" />
-              <button type="submit" name="upload" className="btn btn-primary">
+              <input className="form" type="file" id="upload_file" name="upload_file" />
+            </form>
+            <button type="submit" name="upload" className=" btn-primary">
                 Upload
               </button>
-            </form>
           </div>
         </div>
       </div>
@@ -187,7 +187,9 @@ const Create_VM = () => {
         options={seldata}
       />
 
+      <div className="margin-box"></div>
       {selected === "Linux" ? (
+
         <>
           <div className="col-md-6">
             <div className="wt-box">

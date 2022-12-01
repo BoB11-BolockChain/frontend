@@ -109,16 +109,17 @@ const TableTd = ({ data }) => {
         <td
           colSpan="2"
           onClick={EditDockerName}
-          style={{ background: "#4caf50" }}
+          style={{ background: "white" }}
         >
-          Edit Name
+          <button className="option-btn">Edit Name</button>
+          
         </td>
         <td
           colSpan="2"
           onClick={DeleteDockerImage}
-          style={{ background: "#e53935" }}
+          style={{ background: "white" }}
         >
-          Delete Image
+          <button className="option-btn">Delete Image</button>
         </td>
       </tr>
     </>
