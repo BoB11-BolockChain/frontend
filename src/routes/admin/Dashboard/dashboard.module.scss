@@ -2,13 +2,21 @@
 
 .users {
   background-color: white;
-  border: 1px solid $border-grey;
-  border-radius: 1rem;
-  padding: 0.5rem;
+  border: 0.5px solid $border-grey;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.marginbox {
+  height: 20px;
+}
+
+.textmarginbox {
+  height: 10px;
 }
 
 .currentusers {
-  border-bottom: 1px solid $border-grey;
+  border-bottom: 0.5px solid $border-grey;
   text-align: end;
 }
 
@@ -16,10 +24,11 @@
   width: 100%;
   text-align: center;
   border-collapse: collapse;
+  padding: 10px;
 
   tr {
-    height: 3rem;
-    border-top: 1px solid black;
+    height: 3.5rem;
+    border-top: 0.5px solid grey;
   }
 }
 
