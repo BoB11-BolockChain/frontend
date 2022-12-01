@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import DockerlistTableTr from "src/components/CreateVM_TB/DockerlistTableTr";
 import WindowslistTableTr from "src/components/CreateVM_TB/WindowslistTableTr";
 import WindowsVMlistTableTr from "src/components/CreateVM_TB/WindowsVMlistTableTr";
+import Dropdown from "src/components/Dropdown";
 import Loading from "src/components/Loading";
 import DockerimagelistTableTr from "src/components/CreateVM_TB/DockerimagelistTableTr";
 import Swal from "sweetalert2";
 
 const Create_VM = () => {
+  const seldata = ["Windows", "Linux"];
+  const [selected, setSelected] = useState("");
   const EditDockerName = async (e) => {
     Swal.fire({
       title: "Submit Docker Image name",
@@ -128,64 +131,71 @@ const Create_VM = () => {
         <h2>Create VM</h2>
       </div>
 
-      <div className="container">
-        <div className="col-md-6">
-          <div className="wt-box">
-            <div className="box-top">
-              <div className="box-title">
-                Upload your Windows or Linux Docker file
-                <span className="box-subtitle">only .iso .tar</span>
-              </div>
-            </div>
-            <br />
-            <div className="box-body">
-              <form
-                action="http://www.pdxf.tk:8000/makevm"
-                method="POST"
-                encType="multipart/form-data"
-              >
-                <input type="file" id="upload_file" name="upload_file" />
-                <button type="submit" name="upload" className="btn btn-primary">
-                  Upload
-                </button>
-              </form>
+      <div className="col-md-6">
+        <div className="wt-box">
+          <div className="box-top">
+            <div className="box-title">
+              Upload your Windows or Linux Docker file
+              <span className="box-subtitle">only .iso .tar</span>
             </div>
           </div>
-        </div>
-
-        <div className="col-md-6">
-          <div className="wt-box">
-            <div className="box-top">
-              <div className="box-title">
-                Windows Running VM <br />
-                <span className="box-subtitle">Default VM Password : pdxf</span>
-              </div>
-            </div>
-            <div className="box-bottom">
-              {dataLoaded3 ? (
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Port</th>
-                      <th>VM Name</th>
-                      <th>State</th>
-                    </tr>
-                  </thead>
-                  <WindowsVMlistTableTr data={data3} />
-                </table>
-              ) : (
-                <Loading />
-              )}
-            </div>
+          <br />
+          <div className="box-body">
+            <form
+              action="http://www.pdxf.tk:8000/makevm"
+              method="POST"
+              encType="multipart/form-data"
+            >
+              <input type="file" id="upload_file" name="upload_file" />
+              <button type="submit" name="upload" className="btn btn-primary">
+                Upload
+              </button>
+            </form>
           </div>
         </div>
+      </div>
+      <Dropdown
+        defaultValue={-1}
+        setData={(d) => setSelected(d)}
+        options={seldata}
+      />
 
-        <div className="col-md-6">
-          <div className="wt-box">
-            <div className="box-top">
-              <div className="box-title">Windows VM list</div>
+      {selected === "Windows" ? (
+        <>
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">
+                  Windows Running VM <br />
+                  <span className="box-subtitle">
+                    Default VM Password : pdxf
+                  </span>
+                </div>
+              </div>
+              <div className="box-bottom">
+                {dataLoaded3 ? (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Port</th>
+                        <th>VM Name</th>
+                        <th>State</th>
+                      </tr>
+                    </thead>
+                    <WindowsVMlistTableTr data={data3} />
+                  </table>
+                ) : (
+                  <Loading />
+                )}
+              </div>
             </div>
-            {/* <div className="box-bottom">
+          </div>
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">Windows VM list</div>
+              </div>
+              {/* <div className="box-bottom">
               {dataLoaded ? (
                 <table>
                   <thead>
@@ -199,110 +209,110 @@ const Create_VM = () => {
                 <Loading />
               )}
             </div> */}
-          </div>
-        </div>
-
-        <div className="col-md-6">
-          <div className="wt-box">
-            <div className="box-top">
-              <div className="box-title">Windows ISO images list</div>
-            </div>
-            <div className="box-bottom">
-              {dataLoaded ? (
-                <table>
-                  <thead>
-                    <tr>
-                      <th>ISO Name</th>
-                    </tr>
-                  </thead>
-                  <WindowslistTableTr data={data} />
-                </table>
-              ) : (
-                <Loading />
-              )}
             </div>
           </div>
-        </div>
-
-        <div className="col-md-6">
-          <div className="wt-box">
-            <div className="box-top">
-              <div className="box-title">
-                Make New Linux Docker
-                <br />
-                <span className="box-subtitle">Copy in Docker Hub</span>
-                <img src="\img\linux_ex.png" alt="profile" />
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">Windows ISO images list</div>
               </div>
-            </div>
-            <div className="box-bottom">
-              <div className="forbtn">
-                <button
-                  onClick={EditDockerName}
-                  type="button"
-                  className="btn btn-primary"
-                >
-                  Add
-                </button>
+              <div className="box-bottom">
+                {dataLoaded ? (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>ISO Name</th>
+                      </tr>
+                    </thead>
+                    <WindowslistTableTr data={data} />
+                  </table>
+                ) : (
+                  <Loading />
+                )}
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="col-md-6">
-          <div className="wt-box">
-            <div className="box-top">
-              <div className="box-title">
-                Linux Running Docker
-                <br />
-                <span className="box-subtitle">
-                  Default Docker Password : pdxf
-                </span>
+        </>
+      ) : (
+        <>
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">
+                  Make New Linux Docker
+                  <br />
+                  <span className="box-subtitle">Copy in Docker Hub</span>
+                  <img src="\img\linux_ex.png" alt="profile" />
+                </div>
+              </div>
+              <div className="box-bottom">
+                <div className="forbtn">
+                  <button
+                    onClick={EditDockerName}
+                    type="button"
+                    className="btn btn-primary"
+                  >
+                    Add
+                  </button>
+                </div>
               </div>
             </div>
-            <div className="box-bottom">
-              {dataLoaded1 ? (
-                <table>
-                  <thead>
-                    <tr>
-                      <th>ContainerID</th>
-                      <th>IMAGE </th>
-                      <th>PORTS </th>
-                      <th>STATUS </th>
-                    </tr>
-                  </thead>
-                  <DockerlistTableTr data={data1} />
-                </table>
-              ) : (
-                <Loading />
-              )}
+          </div>
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">
+                  Linux Running Docker
+                  <br />
+                  <span className="box-subtitle">
+                    Default Docker Password : pdxf
+                  </span>
+                </div>
+              </div>
+              <div className="box-bottom">
+                {dataLoaded1 ? (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>ContainerID</th>
+                        <th>IMAGE </th>
+                        <th>PORTS </th>
+                        <th>STATUS </th>
+                      </tr>
+                    </thead>
+                    <DockerlistTableTr data={data1} />
+                  </table>
+                ) : (
+                  <Loading />
+                )}
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className="col-md-6">
-          <div className="wt-box">
-            <div className="box-top">
-              <div className="box-title">Linux Docker Images list</div>
-            </div>
-            <div className="box-bottom">
-              {dataLoaded2 ? (
-                <table>
-                  <thead>
-                    <tr>
-                      <th>REPOSITORY:TAG</th>
-                      <th>IMAGE ID</th>
-                      <th>CREATED</th>
-                    </tr>
-                  </thead>
-                  <DockerimagelistTableTr data={data2} />
-                </table>
-              ) : (
-                <Loading />
-              )}
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">Linux Docker Images list</div>
+              </div>
+              <div className="box-bottom">
+                {dataLoaded2 ? (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>REPOSITORY:TAG</th>
+                        <th>IMAGE ID</th>
+                        <th>CREATED</th>
+                      </tr>
+                    </thead>
+                    <DockerimagelistTableTr data={data2} />
+                  </table>
+                ) : (
+                  <Loading />
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </>
   );
 };

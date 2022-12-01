@@ -14,6 +14,7 @@ const Dropdown = ({ defaultValue, setData, options }) => {
       <div className={styles.content}>
         {options.map((d, i) => (
           <div
+            key={i}
             className={`${styles.option} ${
               selected === d ? styles.selected : ""
             }`}
