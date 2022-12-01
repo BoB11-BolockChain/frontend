@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { HiOutlineCube, HiOutlineFlag } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+
 import "./styles.scss";
 
 const dummy = [

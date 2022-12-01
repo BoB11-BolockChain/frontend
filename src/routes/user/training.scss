@@ -22,7 +22,7 @@
 
 .scenario-list button:hover,
 button:focus {
-    background: hsl(230, 95%, 70%);
+    background: hsl(230, 51%, 51%);
     color: rgba(255, 255, 255, 0.9);
 }
 
@@ -162,7 +162,6 @@ button:focus {
 .modal-chall-content {
     border-top: 1px solid #999;
     padding: 10px;
-    width: 100%;
 }
 
 .modal-chall-content table {
@@ -222,23 +221,22 @@ button:focus {
 .modal-chall-flag button {
     padding: 10px;
     background: hsl(226, 42%, 49%);
+    border: 1px solid hsl(226, 42%, 49%);
     color: hsl(0, 0%, 100%);
 }
 
 #modal_chall_button:hover,
 #modal_chall_button:focus {
-    background-color: #4860b0;
+    background-color: hsl(226, 42%, 49%);
     color: hsl(0, 0%, 100%);
 }
 
 .modal-chall-check {
-    width: 100%;
     padding: 0px 10px 0px 10px;
     text-align: center;
 }
 
 .modal-chall-check p {
-    width: 100%;
     padding: 8px;
     color: hsl(0, 0%, 100%);
 }

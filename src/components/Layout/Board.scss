@@ -13,8 +13,8 @@
   background-color: rgba(255, 255, 255, 0);
   // background-color: rgba(24, 30, 52, 1.0);
   padding: 12px;
-  color: #fa678c;
-  border-bottom: 1px solid #fa678c;
+  color: hsl(230, 95%, 70%);
+  border-bottom: 1px solid hsl(230, 95%, 70%);
   font-weight: normal;
   font-size: 14px;
   text-align: center;
@@ -44,22 +44,22 @@
 
 .board-container button {
   background-color: rgba(255, 255, 255, 0);
-  border: 1px solid #fa678c;
+  border: 1px solid hsl(230, 95%, 70%);
   border-radius: 5px;
   padding: 8px 15px;
   margin-top: 5px;
-  color: #fa678c;
+  color: hsl(230, 95%, 70%);
   float: right;
 }
 
 .board-container button:hover,
 button:focus {
   background-color: #fff;
-  color: #bb284d;
+  color: hsl(230, 65%, 55%);
 }
 
 .board-container .icon {
-  color: #fa678c;
+  color: hsl(230, 95%, 70%);
   text-align: center;
   cursor: pointer;
 }
@@ -138,6 +138,63 @@ button:focus {
   width: 100%;
 }
 
-.boardmodal-submit {
+.boardmodal-write {
   width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  .boardmodal-title {
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 15px;
+    text-align: left;
+  }
+
+  .input-title {
+    padding: 10px;
+    width: 90%;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+
+  .input-title:hover,
+  .input-title:focus {
+    outline: none;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 5px 1px hsl(230, 100%, 86%);
+  }
+
+  .input-content {
+    padding: 10px;
+    width: 90%;
+    resize: vertical;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+
+  .input-content:hover,
+  .input-content:focus {
+    outline: none;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 5px 1px hsl(230, 100%, 86%);
+  }
+
+  .input-button {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 0px;
+    background: hsl(230, 95%, 70%);
+  }
+
+  .input-button:hover,
+  .input-button:focus {
+    background: hsl(230, 59%, 54%);
+  }
 }

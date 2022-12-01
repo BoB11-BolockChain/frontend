@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { MDBInput, MDBTextArea, MDBBtn } from "mdb-react-ui-kit";
 
 const ModalBoardCreate = () => {
   const [createState, setCreateState] = useState({
@@ -26,36 +25,37 @@ const ModalBoardCreate = () => {
     }
   };
   return (
-    <div class="boardmodal-submit">
+    <div class="boardmodal-write">
+      <p className="boardmodal-title">CREATE POST</p>
       <form onSubmit={onCreateSubmit}>
         <table>
           <thead>
             <tr>
               <td id="inputTitle">
-                <MDBInput
+                <input
                   onChange={onCreateChange}
                   placeholder="Title"
                   name="title"
                   type="text"
+                  className="input-title"
                 />
               </td>
             </tr>
             <tr>
               <td id="inputContent">
-                <MDBTextArea
+                <textarea
                   onChange={onCreateChange}
                   placeholder="Content"
                   name="content"
                   cols="50"
                   rows="7"
+                  className="input-content"
                 />
               </td>
             </tr>
             <tr>
               <td>
-                <MDBBtn className="w-100 fw-bold text-uppercase" size="md">
-                  submit
-                </MDBBtn>
+                <button className="input-button">SUBMIT</button>
               </td>
             </tr>
           </thead>

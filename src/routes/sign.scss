@@ -49,6 +49,7 @@
 
   input:focus + .placeholder-text .text,
   input:valid + .placeholder-text .text {
+
     background-color: white;
     font-size: 16px;
     color: #bbb;
@@ -82,7 +83,7 @@
     transition: transform 0.15s ease-out, font-size 0.15s ease-out,
       background-color 0.15s ease-out, color 0.15s ease-out;
   }
-
+  
   .placeholder-text {
     font-size: 18px;
     padding: 10 20px;
@@ -129,6 +130,12 @@
 
 .icon-table button {
   background-color: #00000000;
+  border: 0px solid #00000000;
+}
+
+.icon-table button:focus,
+.icon-table button:hover {
+  background-color: #00000025;
 }
 
 .account {

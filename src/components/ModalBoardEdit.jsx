@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { MDBInput, MDBTextArea, MDBBtn } from "mdb-react-ui-kit";
 
 const ModalBoardEdit = ({ data }) => {
   const [editState, setEditState] = useState({
@@ -29,38 +28,39 @@ const ModalBoardEdit = ({ data }) => {
     }
   };
   return (
-    <div class="boardmodal-submit">
+    <div className="boardmodal-write">
+      <p className="boardmodal-title">EDIT POST</p>
       <form onSubmit={onEditSubmit}>
         <table>
           <thead>
             <tr>
               <td id="inputTitle">
-                <MDBInput
+                <input
                   onChange={onEditChange}
                   placeholder="Title"
                   name="title"
                   type="text"
                   defaultValue={editState.title}
+                  className="input-title"
                 />
               </td>
             </tr>
             <tr>
               <td id="inputContent">
-                <MDBTextArea
+                <textarea
                   onChange={onEditChange}
                   placeholder="Content"
                   name="content"
                   cols="50"
-                  rows="7"
+                  rows="10"
                   defaultValue={editState.content}
+                  className="input-content"
                 />
               </td>
             </tr>
             <tr>
               <td>
-                <MDBBtn className="w-100 fw-bold text-uppercase" size="md">
-                  submit
-                </MDBBtn>
+                <button className="input-button">submit</button>
               </td>
             </tr>
           </thead>
