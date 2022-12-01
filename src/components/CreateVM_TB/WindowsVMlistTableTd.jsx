@@ -194,20 +194,15 @@ const TableTd = ({ data }) => {
         <td>{data.Port}</td>
         <td>{data.Domain}</td>
         <td>{data.State}</td>
-        <td style={{ background: "#053935" }} onClick={accessVM}>
-          Access VM
+        <td><button className="option-btn">Access</button>
         </td>
-        <td style={{ background: "#553935" }} onClick={VMDestroy}>
-          Delete VM
+        <td> <button className="option-btn">Delete</button>
         </td>
-        <td style={{ background: "#a53935" }} onClick={VMsuspend}>
-          Suspend VM
+        <td><button className="option-btn">Suspend</button>
         </td>
-        <td style={{ background: "#f53935" }} onClick={VMresume}>
-          Resume VM
+        <td><button className="option-btn">Resume</button>
         </td>
-        <td style={{ background: "#753935" }} onClick={VMstart}>
-          Start VM
+        <td><button className="option-btn">Start</button>
         </td>
       </tr>
     </>
