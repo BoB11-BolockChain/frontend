@@ -44,7 +44,8 @@ const DashboardByUser = () => {
 
   return (
     <>
-      <p className="title">Dashboard of {userId}</p>
+    <div className="marginbox"></div>
+      <h1>Dashboard of {userId}</h1>
       {isFetched ? (
         <div className="scenarios">
           {data.map((d, i) => (

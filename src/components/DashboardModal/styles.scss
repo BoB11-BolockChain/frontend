@@ -1,13 +1,16 @@
 @import "/src/assets/_colors.scss";
 
 .dashboard-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 0 !important;
-  border-bottom: 1px solid $pdxf-blue;
+  font-weight: 500;
+  // border-bottom: 1px solid $pdxf-blue;
 }
 
 .dashboard-small-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  margin : 8px !important;
+  font-weight: 500;
 }
 
 .challenges {
@@ -26,7 +29,7 @@
 }
 
 .divider {
-  border: 1px solid $pdxf-blue;
+  border: 0.5px solid $pdxf-blue;
 }
 
 .solved {
@@ -40,15 +43,16 @@
 .incident {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.1rem;
 }
 
 .process {
   display: flex;
   flex-direction: column;
-  border: 2px solid $pdxf-blue;
+  border: 1.5px solid $pdxf-blue;
   border-radius: 0.5rem;
-  padding: 0.5rem;
+  padding: 1rem;
+  margin: 8px;
 }
 
 .tactic {
@@ -64,4 +68,20 @@
   border-radius: 50%;
   color: white;
   margin-right: 0.5rem;
+}
+
+.textmarginbox {
+  height : 10px;
+}
+
+.titlemarginbox{
+  height: 5px;
+}
+
+.height-align {
+  line-height: 2rem;
+}
+
+.bodytext {
+  font-weight: 500;
 }
