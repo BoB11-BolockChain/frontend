@@ -8,15 +8,16 @@ import useInputState from "src/hooks/useInputState";
 
 import "./styles.scss";
 
+const dummy = ["option1", "option2", "option3", "option4"];
+
 const EditTraining = () => {
   const { trainingId } = useParams();
 
   const [state, setState, onChange] = useInputState();
-
-  const [items, setItems] = useState([]);
+  const [tactics, setTactics] = useState([]);
+  const [challenges, setChallenges] = useState([]);
 
   const [isFetched, setIsFetched] = useState(false);
-  const [data, setData] = useState();
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
@@ -32,96 +33,114 @@ const EditTraining = () => {
       if (res.ok) {
         const jsonBody = await res.json();
         setIsFetched(true);
-        setData(jsonBody);
-
         setState({
-          name: jsonBody.scenario.title,
-          description: jsonBody.scenario.description,
+          title: jsonBody.title,
+          description: jsonBody.description,
+          score: jsonBody.score,
+          // system: jsonBody.system,
         });
-
-        // challenge should be revisable with remove tactic
         const tactics = [];
         jsonBody.challenges.forEach((element) => {
           tactics.push(...element.tactics);
         });
-        setItems(tactics);
+        setTactics(tactics);
+        setChallenges(jsonBody.challenges);
       } else {
         console.log(res.status);
       }
     };
-    if (trainingId) {
-      fetchData();
-    } else {
-      setIsFetched(true);
-    }
-  }, []);
+    trainingId ? fetchData() : setIsFetched(true);
+  }, [trainingId, setState]);
+
+  const getPayloads = (from, target) => {
+    const tacticIndex = from.findIndex((el) => el.hash === target);
+    console.log(from[tacticIndex].payloads);
+    const payloads = [...from[tacticIndex].payloads];
+    return [tacticIndex, payloads];
+  };
 
   const onDragEnd = (result, provided) => {
     if (!result.destination) {
       return;
     }
+    const afterDrag = [...tactics];
 
-    const tempItems = [...items];
     if (result.source.droppableId === result.destination.droppableId) {
-      const targetIndex = items.findIndex(
-        (el) => el.droppableId === result.source.droppableId
+      const [tacticIndex, payloads] = getPayloads(
+        tactics,
+        result.source.droppableId
       );
-      const targetList = [...tempItems[targetIndex].list];
-      targetList[result.source.index] = targetList.splice(
+      payloads[result.source.index] = payloads.splice(
         result.destination.index,
         1,
-        targetList[result.source.index]
+        payloads[result.source.index]
       )[0];
-      tempItems[targetIndex].list = targetList;
-      setItems(tempItems);
+      afterDrag[tacticIndex].payloads = payloads;
+      setTactics(afterDrag);
       return;
     }
 
-    const srcIndex = items.findIndex(
-      (el) => el.droppableId === result.source.droppableId
+    const [srcIndex, srcPayloads] = getPayloads(
+      tactics,
+      result.source.droppableId
     );
-    const srcList = [...items[srcIndex].list];
-    const destIndex = items.findIndex(
-      (el) => el.droppableId === result.destination.droppableId
+    const [destIndex, destPayloads] = getPayloads(
+      tactics,
+      result.destination.droppableId
     );
-    const destList = [...items[destIndex].list];
-    const [removed] = srcList.splice(result.source.index, 1);
-    destList.splice(result.destination.index, 0, removed);
+    destPayloads.splice(
+      result.destination.index,
+      0,
+      srcPayloads.splice(result.source.index, 1)[0]
+    );
 
-    tempItems[srcIndex].list = srcList;
-    tempItems[destIndex].list = destList;
-    setItems(tempItems);
+    afterDrag[srcIndex].payloads = srcPayloads;
+    afterDrag[destIndex].payloads = destPayloads;
+    setTactics(afterDrag);
     return;
   };
 
-  const removeItem = (droppableId, draggableId) => {
-    const temp = [...items];
-    const droppableIndex = items.findIndex(
-      (el) => el.droppableId === droppableId
-    );
-    const targetList = [...items[droppableIndex].list];
-    const targetIndex = targetList.findIndex((el) => el === draggableId);
-    temp[droppableIndex].list.splice(targetIndex, 1);
-    setItems(temp);
+  const removeTactic = (droppableId) => {
+    const afterRemove = [...tactics];
+    const tacticIndex = getPayloads(tactics, droppableId)[0];
+    afterRemove.splice(tacticIndex, 1);
+    setTactics(afterRemove);
   };
 
-  const addSequence = () => {
-    const temp = [...items];
-    temp.push({ tactic: state.add, droppableId: state.add, list: [] });
+  const removePayload = (droppableId, draggableId) => {
+    const afterRemove = [...tactics];
+    const [tacticIndex, payloads] = getPayloads(tactics, droppableId);
+    const payloadIndex = payloads.findIndex((el) => el === draggableId);
+    afterRemove[tacticIndex].payloads.splice(payloadIndex, 1);
+    setTactics(afterRemove);
+  };
+
+  const addTactic = () => {
+    const temp = [...tactics];
+    temp.push({
+      title: state.add,
+      hash: Date(),
+      payloads: [],
+    });
     setState({ ...state, add: "" });
-    setItems(temp);
+    setTactics(temp);
   };
 
-  const addItem = () => {
-    const temp = [...items];
-    temp[0].list.push(state.payload);
+  const addPayload = () => {
+    const temp = [...tactics];
+    temp[0].payloads.push({
+      payload: state.payload,
+      hash: Date(),
+    });
     setState({ ...state, payload: "" });
-    setItems(temp);
+    setTactics(temp);
   };
 
   const navigate = useNavigate();
   const move = () => {
-    navigate("/admin/editchallenge", { state: items });
+    navigate(`/admin/editchallenge/${trainingId}`, {
+      state: { ...state, tactics, challenges },
+    });
   };
 
   return (
@@ -129,25 +148,39 @@ const EditTraining = () => {
       <p className="title">Edit Training</p>
       <div className="box">
         <p className="small-title">VM Image</p>
-        <Dropdown />
+        <Dropdown
+          defaultValue={dummy[1]}
+          setData={(data) => setState({ ...state, system: data })}
+          options={dummy}
+        />
       </div>
       {isFetched ? (
         <div className="box">
           <p className="small-title">Training Information</p>
-          <input
-            className="input"
-            name="name"
-            placeholder="Title"
-            onChange={onChange}
-            value={state.name}
-          />
-          <input
+          <div className="flex-row">
+            <input
+              className="input"
+              name="title"
+              placeholder="Title"
+              onChange={onChange}
+              value={state.title}
+            />
+            <input
+              className="input"
+              name="score"
+              placeholder="score"
+              onChange={onChange}
+              value={state.score}
+            />
+          </div>
+          <textarea
             className="input"
             name="description"
             placeholder="Description"
             onChange={onChange}
             value={state.description}
-          />
+            rows="3"
+          ></textarea>
         </div>
       ) : (
         <Loading />
@@ -156,20 +189,22 @@ const EditTraining = () => {
         <p className="small-title">Attack Sequence</p>
         {isFetched ? (
           <DragDropContext onDragEnd={onDragEnd}>
-            {items.length === 0
+            {tactics.length === 0
               ? "No Tactics Created"
-              : items.map((d, i) => (
+              : tactics.map((d, i) => (
                   <Sequence
-                    key={d.droppableId}
-                    tactic={d}
+                    key={d.hash}
+                    data={d}
                     index={i}
-                    removeItem={removeItem}
+                    removeTactic={removeTactic}
+                    removePayload={removePayload}
                   />
                 ))}
           </DragDropContext>
         ) : (
           <Loading />
         )}
+        <div className="divider"></div>
         <p className="small-title">Add Tactic</p>
         <div className="addform">
           <input
@@ -179,7 +214,7 @@ const EditTraining = () => {
             value={state.add}
             placeholder="Enter tactic name here"
           />
-          <button className="pdxf-button" onClick={addSequence}>
+          <button className="pdxf-button" onClick={addTactic}>
             Add
           </button>
         </div>
@@ -192,13 +227,13 @@ const EditTraining = () => {
             value={state.payload}
             placeholder="Enter payload here"
           />
-          <button className="pdxf-button" onClick={addItem}>
+          <button className="pdxf-button" onClick={addPayload}>
             Add
           </button>
         </div>
       </div>
-      <button className="pdxf-button" onClick={move}>
-        next
+      <button className="pbutton" onClick={move}>
+        Go to Edit Challenges
       </button>
     </div>
   );

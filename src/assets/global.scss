@@ -5,7 +5,7 @@
 @mixin flex-page {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 @mixin pdxf-button {
