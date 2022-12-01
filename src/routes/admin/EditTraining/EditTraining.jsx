@@ -149,7 +149,7 @@ const EditTraining = () => {
       <div className="box">
         <p className="small-title">VM Image</p>
         <Dropdown
-          defaultValue={-1}
+          defaultValue={dummy[1]}
           setData={(data) => setState({ ...state, system: data })}
           options={dummy}
         />

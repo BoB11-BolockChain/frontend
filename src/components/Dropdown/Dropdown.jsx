@@ -8,16 +8,17 @@ const Dropdown = ({ defaultValue, setData, options }) => {
   return (
     <div className={styles.dropdown}>
       <div className={styles.head}>
-        {selected < 0 ? "Select" : options[selected]}
+        {/* {selected < 0 ? "Select" : options[selected]} */}
+        {options.includes(selected) ? selected : "Select"}
       </div>
       <div className={styles.content}>
         {options.map((d, i) => (
           <div
             className={`${styles.option} ${
-              selected === i ? styles.selected : ""
+              selected === d ? styles.selected : ""
             }`}
             onClick={() => {
-              setSelected(i);
+              setSelected(d);
               setData(d);
             }}
           >
