@@ -126,6 +126,7 @@ const EditTraining = () => {
 
   return (
     <div className="edit-training">
+      <div className="marginbox"></div>
       <p className="title">Edit Training</p>
       <div className="box">
         <p className="small-title">VM Image</p>
@@ -170,6 +171,7 @@ const EditTraining = () => {
         ) : (
           <Loading />
         )}
+         <div className="marginbox"></div>
         <p className="small-title">Add Tactic</p>
         <div className="addform">
           <input
@@ -183,6 +185,7 @@ const EditTraining = () => {
             Add
           </button>
         </div>
+        <div className="marginbox"></div>
         <p className="small-title">Add Payload</p>
         <div className="addform">
           <input
@@ -197,9 +200,10 @@ const EditTraining = () => {
           </button>
         </div>
       </div>
-      <button className="pdxf-button" onClick={move}>
+      <div className="bottom-button"><button className="pdxf-button" onClick={move}>
         next
-      </button>
+      </button></div>
+      
     </div>
   );
 };

@@ -114,9 +114,7 @@ const Create_VM = () => {
         margin={width}
       />
       <script src="multiselect-dropdown.js"></script>
-      <div className="Title">
-        <h2>Create VM</h2>
-      </div>
+        <h1>Create VM</h1>
 
       <div className="container">
         <div className="row">
