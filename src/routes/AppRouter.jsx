@@ -43,13 +43,15 @@ const AppRouter = () => {
 
             <Route path="createvm" element={<CreateVM />} />
 
-            {/* <Route path="createtraining" element={<EditTraining />} /> */}
             <Route path="managetraining" element={<ManageTraining />} />
             <Route path="edittraining">
               <Route index element={<EditTraining />} />
               <Route path=":trainingId" element={<EditTraining />} />
             </Route>
-            <Route path="editchallenge" element={<EditChallenge />} />
+            <Route path="editchallenge">
+              <Route index element={<EditChallenge />} />
+              <Route path=":trainingId" element={<EditChallenge />} />
+            </Route>
 
             <Route path="dashboard">
               <Route index element={<Dashboard />} />

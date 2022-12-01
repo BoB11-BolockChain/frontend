@@ -1,7 +1,8 @@
 @import "/src/assets/_colors.scss";
+@import "/src/assets/global.scss";
 
 .title {
-  margin: 0 !important;
+  margin-top: 2rem;
   font-size: 2rem;
   font-weight: 500;
 }
@@ -14,7 +15,8 @@
 .edit-training {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .box {
@@ -34,6 +36,15 @@
 }
 
 .addform {
+  display: flex;
+  gap: 1rem;
+
+  .input {
+    flex-grow: 1;
+  }
+}
+
+.flex-row {
   display: flex;
   gap: 1rem;
 
@@ -63,4 +74,15 @@
 
 .marginbox {
   height: 2px;
+}
+
+.divider {
+  // border: 2px solid $pdxf-blue;
+  background-color: $pdxf-blue;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+.pbutton {
+  @include pdxf-button;
 }

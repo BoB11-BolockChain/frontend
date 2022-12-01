@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
+import { HiOutlineCube, HiOutlineFlag } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import { HiOutlineFlag, HiOutlineCube } from "react-icons/hi";
+
 import "./styles.scss";
 
 const dummy = [
@@ -11,10 +13,33 @@ const dummy = [
 
 const ManageTraining = () => {
   const navigate = useNavigate();
+
+  const [isFetched, setIsFetched] = useState(false);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("http://pdxf.tk:8000/gettrainings", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        const jsonObj = await res.json();
+        setIsFetched(true);
+        setData(jsonObj);
+      } else {
+        console.log(res.status, res.statusText);
+      }
+    };
+    fetchData();
+  });
+
   return (
     <>
       <header>
-        <h1 className="h2 fw-bold my-4">Manage Training</h1>
+        <h1>Manage Training</h1>
       </header>
       <div className="managetraining">
         <p class="edit-list">Training List</p>
@@ -22,27 +47,28 @@ const ManageTraining = () => {
           <button onClick={() => navigate("/admin/edittraining")}>
             <table>
               <tr>
-                <td class="create-desc">Create Training</td>
-                <td class="create-border" />
-                <td class="create-icon">{<HiOutlineFlag />}</td>
+                <td className="create-desc">Create Training</td>
+                <td className="create-border" />
+                <td className="create-icon">{<HiOutlineFlag />}</td>
               </tr>
             </table>
           </button>
           <button type="button" onClick={() => navigate("/admin/createvm")}>
             <table>
-              <td class="create-desc">Create VM</td>
-              <td class="create-border" />
-              <td class="create-icon">{<HiOutlineCube />}</td>
+              <td className="create-desc">Create VM</td>
+              <td className="create-border" />
+              <td className="create-icon">{<HiOutlineCube />}</td>
             </table>
           </button>
         </div>
       </div>
-      {dummy.map((d) => (
+      {data.map((d) => (
         <div className="item">
           <div className="item-title">
-            <p>{d}</p>
+            <p>{d.title}</p>
+            <p>{d.description}</p>
           </div>
-          <button onClick={() => navigate(`/admin/edittraining/${d}`)}>
+          <button onClick={() => navigate(`/admin/edittraining/${d.id}`)}>
             EDIT
           </button>
         </div>

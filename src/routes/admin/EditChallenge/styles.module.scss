@@ -51,6 +51,14 @@
   .selected {
     background-color: $pdxf-blue;
     color: white;
+
+    .payload {
+      border: 1px solid white;
+    }
+
+    .order {
+      border: 1px solid white;
+    }
   }
 }
 
@@ -62,4 +70,11 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+}
+
+.created {
+  border-collapse: collapse;
+  tr {
+    border-top: 1px solid black;
+  }
 }
