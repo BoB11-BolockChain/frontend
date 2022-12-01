@@ -36,12 +36,17 @@ const Dashboard = () => {
 
   return (
     <>
-      <p className="title">Dashboard</p>
+      <div className={`${styles.marginbox}`}></div>
+      <h1 className="h2 fw-bold my-4 title">Dashboard</h1>
+      <div className={`${styles.marginbox}`}></div>
       {isFetched ? (
         <div className={`${styles.users}`}>
+          <div className={`${styles.textmarginbox}`}></div>
           <div className={`${styles.currentusers}`}>
             {data.length} Users online
+            <div className={`${styles.textmarginbox}`}></div>
           </div>
+          
           <table className={styles.dashboard}>
             <thead>
               <tr>
