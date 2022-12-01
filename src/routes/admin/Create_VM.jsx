@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import DockerlistTableTr from "src/components/CreateVM_TB/DockerlistTableTr";
 import WindowslistTableTr from "src/components/CreateVM_TB/WindowslistTableTr";
 import WindowsVMlistTableTr from "src/components/CreateVM_TB/WindowsVMlistTableTr";
+import Windowsqcow2listTableTr from "src/components/CreateVM_TB/Windowsqcow2listTableTr";
 import Dropdown from "src/components/Dropdown";
 import Loading from "src/components/Loading";
 import DockerimagelistTableTr from "src/components/CreateVM_TB/DockerimagelistTableTr";
@@ -9,7 +10,11 @@ import Swal from "sweetalert2";
 
 const Create_VM = () => {
   const seldata = ["Windows", "Linux"];
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState(window.sessionStorage.getItem("os"));
+
+  // window.sessionStorage.setItem("os", selected);
+  // setSelected("Windows");
+  // setSelected("Linux");
   const EditDockerName = async (e) => {
     Swal.fire({
       title: "Submit Docker Image name",
@@ -124,6 +129,27 @@ const Create_VM = () => {
     };
     fetchData();
   }, [width]);
+
+  const [dataLoaded4, setDataLoaded4] = useState(false);
+  const [data4, setData4] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("http://www.pdxf.tk:8000/qcowlist");
+      if (res.ok) {
+        const js = await res.json();
+        const windowWidth = window.innerWidth;
+        setData4(js.data);
+        setDataLoaded4(true);
+        setWidth("270px");
+        if (windowWidth < 768) {
+          setWidth("80px");
+        }
+      }
+    };
+
+    fetchData();
+  }, [width]);
+
   return (
     <>
       <script src="multiselect-dropdown.js"></script>
@@ -155,85 +181,15 @@ const Create_VM = () => {
         </div>
       </div>
       <Dropdown
-        defaultValue={-1}
-        setData={(d) => setSelected(d)}
+        defaultValue={window.sessionStorage.getItem("os")}
+        setData={(d) => {
+          window.sessionStorage.setItem("os", d);
+          setSelected(d);
+        }}
         options={seldata}
       />
 
-      {selected === "Windows" ? (
-        <>
-          <div className="col-md-6">
-            <div className="wt-box">
-              <div className="box-top">
-                <div className="box-title">
-                  Windows Running VM <br />
-                  <span className="box-subtitle">
-                    Default VM Password : pdxf
-                  </span>
-                </div>
-              </div>
-              <div className="box-bottom">
-                {dataLoaded3 ? (
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Port</th>
-                        <th>VM Name</th>
-                        <th>State</th>
-                      </tr>
-                    </thead>
-                    <WindowsVMlistTableTr data={data3} />
-                  </table>
-                ) : (
-                  <Loading />
-                )}
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="wt-box">
-              <div className="box-top">
-                <div className="box-title">Windows VM list</div>
-              </div>
-              {/* <div className="box-bottom">
-              {dataLoaded ? (
-                <table>
-                  <thead>
-                    <tr>
-                      <th>ISO Name</th>
-                    </tr>
-                  </thead>
-                  <WindowslistTableTr data={data} />
-                </table>
-              ) : (
-                <Loading />
-              )}
-            </div> */}
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="wt-box">
-              <div className="box-top">
-                <div className="box-title">Windows ISO images list</div>
-              </div>
-              <div className="box-bottom">
-                {dataLoaded ? (
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>ISO Name</th>
-                      </tr>
-                    </thead>
-                    <WindowslistTableTr data={data} />
-                  </table>
-                ) : (
-                  <Loading />
-                )}
-              </div>
-            </div>
-          </div>
-        </>
-      ) : (
+      {selected === "Linux" ? (
         <>
           <div className="col-md-6">
             <div className="wt-box">
@@ -304,6 +260,79 @@ const Create_VM = () => {
                       </tr>
                     </thead>
                     <DockerimagelistTableTr data={data2} />
+                  </table>
+                ) : (
+                  <Loading />
+                )}
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">
+                  Windows Running VM <br />
+                  <span className="box-subtitle">
+                    Default VM Password : pdxf
+                  </span>
+                </div>
+              </div>
+              <div className="box-bottom">
+                {dataLoaded3 ? (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Port</th>
+                        <th>VM Name</th>
+                        <th>State</th>
+                      </tr>
+                    </thead>
+                    <WindowsVMlistTableTr data={data3} />
+                  </table>
+                ) : (
+                  <Loading />
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">Windows VM list</div>
+              </div>
+              <div className="box-bottom">
+                {dataLoaded4 ? (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>qcow2 Name</th>
+                      </tr>
+                    </thead>
+                    <Windowsqcow2listTableTr data={data4} />
+                  </table>
+                ) : (
+                  <Loading />
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="wt-box">
+              <div className="box-top">
+                <div className="box-title">Windows ISO images list</div>
+              </div>
+              <div className="box-bottom">
+                {dataLoaded ? (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>ISO Name</th>
+                      </tr>
+                    </thead>
+                    <WindowslistTableTr data={data} />
                   </table>
                 ) : (
                   <Loading />
