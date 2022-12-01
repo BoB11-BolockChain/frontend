@@ -4,10 +4,12 @@
 .title {
   margin-top: 2rem;
   font-size: 2rem;
+  font-weight: 500;
 }
 
 .small-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .edit-training {
@@ -21,10 +23,16 @@
   display: flex;
   gap: 1rem;
   flex-direction: column;
-  border: 1px solid $border-grey;
-  border-radius: 0.5rem;
-  padding: 1rem;
+  border: 1px solid #e7e7e7;
+  border-radius: 5px;
+  padding: 1.5rem;
   background-color: white;
+}
+
+.bottom-button {
+  margin-top: 10px;
+  display: flex;
+  justify-content: right;
 }
 
 .addform {
@@ -54,11 +62,18 @@
 
 // make component?
 .pdxf-button {
+  padding : 8px;
   font-size: 1rem;
   background-color: $pdxf-blue;
   color: white;
   border: 0;
   border-radius: 0.5rem;
+  width: 8rem;
+  // margin-right: 0;
+}
+
+.marginbox {
+  height: 2px;
 }
 
 .divider {
