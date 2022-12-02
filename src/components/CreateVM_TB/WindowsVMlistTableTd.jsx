@@ -3,24 +3,56 @@ import Swal from "sweetalert2";
 
 const TableTd = ({ data }) => {
   const accessVM = () => {
-    if (data.Port === 0) {
-      Swal.fire({
-        icon: "error",
-        title: "VM is not running",
-        confirmButtonText: "OK",
-        // showConfirmButton: false,
-        // timer: 1500,
-      });
-    } else {
-      Swal.fire({
-        icon: "success",
-        title: "pdxf.tk:" + data.Port,
-        confirmButtonText: "OK",
-        // showConfirmButton: false,
-        // timer: 1500,
-      });
-    }
+    Swal.fire({
+      title: "Access VNC",
+      text: 'you want to Access "' + data.Domain + '" ?',
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, Access",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const send_data = {
+          VMname: data.Domain,
+          VNC_port: String(data.Port),
+        };
+        fetch("http://www.pdxf.tk:8000/accessvncwindows", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(send_data),
+        });
+        window.open(
+          "https://www.pdxf.tk:6080/vnc.html",
+          "Windows noVNC",
+          "width=1000, height=700, scrollbars=yes, resizable=no"
+        );
+      }
+    });
   };
+
+  // const accessVM = () => {
+  //   if (data.Port === 0) {
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "VM is not running",
+  //       confirmButtonText: "OK",
+  //       // showConfirmButton: false,
+  //       // timer: 1500,
+  //     });
+  //   } else {
+  //     Swal.fire({
+  //       icon: "success",
+  //       title: "pdxf.tk:" + data.Port,
+  //       confirmButtonText: "OK",
+  //       // showConfirmButton: false,
+  //       // timer: 1500,
+  //     });
+  //   }
+  // };
 
   const VMDestroy = () => {
     Swal.fire({
@@ -194,15 +226,20 @@ const TableTd = ({ data }) => {
         <td>{data.Port}</td>
         <td>{data.Domain}</td>
         <td>{data.State}</td>
-        <td><button className="option-btn">Access</button>
+        <td onClick={accessVM}>
+          <button className="option-btn">Access</button>
         </td>
-        <td> <button className="option-btn">Delete</button>
+        <td onClick={VMDestroy}>
+          <button className="option-btn">Delete</button>
         </td>
-        <td><button className="option-btn">Suspend</button>
+        <td onClick={VMsuspend}>
+          <button className="option-btn">Suspend</button>
         </td>
-        <td><button className="option-btn">Resume</button>
+        <td onClick={VMresume}>
+          <button className="option-btn">Resume</button>
         </td>
-        <td><button className="option-btn">Start</button>
+        <td onClick={VMstart}>
+          <button className="option-btn">Start</button>
         </td>
       </tr>
     </>

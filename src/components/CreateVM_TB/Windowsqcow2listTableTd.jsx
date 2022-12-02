@@ -80,7 +80,6 @@ const TableTd = ({ data }) => {
 
   const startqcow2 = async (e) => {
     e.preventDefault();
-
     Swal.fire({
       icon: "warning",
       title: "Starting VM...",
@@ -159,7 +158,7 @@ const TableTd = ({ data }) => {
         <td onClick={startqcow2}>
           <button className="option-btn">Start qcow2</button>
         </td>
-        <td onClick={cloneqcow2} >
+        <td onClick={cloneqcow2}>
           <button className="option-btn">Clone qcow2</button>
         </td>
         <td onClick={editqcow2}>

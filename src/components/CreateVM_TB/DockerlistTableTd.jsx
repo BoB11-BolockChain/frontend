@@ -2,16 +2,6 @@ import React from "react";
 import Swal from "sweetalert2";
 
 const TableTd = ({ data }) => {
-  const accessSSH = () => {
-    Swal.fire({
-      icon: "success",
-      title: "ssh -p " + data.PORTS[0].PublicPort + " root@pdxf.tk",
-      confirmButtonText: "OK",
-      // showConfirmButton: false,
-      // timer: 1500,
-    });
-  };
-
   const DockerDestroy = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -106,11 +96,7 @@ const TableTd = ({ data }) => {
       <tr>
         <td>{data.ContainerID}</td>
         <td>{ImageName(data.IMAGE)}</td>
-        <td>{showport(data)}</td>
         <td>{data.STATUS}</td>
-        <td onClick={accessSSH} style={{ background: "white" }}>
-        <button className="option-btn">Access SSH</button>
-        </td>
         <td
           onClick={CreateDockerImage}
           colSpan="2"
@@ -119,8 +105,7 @@ const TableTd = ({ data }) => {
           <button className="option-btn">Create Docker Images</button>
         </td>
         <td onClick={DockerDestroy} style={{ background: "white" }}>
-        <button className="option-btn">Destory</button>
-          
+          <button className="option-btn">Destory</button>
         </td>
       </tr>
     </>
