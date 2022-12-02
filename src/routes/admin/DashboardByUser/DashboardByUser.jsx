@@ -44,14 +44,14 @@ const DashboardByUser = () => {
 
   return (
     <>
-    <div className="marginbox"></div>
+      <div className="marginbox"></div>
       <h1>Dashboard of {userId}</h1>
       {isFetched ? (
         <div className="scenarios">
           {data.map((d, i) => (
             <div className="whitebox">
               <div className="scenario-info">
-                <p className="scenario-title">{d.ScenarioTitle}</p>
+                <p className="scenario-title">{d.title}</p>
                 <p className="scenario-progress">{i}</p>
               </div>
               <button onClick={() => openModal(d)} className="pdxf-button">
