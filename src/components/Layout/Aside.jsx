@@ -83,10 +83,6 @@ const Aside = ({
                   My Profile
                   <NavLink to="/user/profile" />
                 </MenuItem>
-                <MenuItem>
-                  Team Profile
-                  <NavLink to="/teamprofile" />
-                </MenuItem>
                 <MenuItem onClick={onClick}>Log Out</MenuItem>
               </SubMenu>
             </Menu>
@@ -99,10 +95,6 @@ const Aside = ({
                 <MenuItem>
                   Homepage Setting
                   <NavLink to="/admin/homepagesetting" />
-                </MenuItem>
-                <MenuItem>
-                  User & Team Setting
-                  <NavLink to="/admin/userteamsetting" />
                 </MenuItem>
                 <MenuItem>
                   Dashboard

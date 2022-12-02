@@ -55,9 +55,10 @@ const DashboardModal = ({ isOpen, setModalState, data }) => {
     >
       {!!data && (
         <>
-          <p className="dashboard-title">Results of {data.ScenarioTitle}</p>
+          <h2 className="dashboard-title">Results of {data.ScenarioTitle}</h2>
+          <div className="divider"></div>
           <div className="big">
-            <p className="dashboard-small-title">Challenge Progress</p>
+            <h2 className="dashboard-small-title">Challenge Progress</h2>
             <div className="challenges">
               {data.Challenges.map((d) => (
                 <div
@@ -65,7 +66,7 @@ const DashboardModal = ({ isOpen, setModalState, data }) => {
                     d.Solved === "true" ? "solved" : "notsolved"
                   }`}
                 >
-                  <p>{d.ChallengeTitle}</p>
+                  <p className="bodytext">{d.ChallengeTitle}</p>
                   <p>{100}</p>
                 </div>
               ))}
@@ -73,15 +74,17 @@ const DashboardModal = ({ isOpen, setModalState, data }) => {
           </div>
           <div className="divider"></div>
           <div className="big">
-            <p className="dashboard-small-title">Incident Response Result</p>
+            <h2 className="dashboard-small-title">Incident Response Result</h2>
+            <div className="textmarginbox"></div>
             <div className="incident">
               {data?.Challenges?.map((d, i) => (
                 <div className="process">
                   <div className="tactic">
                     <div className="order notsolved">{i}</div>
-                    <p>{d.ChallengeTitle}</p>
+                    <div className="height-align bodytext chtitle">{d.ChallengeTitle}</div>
                   </div>
-                  <p>RESULT : {d.Solved}</p>
+                  <div className="titlemarginbox"></div>
+                  <p className="bodytext">RESULT : {d.Solved}</p>
                 </div>
               ))}
             </div>

@@ -2,24 +2,26 @@ import { useState } from "react";
 
 import styles from "./dropdown.module.scss";
 
-const options = ["option1", "option2", "option3", "option4"];
-
-const Dropdown = ({ ops, stdata }) => {
-  // from props
-  const [selected, setSelected] = useState(-1);
+const Dropdown = ({ defaultValue, setData, options }) => {
+  const [selected, setSelected] = useState(defaultValue);
 
   return (
     <div className={styles.dropdown}>
       <div className={styles.head}>
-        {selected < 0 ? "Select" : options[selected]}
+        {/* {selected < 0 ? "Select" : options[selected]} */}
+        {options.includes(selected) ? selected : "Select"}
       </div>
       <div className={styles.content}>
         {options.map((d, i) => (
           <div
+            key={i}
             className={`${styles.option} ${
-              selected === i ? styles.selected : ""
+              selected === d ? styles.selected : ""
             }`}
-            onClick={() => setSelected(i)}
+            onClick={() => {
+              setSelected(d);
+              setData(d);
+            }}
           >
             {d}
           </div>

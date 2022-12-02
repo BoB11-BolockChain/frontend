@@ -19,8 +19,8 @@ p {
   display: flex;
   justify-content: space-between;
   background-color: white;
-  border: 1px solid $border-grey;
-  border-radius: 0.5rem;
+  border: 1px solid #e7e7e7;
+  border-radius: 5px;
   padding: 1rem;
 }
 
@@ -31,9 +31,13 @@ p {
 }
 
 .scenario-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .scenario-progress {
   font-size: 0.75rem;
+}
+
+.marginbox {
+  height: 10px;
 }

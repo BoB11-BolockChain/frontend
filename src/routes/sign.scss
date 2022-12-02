@@ -41,25 +41,26 @@
     padding: 10px 20px;
     margin: 8px 16px;
   }
-  
+
   input:focus {
     outline: none;
     border-color: hsl(230, 95%, 70%);
   }
-  
-  input:focus+.placeholder-text .text,
-  input:valid+.placeholder-text .text {
+
+  input:focus + .placeholder-text .text,
+  input:valid + .placeholder-text .text {
+
     background-color: white;
     font-size: 16px;
     color: #bbb;
     transform: translate(0, -110%);
   }
-  
-  input:focus+.placeholder-text .text {
+
+  input:focus + .placeholder-text .text {
     border-color: hsl(230, 95%, 70%);
     color: hsl(230, 95%, 70%);
   }
-  
+
   .placeholder-text {
     position: absolute;
     top: 0;
@@ -72,14 +73,15 @@
     display: flex;
     align-items: center;
   }
-  
+
   .text {
     font-size: 20px;
     padding: 0 8px;
     background-color: transparent;
     transform: translate(0);
     color: #808080;
-    transition: transform 0.15s ease-out, font-size 0.15s ease-out, background-color 0.15s ease-out, color 0.15s ease-out;
+    transition: transform 0.15s ease-out, font-size 0.15s ease-out,
+      background-color 0.15s ease-out, color 0.15s ease-out;
   }
   
   .placeholder-text {

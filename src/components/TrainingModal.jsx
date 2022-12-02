@@ -92,7 +92,6 @@ const TrainingModal = ({
         return <p style={{ background: "#e53935" }}>False</p>;
     }
   };
-
   const connectInfo = (activateJS) => {
     if (activateJS.scenarioId === data.scene_id) {
       var url = window.location.protocol + "//" + window.location.hostname;
@@ -128,7 +127,6 @@ const TrainingModal = ({
     }
     return null;
   };
-
   return (
     <ReactModal
       ariaHideApp={false}
