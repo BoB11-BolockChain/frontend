@@ -22,9 +22,7 @@ const TrainingModal = ({
   const [click, setClick] = useState(false);
 
   const chall_data = data;
-  if (click) {
-    null;
-  }
+
   const irCheck = (data) => {
     const check = Object.keys(data.challenge).length - 1;
     if (data.challenge[check].solved === "True") {
