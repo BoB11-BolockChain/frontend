@@ -20,7 +20,7 @@ const TrainingModal = ({
   const [state, setState] = useState({ flag: "" });
   const [solve, setSolve] = useState({ check: "", isClick: false });
   const [click, setClick] = useState(false);
-
+  console.log(click);
   const chall_data = data;
 
   const irCheck = (data) => {

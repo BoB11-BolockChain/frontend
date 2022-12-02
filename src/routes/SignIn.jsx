@@ -26,6 +26,15 @@ const SignIn = () => {
     const js = await res.json();
     console.log(js);
     window.sessionStorage.setItem("sessionId", js.sessionId);
+    window.sessionStorage.setItem(
+      "activatedVM",
+      JSON.stringify({
+        scenarioId: 0,
+        type: "Challenge",
+        vnc: 0,
+        rdp: 0,
+      })
+    );
     navigate("/admin");
   };
 
@@ -34,21 +43,37 @@ const SignIn = () => {
       <h2 className="card-title">SIGN IN</h2>
       <form onSubmit={onSubmit}>
         <div className="input-container">
-          <input type="text" onChange={onChange} id="id" name="id" aria-labelledby="placeholder-id" required />
+          <input
+            type="text"
+            onChange={onChange}
+            id="id"
+            name="id"
+            aria-labelledby="placeholder-id"
+            required
+          />
           <label className="placeholder-text" for="id" id="placeholder-id">
             <div className="text">ID</div>
           </label>
         </div>
         <div className="input-container">
-          <input type="password" onChange={onChange} id="pw" name="pw" aria-labelledby="placeholder-pw" required />
+          <input
+            type="password"
+            onChange={onChange}
+            id="pw"
+            name="pw"
+            aria-labelledby="placeholder-pw"
+            required
+          />
           <label className="placeholder-text" for="pw" id="placeholder-pw">
             <div className="text">Password</div>
           </label>
         </div>
 
-        <p><a className="forgot-pw" href="#!">
-          Forgot Password?
-        </a></p>
+        <p>
+          <a className="forgot-pw" href="#!">
+            Forgot Password?
+          </a>
+        </p>
         <button className="submit-btn" size="md">
           sign in
         </button>
