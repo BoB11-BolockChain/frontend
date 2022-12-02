@@ -93,7 +93,7 @@ const Scoreboard = () => {
           <table>
             <thead>
               <th width="5%">No.</th>
-              <th colspan="2" width="10%">
+              <th colspan="2" width="10%" className="score-user">
                 User
               </th>
               <th width="50%"></th>
