@@ -307,7 +307,6 @@ const Create_VM = () => {
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th></th>
                       </tr>
                     </thead>
                     <WindowsVMlistTableTr data={data3} />
