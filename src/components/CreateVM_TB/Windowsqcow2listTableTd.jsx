@@ -154,18 +154,18 @@ const TableTd = ({ data }) => {
   return (
     <>
       <tr key={data.title}>
-        <td>{data.title}</td>
+        <td width="60%">{data.title}</td>
         <td onClick={startqcow2}>
-          <button className="option-btn">Start qcow2</button>
+          <button className="option-btn">Start</button>
         </td>
-        <td onClick={cloneqcow2}>
-          <button className="option-btn">Clone qcow2</button>
+        <td onClick={cloneqcow2} >
+          <button className="option-btn">Clone</button>
         </td>
         <td onClick={editqcow2}>
-          <button className="option-btn">Edit qcow2 Name</button>
+          <button className="option-btn">Rename</button>
         </td>
         <td onClick={delqcow2}>
-          <button className="option-btn">Delete qcow2</button>
+          <button className="option-btn">Delete</button>
         </td>
       </tr>
     </>
