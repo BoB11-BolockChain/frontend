@@ -14,6 +14,10 @@ $icon-size: 35px;
 
 @import "~react-pro-sidebar/dist/scss/styles.scss";
 
+.pro-inner-item:has(> .pro-item-content a.active) {
+  background-color: rgba(0, 0, 0, 0.14);
+}
+
 .margin-plus {
   margin-bottom: 3px;
 }
@@ -106,7 +110,7 @@ table {
 }
 
 th {
-  background: hsl(230, 60%, 60%);
+  background-color: hsl(230, 95%, 70%);
   color: white;
   font-weight: 400;
   padding: 12px;
@@ -208,10 +212,28 @@ button {
   color: #353535;
 }
 
+
+
 .custom-select {
   position: relative;
 }
 
+.rmv-btn {
+  padding: 2px;
+  background-color: transparent;
+  border: 0;
+  display: inline-block;
+  width: 30px !important;
+  height: 30px !important;
+  
+}
+
+.rmv-btn:after {
+  display: inline-block;
+  content: "\00d7";
+  font-size:25px;
+  color: #353535;
+}
 
 .select-box {
   width: 100%;

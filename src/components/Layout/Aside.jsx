@@ -1,4 +1,5 @@
 import { GoMarkGithub } from "react-icons/go";
+import { useLocation } from 'react-router-dom';
 import {
   MdAreaChart,
   MdFlag,
@@ -21,6 +22,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Switch from "react-switch";
 import styled from "styled-components";
 import sidebarBg from "./bg3.png";
+
+const usePathname = () => {
+  const location = useLocation();
+  return location.pathname;
+}
 
 const Logo = styled.img`
   margin: 15px 20px 5px 20px;
@@ -65,7 +71,7 @@ const Aside = ({
         {!sessionId ? (
           <Menu iconShape="circle">
             <SubMenu title="User" icon={<MdPerson />}>
-              <MenuItem>
+              <MenuItem onClick={() => {window.location.href = "signin"}}>
                 Sign In
                 <NavLink to="/signin" />
               </MenuItem>
@@ -79,7 +85,7 @@ const Aside = ({
           <>
             <Menu iconShape="circle">
               <SubMenu title={sessionId} icon={<MdPerson />}>
-                <MenuItem>
+                <MenuItem usePathname>
                   My Profile
                   <NavLink to="/user/profile" />
                 </MenuItem>
@@ -88,13 +94,14 @@ const Aside = ({
             </Menu>
             <Menu iconShape="circle">
               <SubMenu title="PDxF Management" icon={<MdSettings />}>
-                <MenuItem>
+                <MenuItem usePathname>
                   Training Management
-                  <NavLink to="/admin/managetraining" />
+                  <NavLink to="/admin/managetraining" activeClassName="selected-page"/>
                 </MenuItem>
                 <MenuItem>
                   Homepage Setting
-                  <NavLink to="/admin/homepagesetting" />
+                  <NavLink to="/admin/homepagesetting" 
+                  activeClassName="selected-page"/>
                 </MenuItem>
                 <MenuItem>
                   Dashboard
@@ -108,13 +115,11 @@ const Aside = ({
       <SidebarContent>
         <Menu iconShape="circle">
           <MenuItem icon={<MdHome />}>
-            Main
-            <NavLink to="/" />
+            <p><NavLink to="/" activeClassName="selected-page">Main</NavLink></p>
           </MenuItem>
           <MenuItem
             icon={<MdFlag />}
-            suffix={<span className="badge red">New</span>}
-          >
+            suffix={<span className="badge red">New</span>}>
             Training
             <NavLink to="/user/training" />
           </MenuItem>
