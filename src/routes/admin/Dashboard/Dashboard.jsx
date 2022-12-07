@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("http://pdxf.tk:9000/dashboard", {
+      const res = await fetch("http://pdxf.tk:8000/dashboard", {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -48,7 +48,7 @@ const Dashboard = () => {
             {data.length} Users online
             <div className={`${styles.textmarginbox}`}></div>
           </div>
-          
+
           <table className={styles.dashboard}>
             <thead>
               <tr>

@@ -24,6 +24,39 @@ const TableTd = ({ data }) => {
       second.substr(-2)
     );
   }
+
+  const AccessTerminalDocker = () => {
+    Swal.fire({
+      title: "Access Terminal",
+      text: 'you want to Access "' + data.REPOSITORY + '" ?',
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, Access",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const send_data = {
+          Container_Name: data.REPOSITORY,
+          IMAGE_ID: data.IMAGE_ID,
+        };
+        fetch("http://www.pdxf.tk:8000/accessterminaldocker", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(send_data),
+        });
+        window.open(
+          "http://www.pdxf.tk:8080",
+          "Docker Terminal",
+          "width=500, height=700, scrollbars=yes, resizable=no"
+        );
+      }
+    });
+  };
+
   const DeleteDockerImage = () => {
     Swal.fire({
       title: "연관된 컨테이너도 지워집니다.",
@@ -108,11 +141,17 @@ const TableTd = ({ data }) => {
         <td>{Unix_timestamp(data.CREATED)}</td>
         <td
           colSpan="2"
+          onClick={AccessTerminalDocker}
+          style={{ background: "white" }}
+        >
+          <button className="option-btn">Access Terminal</button>
+        </td>
+        <td
+          colSpan="2"
           onClick={EditDockerName}
           style={{ background: "white" }}
         >
           <button className="option-btn">Edit Name</button>
-          
         </td>
         <td
           colSpan="2"

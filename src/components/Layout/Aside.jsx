@@ -50,6 +50,7 @@ const Aside = ({
   const navigate = useNavigate();
   const onClick = () => {
     window.sessionStorage.removeItem("sessionId");
+    window.sessionStorage.removeItem("activatedVM");
     navigate("/");
   };
   return (

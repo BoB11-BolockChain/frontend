@@ -80,7 +80,6 @@ const TableTd = ({ data }) => {
 
   const startqcow2 = async (e) => {
     e.preventDefault();
-
     Swal.fire({
       icon: "warning",
       title: "Starting VM...",

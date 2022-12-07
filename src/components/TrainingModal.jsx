@@ -1,8 +1,14 @@
 import { useState } from "react";
 import ReactModal from "react-modal";
-// import VmCaller from "src/components/VmCaller";
+import { HiOutlineFlag, HiOutlineShieldExclamation } from "react-icons/hi";
 
-const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
+const TrainingModal = ({
+  isOpen,
+  setModalState,
+  data,
+  margin,
+  setSolveCheck,
+}) => {
   const [challState, setChallState] = useState({
     id: 0,
     title: "",
@@ -13,14 +19,41 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
   });
   const [state, setState] = useState({ flag: "" });
   const [solve, setSolve] = useState({ check: "", isClick: false });
-  const [connect, setConnect] = useState({
-    ip: "",
-    vncPort: 0,
-    rdpPort: 0,
-    sshPort: 0,
-    isClick: false,
-  });
+  const [click, setClick] = useState(false);
+  console.log(click);
   const chall_data = data;
+
+  const irCheck = (data) => {
+    const check = Object.keys(data.challenge).length - 1;
+    if (data.challenge[check].solved === "True") {
+      return (
+        <button
+          className="ir-button"
+          type="button"
+          onClick={() => {
+            window.sessionStorage.removeItem("activatedVM");
+            window.sessionStorage.setItem(
+              "activatedVM",
+              JSON.stringify({
+                scenarioId: data.scene_id,
+                type: "Scenario",
+                vnc: 5003,
+                rdp: 5004,
+              })
+            );
+            setClick((prev) => !prev);
+          }}
+        >
+          <table>
+            <td className="ir-desc">Scenario Incident Response</td>
+            <td className="ir-border" />
+            <td className="ir-icon">{<HiOutlineShieldExclamation />}</td>
+          </table>
+        </button>
+      );
+    }
+    return null;
+  };
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -49,8 +82,7 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
   const challCheck = (check) => {
     switch (check) {
       case "Solve a Challenge":
-        solveCheck(true);
-        window.location.reload();
+        setSolveCheck(true);
         return <p style={{ background: "#4caf50" }}>Solve a Challenge</p>;
       case "Aleady Solved":
         return <p style={{ background: "#4860b0" }}>Aleady Solved</p>;
@@ -58,15 +90,51 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
         return <p style={{ background: "#e53935" }}>False</p>;
     }
   };
+  const connectInfo = (activateJS) => {
+    if (activateJS.scenarioId === data.scene_id) {
+      var url = window.location.protocol + "//" + window.location.hostname;
+      return (
+        <table className="modal-vm-connect">
+          <tr className="modal-vm-title">
+            <p>{activateJS.type} Connect Info</p>
+          </tr>
+          <tr>
+            <td className="modal-vm-info">
+              <tr>
+                <b>VNC</b>
+              </tr>
+              <tr>
+                <p>
+                  {url}:{activateJS.vnc}
+                </p>
+              </tr>
+            </td>
+            <td className="modal-vm-info">
+              <tr>
+                <b>RDP</b>
+              </tr>
+              <tr>
+                <p>
+                  {url}:{activateJS.rdp}
+                </p>
+              </tr>
+            </td>
+          </tr>
+        </table>
+      );
+    }
+    return null;
+  };
   return (
     <ReactModal
       ariaHideApp={false}
       isOpen={isOpen}
       onRequestClose={() => {
-        setModalState({ data: {}, isOpen: false });
+        setModalState({ data: {}, isOpen: false, index: 0 });
         setChallState({ isClick: false });
         setSolve({ isClick: false });
         setState({ flag: "" });
+        setSolveCheck(false);
       }}
       style={{
         overlay: {
@@ -80,10 +148,10 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
         },
         content: {
           position: "absolute",
-          top: "15%",
+          top: "10%",
           left: "10%",
           right: "10%",
-          bottom: "10%",
+          bottom: "8%",
           boxShadow: "0px 0px 60px rgba(0, 0, 0, 0.3)",
           border: "0px",
           background: "#fff",
@@ -98,53 +166,62 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
         },
       }}
     >
-      <div class="modal-item">
+      <div className="modal-item">
         {isOpen === true ? (
-          <div>
-            <div class="modal-scenario">
-              <p id="modal_scene_title">{data.scene_title}</p>
-              <p id="modal_scene_system">SYSTEM: {data.system}</p>
-              <p id="modal_scene_desc">{data.scene_desc}</p>
-            </div>
-            {connect.isClick === true ? (
-              <>
-                <p class="modal-chall-divider">Connect Info</p>
-                <table class="modal-chall-connect">
-                  <tr>
-                    <td>
-                      VNC - {connect.ip}:{connect.vncPort}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      RDP - {connect.ip}:{connect.rdpPort}
-                    </td>
-                  </tr>
-                </table>
-              </>
-            ) : null}
-            <div class="modal-challenge">
-              <p class="modal-chall-divider">Challenge List</p>
-              <div className="flex-auto flex-row flex-wrap justify-between align-items-center p-2">
+          <>
+            <table className="modal-scenario">
+              <tr className="modal-scene-title">
+                <p id="modal_scene_title">{data.scene_title}</p>
+                <p id="modal_scene_system">SYSTEM: {data.system}</p>
+              </tr>
+              <tr>
+                <p id="modal_scene_desc">{data.scene_desc}</p>
+              </tr>
+              <tr>
+                <div className="modal-connect-button">
+                  <button
+                    className="an-button"
+                    type="button"
+                    onClick={() => {
+                      window.sessionStorage.removeItem("activatedVM");
+                      window.sessionStorage.setItem(
+                        "activatedVM",
+                        JSON.stringify({
+                          scenarioId: data.scene_id,
+                          type: "Challenge",
+                          vnc: 5001,
+                          rdp: 5002,
+                        })
+                      );
+                      setClick((prev) => !prev);
+                    }}
+                  >
+                    <td className="an-desc">Challenge Analyze</td>
+                    <td className="an-border" />
+                    <td className="an-icon">{<HiOutlineFlag />}</td>
+                  </button>
+                  {irCheck(chall_data)}
+                </div>
+              </tr>
+            </table>
+
+            {connectInfo(
+              JSON.parse(window.sessionStorage.getItem("activatedVM"))
+            )}
+            <div className="modal-challenge">
+              <p className="modal-chall-divider">Challenge List</p>
+              <div className="modal-chall-list">
                 {chall_data.challenge.map((d) => {
                   let solved_check_style = {};
                   if (d.solved === "True") {
-                    solved_check_style = {
-                      border: "2px solid #2ead7f",
-                      background: "hsl(158, 58%, 43%)",
-                      color: "hsl(0, 0%, 100%)",
-                    };
+                    solved_check_style = "modal-chall-list-button-solved";
                   } else {
-                    solved_check_style = {
-                      border: "2px solid #4860b0",
-                      background: "hsl(226, 42%, 49%, 0)",
-                      color: "hsl(0, 0%, 0%)",
-                    };
+                    solved_check_style = "modal-chall-list-button";
                   }
+
                   return (
                     <button
-                      class="modal-chall-list-button"
-                      style={solved_check_style}
+                      className={solved_check_style}
                       onClick={() => {
                         setChallState({
                           id: d.chall_id,
@@ -156,6 +233,7 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
                         });
                         setSolve({ isClick: false });
                         setState({ flag: "" });
+                        setSolveCheck(false);
                       }}
                     >
                       <p>{d.chall_title}</p>
@@ -165,11 +243,13 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
                 })}
               </div>
               {challState.isClick === true ? (
-                <div class="modal-chall-content">
+                <div className="modal-chall-content">
                   <table>
                     <tr>
                       <td id="modal_chall_title">{challState.title}</td>
-                      <td id="modal_chall_score">Score: {challState.score}</td>
+                      <td id="modal_chall_score">
+                        Score: <b>{challState.score}</b>
+                      </td>
                     </tr>
                     <tr>
                       <td id="modal_chall_desc" colspan="2">
@@ -179,41 +259,10 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
                     <tr>
                       <td colspan="2">
                         {challState.sequence === 0 ? (
-                          connect.isClick === true ? (
-                            <form onSubmit={onSubmit} class="modal-chall-flag">
-                              <input
-                                onChange={onChange}
-                                value={state.flag}
-                                placeholder="FLAG"
-                                name="flag"
-                                type="text"
-                              />
-                              <button
-                                className="fw-bold text-uppercase"
-                                size="md"
-                              >
-                                Submit
-                              </button>
-                            </form>
-                          ) : (
-                            <center>
-                              <button
-                                id="modal_chall_button"
-                                onClick={() => {
-                                  setConnect({
-                                    ip: "127.0.0.1",
-                                    vncPort: 5000,
-                                    rdpPort: 5001,
-                                    isClick: true,
-                                  });
-                                }}
-                              >
-                                Analysis
-                              </button>
-                            </center>
-                          )
-                        ) : (
-                          <form onSubmit={onSubmit} class="modal-chall-flag">
+                          <form
+                            onSubmit={onSubmit}
+                            className="modal-chall-flag"
+                          >
                             <input
                               onChange={onChange}
                               value={state.flag}
@@ -228,13 +277,27 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
                               Submit
                             </button>
                           </form>
+                        ) : (
+                          <form
+                            onSubmit={onSubmit}
+                            className="modal-chall-flag"
+                          >
+                            <input
+                              onChange={onChange}
+                              value={state.flag}
+                              placeholder="FLAG"
+                              name="flag"
+                              type="text"
+                            />
+                            <button>Submit</button>
+                          </form>
                         )}
                       </td>
                     </tr>
                     {solve.isClick === true ? (
                       <tr>
                         <td colspan="2">
-                          <div class="modal-chall-check">
+                          <div className="modal-chall-check">
                             {challCheck(solve.check)}
                           </div>
                         </td>
@@ -244,8 +307,7 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
                 </div>
               ) : null}
             </div>
-            <button id="modal_scene_button">Incident Response</button>
-          </div>
+          </>
         ) : null}
       </div>
     </ReactModal>

@@ -153,7 +153,7 @@ const Create_VM = () => {
   return (
     <>
       <script src="multiselect-dropdown.js"></script>
-        <h1>Create VM</h1>
+      <h1>Create VM</h1>
 
       <div className="col-md-6">
         <div className="wt-box">
@@ -165,16 +165,21 @@ const Create_VM = () => {
           </div>
           <br />
           <div className="box-body flex">
-            <form 
+            <form
               action="http://www.pdxf.tk:8000/makevm"
               method="POST"
               encType="multipart/form-data"
             >
-              <input className="form" type="file" id="upload_file" name="upload_file" />
+              <input
+                className="form"
+                type="file"
+                id="upload_file"
+                name="upload_file"
+              />
             </form>
             <button type="submit" name="upload" className=" btn-primary">
-                Upload
-              </button>
+              Upload
+            </button>
           </div>
         </div>
       </div>
@@ -189,7 +194,6 @@ const Create_VM = () => {
 
       <div className="margin-box"></div>
       {selected === "Linux" ? (
-
         <>
           <div className="col-md-6">
             <div className="wt-box">
@@ -233,7 +237,6 @@ const Create_VM = () => {
                       <tr>
                         <th>ContainerID</th>
                         <th>IMAGE </th>
-                        <th>PORTS </th>
                         <th>STATUS </th>
                         <th></th>
                         <th></th>
@@ -263,6 +266,8 @@ const Create_VM = () => {
                         <th>REPOSITORY:TAG</th>
                         <th>IMAGE ID</th>
                         <th>CREATED</th>
+                        <th></th>
+                        <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -298,7 +303,6 @@ const Create_VM = () => {
                         <th>Port</th>
                         <th>VM Name</th>
                         <th>State</th>
-                        <th></th>
                         <th></th>
                         <th></th>
                         <th></th>

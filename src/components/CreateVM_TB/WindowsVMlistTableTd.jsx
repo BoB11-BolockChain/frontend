@@ -3,24 +3,67 @@ import Swal from "sweetalert2";
 
 const TableTd = ({ data }) => {
   const accessVM = () => {
-    if (data.Port === 0) {
+    if (data.State === "RUNNING") {
       Swal.fire({
-        icon: "error",
-        title: "VM is not running",
-        confirmButtonText: "OK",
-        // showConfirmButton: false,
-        // timer: 1500,
+        title: "Access VNC",
+        text: 'you want to Access "' + data.Domain + '" ?',
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, Access",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const send_data = {
+            VMname: data.Domain,
+            VNC_port: String(data.Port),
+          };
+          const res = await fetch("http://www.pdxf.tk:8000/accessvncwindows", {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(send_data),
+          });
+          const js = await res.json();
+          window.open(
+            "https://www.pdxf.tk:" + js + "/vnc.html",
+            "Windows noVNC",
+            "width=1200, height=900, scrollbars=yes, resizable=no"
+          );
+        }
       });
     } else {
       Swal.fire({
-        icon: "success",
-        title: "pdxf.tk:" + data.Port,
+        icon: "error",
+        title: "VM is not Running",
         confirmButtonText: "OK",
         // showConfirmButton: false,
         // timer: 1500,
       });
     }
   };
+
+  // const accessVM = () => {
+  //   if (data.Port === 0) {
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "VM is not running",
+  //       confirmButtonText: "OK",
+  //       // showConfirmButton: false,
+  //       // timer: 1500,
+  //     });
+  //   } else {
+  //     Swal.fire({
+  //       icon: "success",
+  //       title: "pdxf.tk:" + data.Port,
+  //       confirmButtonText: "OK",
+  //       // showConfirmButton: false,
+  //       // timer: 1500,
+  //     });
+  //   }
+  // };
 
   const VMDestroy = () => {
     Swal.fire({
@@ -100,7 +143,8 @@ const TableTd = ({ data }) => {
     }
   };
 
-  const VMresume = () => {
+  const VMStart_Resume = () => {
+    console.log(data);
     if (data.State === "RUNNING") {
       Swal.fire({
         icon: "error",
@@ -109,7 +153,7 @@ const TableTd = ({ data }) => {
         // showConfirmButton: false,
         // timer: 1500,
       });
-    } else {
+    } else if (data.State === "PAUSED") {
       Swal.fire({
         title: "Are you sure?",
         text: 'you want to resume "' + data.Domain + '" ?',
@@ -141,19 +185,7 @@ const TableTd = ({ data }) => {
           }
         }
       });
-    }
-  };
-
-  const VMstart = () => {
-    if (data.State != "SHUTOFF") {
-      Swal.fire({
-        icon: "error",
-        title: "VM is not Shut Off",
-        confirmButtonText: "OK",
-        // showConfirmButton: false,
-        // timer: 1500,
-      });
-    } else {
+    } else if (data.State === "SHUTOFF") {
       Swal.fire({
         title: "Are you sure?",
         text: 'you want to start "' + data.Domain + '" ?',
@@ -185,8 +217,16 @@ const TableTd = ({ data }) => {
           }
         }
       });
+    } else {
+      console.log("Error");
+      Swal.fire({
+        icon: "error",
+        title: "VM is not Shut Off",
+        confirmButtonText: "OK",
+      });
     }
   };
+
   return (
     <>
       <tr key={data.ID}>
@@ -194,15 +234,17 @@ const TableTd = ({ data }) => {
         <td>{data.Port}</td>
         <td>{data.Domain}</td>
         <td>{data.State}</td>
-        <td><button className="option-btn">Access</button>
+        <td onClick={accessVM}>
+          <button className="option-btn">Access</button>
         </td>
-        <td> <button className="option-btn">Delete</button>
+        <td onClick={VMDestroy}>
+          <button className="option-btn">Delete</button>
         </td>
-        <td><button className="option-btn">Suspend</button>
+        <td onClick={VMsuspend}>
+          <button className="option-btn">Suspend</button>
         </td>
-        <td><button className="option-btn">Resume</button>
-        </td>
-        <td><button className="option-btn">Start</button>
+        <td onClick={VMStart_Resume}>
+          <button className="option-btn">Resume</button>
         </td>
       </tr>
     </>
