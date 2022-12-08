@@ -5,7 +5,6 @@ import Payload from "src/components/SequenceDnD/Payload";
 import "./styles.scss";
 
 const Sequence = ({ index, data, removeTactic, removePayload }) => {
-  console.log(data);
   return (
     <Droppable droppableId={data.hash}>
       {(provided, snapshot) => (
