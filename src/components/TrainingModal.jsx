@@ -1,8 +1,73 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 import ReactModal from "react-modal";
 // import VmCaller from "src/components/VmCaller";
 
 const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
+  const AccessTerminalDocker = () => {
+    Swal.fire({
+      title: "Access Training",
+      text: "Are you sure you want to resolve the problem?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, Access",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const send_data = {
+          Image_ID: "asdf:ff", //이미지 이름
+        };
+        fetch("http://www.pdxf.tk:8000/accesslinux", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(send_data),
+        });
+        window.open(
+          "http://www.pdxf.tk:8080",
+          "Docker Terminal",
+          "width=500, height=700, scrollbars=yes, resizable=no"
+        );
+      }
+    });
+  };
+
+  const accessVM = () => {
+    Swal.fire({
+      title: "Access Training",
+      text: "Are you sure you want to resolve the problem?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, Access",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const send_data = {
+          VMname: "asdf", // DB에서 이름 가져오기
+          username: "asdf", // 유저 이름
+        };
+        const res = await fetch("http://www.pdxf.tk:8000/accessvncwindows", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(send_data),
+        });
+        const js = await res.json();
+        window.open(
+          "https://www.pdxf.tk:" + js + "/vnc.html",
+          "Windows noVNC",
+          "width=1200, height=900, scrollbars=yes, resizable=no"
+        );
+      }
+    });
+  };
+
   const [challState, setChallState] = useState({
     id: 0,
     title: "",
@@ -111,13 +176,17 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
                 <p class="modal-chall-divider">Connect Info</p>
                 <table class="modal-chall-connect">
                   <tr>
-                    <td>
-                      VNC - {connect.ip}:{connect.vncPort}
+                    <td onClick={accessVM}>
+                      <button className="option-btn">Access</button>
                     </td>
                   </tr>
                   <tr>
-                    <td>
-                      RDP - {connect.ip}:{connect.rdpPort}
+                    <td
+                      colSpan="2"
+                      onClick={AccessTerminalDocker}
+                      style={{ background: "white" }}
+                    >
+                      <button className="option-btn">Access Terminal</button>
                     </td>
                   </tr>
                 </table>
