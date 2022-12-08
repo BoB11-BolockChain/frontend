@@ -147,7 +147,7 @@ const EditChallenge = () => {
             </div>
           ))}
         </div>
-        <button className={styles.pbutton} onClick={addChallenge}>
+        <button className="pbutton" onClick={addChallenge}>
           Add Challenge
         </button>
       </div>
@@ -163,25 +163,25 @@ const EditChallenge = () => {
                 <th>Title</th>
                 <th>Score</th>
                 <th>Tactics</th>
+                <th></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="box-table">
               {challenges.map((d, i) => (
                 <tr>
-                  <td>{i}</td>
-                  <td>{d.title}</td>
-                  <td>{d.score}</td>
-                  <td>{makeString(d.tactics)}</td>
-                  <button onClick={() => removeChallenge(i)}>
-                    <Close />
-                  </button>
+                  <td width="10%">{i}</td>
+                  <td width="30%">{d.title}</td>
+                  <td width="10%">{d.score}</td>
+                  <td width="50%">{makeString(d.tactics)}</td>
+                  <td><button className="rmv-btn" onClick={() => removeChallenge(i)}>
+                  </button></td>
                 </tr>
               ))}
             </tbody>
           </table>
         )}
       </div>
-      <button className={styles.pbutton} onClick={finishEdit}>
+      <button className="pbutton" onClick={finishEdit}>
         FINISH
       </button>
     </div>

@@ -15,7 +15,11 @@
     border-bottom: 1px solid hsl(230, 95%, 70%);
     font-weight: normal;
     font-size: 14px;
-    text-align: center;
+    // text-align: center;
+
+    .score-user {
+      text-align: right !important;
+    }
   }
 
   td {
@@ -70,6 +74,7 @@
   padding: 10px;
   align-items: center;
   justify-content: center;
+  height: 90%;
 
   .modal-profile {
     display: flex;
@@ -84,6 +89,9 @@
       padding: 10px;
       font-size: 22px;
       font-weight: 600;
+    }
+    .name {
+      margin-bottom: 0;
     }
   }
 
@@ -116,13 +124,14 @@
     th {
       background-color: #273240;
       padding: 8px;
+      border-bottom: 0px solid hsl(230, 95%, 70%) !important;
     }
     th:first-child {
-      border-radius: 10px 0 0 10px;
+      border-radius: 10px 0 0 0px;
     }
     th:last-child {
       padding: 8px 20px 8px 20px;
-      border-radius: 0px 10px 10px 0px;
+      border-radius: 0px 10px 0px 0px;
     }
   }
 
@@ -132,11 +141,11 @@
     border-bottom: 1px solid rgb(255, 255, 255);
 
     .scene-title {
-      border-radius: 10px 0 0 10px;
+      border-radius: 0px 0 0 10px;
     }
 
     td:last-child {
-      border-radius: 0px 10px 10px 0px;
+      border-radius: 0px 0px 10px 0px;
       font-weight: 600;
     }
     td {

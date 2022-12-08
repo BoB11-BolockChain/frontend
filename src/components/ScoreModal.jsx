@@ -41,9 +41,10 @@ const ScoreModal = ({ isOpen, setModalState, data, margin, img }) => {
       }}
     >
       <div className="score-modal">
+        <span class="close">&times;</span>
         <div className="modal-profile">
           <img src={img} />
-          <div width="100%">
+          <div width="100%" display="flex" className="name">
             <p className="profile-id">{data.id}</p>
             <p>설명</p>
           </div>

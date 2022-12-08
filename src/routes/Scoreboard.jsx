@@ -34,21 +34,22 @@ const Scoreboard = () => {
           yField: "score",
           seriesField: "user",
           xAxis: {
-            type: "cat",
+            type: "time",
             label: {
               autoRotate: false,
               // formatter: (v) => {
-              //   const date = v.split(" ")[0];
-              //   const time = v.split(" ")[1];
-              //   return (
-              //     date.split("-")[1] +
-              //     "-" +
-              //     date.split("-")[2] +
-              //     " " +
-              //     time.split(":")[0] +
-              //     ":" +
-              //     time.split(":")[1]
-              //   );
+              //   console.log(v);
+              //   const date = v.split(" ")[0].slice(5);
+              //   const time = v.split(" ")[1].slice(0, -3);
+              //   console.log(typeof time);
+              //   return date + " " + time;
+              //   // date.split("-")[1] +
+              //   // "-" +
+              //   // date.split("-")[2] +
+              //   // " " +
+              //   // time.split(":")[0] +
+              //   // ":" +
+              //   // time.split(":")[1]
               // },
             },
           },
@@ -93,7 +94,7 @@ const Scoreboard = () => {
           <table>
             <thead>
               <th width="5%">No.</th>
-              <th colspan="2" width="10%">
+              <th colspan="2" width="10%" className="score-user">
                 User
               </th>
               <th width="50%"></th>

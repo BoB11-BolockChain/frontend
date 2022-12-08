@@ -14,6 +14,10 @@ $icon-size: 35px;
 
 @import "~react-pro-sidebar/dist/scss/styles.scss";
 
+.pro-inner-item:has(> .pro-item-content a.active) {
+  background-color: rgba(0, 0, 0, 0.14);
+}
+
 .margin-plus {
   margin-bottom: 3px;
 }
@@ -95,8 +99,18 @@ table {
   border-top: 0.5px solid grey;
 }
 
+.close {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 16px;
+  margin-right: 8px;
+  font-size: 30px;
+}
+
 th {
-  background: hsl(230, 60%, 60%);
+  background-color: hsl(230, 95%, 70%);
   color: white;
   font-weight: 400;
   padding: 12px;
@@ -128,11 +142,15 @@ th {
 
 .btn-primary:active,
 .btn-primary:hover,
-.btn-primary:focus {
+.btn-primary:focus, .pdxf-button:active,
+.pdxf-button:hover,
+.pdxf-button:focus, .pbutton:active,
+.pbutton:hover,
+.pbutton:focus {
   background-color: hsl(230, 80%, 60%) !important;
   outline: 0;
 }
-.btn-primary:disabled {
+.btn-primary:disabled, .pdxf-button:disabled, .pbutton:disabled {
   opacity: 0.5;
 }
 
@@ -143,10 +161,10 @@ th {
   color: hsl(230, 95%, 70%);
   // padding: 8px;
   border-radius: 3px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 button {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   cursor: pointer;
   transition: 0.5s;
 }
@@ -164,6 +182,7 @@ button {
 
 .pagebtn {
   width: 100%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .btn-primary {
@@ -173,6 +192,7 @@ button {
   // padding: 8px;
   border-radius: 3px;
   padding: 0.4rem 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .attbtn {
@@ -181,6 +201,7 @@ button {
   height: 40px;
   text-align: center;
   line-height: 100% !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .box-subtitle {
@@ -191,10 +212,28 @@ button {
   color: #353535;
 }
 
+
+
 .custom-select {
   position: relative;
 }
 
+.rmv-btn {
+  padding: 2px;
+  background-color: transparent;
+  border: 0;
+  display: inline-block;
+  width: 30px !important;
+  height: 30px !important;
+  
+}
+
+.rmv-btn:after {
+  display: inline-block;
+  content: "\00d7";
+  font-size:25px;
+  color: #353535;
+}
 
 .select-box {
   width: 100%;

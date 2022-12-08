@@ -26,6 +26,15 @@ const SignIn = () => {
     const js = await res.json();
     console.log(js);
     window.sessionStorage.setItem("sessionId", js.sessionId);
+    window.sessionStorage.setItem(
+      "activatedVM",
+      JSON.stringify({
+        scenarioId: 0,
+        type: "Challenge",
+        vnc: 0,
+        rdp: 0,
+      })
+    );
     navigate("/admin");
   };
 
