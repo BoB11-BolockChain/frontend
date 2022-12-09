@@ -1,73 +1,15 @@
 import { useState } from "react";
-import Swal from "sweetalert2";
 import ReactModal from "react-modal";
 import { HiOutlineFlag, HiOutlineShieldExclamation } from "react-icons/hi";
+import Swal from "sweetalert2";
 
-const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
-  const AccessTerminalDocker = () => {
-    Swal.fire({
-      title: "Access Training",
-      text: "Are you sure you want to resolve the problem?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, Access",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        const send_data = {
-          Image_ID: "asdf:ff", //이미지 이름
-        };
-        fetch("http://www.pdxf.tk:8000/accesslinux", {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(send_data),
-        });
-        window.open(
-          "http://www.pdxf.tk:8080",
-          "Docker Terminal",
-          "width=500, height=700, scrollbars=yes, resizable=no"
-        );
-      }
-    });
-  };
-
-  const accessVM = () => {
-    Swal.fire({
-      title: "Access Training",
-      text: "Are you sure you want to resolve the problem?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, Access",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        const send_data = {
-          VMname: "asdf", // DB에서 이름 가져오기
-          username: "asdf", // 유저 이름
-        };
-        const res = await fetch("http://www.pdxf.tk:8000/accessvncwindows", {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(send_data),
-        });
-        const js = await res.json();
-        window.open(
-          "https://www.pdxf.tk:" + js + "/vnc.html",
-          "Windows noVNC",
-          "width=1200, height=900, scrollbars=yes, resizable=no"
-        );
-      }
-    });
-  };
-
+const TrainingModal = ({
+  isOpen,
+  setModalState,
+  data,
+  margin,
+  setSolveCheck,
+}) => {
   const [challState, setChallState] = useState({
     id: 0,
     title: "",
@@ -149,34 +91,80 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
         return <p style={{ background: "#e53935" }}>False</p>;
     }
   };
+  // const AccessTerminalDocker = () => {
+  //   Swal.fire({
+  //     title: "Access Training",
+  //     text: "Are you sure you want to resolve the problem?",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#d33",
+  //     cancelButtonColor: "#3085d6",
+  //     confirmButtonText: "Yes, Access",
+  //   }).then(async (result) => {
+  //     if (result.isConfirmed) {
+  //       const send_data = {
+  //         Image_ID: "asdf:ff", //이미지 이름
+  //       };
+  //       fetch("http://www.pdxf.tk:8000/accesslinux", {
+  //         method: "POST",
+  //         headers: {
+  //           Accept: "application/json",
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(send_data),
+  //       });
+  //       window.open(
+  //         "http://www.pdxf.tk:8080",
+  //         "Docker Terminal",
+  //         "width=500, height=700, scrollbars=yes, resizable=no"
+  //       );
+  //     }
+  //   });
+  // };
+
+  const accessVM = () => {
+    Swal.fire({
+      title: "Access Training",
+      text: "Are you sure you want to resolve the problem?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, Access",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const send_data = {
+          VMname: "asdf", // DB에서 이름 가져오기
+          username: "asdf", // 유저 이름
+        };
+        const res = await fetch("http://www.pdxf.tk:8000/accessvncwindows", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(send_data),
+        });
+        const js = await res.json();
+        window.open(
+          "https://www.pdxf.tk:" + js + "/vnc.html",
+          "Windows noVNC",
+          "width=1200, height=900, scrollbars=yes, resizable=no"
+        );
+      }
+    });
+  };
+
   const connectInfo = (activateJS) => {
     if (activateJS.scenarioId === data.scene_id) {
-      var url = window.location.protocol + "//" + window.location.hostname;
       return (
         <table className="modal-vm-connect">
           <tr className="modal-vm-title">
             <p>{activateJS.type} Connect Info</p>
           </tr>
           <tr>
-            <td className="modal-vm-info">
-              <tr>
-                <b>VNC</b>
-              </tr>
-              <tr>
-                <p>
-                  {url}:{activateJS.vnc}
-                </p>
-              </tr>
-            </td>
-            <td className="modal-vm-info">
-              <tr>
-                <b>RDP</b>
-              </tr>
-              <tr>
-                <p>
-                  {url}:{activateJS.rdp}
-                </p>
-              </tr>
+            <td onClick={accessVM}>
+              <button className="option-btn">Access</button>
             </td>
           </tr>
         </table>
@@ -227,36 +215,49 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
     >
       <div className="modal-item">
         {isOpen === true ? (
-          <div>
-            <div class="modal-scenario">
-              <p id="modal_scene_title">{data.scene_title}</p>
-              <p id="modal_scene_system">SYSTEM: {data.system}</p>
-              <p id="modal_scene_desc">{data.scene_desc}</p>
-            </div>
-            {connect.isClick === true ? (
-              <>
-                <p class="modal-chall-divider">Connect Info</p>
-                <table class="modal-chall-connect">
-                  <tr>
-                    <td onClick={accessVM}>
-                      <button className="option-btn">Access</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      colSpan="2"
-                      onClick={AccessTerminalDocker}
-                      style={{ background: "white" }}
-                    >
-                      <button className="option-btn">Access Terminal</button>
-                    </td>
-                  </tr>
-                </table>
-              </>
-            ) : null}
-            <div class="modal-challenge">
-              <p class="modal-chall-divider">Challenge List</p>
-              <div className="flex-auto flex-row flex-wrap justify-between align-items-center p-2">
+          <>
+            <table className="modal-scenario">
+              <tr className="modal-scene-title">
+                <p id="modal_scene_title">{data.scene_title}</p>
+                <p id="modal_scene_system">SYSTEM: {data.system}</p>
+              </tr>
+              <tr>
+                <p id="modal_scene_desc">{data.scene_desc}</p>
+              </tr>
+              <tr>
+                <div className="modal-connect-button">
+                  <button
+                    className="an-button"
+                    type="button"
+                    onClick={() => {
+                      window.sessionStorage.removeItem("activatedVM");
+                      window.sessionStorage.setItem(
+                        "activatedVM",
+                        JSON.stringify({
+                          scenarioId: data.scene_id,
+                          type: "Challenge",
+                          vnc: 5001,
+                          rdp: 5002,
+                        })
+                      );
+                      setClick((prev) => !prev);
+                    }}
+                  >
+                    <td className="an-desc">Challenge Analyze</td>
+                    <td className="an-border" />
+                    <td className="an-icon">{<HiOutlineFlag />}</td>
+                  </button>
+                  {irCheck(chall_data)}
+                </div>
+              </tr>
+            </table>
+
+            {connectInfo(
+              JSON.parse(window.sessionStorage.getItem("activatedVM"))
+            )}
+            <div className="modal-challenge">
+              <p className="modal-chall-divider">Challenge List</p>
+              <div className="modal-chall-list">
                 {chall_data.challenge.map((d) => {
                   let solved_check_style = {};
                   if (d.solved === "True") {
