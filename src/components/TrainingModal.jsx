@@ -354,7 +354,7 @@ const TrainingModal = ({
                 </div>
               ) : null}
             </div>
-          </>
+          </div>
         ) : null}
       </div>
     </ReactModal>
