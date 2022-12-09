@@ -17,7 +17,6 @@ import SignUp from "src/routes/SignUp";
 import Profile from "src/routes/user/Profile";
 import Training from "src/routes/user/Training";
 import UserRouteLayout from "src/routes/user/UserRouteLayout";
-import Sancat from "src/components/sancat";
 
 const AppRouter = () => {
   return (
@@ -61,7 +60,6 @@ const AppRouter = () => {
           </Route>
 
           <Route path="*" element={<NotFound />} />
-          <Route path="sancat" element={<Sancat />} />
         </Routes>
       </Layout>
     </BrowserRouter>
