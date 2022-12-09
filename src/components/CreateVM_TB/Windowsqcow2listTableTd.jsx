@@ -1,7 +1,9 @@
-import React from "react";
+import { PanoramaVertical } from "@mui/icons-material";
+import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const TableTd = ({ data }) => {
+
   const editqcow2 = async (e) => {
     Swal.fire({
       title: "Submit Widnows qcow2 name",
@@ -98,7 +100,20 @@ const TableTd = ({ data }) => {
         Filename: data.title,
       }),
     });
+    // const res2 = await fetch("http://www.pdxf.tk:8000/RunningEffect", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type" : "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     Filename: data.title,
+    //   }),
+    // });
     Swal.showLoading();
+    // if (res2.ok) {
+      
+    // }
     if (res.ok) {
       Swal.fire({
         icon: "success",

@@ -23,11 +23,6 @@ import Switch from "react-switch";
 import styled from "styled-components";
 import sidebarBg from "./bg3.png";
 
-const usePathname = () => {
-  const location = useLocation();
-  return location.pathname;
-}
-
 const Logo = styled.img`
   margin: 15px 20px 5px 20px;
   padding: 5px;
@@ -86,7 +81,7 @@ const Aside = ({
           <>
             <Menu iconShape="circle">
               <SubMenu title={sessionId} icon={<MdPerson />}>
-                <MenuItem usePathname>
+                <MenuItem>
                   My Profile
                   <NavLink to="/user/profile" />
                 </MenuItem>
@@ -95,14 +90,13 @@ const Aside = ({
             </Menu>
             <Menu iconShape="circle">
               <SubMenu title="PDxF Management" icon={<MdSettings />}>
-                <MenuItem usePathname>
+                <MenuItem>
                   Training Management
-                  <NavLink to="/admin/managetraining" activeClassName="selected-page"/>
+                  <NavLink to="/admin/managetraining" />
                 </MenuItem>
                 <MenuItem>
                   Homepage Setting
-                  <NavLink to="/admin/homepagesetting" 
-                  activeClassName="selected-page"/>
+                  <NavLink to="/admin/homepagesetting" />
                 </MenuItem>
                 <MenuItem>
                   Dashboard
@@ -116,7 +110,7 @@ const Aside = ({
       <SidebarContent>
         <Menu iconShape="circle">
           <MenuItem icon={<MdHome />}>
-            <p><NavLink to="/" activeClassName="selected-page">Main</NavLink></p>
+            <p><NavLink to="/" >Main</NavLink></p>
           </MenuItem>
           <MenuItem
             icon={<MdFlag />}

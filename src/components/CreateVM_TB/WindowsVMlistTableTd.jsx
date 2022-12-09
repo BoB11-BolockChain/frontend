@@ -1,7 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 
-const TableTd = ({ data }) => {
+const TableTd = ({ data, name }) => {
   const accessVM = () => {
     if (data.State === "RUNNING") {
       Swal.fire({
@@ -227,12 +227,16 @@ const TableTd = ({ data }) => {
     }
   };
 
+  if(name==data.Domain){
+    
+  }
+
   return (
     <>
       <tr key={data.ID}>
         {/* <td>{data.ID}</td> */}
         <td>{data.Port}</td>
-        <td>{data.Domain}</td>
+        <td id={data.Domain}>{data.Domain}</td>
         <td>{data.State}</td>
         <td onClick={accessVM}>
           <button className="option-btn">Access</button>
