@@ -74,7 +74,6 @@ const EditTraining = () => {
           system: jsonBody.system,
           vm_name: jsonBody.vm_name,
         });
-        console.log(jsonBody);
         const tactics = [];
         jsonBody.challenges.forEach((element) => {
           tactics.push(...element.tactics);

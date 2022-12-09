@@ -36,7 +36,6 @@ const EditChallenge = () => {
 
   const navigate = useNavigate();
   const finishEdit = async () => {
-    console.log(state);
     const url = trainingId
       ? `edittraining?trainingId=${trainingId}`
       : "createtraining";
@@ -48,13 +47,11 @@ const EditChallenge = () => {
       },
       body: JSON.stringify({
         id: Number(trainingId),
-        scenario: {
-          title: state.title,
-          description: state.description,
-          score: Number(state.score),
-          system: state.system,
-          vm_name: state.vm_name,
-        },
+        title: state.title,
+        description: state.description,
+        score: Number(state.score),
+        system: state.system,
+        vm_name: state.vm_name,
         challenges: challenges.map((d) => ({ ...d, score: Number(d.score) })),
       }),
     });
