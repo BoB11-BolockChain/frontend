@@ -67,7 +67,7 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
       }
     });
   };
-  
+
   const [challState, setChallState] = useState({
     id: 0,
     title: "",
@@ -353,7 +353,7 @@ const TrainingModal = ({ isOpen, setModalState, data, margin, solveCheck }) => {
                 </div>
               ) : null}
             </div>
-          </>
+          </div>
         ) : null}
       </div>
     </ReactModal>
