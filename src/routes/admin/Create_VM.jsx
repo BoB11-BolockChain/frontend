@@ -12,9 +12,6 @@ const Create_VM = () => {
   const seldata = ["Windows", "Linux"];
   const [selected, setSelected] = useState(window.sessionStorage.getItem("os"));
 
-  // window.sessionStorage.setItem("os", selected);
-  // setSelected("Windows");
-  // setSelected("Linux");
   const EditDockerName = async (e) => {
     Swal.fire({
       title: "Submit Docker Image name",

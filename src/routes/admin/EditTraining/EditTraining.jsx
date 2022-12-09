@@ -8,17 +8,51 @@ import useInputState from "src/hooks/useInputState";
 
 import "./styles.scss";
 
-const dummy = ["option1", "option2", "option3", "option4"];
-
 const EditTraining = () => {
+  const OS = ["Windows", "Linux"];
+  const [selected, setSelected] = useState(window.sessionStorage.getItem("os"));
   const { trainingId } = useParams();
-
+  const [osstate, setosstate] = useState([]);
+  const [osstate1, setosstate1] = useState([]);
   const [state, setState, onChange] = useInputState();
   const [tactics, setTactics] = useState([]);
   const [challenges, setChallenges] = useState([]);
 
   const [isFetched, setIsFetched] = useState(false);
   useEffect(() => {
+    const GetVMName = async () => {
+      const res = await fetch(`http://pdxf.tk:8000/getwindowslist`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        const jsonBody = await res.json();
+        const vmnamedata1 = jsonBody;
+        setosstate1(vmnamedata1);
+      } else {
+        console.log(res.status);
+      }
+
+      const res1 = await fetch(`http://pdxf.tk:8000/getlinuxlist`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      if (res1.ok) {
+        const jsonBody = await res1.json();
+        const vmnamedata = jsonBody;
+        setosstate(vmnamedata);
+      } else {
+        console.log(res1.status);
+      }
+    };
+
+    GetVMName();
     const fetchData = async () => {
       const res = await fetch(
         `http://pdxf.tk:8000/gettraining?trainingId=${trainingId}`,
@@ -37,7 +71,8 @@ const EditTraining = () => {
           title: jsonBody.title,
           description: jsonBody.description,
           score: jsonBody.score,
-          // system: jsonBody.system,
+          system: jsonBody.system,
+          vm_name: jsonBody.vm_name,
         });
         const tactics = [];
         jsonBody.challenges.forEach((element) => {
@@ -138,7 +173,7 @@ const EditTraining = () => {
 
   const navigate = useNavigate();
   const move = () => {
-    navigate(`/admin/editchallenge/${trainingId}`, {
+    navigate(`/admin/editchallenge${trainingId ? "/" + trainingId : ""}`, {
       state: { ...state, tactics, challenges },
     });
   };
@@ -148,13 +183,37 @@ const EditTraining = () => {
       <div className="marginbox"></div>
       <p className="title">Edit Training</p>
       <div className="box">
-        <p className="small-title">VM Image</p>
+        <p className="small-title">OS</p>
         <Dropdown
-          defaultValue={dummy[1]}
-          setData={(data) => setState({ ...state, system: data })}
-          options={dummy}
+          defaultValue={
+            state.system ? state.system : window.sessionStorage.getItem("os")
+          }
+          setData={(d) => {
+            window.sessionStorage.setItem("os", d);
+            setSelected(d);
+            setState({ ...state, system: d });
+          }}
+          options={OS}
         />
       </div>
+      {isFetched && (
+        <div className="box">
+          <p className="small-title">VM Image</p>
+          {selected === "Windows" ? (
+            <Dropdown
+              defaultValue={state.vm_name}
+              setData={(data) => setState({ ...state, vm_name: data })}
+              options={osstate1}
+            />
+          ) : (
+            <Dropdown
+              defaultValue={state.vm_name}
+              setData={(data) => setState({ ...state, vm_name: data })}
+              options={osstate}
+            />
+          )}
+        </div>
+      )}
       {isFetched ? (
         <div className="box">
           <p className="small-title">Training Information</p>
@@ -205,7 +264,7 @@ const EditTraining = () => {
         ) : (
           <Loading />
         )}
-         <div className="marginbox"></div>
+        <div className="marginbox"></div>
         <div className="divider"></div>
         <p className="small-title">Add Tactic</p>
         <div className="addform">

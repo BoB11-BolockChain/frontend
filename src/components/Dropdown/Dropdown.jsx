@@ -8,7 +8,6 @@ const Dropdown = ({ defaultValue, setData, options }) => {
   return (
     <div className={styles.dropdown}>
       <div className={styles.head}>
-        {/* {selected < 0 ? "Select" : options[selected]} */}
         {options.includes(selected) ? selected : "Select"}
       </div>
       <div className={styles.content}>

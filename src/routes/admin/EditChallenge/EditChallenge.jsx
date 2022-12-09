@@ -1,4 +1,3 @@
-import { Close } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useInputState from "src/hooks/useInputState";
@@ -15,12 +14,10 @@ const EditChallenge = () => {
 
   const onClick = (hash) => {
     setSelected({ ...selected, [hash]: !selected[hash] });
-    console.log(challenges);
   };
 
   //check tactics and challenges
   useEffect(() => {
-    console.log(state);
     const beforeChallenges = [...challenges];
     beforeChallenges.forEach((ch) => {
       const afterTactics = [];
@@ -42,7 +39,7 @@ const EditChallenge = () => {
     const url = trainingId
       ? `edittraining?trainingId=${trainingId}`
       : "createtraining";
-    const res = await fetch(`http://pdxf.tk:9000/${url}`, {
+    const res = await fetch(`http://pdxf.tk:8000/${url}`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -53,7 +50,8 @@ const EditChallenge = () => {
         title: state.title,
         description: state.description,
         score: Number(state.score),
-        system: "dummysystem",
+        system: state.system,
+        vm_name: state.vm_name,
         challenges: challenges.map((d) => ({ ...d, score: Number(d.score) })),
       }),
     });
@@ -173,8 +171,12 @@ const EditChallenge = () => {
                   <td width="30%">{d.title}</td>
                   <td width="10%">{d.score}</td>
                   <td width="50%">{makeString(d.tactics)}</td>
-                  <td><button className="rmv-btn" onClick={() => removeChallenge(i)}>
-                  </button></td>
+                  <td>
+                    <button
+                      className="rmv-btn"
+                      onClick={() => removeChallenge(i)}
+                    ></button>
+                  </td>
                 </tr>
               ))}
             </tbody>
