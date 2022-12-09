@@ -21,7 +21,6 @@ const EditTraining = () => {
   const [isFetched, setIsFetched] = useState(false);
   useEffect(() => {
     const GetVMName = async () => {
-      console.log(state);
       const res = await fetch(`http://pdxf.tk:8000/getwindowslist`, {
         method: "POST",
         headers: {
@@ -72,8 +71,10 @@ const EditTraining = () => {
           title: jsonBody.title,
           description: jsonBody.description,
           score: jsonBody.score,
-          // system: jsonBody.system,
+          system: jsonBody.system,
+          vm_name: jsonBody.vm_name,
         });
+        console.log(jsonBody);
         const tactics = [];
         jsonBody.challenges.forEach((element) => {
           tactics.push(...element.tactics);
@@ -173,7 +174,7 @@ const EditTraining = () => {
 
   const navigate = useNavigate();
   const move = () => {
-    navigate(`/admin/editchallenge/${trainingId}`, {
+    navigate(`/admin/editchallenge${trainingId ? "/" + trainingId : ""}`, {
       state: { ...state, tactics, challenges },
     });
   };
@@ -185,30 +186,35 @@ const EditTraining = () => {
       <div className="box">
         <p className="small-title">OS</p>
         <Dropdown
-          defaultValue={window.sessionStorage.getItem("os")}
+          defaultValue={
+            state.system ? state.system : window.sessionStorage.getItem("os")
+          }
           setData={(d) => {
             window.sessionStorage.setItem("os", d);
             setSelected(d);
+            setState({ ...state, system: d });
           }}
           options={OS}
         />
       </div>
-      <div className="box">
-        <p className="small-title">VM Image</p>
-        {selected === "Windows" ? (
-          <Dropdown
-            defaultValue={osstate1[0]}
-            setData={(data) => setState({ ...state, os_system: data })}
-            options={osstate1}
-          />
-        ) : (
-          <Dropdown
-            defaultValue={osstate[0]}
-            setData={(data) => setState({ ...state, os_system: data })}
-            options={osstate}
-          />
-        )}
-      </div>
+      {isFetched && (
+        <div className="box">
+          <p className="small-title">VM Image</p>
+          {selected === "Windows" ? (
+            <Dropdown
+              defaultValue={state.vm_name}
+              setData={(data) => setState({ ...state, vm_name: data })}
+              options={osstate1}
+            />
+          ) : (
+            <Dropdown
+              defaultValue={state.vm_name}
+              setData={(data) => setState({ ...state, vm_name: data })}
+              options={osstate}
+            />
+          )}
+        </div>
+      )}
       {isFetched ? (
         <div className="box">
           <p className="small-title">Training Information</p>

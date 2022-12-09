@@ -34,7 +34,7 @@ const ManageTraining = () => {
       }
     };
     fetchData();
-  });
+  }, []);
 
   return (
     <>

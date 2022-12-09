@@ -1,8 +1,13 @@
 import ReactModal from "react-modal";
+import useWebSocket from "src/hooks/useWebSocket";
 
 import "./styles.scss";
 
 const DashboardModal = ({ isOpen, setModalState, data }) => {
+  const socketMsg = useWebSocket(
+    "http://pdxf.tk:8000/dashboardIR?operationId=fdsafdsaf"
+  );
+
   return (
     <ReactModal
       isOpen={isOpen}
@@ -49,6 +54,9 @@ const DashboardModal = ({ isOpen, setModalState, data }) => {
                   <div className="titlemarginbox"></div>
                   <p className="bodytext">RESULT : {d.solved}</p>
                 </div>
+              ))}
+              {socketMsg.steps.map((d) => (
+                <div></div>
               ))}
             </div>
           </div>
