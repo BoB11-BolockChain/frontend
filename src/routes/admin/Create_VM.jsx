@@ -147,6 +147,19 @@ const Create_VM = () => {
     fetchData();
   }, [width]);
 
+  const [name, setName] = useState([]);
+  useEffect(() => {
+    const fetchData2 = async () => {
+      const res2 = await fetch("http://www.pdxf.tk:3000/startqcow2");
+      if(res2.ok) {
+        const filename = await res2.json();
+        setName(filename.value)
+        console.log(filename)
+      }
+    }
+    fetchData2();
+  }, [name])
+
   return (
     <>
       <script src="multiselect-dropdown.js"></script>
@@ -306,7 +319,7 @@ const Create_VM = () => {
                         <th></th>
                       </tr>
                     </thead>
-                    <WindowsVMlistTableTr data={data3} />
+                    <WindowsVMlistTableTr data={data3} name={name}/>
                   </table>
                 ) : (
                   <Loading />

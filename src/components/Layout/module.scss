@@ -15,7 +15,7 @@ $icon-size: 35px;
 @import "~react-pro-sidebar/dist/scss/styles.scss";
 
 .pro-inner-item:has(> .pro-item-content a.active) {
-  background-color: rgba(0, 0, 0, 0.14);
+  background-color: rgba(0, 0, 0, 0.22);
 }
 
 .margin-plus {
