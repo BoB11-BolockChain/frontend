@@ -31,8 +31,9 @@ const SignIn = () => {
       JSON.stringify({
         scenarioId: 0,
         type: "Challenge",
-        vnc: 0,
-        rdp: 0,
+        system: "Windows",
+        vm: "",
+        port: "",
       })
     );
     navigate("/admin");

@@ -169,31 +169,46 @@ button:focus {
 
 .modal-vm-connect {
   width: 100%;
-  text-align: left;
+  text-align: center;
   padding: 10px;
   font-size: 14px;
   border-collapse: collapse;
 }
 
-.modal-vm-title {
-  font-size: 16px;
+.an-access-button {
+  border: 1px solid #eee;
+  border-radius: 25px;
+  background: hsl(0, 0%, 100%);
+  color: hsl(218, 28%, 28%);
   font-weight: 600;
-  border-bottom: 1px solid #ccc;
-
-  p {
-    padding: 5px;
-  }
+  font-size: 15px;
+  padding: 8px 30px;
+  box-shadow: 0px 0px 8px 0px hsla(230, 95%, 70%, 0.5);
 }
 
-.modal-vm-info {
-  padding: 10px;
+.an-access-button:hover,
+.an-access-button:focus {
+  background: hsl(0, 0%, 100%);
+  color: hsl(218, 28%, 28%);
+  box-shadow: 0px 0px 10px 5px hsla(230, 95%, 70%, 0.5);
+}
 
-  b {
-    color: hsl(345, 94%, 69%);
-  }
-  p {
-    font-size: 18px;
-  }
+.ir-access-button {
+  border: 1px solid #eee;
+  border-radius: 25px;
+  background: hsl(0, 0%, 100%);
+  color: #334350;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 8px 30px;
+  box-shadow: 0px 0px 8px 0px hsla(345, 94%, 69%, 0.5);
+}
+
+.ir-access-button:hover,
+.ir-access-button:focus {
+  background: hsl(0, 0%, 100%);
+  color: hsl(218, 28%, 28%);
+  box-shadow: 0px 0px 10px 5px hsla(345, 94%, 69%, 0.5);
 }
 
 .modal-challenge {

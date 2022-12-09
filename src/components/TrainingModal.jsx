@@ -1,6 +1,10 @@
 import { useState } from "react";
 import ReactModal from "react-modal";
-import { HiOutlineFlag, HiOutlineShieldExclamation } from "react-icons/hi";
+import {
+  HiOutlineFlag,
+  HiOutlineShieldExclamation,
+  HiLink,
+} from "react-icons/hi";
 import Swal from "sweetalert2";
 
 const TrainingModal = ({
@@ -32,17 +36,28 @@ const TrainingModal = ({
           className="ir-button"
           type="button"
           onClick={() => {
-            window.sessionStorage.removeItem("activatedVM");
-            window.sessionStorage.setItem(
-              "activatedVM",
-              JSON.stringify({
-                scenarioId: data.scene_id,
-                type: "Scenario",
-                vnc: 5003,
-                rdp: 5004,
-              })
-            );
-            setClick((prev) => !prev);
+            switch (data.system) {
+              case "Windows":
+                const sessionId = window.sessionStorage.getItem("sessionId");
+                const vm = data.vm_name;
+                makeVM(vm, sessionId, "Scenario");
+                break;
+              case "Linux":
+                window.sessionStorage.removeItem("activatedVM");
+                window.sessionStorage.setItem(
+                  "activatedVM",
+                  JSON.stringify({
+                    scenarioId: data.scene_id,
+                    type: "Scenario",
+                    system: data.system,
+                    vm: data.vm_name,
+                  })
+                );
+                setClick((prev) => !prev);
+                break;
+              default:
+                break;
+            }
           }}
         >
           <table>
@@ -91,38 +106,8 @@ const TrainingModal = ({
         return <p style={{ background: "#e53935" }}>False</p>;
     }
   };
-  // const AccessTerminalDocker = () => {
-  //   Swal.fire({
-  //     title: "Access Training",
-  //     text: "Are you sure you want to resolve the problem?",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#d33",
-  //     cancelButtonColor: "#3085d6",
-  //     confirmButtonText: "Yes, Access",
-  //   }).then(async (result) => {
-  //     if (result.isConfirmed) {
-  //       const send_data = {
-  //         Image_ID: "asdf:ff", //이미지 이름
-  //       };
-  //       fetch("http://www.pdxf.tk:8000/accesslinux", {
-  //         method: "POST",
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(send_data),
-  //       });
-  //       window.open(
-  //         "http://www.pdxf.tk:8080",
-  //         "Docker Terminal",
-  //         "width=500, height=700, scrollbars=yes, resizable=no"
-  //       );
-  //     }
-  //   });
-  // };
 
-  const accessVM = () => {
+  const AccessTerminalDocker = (vmname) => {
     Swal.fire({
       title: "Access Training",
       text: "Are you sure you want to resolve the problem?",
@@ -134,10 +119,41 @@ const TrainingModal = ({
     }).then(async (result) => {
       if (result.isConfirmed) {
         const send_data = {
-          VMname: "asdf", // DB에서 이름 가져오기
-          username: "asdf", // 유저 이름
+          Image_ID: vmname, //이미지 이름
         };
-        const res = await fetch("http://www.pdxf.tk:8000/accessvncwindows", {
+        fetch("http://www.pdxf.tk:8000/accesslinux", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(send_data),
+        });
+        window.open(
+          "http://www.pdxf.tk:8080",
+          "Docker Terminal",
+          "width=500, height=700, scrollbars=yes, resizable=no"
+        );
+      }
+    });
+  };
+
+  const makeVM = (vmname, userId, type) => {
+    Swal.fire({
+      title: "Access Training",
+      text: "Are you sure you want to resolve the problem?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, Access",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const send_data = {
+          VMname: vmname, // DB에서 이름 가져오기
+          Username: userId, // 유저 이름
+        };
+        const res = await fetch("http://www.pdxf.tk:8000/accesswindows", {
           method: "POST",
           headers: {
             Accept: "application/json",
@@ -146,28 +162,99 @@ const TrainingModal = ({
           body: JSON.stringify(send_data),
         });
         const js = await res.json();
-        window.open(
-          "https://www.pdxf.tk:" + js + "/vnc.html",
-          "Windows noVNC",
-          "width=1200, height=900, scrollbars=yes, resizable=no"
+        window.sessionStorage.removeItem("activatedVM");
+        window.sessionStorage.setItem(
+          "activatedVM",
+          JSON.stringify({
+            scenarioId: data.scene_id,
+            type: type,
+            system: data.system,
+            vm: data.vm_name,
+            port: js.Vmport,
+          })
         );
+        setClick((prev) => !prev);
       }
     });
+  };
+
+  const accessVM = async (userId, vmPort) => {
+    const send_data = {
+      VMname: userId, // DB에서 이름 가져오기
+      VNC_Port: vmPort,
+    };
+    const res = await fetch("http://www.pdxf.tk:8000/accessvncwindows", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(send_data),
+    });
+    const js = await res.json();
+    window.open(
+      "https://www.pdxf.tk:" + js + "/vnc.html",
+      "Windows noVNC",
+      "width=1200, height=900, scrollbars=yes, resizable=no"
+    );
+  };
+
+  const SystemVMCheck = (data) => {
+    const sessionId = window.sessionStorage.getItem("sessionId");
+    const vmPort = JSON.parse(
+      window.sessionStorage.getItem("activatedVM")
+    ).port;
+    const vm = data.vm;
+    let btn_css = "";
+    switch (data.type) {
+      case "Challenge":
+        btn_css = "an-access";
+        break;
+      case "Scenario":
+        btn_css = "ir-access";
+        break;
+      default:
+        break;
+    }
+    switch (data.system) {
+      case "Windows":
+        return (
+          <button
+            onClick={() => accessVM(sessionId, vmPort)}
+            className={btn_css + "-button"}
+          >
+            <table>
+              <tr>
+                <td>
+                  {<HiLink />} {data.type} Access
+                </td>
+              </tr>
+            </table>
+          </button>
+        );
+      case "Linux":
+        return (
+          <button
+            onClick={() => AccessTerminalDocker(vm)}
+            className={btn_css + "-button"}
+          >
+            <table>
+              <tr>
+                <td className={btn_css + "-icon"}>{<HiLink />}</td>
+                <td>{data.type} Access</td>
+              </tr>
+            </table>
+          </button>
+        );
+      default:
+        return null;
+    }
   };
 
   const connectInfo = (activateJS) => {
     if (activateJS.scenarioId === data.scene_id) {
       return (
-        <table className="modal-vm-connect">
-          <tr className="modal-vm-title">
-            <p>{activateJS.type} Connect Info</p>
-          </tr>
-          <tr>
-            <td onClick={accessVM}>
-              <button className="option-btn">Access</button>
-            </td>
-          </tr>
-        </table>
+        <table className="modal-vm-connect">{SystemVMCheck(activateJS)}</table>
       );
     }
     return null;
@@ -230,17 +317,29 @@ const TrainingModal = ({
                     className="an-button"
                     type="button"
                     onClick={() => {
-                      window.sessionStorage.removeItem("activatedVM");
-                      window.sessionStorage.setItem(
-                        "activatedVM",
-                        JSON.stringify({
-                          scenarioId: data.scene_id,
-                          type: "Challenge",
-                          vnc: 5001,
-                          rdp: 5002,
-                        })
-                      );
-                      setClick((prev) => !prev);
+                      switch (data.system) {
+                        case "Windows":
+                          const sessionId =
+                            window.sessionStorage.getItem("sessionId");
+                          const vm = data.vm_name;
+                          makeVM(vm, sessionId, "Challenge");
+                          break;
+                        case "Linux":
+                          window.sessionStorage.removeItem("activatedVM");
+                          window.sessionStorage.setItem(
+                            "activatedVM",
+                            JSON.stringify({
+                              scenarioId: data.scene_id,
+                              type: "Challenge",
+                              system: data.system,
+                              vm: data.vm_name,
+                            })
+                          );
+                          setClick((prev) => !prev);
+                          break;
+                        default:
+                          break;
+                      }
                     }}
                   >
                     <td className="an-desc">Challenge Analyze</td>
