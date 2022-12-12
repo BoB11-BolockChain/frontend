@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useInputState from "src/hooks/useInputState";
+import Swal from "sweetalert2";
 
 import styles from "./styles.module.scss";
 
@@ -55,7 +56,35 @@ const EditChallenge = () => {
         challenges: challenges.map((d) => ({ ...d, score: Number(d.score) })),
       }),
     });
-    alert(res.status, res.statusText);
+    // alert(res.status, res.statusText);
+    if (res.status === 201) {
+      Swal.fire({
+        icon: "success",
+        title: "Create Success.",
+        confirmButtonText: "OK",
+        preConfirm: () => {
+          navigate("/admin/managetraining");
+        },
+      });
+    } else if (res.status === 202) {
+      Swal.fire({
+        icon: "success",
+        title: "Edit Success.",
+        confirmButtonText: "OK",
+        preConfirm: () => {
+          navigate("/admin/managetraining");
+        },
+      });
+    } else {
+      Swal.fire({
+        icon: "success",
+        title: res.status,
+        confirmButtonText: "OK",
+        preConfirm: () => {
+          navigate("/admin/managetraining");
+        },
+      });
+    }
     if (res.ok) {
       navigate("/admin/managetraining");
     }

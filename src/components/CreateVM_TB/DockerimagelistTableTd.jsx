@@ -31,8 +31,8 @@ const TableTd = ({ data }) => {
       text: 'you want to Access "' + data.REPOSITORY + '" ?',
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#808080",
       confirmButtonText: "Yes, Access",
     }).then(async (result) => {
       if (result.isConfirmed) {
@@ -64,7 +64,7 @@ const TableTd = ({ data }) => {
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
+      cancelButtonColor: "#808080",
       confirmButtonText: "Yes, Delete",
     }).then(async (result) => {
       if (result.isConfirmed) {
