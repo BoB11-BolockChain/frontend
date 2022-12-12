@@ -15,269 +15,96 @@ import {
   MDBRow,
 } from "mdb-react-ui-kit";
 import { NavLink } from "react-router-dom";
+import { UserOutlined } from '@ant-design/icons';
+import 'antd/dist/antd.css';
+import { useRef, useState } from 'react';
+import { Avatar } from 'antd';
+
+
+
 
 function Profile() {
+  const fileInput = useRef(null)
+  const [Image, setImage] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
+
+  const onChange = (e) => {
+    if(e.target.files[0]){
+              setImage(e.target.files[0])
+          }else{ //업로드 취소할 시
+              setImage("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
+              return
+          }
+    //화면에 프로필 사진 표시
+          const reader = new FileReader();
+          reader.onload = () => {
+              if(reader.readyState === 2){
+                  setImage(reader.result)
+              }
+          }
+          reader.readAsDataURL(e.target.files[0])
+      }
   return (
     <section>
       <MDBContainer className="py-5">
         <MDBRow>
-          <MDBCol>
-            <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
-              <MDBBreadcrumbItem>
-                <NavLink to="/">home</NavLink>
-              </MDBBreadcrumbItem>
-              <MDBBreadcrumbItem>
-                <a href="/challenges">Challenges</a>
-              </MDBBreadcrumbItem>
-              <MDBBreadcrumbItem active>User Profile</MDBBreadcrumbItem>
-            </MDBBreadcrumb>
-          </MDBCol>
-        </MDBRow>
-
-        <MDBRow>
+          <Avatar 
+        src={Image} 
+        style={{margin:'20px'}} 
+        size={230}
+        icon={<UserOutlined/>} 
+        onClick={()=>{fileInput.current.click()}}/>
+         <input 
+ 	      type='file' 
+    	  style={{display:'none'}}
+        accept='image/jpg,impge/png,image/jpeg' 
+        name='profile_img'
+        onChange={onChange}
+        ref={fileInput}/>
+        
           <MDBCol lg="4">
-            <MDBCard className="mb-4">
-              <MDBCardBody className="text-center">
-                <MDBCardImage
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                  alt="avatar"
-                  className="rounded-circle"
-                  style={{ width: "150px" }}
-                  fluid
-                />
-                <p className="text-muted mb-1">PDxF Full Stack Developer</p>
-                <p className="text-muted mb-4">South Korea, BoB Center</p>
-                <div className="d-flex justify-content-center mb-2"></div>
-              </MDBCardBody>
-            </MDBCard>
-
             <MDBCard className="mb-4 mb-lg-0">
-              <MDBCardBody className="p-0">
-                <MDBListGroup flush className="rounded-3">
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fas icon="globe fa-lg text-warning" />
-                    <MDBCardText>http://pdxf.tk</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon
-                      fab
-                      icon="github fa-lg"
-                      style={{ color: "#333333" }}
-                    />
-                    <MDBCardText>temp123</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon
-                      fab
-                      icon="twitter fa-lg"
-                      style={{ color: "#55acee" }}
-                    />
-                    <MDBCardText>temp123</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon
-                      fab
-                      icon="instagram fa-lg"
-                      style={{ color: "#ac2bac" }}
-                    />
-                    <MDBCardText>temp123</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon
-                      fab
-                      icon="facebook fa-lg"
-                      style={{ color: "#3b5998" }}
-                    />
-                    <MDBCardText>temp123</MDBCardText>
-                  </MDBListGroupItem>
-                </MDBListGroup>
+              <MDBCardBody className="p-0 profile-box">
+              <div className="flex-row profile-line">
+            <span className="profile-value"> ID </span>
+            <input
+              className="profile-input"
+              name="id"
+              placeholder="Id"
+            />
+          </div>
+          <div className="flex-row profile-line">
+            <span className="profile-value"> E-mail </span>
+            <input
+              className="profile-input"
+              name="email"
+              placeholder="Email"
+            />
+          </div>
+          <div className="flex-row profile-line">
+            <span className="profile-value"> 소속 </span>
+            <input
+              className="profile-input"
+              name="department"
+              placeholder="school/club"
+            />
+          </div>
+          <div className="flex-row">
+            <span className="profile-value profile-line"> Comment </span>
+            <textarea
+            className="profile-input"
+            name="comment"
+            placeholder="Comment"
+          ></textarea>
+          </div>
               </MDBCardBody>
             </MDBCard>
           </MDBCol>
           <MDBCol lg="8">
-            <MDBCard className="mb-4">
-              <MDBCardBody>
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Full Name</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Dohyun Yun</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Email</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">
-                      example@example.com
-                    </MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Phone</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">
-                      (031) 234-5678
-                    </MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Mobile</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">
-                      (010) 765-4321
-                    </MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Address</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">
-                      South Korea, BoB center
-                    </MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCardBody>
-            </MDBCard>
-
-            <MDBRow>
-              <MDBCol md="6">
-                <MDBCard className="mb-4 mb-md-0">
-                  <MDBCardBody>
-                    <MDBCardText className="mb-4">
-                      <span className="text-primary font-italic me-1">
-                        assigment
-                      </span>{" "}
-                      Project Status
-                    </MDBCardText>
-                    <MDBCardText
-                      className="mb-1"
-                      style={{ fontSize: ".77rem" }}
-                    >
-                      PDxF Project
-                    </MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={80} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText
-                      className="mt-4 mb-1"
-                      style={{ fontSize: ".77rem" }}
-                    >
-                      Digital Forensics
-                    </MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={72} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText
-                      className="mt-4 mb-1"
-                      style={{ fontSize: ".77rem" }}
-                    >
-                      temp123
-                    </MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={89} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText
-                      className="mt-4 mb-1"
-                      style={{ fontSize: ".77rem" }}
-                    >
-                      vagrant master
-                    </MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={55} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText
-                      className="mt-4 mb-1"
-                      style={{ fontSize: ".77rem" }}
-                    >
-                      docker master
-                    </MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={66} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-
-              <MDBCol md="6">
-                <MDBCard className="mb-4 mb-md-0">
-                  <MDBCardBody>
-                    <MDBCardText className="mb-4">
-                      <span className="text-primary font-italic me-1">
-                        assigment
-                      </span>{" "}
-                      Project Status
-                    </MDBCardText>
-                    <MDBCardText
-                      className="mb-1"
-                      style={{ fontSize: ".77rem" }}
-                    >
-                      PDxF Project
-                    </MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={80} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText
-                      className="mt-4 mb-1"
-                      style={{ fontSize: ".77rem" }}
-                    >
-                      vagrant master
-                    </MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={72} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText
-                      className="mt-4 mb-1"
-                      style={{ fontSize: ".77rem" }}
-                    >
-                      docker master
-                    </MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={89} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText
-                      className="mt-4 mb-1"
-                      style={{ fontSize: ".77rem" }}
-                    >
-                      Go lang master
-                    </MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={55} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText
-                      className="mt-4 mb-1"
-                      style={{ fontSize: ".77rem" }}
-                    >
-                      React.JS master
-                    </MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={66} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-            </MDBRow>
           </MDBCol>
+          <div className="space-box"></div>
+          <button className="pdxf-button">
+            Save
+          </button>
         </MDBRow>
       </MDBContainer>
     </section>
