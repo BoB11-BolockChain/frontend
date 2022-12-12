@@ -107,7 +107,7 @@ const TrainingModal = ({
     }
   };
 
-  const AccessTerminalDocker = (vmname) => {
+  const AccessTerminalDocker = (vmname, userId) => {
     Swal.fire({
       title: "Access Training",
       text: "Are you sure you want to resolve the problem?",
@@ -120,6 +120,8 @@ const TrainingModal = ({
       if (result.isConfirmed) {
         const send_data = {
           Image_ID: vmname, //이미지 이름
+          System: "Linux",
+          Username: userId,
         };
         fetch("http://www.pdxf.tk:8000/accesslinux", {
           method: "POST",
@@ -138,7 +140,7 @@ const TrainingModal = ({
     });
   };
 
-  const makeVM = (vmname, userId, type) => {
+  const makeVM = (vmname, userId, type, system) => {
     Swal.fire({
       title: "Access Training",
       text: "Are you sure you want to resolve the problem?",
@@ -152,6 +154,7 @@ const TrainingModal = ({
         const send_data = {
           VMname: vmname, // DB에서 이름 가져오기
           Username: userId, // 유저 이름
+          System: system,
         };
         const res = await fetch("http://www.pdxf.tk:8000/accesswindows", {
           method: "POST",
@@ -235,7 +238,7 @@ const TrainingModal = ({
       case "Linux":
         return (
           <button
-            onClick={() => AccessTerminalDocker(vm)}
+            onClick={() => AccessTerminalDocker(vm, sessionId)}
             className={btn_css + "-button"}
           >
             <table>
@@ -322,7 +325,7 @@ const TrainingModal = ({
                           const sessionId =
                             window.sessionStorage.getItem("sessionId");
                           const vm = data.vm_name;
-                          makeVM(vm, sessionId, "Challenge");
+                          makeVM(vm, sessionId, "Challenge", data.system);
                           break;
                         case "Linux":
                           window.sessionStorage.removeItem("activatedVM");
