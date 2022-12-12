@@ -212,6 +212,23 @@ const EditTraining = () => {
               options={osstate}
             />
           )}
+          <div className="flex-row">
+            <input
+              className="input"
+              name="vm_id"
+              placeholder="VM ID"
+              onChange={onChange}
+              value={state.vm_id}
+            />
+            <input
+              className="input"
+              name="vm_pw"
+              placeholder="VM PASSWORD"
+              onChange={onChange}
+              value={state.vm_pw}
+              type="password"
+            />
+          </div>
         </div>
       )}
       {isFetched ? (
