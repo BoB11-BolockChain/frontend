@@ -28,7 +28,11 @@ const Footer = () => {
         >
           {<AiOutlineGithub />}
         </a>
-        <a target="_blank" rel="noopener noreferrer" href="notyet">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/BoB11-BolockChain/PDxF"
+        >
           {<AiOutlineTwitter />}
         </a>
       </div>
