@@ -73,6 +73,9 @@ const EditTraining = () => {
           score: jsonBody.score,
           system: jsonBody.system,
           vm_name: jsonBody.vm_name,
+          vm_id: jsonBody.vm_id,
+          vm_pw: jsonBody.vm_pw,
+          vm_visible: jsonBody.visible,
         });
         const tactics = [];
         jsonBody.challenges.forEach((element) => {
@@ -310,6 +313,21 @@ const EditTraining = () => {
             Add
           </button>
         </div>
+      </div>
+      <div className="box">
+        <p className="small-title">Configuration</p>
+        <label htmlFor="visible" className="visible-label">
+          Users can participate in this training
+          <input
+            type="checkbox"
+            id="visible"
+            checked={state.visible}
+            onChange={(e) => {
+              setState({ ...state, visible: e.target.checked });
+            }}
+            className="visible-input"
+          />
+        </label>
       </div>
       <button className="pbutton" onClick={move}>
         Go to Edit Challenges
