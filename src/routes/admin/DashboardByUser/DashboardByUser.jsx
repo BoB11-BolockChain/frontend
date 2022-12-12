@@ -67,6 +67,7 @@ const DashboardByUser = () => {
         isOpen={modalState.isOpen}
         setModalState={setModalState}
         data={modalState.data}
+        userId={userId}
       />
     </>
   );

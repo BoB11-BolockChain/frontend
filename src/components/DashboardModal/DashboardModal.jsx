@@ -2,9 +2,9 @@ import ReactModal from "react-modal";
 
 import "./styles.scss";
 
-const DashboardModal = ({ isOpen, setModalState, data }) => {
-  // const socketMsg = useWebSocket(
-  //   "http://pdxf.tk:8000/dashboardIR?operationId=fdsafdsaf"
+const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
+  // const socketOperationMsg = useWebSocket(
+  //   `http://pdxf.tk:8000/dashboardir?userId=${userId}&scenarioId=${data.id}`
   // );
 
   return (
@@ -54,8 +54,8 @@ const DashboardModal = ({ isOpen, setModalState, data }) => {
                   <p className="bodytext">RESULT : {d.solved}</p>
                 </div>
               ))}
-              {/* {socketMsg.steps.map((d) => (
-                <div></div>
+              {/* {socketOperationMsg.chain.map((d) => (
+                <div>{d.status}</div>
               ))} */}
             </div>
           </div>
