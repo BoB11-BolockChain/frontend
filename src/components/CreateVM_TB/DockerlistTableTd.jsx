@@ -9,7 +9,7 @@ const TableTd = ({ data }) => {
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
+      cancelButtonColor: "#808080",
       confirmButtonText: "Yes, Destroy",
     }).then(async (result) => {
       if (result.isConfirmed) {

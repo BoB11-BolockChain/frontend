@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const TableTd = ({ data }) => {
-
   const editqcow2 = async (e) => {
     Swal.fire({
       title: "Submit Widnows qcow2 name",
@@ -52,7 +51,7 @@ const TableTd = ({ data }) => {
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
+      cancelButtonColor: "#808080",
       confirmButtonText: "Yes, Delete",
     }).then(async (result) => {
       if (result.isConfirmed) {
@@ -112,7 +111,7 @@ const TableTd = ({ data }) => {
     // });
     Swal.showLoading();
     // if (res2.ok) {
-      
+
     // }
     if (res.ok) {
       Swal.fire({
@@ -173,7 +172,7 @@ const TableTd = ({ data }) => {
         <td onClick={startqcow2}>
           <button className="option-btn">Start</button>
         </td>
-        <td onClick={cloneqcow2} >
+        <td onClick={cloneqcow2}>
           <button className="option-btn">Clone</button>
         </td>
         <td onClick={editqcow2}>
