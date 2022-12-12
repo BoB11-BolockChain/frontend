@@ -204,6 +204,36 @@ button {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
+.space-box {
+  height: 30px;
+}
+
+.profile-box {
+  padding: 30px !important;
+  max-width: 500px !important;
+  min-height: 260px !important;
+  padding-top: 10px;
+}
+
+.profile-line {
+  margin-bottom: 20px;
+}
+
+.profile-value {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-input {
+  margin-right: 5px;
+  width: 250px;
+  border: 1px solid #6a82fb;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
 .box-subtitle {
   font-size: 16px;
   font-weight: 400;
@@ -212,6 +242,9 @@ button {
   color: #353535;
 }
 
+.profile-value {
+  font-weight: 500;
+}
 
 
 .custom-select {
