@@ -4,6 +4,7 @@ import {
   HiOutlineFlag,
   HiOutlineShieldExclamation,
   HiLink,
+  HiOutlineFire,
 } from "react-icons/hi";
 import Swal from "sweetalert2";
 
@@ -24,8 +25,7 @@ const TrainingModal = ({
   });
   const [state, setState] = useState({ flag: "" });
   const [solve, setSolve] = useState({ check: "", isClick: false });
-  const [click, setClick] = useState(false);
-  console.log(click);
+  const [, setClick] = useState(false);
   const chall_data = data;
 
   const irCheck = (data) => {
@@ -51,6 +51,7 @@ const TrainingModal = ({
                     type: "Scenario",
                     system: data.system,
                     vm: data.vm_name,
+                    atkStart: 0,
                   })
                 );
                 setClick((prev) => !prev);
@@ -114,7 +115,7 @@ const TrainingModal = ({
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
+      cancelButtonColor: "#808080",
       confirmButtonText: "Yes, Access",
     }).then(async (result) => {
       if (result.isConfirmed) {
@@ -140,14 +141,14 @@ const TrainingModal = ({
     });
   };
 
-  const makeVM = (vmname, userId, type, system) => {
+  const makeVM = (vmname, userId, type, system, vmID, vmPW) => {
     Swal.fire({
       title: "Access Training",
       text: "Are you sure you want to resolve the problem?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
+      cancelButtonColor: "#808080",
       confirmButtonText: "Yes, Access",
     }).then(async (result) => {
       if (result.isConfirmed) {
@@ -173,7 +174,10 @@ const TrainingModal = ({
             type: type,
             system: data.system,
             vm: data.vm_name,
+            vmId: vmID,
+            vmPw: vmPW,
             port: js.Vmport,
+            atkStart: 0,
           })
         );
         setClick((prev) => !prev);
@@ -202,11 +206,98 @@ const TrainingModal = ({
     );
   };
 
+  const AttackStart = (data) => {
+    Swal.fire({
+      title: "Attack starting",
+      text: "Are you sure you want to start attack?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#808080",
+      confirmButtonText: "YES",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        switch (data.system) {
+          case "Windows":
+            const windows_send_data = {
+              VMname: data.vm,
+              Username: window.sessionStorage.getItem("sessionId"),
+              System: data.system,
+              SSHuser: data.vmId,
+              SSHpass: data.vmPw,
+            };
+            const windows_atk_res = await fetch(
+              "http://www.pdxf.tk:8000/operation_start_windows",
+              {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(windows_send_data),
+              }
+            );
+            if (windows_atk_res.ok) {
+              //공격 성공 alert
+              window.sessionStorage.removeItem("activatedVM");
+              window.sessionStorage.setItem(
+                "activatedVM",
+                JSON.stringify({
+                  scenarioId: data.scenarioId,
+                  type: data.type,
+                  system: data.system,
+                  vm: data.vm,
+                  vmId: data.vmId,
+                  vmPw: data.vmPw,
+                  port: data.port,
+                  atkStart: 1,
+                })
+              );
+              setClick((prev) => !prev);
+            }
+            break;
+          case "Linux":
+            const linux_send_data = {
+              Image_ID: data.vm, //이미지 이름
+              System: data.system,
+              Username: window.sessionStorage.getItem("sessionId"),
+            };
+            const linux_atk_res = await fetch(
+              "http://www.pdxf.tk:8000/operation_start_linux",
+              {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(linux_send_data),
+              }
+            );
+            if (linux_atk_res.ok) {
+              //공격 성공 alert
+              window.sessionStorage.removeItem("activatedVM");
+              window.sessionStorage.setItem(
+                "activatedVM",
+                JSON.stringify({
+                  scenarioId: data.scenarioId,
+                  type: data.type,
+                  system: data.system,
+                  vm: data.vm,
+                  atkStart: 1,
+                })
+              );
+              setClick((prev) => !prev);
+            }
+            break;
+          default:
+            break;
+        }
+      }
+    });
+  };
+
   const SystemVMCheck = (data) => {
     const sessionId = window.sessionStorage.getItem("sessionId");
-    const vmPort = JSON.parse(
-      window.sessionStorage.getItem("activatedVM")
-    ).port;
     const vm = data.vm;
     let btn_css = "";
     switch (data.type) {
@@ -222,32 +313,82 @@ const TrainingModal = ({
     switch (data.system) {
       case "Windows":
         return (
-          <button
-            onClick={() => accessVM(sessionId, vmPort)}
-            className={btn_css + "-button"}
-          >
-            <table>
-              <tr>
-                <td>
-                  {<HiLink />} {data.type} Access
-                </td>
-              </tr>
-            </table>
-          </button>
+          <table className="modal-vm-access">
+            <tr>
+              User ID : <b>{data.vmId}</b> / User PW : <b>{data.vmPw}</b>
+            </tr>
+            <tr>
+              <button
+                onClick={() => accessVM(sessionId, data.port)}
+                className={btn_css + "-button"}
+              >
+                <table>
+                  <tr>
+                    <td>{<HiLink />}</td>
+                    <td>{data.type} Access</td>
+                  </tr>
+                </table>
+              </button>
+            </tr>
+            <tr>
+              {JSON.parse(window.sessionStorage.getItem("activatedVM"))
+                .atkStart === 0 ? (
+                <button
+                  className="atk-start-button"
+                  onClick={() =>
+                    AttackStart(
+                      JSON.parse(window.sessionStorage.getItem("activatedVM"))
+                    )
+                  }
+                >
+                  <table>
+                    <tr>
+                      <td>{<HiOutlineFire />}</td>
+                      <td>Attack Start</td>
+                    </tr>
+                  </table>
+                </button>
+              ) : null}
+            </tr>
+          </table>
         );
       case "Linux":
         return (
-          <button
-            onClick={() => AccessTerminalDocker(vm, sessionId)}
-            className={btn_css + "-button"}
-          >
-            <table>
-              <tr>
-                <td className={btn_css + "-icon"}>{<HiLink />}</td>
-                <td>{data.type} Access</td>
-              </tr>
-            </table>
-          </button>
+          <table className="modal-vm-access">
+            <tr>
+              <button
+                onClick={() => AccessTerminalDocker(vm, sessionId)}
+                className={btn_css + "-button"}
+              >
+                <table>
+                  <tr>
+                    <td>{<HiLink />}</td>
+                    <td>{data.type} Access</td>
+                  </tr>
+                </table>
+              </button>
+            </tr>
+            <tr>
+              {JSON.parse(window.sessionStorage.getItem("activatedVM"))
+                .atkStart === 0 ? (
+                <button
+                  className="atk-start-button"
+                  onClick={() =>
+                    AttackStart(
+                      JSON.parse(window.sessionStorage.getItem("activatedVM"))
+                    )
+                  }
+                >
+                  <table>
+                    <tr>
+                      <td>{<HiOutlineFire />}</td>
+                      <td>Attack Start</td>
+                    </tr>
+                  </table>
+                </button>
+              ) : null}
+            </tr>
+          </table>
         );
       default:
         return null;
@@ -324,8 +465,14 @@ const TrainingModal = ({
                         case "Windows":
                           const sessionId =
                             window.sessionStorage.getItem("sessionId");
-                          const vm = data.vm_name;
-                          makeVM(vm, sessionId, "Challenge", data.system);
+                          makeVM(
+                            data.vm_name,
+                            sessionId,
+                            "Challenge",
+                            data.system,
+                            data.vm_id,
+                            data.vm_pw
+                          );
                           break;
                         case "Linux":
                           window.sessionStorage.removeItem("activatedVM");
@@ -336,6 +483,7 @@ const TrainingModal = ({
                               type: "Challenge",
                               system: data.system,
                               vm: data.vm_name,
+                              atkStart: 0,
                             })
                           );
                           setClick((prev) => !prev);
@@ -385,8 +533,14 @@ const TrainingModal = ({
                         setSolveCheck(false);
                       }}
                     >
-                      <p>{d.chall_title}</p>
-                      <p>{d.score}</p>
+                      <div>
+                        <p>{d.chall_title}</p>
+                      </div>
+                      <div>
+                        <p>
+                          <b>{d.score}</b>
+                        </p>
+                      </div>
                     </button>
                   );
                 })}
