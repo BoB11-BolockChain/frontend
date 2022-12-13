@@ -180,8 +180,9 @@ const EditTraining = () => {
 
   return (
     <div className="edit-training">
-      <div className="marginbox"></div>
-      <p className="title">Edit Training</p>
+      <header>
+        <h1 className="h2 fw-bold my-4">Edit Training</h1>
+      </header>
       <div className="box">
         <p className="small-title">OS</p>
         <Dropdown

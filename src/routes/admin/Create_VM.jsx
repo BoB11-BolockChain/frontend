@@ -150,8 +150,9 @@ const Create_VM = () => {
   return (
     <>
       <script src="multiselect-dropdown.js"></script>
-      <h1>Create VM</h1>
-
+      <header>
+        <h1 className="h2 fw-bold my-4">Create VM</h1>
+      </header>
       <div className="col-md-6">
         <div className="wt-box">
           <div className="box-top">
