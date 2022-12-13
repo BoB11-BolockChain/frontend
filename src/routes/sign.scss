@@ -34,7 +34,7 @@
   position: relative;
 
   input {
-    width: 60%;
+    width: 80%;
     border: 2px solid #dddddd;
     border-radius: 20px;
     font-size: 18px;
@@ -49,7 +49,6 @@
 
   input:focus + .placeholder-text .text,
   input:valid + .placeholder-text .text {
-
     background-color: white;
     font-size: 16px;
     color: #bbb;
@@ -83,7 +82,7 @@
     transition: transform 0.15s ease-out, font-size 0.15s ease-out,
       background-color 0.15s ease-out, color 0.15s ease-out;
   }
-  
+
   .placeholder-text {
     font-size: 18px;
     padding: 10 20px;
