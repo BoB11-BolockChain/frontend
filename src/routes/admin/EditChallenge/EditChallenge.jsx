@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useInputState from "src/hooks/useInputState";
+import Swal from "sweetalert2";
 
 import styles from "./styles.module.scss";
 
@@ -52,10 +53,41 @@ const EditChallenge = () => {
         score: Number(state.score),
         system: state.system,
         vm_name: state.vm_name,
+        vm_id: state.vm_id,
+        vm_pw: state.vm_pw,
+        visible: state.visible,
         challenges: challenges.map((d) => ({ ...d, score: Number(d.score) })),
       }),
     });
-    alert(res.status, res.statusText);
+    // alert(res.status, res.statusText);
+    if (res.status === 201) {
+      Swal.fire({
+        icon: "success",
+        title: "Create Success.",
+        confirmButtonText: "OK",
+        preConfirm: () => {
+          navigate("/admin/managetraining");
+        },
+      });
+    } else if (res.status === 202) {
+      Swal.fire({
+        icon: "success",
+        title: "Edit Success.",
+        confirmButtonText: "OK",
+        preConfirm: () => {
+          navigate("/admin/managetraining");
+        },
+      });
+    } else {
+      Swal.fire({
+        icon: "success",
+        title: res.status,
+        confirmButtonText: "OK",
+        preConfirm: () => {
+          navigate("/admin/managetraining");
+        },
+      });
+    }
     if (res.ok) {
       navigate("/admin/managetraining");
     }
@@ -93,7 +125,9 @@ const EditChallenge = () => {
 
   return (
     <div className={`${styles.editchallenge}`}>
-      <p className="title">Edit Challenge</p>
+      <header>
+        <h1 className="h2 fw-bold my-4">Edit Challenge</h1>
+      </header>
       <div className="box">
         <p className="small-title">Challenge Info</p>
         <div className={styles.smallinputs}>

@@ -52,19 +52,18 @@ const Training = () => {
       </header>
       {dataLoaded ? (
         data.map((d, i) => (
-          <div className="scenario-list">
+          <div
+            key={i}
+            className="scenario-list"
+            onClick={() => setModalState({ isOpen: true, data: d, index: i })}
+          >
             <div className="scenario-desc">
               <div>
                 <p className="scenario-desc-title">{d.scene_title}</p>
                 <p className="scenario-desc-system">{d.system}</p>
               </div>
             </div>
-            <button
-              className="border-[#FA678C]"
-              onClick={() => setModalState({ isOpen: true, data: d, index: i })}
-            >
-              START
-            </button>
+            <button className="border-[#FA678C]">START</button>
           </div>
         ))
       ) : (

@@ -9,8 +9,8 @@ const TableTd = ({ data, name }) => {
         text: 'you want to Access "' + data.Domain + '" ?',
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#d33",
-        cancelButtonColor: "#3085d6",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#808080",
         confirmButtonText: "Yes, Access",
       }).then(async (result) => {
         if (result.isConfirmed) {
@@ -72,7 +72,7 @@ const TableTd = ({ data, name }) => {
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
+      cancelButtonColor: "#808080",
       confirmButtonText: "Yes, Destroy",
     }).then(async (result) => {
       if (result.isConfirmed) {
@@ -115,7 +115,7 @@ const TableTd = ({ data, name }) => {
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#d33",
-        cancelButtonColor: "#3085d6",
+        cancelButtonColor: "#808080",
         confirmButtonText: "Yes, Suspend",
       }).then(async (result) => {
         if (result.isConfirmed) {
@@ -159,8 +159,8 @@ const TableTd = ({ data, name }) => {
         text: 'you want to resume "' + data.Domain + '" ?',
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#d33",
-        cancelButtonColor: "#3085d6",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#808080",
         confirmButtonText: "Yes, Resume",
       }).then(async (result) => {
         if (result.isConfirmed) {
@@ -191,8 +191,8 @@ const TableTd = ({ data, name }) => {
         text: 'you want to start "' + data.Domain + '" ?',
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#d33",
-        cancelButtonColor: "#3085d6",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#808080",
         confirmButtonText: "Yes, Start",
       }).then(async (result) => {
         if (result.isConfirmed) {
@@ -227,8 +227,7 @@ const TableTd = ({ data, name }) => {
     }
   };
 
-  if(name==data.Domain){
-    
+  if (name == data.Domain) {
   }
 
   return (

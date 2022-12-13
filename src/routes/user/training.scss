@@ -42,7 +42,7 @@ button:focus {
 }
 
 .modal-item {
-  padding: 10px;
+  padding: 25px;
   margin: 10px;
   display: flex;
   flex-direction: row;
@@ -62,21 +62,21 @@ button:focus {
 
     #modal_scene_title {
       width: 100%;
-      font-size: 20px;
+      font-size: 24px;
       font-weight: 600;
       padding: 5px;
     }
 
     #modal_scene_system {
       width: 100%;
-      font-size: 14px;
+      font-size: 16px;
       padding: 5px;
     }
   }
   #modal_scene_desc {
     padding: 10px 5px 15px 5px;
     width: 100%;
-    font-size: 14px;
+    font-size: 18px;
   }
 }
 
@@ -86,11 +86,12 @@ button:focus {
   justify-content: center;
 
   .an-button {
+    font-size: 16px;
     background: hsl(0, 0%, 100%);
     border: 1px solid hsl(230, 95%, 70%);
     border-radius: 100px;
     color: hsl(230, 95%, 70%);
-    margin: 6px;
+    margin: 6px 20px;
     padding: 4px;
   }
 
@@ -100,7 +101,7 @@ button:focus {
     color: hsl(0, 0%, 100%);
 
     .an-border {
-      border-right: 1px solid hsl(0, 0%, 100%);
+      border-left: 1px solid hsl(0, 0%, 100%);
     }
   }
 
@@ -112,7 +113,7 @@ button:focus {
   .an-border {
     width: 0.1em;
     height: auto;
-    border-right: 1px solid hsl(230, 95%, 70%);
+    border-left: 1px solid hsl(230, 95%, 70%);
     padding: 0px;
   }
 
@@ -126,11 +127,12 @@ button:focus {
   }
 
   .ir-button {
+    font-size: 16px;
     background: hsl(0, 0%, 100%);
     border: 1px solid hsl(345, 94%, 69%);
     border-radius: 100px;
     color: hsl(345, 94%, 69%);
-    margin: 6px;
+    margin: 6px 20px;
     padding: 4px;
   }
 
@@ -140,7 +142,7 @@ button:focus {
     color: hsl(0, 0%, 100%);
 
     .ir-border {
-      border-right: 1px solid hsl(0, 0%, 100%);
+      border-left: 1px solid hsl(0, 0%, 100%);
     }
   }
 
@@ -152,7 +154,7 @@ button:focus {
   .ir-border {
     width: 0.1em;
     height: auto;
-    border-right: 1px solid hsl(345, 94%, 69%);
+    border-left: 1px solid hsl(345, 94%, 69%);
     padding: 0px;
   }
 
@@ -167,54 +169,132 @@ button:focus {
   }
 }
 
-.modal-vm-connect {
+.modal-an-access {
   width: 100%;
   text-align: center;
-  padding: 10px;
-  font-size: 14px;
   border-collapse: collapse;
+  border-radius: 5px;
+  border: 1px solid hsl(230, 16%, 93%);
+  background: hsl(220, 100%, 99%);
+  display: grid;
+  .modal-tr-an-access {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.modal-ir-access {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  background: hsl(340, 100%, 99%);
+  border-radius: 5px;
+  border: 1px solid hsl(348, 13%, 92%);
+  display: grid;
+
+  .modal-tr-ir-access {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.modal-connect-info {
+  padding: 10px;
 }
 
 .an-access-button {
-  border: 1px solid #eee;
-  border-radius: 25px;
-  background: hsl(0, 0%, 100%);
-  color: hsl(218, 28%, 28%);
+  border: 0px solid #eee;
+  background: hsl(230, 95%, 70%);
+  color: hsl(0, 0%, 100%);
   font-weight: 600;
-  font-size: 15px;
-  padding: 8px 30px;
-  box-shadow: 0px 0px 8px 0px hsla(230, 95%, 70%, 0.5);
-}
+  font-size: 16px;
+  padding: 0px;
+  margin: 0 3%;
 
+  .an-access-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: hsl(230, 56%, 54%);
+    font-size: 23px;
+  }
+
+  .an-access-text {
+    padding: 0px 20px 0px 20px;
+  }
+}
 .an-access-button:hover,
 .an-access-button:focus {
-  background: hsl(0, 0%, 100%);
-  color: hsl(218, 28%, 28%);
-  box-shadow: 0px 0px 10px 5px hsla(230, 95%, 70%, 0.5);
+  background: hsl(230, 56%, 54%);
+  color: hsl(0, 0%, 100%);
 }
 
 .ir-access-button {
-  border: 1px solid #eee;
-  border-radius: 25px;
-  background: hsl(0, 0%, 100%);
-  color: #334350;
+  border: 0px solid #eee;
+  background: hsl(345, 94%, 69%);
+  color: hsl(0, 0%, 100%);
   font-weight: 600;
-  font-size: 15px;
-  padding: 8px 30px;
-  box-shadow: 0px 0px 8px 0px hsla(345, 94%, 69%, 0.5);
+  font-size: 16px;
+  padding: 0px;
+  margin: 0 3%;
+
+  .ir-access-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: hsl(345, 57%, 51%);
+    font-size: 23px;
+  }
+  .ir-access-text {
+    padding: 0px 20px;
+  }
 }
 
 .ir-access-button:hover,
 .ir-access-button:focus {
-  background: hsl(0, 0%, 100%);
-  color: hsl(218, 28%, 28%);
-  box-shadow: 0px 0px 10px 5px hsla(345, 94%, 69%, 0.5);
+  background: hsl(345, 57%, 51%);
+  color: hsl(0, 0%, 100%);
+}
+
+.atk-start-button {
+  border: 0px solid rgb(0, 0, 0);
+  background: hsl(0, 0%, 25%);
+  color: hsl(0, 0%, 100%);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 0px;
+  margin: 0 3%;
+
+  .atk-start-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: #000;
+    font-size: 23px;
+  }
+  .atk-start-text {
+    padding: 0px 20px;
+  }
+}
+
+.atk-start-button:hover,
+.atk-start-button:focus {
+  background: hsl(0, 0%, 0%);
+  color: hsl(0, 100%, 62%);
 }
 
 .modal-challenge {
   padding: 10px;
   width: 100%;
-  background: #fafafa;
+  background: #fcfcfc;
   border: 1px solid #eee;
   border-radius: 5px;
 }
@@ -226,7 +306,7 @@ button:focus {
   align-items: center;
   justify-content: center;
   color: rgba(0, 0, 0, 0.6);
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -244,6 +324,7 @@ button:focus {
 
 .modal-chall-list {
   display: flex;
+  flex-wrap: wrap;
   flex-basis: 100%;
   align-items: center;
   justify-content: center;
@@ -251,12 +332,11 @@ button:focus {
   margin-bottom: 10px;
 }
 .modal-chall-list-button {
-  flex: 1 1 auto;
-  flex-grow: 0;
+  font-size: 18px;
+  // flex: 1 1 auto;
   justify-content: center;
-  border: 2px solid #4860b0;
-  border-radius: 5px;
-  padding: 10px;
+  border: 3px solid #4860b0;
+  padding: 15px;
   margin: 10px;
   background: hsla(0, 0%, 100%, 0);
   color: #212e57;
@@ -269,12 +349,11 @@ button:focus {
 }
 
 .modal-chall-list-button-solved {
-  flex: 1 1 auto;
-  flex-grow: 0;
+  font-size: 18px;
+  // flex: 1 1 auto;
   justify-content: center;
-  border: 2px solid hsl(158, 58%, 43%);
-  border-radius: 5px;
-  padding: 10px;
+  border: 0px solid hsl(158, 58%, 43%);
+  padding: 15px;
   margin: 10px;
   background: hsl(158, 58%, 43%);
   color: #ffffff;
@@ -298,17 +377,17 @@ button:focus {
 #modal_chall_title {
   text-align: left;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 #modal_chall_score {
   text-align: right;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 #modal_chall_desc {
   text-align: left;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .modal-chall-flag {

@@ -84,7 +84,7 @@ const TableTd = ({ data }) => {
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
+      cancelButtonColor: "#808080",
       confirmButtonText: "Yes, Delete",
     }).then(async (result) => {
       if (result.isConfirmed) {
@@ -119,7 +119,8 @@ const TableTd = ({ data }) => {
           style={{ background: "white" }}
           onClick={createVM}
           value={data.title}
-        ><button className="option-btn">Make Windows VM</button>
+        >
+          <button className="option-btn">Make Windows VM</button>
         </td>
         <td
           style={{ background: "white" }}
@@ -128,11 +129,8 @@ const TableTd = ({ data }) => {
         >
           <button className="option-btn">Edit ISO Name</button>
         </td>
-        <td
-          style={{ background: "white" }}
-          onClick={delISO}
-          value={data.title}
-        ><button className="option-btn"> Delete ISO</button>
+        <td style={{ background: "white" }} onClick={delISO} value={data.title}>
+          <button className="option-btn"> Delete ISO</button>
         </td>
       </tr>
     </>

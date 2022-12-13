@@ -22,8 +22,8 @@ $icon-size: 35px;
   margin-bottom: 3px;
 }
 
-
 header h1 {
+  margin-top: 20px;
   font-weight: 600;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -55,7 +55,8 @@ header h1 {
   height: 10px;
 }
 
-.margin-box, .margin-20 {
+.margin-box,
+.margin-20 {
   height: 20px;
 }
 
@@ -83,10 +84,10 @@ header h1 {
 
 .inputbox {
   border: 0.8px solid #fa678c !important;
-  width: 100% !important; 
+  width: 100% !important;
   height: 100%;
   margin-top: 4px;
-  margin-bottom : 5px;
+  margin-bottom: 5px;
 }
 
 table {
@@ -142,15 +143,19 @@ th {
 
 .btn-primary:active,
 .btn-primary:hover,
-.btn-primary:focus, .pdxf-button:active,
+.btn-primary:focus,
+.pdxf-button:active,
 .pdxf-button:hover,
-.pdxf-button:focus, .pbutton:active,
+.pdxf-button:focus,
+.pbutton:active,
 .pbutton:hover,
 .pbutton:focus {
   background-color: hsl(230, 80%, 60%) !important;
   outline: 0;
 }
-.btn-primary:disabled, .pdxf-button:disabled, .pbutton:disabled {
+.btn-primary:disabled,
+.pdxf-button:disabled,
+.pbutton:disabled {
   opacity: 0.5;
 }
 
@@ -161,7 +166,8 @@ th {
   color: hsl(230, 95%, 70%);
   // padding: 8px;
   border-radius: 3px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 button {
@@ -182,7 +188,8 @@ button {
 
 .pagebtn {
   width: 100%;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .btn-primary {
@@ -192,7 +199,8 @@ button {
   // padding: 8px;
   border-radius: 3px;
   padding: 0.4rem 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .attbtn {
@@ -201,7 +209,8 @@ button {
   height: 40px;
   text-align: center;
   line-height: 100% !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .space-box {
@@ -257,13 +266,12 @@ button {
   display: inline-block;
   width: 30px !important;
   height: 30px !important;
-  
 }
 
 .rmv-btn:after {
   display: inline-block;
   content: "\00d7";
-  font-size:25px;
+  font-size: 25px;
   color: #353535;
 }
 
@@ -427,7 +435,7 @@ body {
     //textTransform: "uppercase";
     overflow: "hidden";
 
-    >span {
+    > span {
       margin-left: 10px;
     }
   }
@@ -445,7 +453,7 @@ body {
     .block {
       direction: rtl;
 
-      >span {
+      > span {
         margin-left: 0;
         margin-right: 10px;
       }

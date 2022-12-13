@@ -62,7 +62,7 @@
 
 // make component?
 .pdxf-button {
-  padding : 8px;
+  padding: 8px;
   font-size: 1rem;
   background-color: $pdxf-blue;
   color: white;
@@ -85,4 +85,12 @@
 
 .pbutton {
   @include pdxf-button;
+}
+
+.visible-label {
+  border: 2px solid $pdxf-blue;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }

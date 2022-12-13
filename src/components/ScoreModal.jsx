@@ -55,6 +55,7 @@ const ScoreModal = ({ isOpen, setModalState, data, margin, img }) => {
             <th>Challenge</th>
             <th>Solved Time</th>
             <th>Score</th>
+            <th>IR Score</th>
           </thead>
           {Object.keys(data).length === 0
             ? null
@@ -73,6 +74,7 @@ const ScoreModal = ({ isOpen, setModalState, data, margin, img }) => {
                           <td>{chall.challenge_title}</td>
                           <td>{chall.time}</td>
                           <td>{chall.score}</td>
+                          {i === 0 ? <td rowspan={count}></td> : null}
                         </tr>
                       );
                     })}

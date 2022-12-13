@@ -8,7 +8,7 @@ const Home = () => {
         <div className="jumbotron">
           <div className="container">
             <h1>BoB 11th Project</h1>
-            <a href="#" className="btn-main">
+            <a href="/signup" className="btn-main">
               Get Started
             </a>
           </div>
@@ -21,7 +21,8 @@ const Home = () => {
             <img src="https://content.codecademy.com/projects/broadway/design.svg" />
             <h2>Training</h2>
             <p>Make your own scenario Challenges beautifully.</p>
-            <a href="#"> Learn More</a>
+            <br />
+            <a href="/user/training"> Learn More</a>
             <br />
           </div>
 
@@ -29,7 +30,8 @@ const Home = () => {
             <img src="https://content.codecademy.com/projects/broadway/develop.svg" />
             <h2>Challenges</h2>
             <p>Make your own scenario Challenges beautifully.</p>
-            <a href="#"> Learn More</a>
+            <br />
+            <a href="/user/training"> Learn More</a>
             <br />
           </div>
 
@@ -37,7 +39,8 @@ const Home = () => {
             <img src="https://content.codecademy.com/projects/broadway/deploy.svg" />
             <h2>Scenario</h2>
             <p>Make your own scenario Challenges beautifully.</p>
-            <a href="#"> Learn More</a>
+            <br />
+            <a href="/user/training"> Learn More</a>
             <br />
           </div>
         </div>

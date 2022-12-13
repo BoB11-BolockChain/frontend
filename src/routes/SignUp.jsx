@@ -29,7 +29,7 @@ function SignUp() {
     });
     if (res.ok) {
       alert("signup success");
-      navigate("/Home");
+      navigate("/");
     } else if (!res.ok) throw new Error(res);
   };
   return (
@@ -38,32 +38,69 @@ function SignUp() {
         <h2 className="card-title">SIGN UP</h2>
         <form onSubmit={onSubmit}>
           <div className="input-container">
-            <input type="text" onChange={onChange} id="id" name="id" aria-labelledby="placeholder-id" required />
+            <input
+              type="text"
+              onChange={onChange}
+              id="id"
+              name="id"
+              aria-labelledby="placeholder-id"
+              required
+            />
             <label className="placeholder-text" for="id" id="placeholder-id">
               <div className="text">ID</div>
             </label>
           </div>
           <div className="input-container">
-            <input type="text" onChange={onChange} id="email" name="email" aria-labelledby="placeholder-email" required />
-            <label className="placeholder-text" for="email" id="placeholder-email">
+            <input
+              type="text"
+              onChange={onChange}
+              id="email"
+              name="email"
+              aria-labelledby="placeholder-email"
+              required
+            />
+            <label
+              className="placeholder-text"
+              for="email"
+              id="placeholder-email"
+            >
               <div className="text">Email</div>
             </label>
           </div>
           <div className="input-container">
-            <input type="password" onChange={onChange} id="pw" name="pw" aria-labelledby="placeholder-pw" required />
+            <input
+              type="password"
+              onChange={onChange}
+              id="pw"
+              name="pw"
+              aria-labelledby="placeholder-pw"
+              required
+            />
             <label className="placeholder-text" for="pw" id="placeholder-pw">
               <div className="text">Password</div>
             </label>
           </div>
           <div className="input-container">
-            <input type="password" onChange={onChange} id="conpw" name="conpw" aria-labelledby="placeholder-conpw" required />
-            <label className="placeholder-text" for="conpw" id="placeholder-conpw">
+            <input
+              type="password"
+              onChange={onChange}
+              id="conpw"
+              name="conpw"
+              aria-labelledby="placeholder-conpw"
+              required
+            />
+            <label
+              className="placeholder-text"
+              for="conpw"
+              id="placeholder-conpw"
+            >
               <div className="text">Password Confirm</div>
             </label>
           </div>
-              <div>
-              <input type="checkbox" name="news" value="" />Subscribe to our newsletter
-              </div>
+          <div>
+            <input type="checkbox" name="news" value="" />
+            Subscribe to our newsletter
+          </div>
           <button className="submit-btn" size="md">
             sign up
           </button>
@@ -114,7 +151,7 @@ function SignUp() {
               </td>
             </tr>
           </table>
-  </div>
+        </div>
       </div>
     </>
   );

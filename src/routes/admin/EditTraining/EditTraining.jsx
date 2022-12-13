@@ -73,6 +73,9 @@ const EditTraining = () => {
           score: jsonBody.score,
           system: jsonBody.system,
           vm_name: jsonBody.vm_name,
+          vm_id: jsonBody.vm_id,
+          vm_pw: jsonBody.vm_pw,
+          vm_visible: jsonBody.visible,
         });
         const tactics = [];
         jsonBody.challenges.forEach((element) => {
@@ -180,8 +183,9 @@ const EditTraining = () => {
 
   return (
     <div className="edit-training">
-      <div className="marginbox"></div>
-      <p className="title">Edit Training</p>
+      <header>
+        <h1 className="h2 fw-bold my-4">Edit Training</h1>
+      </header>
       <div className="box">
         <p className="small-title">OS</p>
         <Dropdown
@@ -212,6 +216,23 @@ const EditTraining = () => {
               options={osstate}
             />
           )}
+          <div className="flex-row">
+            <input
+              className="input"
+              name="vm_id"
+              placeholder="VM ID"
+              onChange={onChange}
+              value={state.vm_id}
+            />
+            <input
+              className="input"
+              name="vm_pw"
+              placeholder="VM PASSWORD"
+              onChange={onChange}
+              value={state.vm_pw}
+              type="password"
+            />
+          </div>
         </div>
       )}
       {isFetched ? (
@@ -293,6 +314,21 @@ const EditTraining = () => {
             Add
           </button>
         </div>
+      </div>
+      <div className="box">
+        <p className="small-title">Configuration</p>
+        <label htmlFor="visible" className="visible-label">
+          Users can participate in this training
+          <input
+            type="checkbox"
+            id="visible"
+            checked={state.visible}
+            onChange={(e) => {
+              setState({ ...state, visible: e.target.checked });
+            }}
+            className="visible-input"
+          />
+        </label>
       </div>
       <button className="pbutton" onClick={move}>
         Go to Edit Challenges

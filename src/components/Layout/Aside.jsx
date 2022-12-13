@@ -1,5 +1,5 @@
 import { GoMarkGithub } from "react-icons/go";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import {
   MdAreaChart,
   MdFlag,
@@ -61,13 +61,17 @@ const Aside = ({
       }}
     >
       <SidebarHeader>
-        <a href="/home">
+        <a href="/">
           <Logo src="/img/PDxF_logo.svg" />
         </a>
         {!sessionId ? (
           <Menu iconShape="circle">
             <SubMenu title="User" icon={<MdPerson />}>
-              <MenuItem onClick={() => {window.location.href = "signin"}}>
+              <MenuItem
+                onClick={() => {
+                  window.location.href = "signin";
+                }}
+              >
                 Sign In
                 <NavLink to="/signin" />
               </MenuItem>
@@ -110,11 +114,14 @@ const Aside = ({
       <SidebarContent>
         <Menu iconShape="circle">
           <MenuItem icon={<MdHome />}>
-            <p><NavLink to="/" >Main</NavLink></p>
+            <p>
+              <NavLink to="/">Main</NavLink>
+            </p>
           </MenuItem>
           <MenuItem
             icon={<MdFlag />}
-            suffix={<span className="badge red">New</span>}>
+            suffix={<span className="badge red">New</span>}
+          >
             Training
             <NavLink to="/user/training" />
           </MenuItem>
