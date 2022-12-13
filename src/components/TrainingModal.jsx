@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReactModal from "react-modal";
+import Loading from "src/components/Loading";
 import {
   HiOutlineFlag,
   HiOutlineShieldExclamation,
@@ -27,7 +28,7 @@ const TrainingModal = ({
   const [solve, setSolve] = useState({ check: "", isClick: false });
   const [, setClick] = useState(false);
   const chall_data = data;
-
+  const [dataLoaded, setDataLoaded] = useState(true);
   const irCheck = (data) => {
     const check = Object.keys(data.challenge).length - 1;
     if (data.challenge[check].solved === "True") {
@@ -62,9 +63,13 @@ const TrainingModal = ({
           }}
         >
           <table>
-            <td className="ir-icon">{<HiOutlineShieldExclamation />}</td>
-            <td className="ir-border" />
-            <td className="ir-desc">Scenario Incident Response</td>
+            <tbody>
+              <tr>
+                <td className="ir-icon">{<HiOutlineShieldExclamation />}</td>
+                <td className="ir-border" />
+                <td className="ir-desc">Scenario Incident Response</td>
+              </tr>
+            </tbody>
           </table>
         </button>
       );
@@ -111,10 +116,10 @@ const TrainingModal = ({
   const AccessTerminalDocker = (vmname, userId) => {
     Swal.fire({
       title: "Access Training",
-      text: "Are you sure you want to resolve the problem?",
-      icon: "warning",
+      text: "Are you sure you want to resolve this problem?",
+      icon: "success",
       showCancelButton: true,
-      confirmButtonColor: "#d33",
+      confirmButtonColor: "#3085d6",
       cancelButtonColor: "#808080",
       confirmButtonText: "Yes, Access",
     }).then(async (result) => {
@@ -145,9 +150,9 @@ const TrainingModal = ({
     Swal.fire({
       title: "Access Training",
       text: "Are you sure you want to resolve the problem?",
-      icon: "warning",
+      icon: "success",
       showCancelButton: true,
-      confirmButtonColor: "#d33",
+      confirmButtonColor: "#3085d6",
       cancelButtonColor: "#808080",
       confirmButtonText: "Yes, Access",
     }).then(async (result) => {
@@ -157,6 +162,7 @@ const TrainingModal = ({
           Username: userId, // 유저 이름
           System: system,
         };
+        setDataLoaded(false);
         const res = await fetch("http://www.pdxf.tk:8000/accesswindows", {
           method: "POST",
           headers: {
@@ -166,6 +172,7 @@ const TrainingModal = ({
           body: JSON.stringify(send_data),
         });
         const js = await res.json();
+        setDataLoaded(true);
         window.sessionStorage.removeItem("activatedVM");
         window.sessionStorage.setItem(
           "activatedVM",
@@ -209,12 +216,12 @@ const TrainingModal = ({
   const AttackStart = (data) => {
     Swal.fire({
       title: "Attack starting",
-      text: "Are you sure you want to start attack?",
-      icon: "warning",
+      text: "Press this button to launch the attack",
+      icon: "success",
       showCancelButton: true,
       confirmButtonColor: "#d33",
       cancelButtonColor: "#808080",
-      confirmButtonText: "YES",
+      confirmButtonText: "Launch, Attack!",
     }).then(async (result) => {
       if (result.isConfirmed) {
         switch (data.system) {
@@ -316,78 +323,108 @@ const TrainingModal = ({
       case "Windows":
         return (
           <table className={"modal-" + btn_css}>
-            <tr className="modal-connect-info">
-              User ID : <b>{data.vmId}</b> / User PW : <b>{data.vmPw}</b>
-            </tr>
-            <tr className={"modal-tr-" + btn_css}>
-              <button
-                onClick={() => accessVM(sessionId, data.port)}
-                className={btn_css + "-button"}
-              >
-                <table>
-                  <tr>
-                    <td className={btn_css + "-icon"}>{<HiLink />}</td>
-                    <td className={btn_css + "-text"}>{data.type} Access</td>
-                  </tr>
-                </table>
-              </button>
-              {JSON.parse(window.sessionStorage.getItem("activatedVM"))
-                .atkStart === 0 ? (
-                <button
-                  className="atk-start-button"
-                  onClick={() =>
-                    AttackStart(
-                      JSON.parse(window.sessionStorage.getItem("activatedVM"))
-                    )
-                  }
-                >
-                  <table>
-                    <tr>
-                      <td className="atk-start-icon">{<HiOutlineFire />}</td>
-                      <td className="atk-start-text">Attack Start</td>
-                    </tr>
-                  </table>
-                </button>
-              ) : null}
-            </tr>
+            <tbody>
+              <tr className="modal-connect-info">
+                <td>
+                  User ID : <b>{data.vmId}</b> / User PW : <b>{data.vmPw}</b>
+                </td>
+              </tr>
+              <tr className={"modal-tr-" + btn_css}>
+                <td>
+                  <button
+                    onClick={() => accessVM(sessionId, data.port)}
+                    className={btn_css + "-button"}
+                  >
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td className={btn_css + "-icon"}>{<HiLink />}</td>
+                          <td className={btn_css + "-text"}>
+                            {data.type} Access
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </button>
+                  {JSON.parse(window.sessionStorage.getItem("activatedVM"))
+                    .atkStart === 0 ? (
+                    <button
+                      className="atk-start-button"
+                      onClick={() =>
+                        AttackStart(
+                          JSON.parse(
+                            window.sessionStorage.getItem("activatedVM")
+                          )
+                        )
+                      }
+                    >
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td className="atk-start-icon">
+                              {<HiOutlineFire />}
+                            </td>
+                            <td className="atk-start-text">Attack Start</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </button>
+                  ) : null}
+                </td>
+              </tr>
+            </tbody>
           </table>
         );
       case "Linux":
         return (
           <table className={"modal-" + btn_css}>
-            <tr className={"modal-tr-" + btn_css}>
-              <button
-                onClick={() => AccessTerminalDocker(vm, sessionId)}
-                className={btn_css + "-button"}
-              >
-                <table>
-                  <tr>
-                    <td className={btn_css + "-icon"}>{<HiLink />}</td>
-                    <td className={btn_css + "-text"}>{data.type} Access</td>
-                  </tr>
-                </table>
-              </button>
-              {JSON.parse(window.sessionStorage.getItem("activatedVM"))
-                .atkStart === 0 ? (
-                <>
+            <tbody>
+              <tr className={"modal-tr-" + btn_css}>
+                <td>
                   <button
-                    className="atk-start-button"
-                    onClick={() =>
-                      AttackStart(
-                        JSON.parse(window.sessionStorage.getItem("activatedVM"))
-                      )
-                    }
+                    onClick={() => AccessTerminalDocker(vm, sessionId)}
+                    className={btn_css + "-button"}
                   >
                     <table>
-                      <tr>
-                        <td className="atk-start-icon">{<HiOutlineFire />}</td>
-                        <td className="atk-start-text">Attack Start</td>
-                      </tr>
+                      <tbody>
+                        <tr>
+                          <td className={btn_css + "-icon"}>{<HiLink />}</td>
+                          <td className={btn_css + "-text"}>
+                            {data.type} Access
+                          </td>
+                        </tr>
+                      </tbody>
                     </table>
                   </button>
-                </>
-              ) : null}
-            </tr>
+                  {JSON.parse(window.sessionStorage.getItem("activatedVM"))
+                    .atkStart === 0 ? (
+                    <>
+                      <button
+                        className="atk-start-button"
+                        onClick={() =>
+                          AttackStart(
+                            JSON.parse(
+                              window.sessionStorage.getItem("activatedVM")
+                            )
+                          )
+                        }
+                      >
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td className="atk-start-icon">
+                                {<HiOutlineFire />}
+                              </td>
+                              <td className="atk-start-text">Attack Start</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </button>
+                    </>
+                  ) : null}
+                </td>
+              </tr>
+            </tbody>
           </table>
         );
       default:
@@ -397,7 +434,9 @@ const TrainingModal = ({
 
   const connectInfo = (activateJS) => {
     if (activateJS.scenarioId === data.scene_id) {
-      return <>{SystemVMCheck(activateJS)}</>;
+      {
+        return <>{SystemVMCheck(activateJS)}</>;
+      }
     }
     return null;
   };
@@ -446,58 +485,78 @@ const TrainingModal = ({
         {isOpen === true ? (
           <>
             <table className="modal-scenario">
-              <tr className="modal-scene-title">
-                <p id="modal_scene_title">{data.scene_title}</p>
-                <p id="modal_scene_system">SYSTEM: {data.system}</p>
-              </tr>
-              <tr>
-                <p id="modal_scene_desc">{data.scene_desc}</p>
-              </tr>
-              <tr>
-                <div className="modal-connect-button">
-                  <button
-                    className="an-button"
-                    type="button"
-                    onClick={() => {
-                      switch (data.system) {
-                        case "Windows":
-                          const sessionId =
-                            window.sessionStorage.getItem("sessionId");
-                          makeVM(
-                            data.vm_name,
-                            sessionId,
-                            "Challenge",
-                            data.system,
-                            data.vm_id,
-                            data.vm_pw
-                          );
-                          break;
-                        case "Linux":
-                          window.sessionStorage.removeItem("activatedVM");
-                          window.sessionStorage.setItem(
-                            "activatedVM",
-                            JSON.stringify({
-                              scenarioId: data.scene_id,
-                              type: "Challenge",
-                              system: data.system,
-                              vm: data.vm_name,
-                              atkStart: 0,
-                            })
-                          );
-                          setClick((prev) => !prev);
-                          break;
-                        default:
-                          break;
-                      }
-                    }}
-                  >
-                    <td className="an-icon">{<HiOutlineFlag />}</td>
-                    <td className="an-border" />
-                    <td className="an-desc">Challenge Analyze</td>
-                  </button>
-                  {irCheck(chall_data)}
-                </div>
-              </tr>
+              <tbody>
+                <tr className="modal-scene-title">
+                  <td>
+                    <p id="modal_scene_title">{data.scene_title}</p>
+                    <p id="modal_scene_system">SYSTEM: {data.system}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p id="modal_scene_desc">{data.scene_desc}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    {dataLoaded ? (
+                      <div className="modal-connect-button">
+                        <button
+                          className="an-button"
+                          type="button"
+                          onClick={() => {
+                            switch (data.system) {
+                              case "Windows":
+                                const sessionId =
+                                  window.sessionStorage.getItem("sessionId");
+                                makeVM(
+                                  data.vm_name,
+                                  sessionId,
+                                  "Challenge",
+                                  data.system,
+                                  data.vm_id,
+                                  data.vm_pw
+                                );
+                                break;
+                              case "Linux":
+                                window.sessionStorage.removeItem("activatedVM");
+                                window.sessionStorage.setItem(
+                                  "activatedVM",
+                                  JSON.stringify({
+                                    scenarioId: data.scene_id,
+                                    type: "Challenge",
+                                    system: data.system,
+                                    vm: data.vm_name,
+                                    atkStart: 0,
+                                  })
+                                );
+                                setClick((prev) => !prev);
+                                break;
+                              default:
+                                break;
+                            }
+                          }}
+                        >
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td className="an-icon">{<HiOutlineFlag />}</td>
+                                <td className="an-border" />
+                                <td className="an-desc">Challenge Analyze</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </button>
+                        {irCheck(chall_data)}
+                      </div>
+                    ) : (
+                      <div className="modal-connect-button">
+                        <Loading />
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              </tbody>
             </table>
 
             {connectInfo(
@@ -506,7 +565,7 @@ const TrainingModal = ({
             <div className="modal-challenge">
               <p className="modal-chall-divider">Challenge List</p>
               <div className="modal-chall-list">
-                {chall_data.challenge.map((d) => {
+                {chall_data.challenge.map((d, i) => {
                   let solved_check_style = {};
                   if (d.solved === "True") {
                     solved_check_style = "modal-chall-list-button-solved";
@@ -516,6 +575,7 @@ const TrainingModal = ({
 
                   return (
                     <button
+                      key={i}
                       className={solved_check_style}
                       onClick={() => {
                         setChallState({
@@ -546,64 +606,66 @@ const TrainingModal = ({
               {challState.isClick === true ? (
                 <div className="modal-chall-content">
                   <table>
-                    <tr>
-                      <td id="modal_chall_title">{challState.title}</td>
-                      <td id="modal_chall_score">
-                        Score: <b>{challState.score}</b>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td id="modal_chall_desc" colspan="2">
-                        {challState.desc}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="2">
-                        {challState.sequence === 0 ? (
-                          <form
-                            onSubmit={onSubmit}
-                            className="modal-chall-flag"
-                          >
-                            <input
-                              onChange={onChange}
-                              value={state.flag}
-                              placeholder="FLAG"
-                              name="flag"
-                              type="text"
-                            />
-                            <button
-                              className="fw-bold text-uppercase"
-                              size="md"
-                            >
-                              Submit
-                            </button>
-                          </form>
-                        ) : (
-                          <form
-                            onSubmit={onSubmit}
-                            className="modal-chall-flag"
-                          >
-                            <input
-                              onChange={onChange}
-                              value={state.flag}
-                              placeholder="FLAG"
-                              name="flag"
-                              type="text"
-                            />
-                            <button>Submit</button>
-                          </form>
-                        )}
-                      </td>
-                    </tr>
-                    {solve.isClick === true ? (
+                    <tbody>
                       <tr>
-                        <td colspan="2">
-                          <div className="modal-chall-check">
-                            {challCheck(solve.check)}
-                          </div>
+                        <td id="modal_chall_title">{challState.title}</td>
+                        <td id="modal_chall_score">
+                          Score: <b>{challState.score}</b>
                         </td>
                       </tr>
-                    ) : null}
+                      <tr>
+                        <td id="modal_chall_desc" colspan="2">
+                          {challState.desc}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colSpan="2">
+                          {challState.sequence === 0 ? (
+                            <form
+                              onSubmit={onSubmit}
+                              className="modal-chall-flag"
+                            >
+                              <input
+                                onChange={onChange}
+                                value={state.flag}
+                                placeholder="FLAG"
+                                name="flag"
+                                type="text"
+                              />
+                              <button
+                                className="fw-bold text-uppercase"
+                                size="md"
+                              >
+                                Submit
+                              </button>
+                            </form>
+                          ) : (
+                            <form
+                              onSubmit={onSubmit}
+                              className="modal-chall-flag"
+                            >
+                              <input
+                                onChange={onChange}
+                                value={state.flag}
+                                placeholder="FLAG"
+                                name="flag"
+                                type="text"
+                              />
+                              <button>Submit</button>
+                            </form>
+                          )}
+                        </td>
+                      </tr>
+                      {solve.isClick === true ? (
+                        <tr>
+                          <td colSpan="2">
+                            <div className="modal-chall-check">
+                              {challCheck(solve.check)}
+                            </div>
+                          </td>
+                        </tr>
+                      ) : null}
+                    </tbody>
                   </table>
                 </div>
               ) : null}

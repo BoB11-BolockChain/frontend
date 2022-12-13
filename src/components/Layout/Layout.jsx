@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Aside from "src/components/Layout/Aside";
-import Resize from "src/components/Layout/ResizeAside";
+// import Resize from "src/components/Layout/ResizeAside";
 import Footer from "src/components/Layout/Footer";
 import styles from "src/components/Layout/Layout.module.scss";
 import styled from "styled-components";
@@ -46,9 +46,9 @@ const Layout = (props) => {
         <main className={styles.main}>{props.children}</main>
         <Footer />
       </Layout_>
-      <Resize
+      {/* <Resize
         handleCollapsedChange={handleCollapsedChange}
-      />
+      /> */}
     </div>
   );
 };

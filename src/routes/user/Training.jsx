@@ -53,6 +53,7 @@ const Training = () => {
       {dataLoaded ? (
         data.map((d, i) => (
           <div
+            key={i}
             className="scenario-list"
             onClick={() => setModalState({ isOpen: true, data: d, index: i })}
           >

@@ -125,7 +125,9 @@ const EditChallenge = () => {
 
   return (
     <div className={`${styles.editchallenge}`}>
-      <p className="title">Edit Challenge</p>
+      <header>
+        <h1 className="h2 fw-bold my-4">Edit Challenge</h1>
+      </header>
       <div className="box">
         <p className="small-title">Challenge Info</p>
         <div className={styles.smallinputs}>

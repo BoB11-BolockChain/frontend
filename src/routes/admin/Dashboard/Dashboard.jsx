@@ -38,8 +38,10 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className={`${styles.marginbox}`}></div>
-      <h1 className="h2 fw-bold my-4 title">Dashboard</h1>
+      {/* <div className={`${styles.marginbox}`}></div> */}
+      <header>
+        <h1 className="h2 fw-bold my-4">Dashboard</h1>
+      </header>
       <div className={`${styles.marginbox}`}></div>
       {isFetched ? (
         <div className={`${styles.users}`}>
