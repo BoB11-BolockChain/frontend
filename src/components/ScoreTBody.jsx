@@ -12,6 +12,7 @@ const ScoreTBody = ({ data, setModalState, img }) => {
           <td id="id">{data.id}</td>
           <td></td>
           <td>{data.score}</td>
+          <td></td>
         </tr>
       ))}
     </tbody>

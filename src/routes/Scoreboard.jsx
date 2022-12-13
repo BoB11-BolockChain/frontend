@@ -3,7 +3,7 @@ import { Line } from "@ant-design/charts";
 import ScoreModal from "src/components/ScoreModal";
 import "src/components/Layout/Score.scss";
 import Loading from "src/components/Loading";
-import ScoreTr from "src/components/ScoreTBody";
+import ScoreTBody from "src/components/ScoreTBody";
 import tempImg from "src/assets/user1.png";
 
 const Scoreboard = () => {
@@ -97,10 +97,15 @@ const Scoreboard = () => {
               <th colspan="2" width="10%" className="score-user">
                 User
               </th>
-              <th width="50%"></th>
+              <th width="40%">Comment</th>
               <th width="5%">Score</th>
+              <th width="10%">IR Score</th>
             </thead>
-            <ScoreTr data={data} setModalState={setModalState} img={tempImg} />
+            <ScoreTBody
+              data={data}
+              setModalState={setModalState}
+              img={tempImg}
+            />
           </table>
         </div>
       ) : (
