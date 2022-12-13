@@ -60,6 +60,7 @@ const EditChallenge = () => {
       }),
     });
     // alert(res.status, res.statusText);
+    console.log(state);
     if (res.status === 201) {
       Swal.fire({
         icon: "success",
@@ -164,6 +165,7 @@ const EditChallenge = () => {
         <div className={styles.tactics}>
           {state.tactics.map((d, i) => (
             <div
+              key={i}
               className={`${styles.tacticitem} ${
                 selected[d.hash] ? styles.selected : ""
               }`}
@@ -173,8 +175,10 @@ const EditChallenge = () => {
                 <div className={styles.order}>{i}</div>
                 <p>{d.title}</p>
               </div>
-              {d.payloads.map((p) => (
-                <div className={styles.payload}>{p.payload}</div>
+              {d.payloads.map((p, i) => (
+                <div key={i} className={styles.payload}>
+                  {p.payload}
+                </div>
               ))}
             </div>
           ))}
@@ -200,7 +204,7 @@ const EditChallenge = () => {
             </thead>
             <tbody className="box-table">
               {challenges.map((d, i) => (
-                <tr>
+                <tr key={i}>
                   <td width="10%">{i}</td>
                   <td width="30%">{d.title}</td>
                   <td width="10%">{d.score}</td>
