@@ -62,9 +62,9 @@ const TrainingModal = ({
           }}
         >
           <table>
-            <td className="ir-desc">Scenario Incident Response</td>
-            <td className="ir-border" />
             <td className="ir-icon">{<HiOutlineShieldExclamation />}</td>
+            <td className="ir-border" />
+            <td className="ir-desc">Scenario Incident Response</td>
           </table>
         </button>
       );
@@ -225,6 +225,7 @@ const TrainingModal = ({
               System: data.system,
               SSHuser: data.vmId,
               SSHpass: data.vmPw,
+              ScenarioId: data.scenarioId,
             };
             const windows_atk_res = await fetch(
               "http://www.pdxf.tk:8000/operation_start_windows",
@@ -261,6 +262,7 @@ const TrainingModal = ({
               Image_ID: data.vm, //이미지 이름
               System: data.system,
               Username: window.sessionStorage.getItem("sessionId"),
+              ScenarioId: data.scenarioId,
             };
             const linux_atk_res = await fetch(
               "http://www.pdxf.tk:8000/operation_start_linux",
@@ -313,24 +315,22 @@ const TrainingModal = ({
     switch (data.system) {
       case "Windows":
         return (
-          <table className="modal-vm-access">
-            <tr>
+          <table className={"modal-" + btn_css}>
+            <tr className="modal-connect-info">
               User ID : <b>{data.vmId}</b> / User PW : <b>{data.vmPw}</b>
             </tr>
-            <tr>
+            <tr className={"modal-tr-" + btn_css}>
               <button
                 onClick={() => accessVM(sessionId, data.port)}
                 className={btn_css + "-button"}
               >
                 <table>
                   <tr>
-                    <td>{<HiLink />}</td>
-                    <td>{data.type} Access</td>
+                    <td className={btn_css + "-icon"}>{<HiLink />}</td>
+                    <td className={btn_css + "-text"}>{data.type} Access</td>
                   </tr>
                 </table>
               </button>
-            </tr>
-            <tr>
               {JSON.parse(window.sessionStorage.getItem("activatedVM"))
                 .atkStart === 0 ? (
                 <button
@@ -343,8 +343,8 @@ const TrainingModal = ({
                 >
                   <table>
                     <tr>
-                      <td>{<HiOutlineFire />}</td>
-                      <td>Attack Start</td>
+                      <td className="atk-start-icon">{<HiOutlineFire />}</td>
+                      <td className="atk-start-text">Attack Start</td>
                     </tr>
                   </table>
                 </button>
@@ -354,38 +354,38 @@ const TrainingModal = ({
         );
       case "Linux":
         return (
-          <table className="modal-vm-access">
-            <tr>
+          <table className={"modal-" + btn_css}>
+            <tr className={"modal-tr-" + btn_css}>
               <button
                 onClick={() => AccessTerminalDocker(vm, sessionId)}
                 className={btn_css + "-button"}
               >
                 <table>
                   <tr>
-                    <td>{<HiLink />}</td>
-                    <td>{data.type} Access</td>
+                    <td className={btn_css + "-icon"}>{<HiLink />}</td>
+                    <td className={btn_css + "-text"}>{data.type} Access</td>
                   </tr>
                 </table>
               </button>
-            </tr>
-            <tr>
               {JSON.parse(window.sessionStorage.getItem("activatedVM"))
                 .atkStart === 0 ? (
-                <button
-                  className="atk-start-button"
-                  onClick={() =>
-                    AttackStart(
-                      JSON.parse(window.sessionStorage.getItem("activatedVM"))
-                    )
-                  }
-                >
-                  <table>
-                    <tr>
-                      <td>{<HiOutlineFire />}</td>
-                      <td>Attack Start</td>
-                    </tr>
-                  </table>
-                </button>
+                <>
+                  <button
+                    className="atk-start-button"
+                    onClick={() =>
+                      AttackStart(
+                        JSON.parse(window.sessionStorage.getItem("activatedVM"))
+                      )
+                    }
+                  >
+                    <table>
+                      <tr>
+                        <td className="atk-start-icon">{<HiOutlineFire />}</td>
+                        <td className="atk-start-text">Attack Start</td>
+                      </tr>
+                    </table>
+                  </button>
+                </>
               ) : null}
             </tr>
           </table>
@@ -397,9 +397,7 @@ const TrainingModal = ({
 
   const connectInfo = (activateJS) => {
     if (activateJS.scenarioId === data.scene_id) {
-      return (
-        <table className="modal-vm-connect">{SystemVMCheck(activateJS)}</table>
-      );
+      return <>{SystemVMCheck(activateJS)}</>;
     }
     return null;
   };
@@ -493,9 +491,9 @@ const TrainingModal = ({
                       }
                     }}
                   >
-                    <td className="an-desc">Challenge Analyze</td>
-                    <td className="an-border" />
                     <td className="an-icon">{<HiOutlineFlag />}</td>
+                    <td className="an-border" />
+                    <td className="an-desc">Challenge Analyze</td>
                   </button>
                   {irCheck(chall_data)}
                 </div>
