@@ -37,18 +37,20 @@ const HomepageSetting = () => {
       <header>
         <h1 className="h2 fw-bold my-4">Homepage Setting</h1>
       </header>
-      <div class="board-container">
+      <div className="board-container">
         {dataLoaded ? (
           <>
             <table>
               <thead>
-                <th>No.</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Created Date</th>
-                <th>Views</th>
-                <th>Edit</th>
-                <th>Remove</th>
+                <tr>
+                  <th>No.</th>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Created Date</th>
+                  <th>Views</th>
+                  <th>Edit</th>
+                  <th>Remove</th>
+                </tr>
               </thead>
               <TBody
                 data={data}

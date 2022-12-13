@@ -75,8 +75,9 @@ const EditTraining = () => {
           vm_name: jsonBody.vm_name,
           vm_id: jsonBody.vm_id,
           vm_pw: jsonBody.vm_pw,
-          vm_visible: jsonBody.visible,
+          visible: jsonBody.visible,
         });
+        console.log(state);
         const tactics = [];
         jsonBody.challenges.forEach((element) => {
           tactics.push(...element.tactics);
@@ -323,8 +324,8 @@ const EditTraining = () => {
             type="checkbox"
             id="visible"
             checked={state.visible}
-            onChange={(e) => {
-              setState({ ...state, visible: e.target.checked });
+            onChange={() => {
+              setState({ ...state, visible: !state.visible });
             }}
             className="visible-input"
           />

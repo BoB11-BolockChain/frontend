@@ -93,13 +93,15 @@ const Scoreboard = () => {
         <div className="score-container">
           <table>
             <thead>
-              <th width="5%">No.</th>
-              <th colspan="2" width="10%" className="score-user">
-                User
-              </th>
-              <th width="40%">Comment</th>
-              <th width="5%">Score</th>
-              <th width="10%">IR Score</th>
+              <tr>
+                <th width="5%">No.</th>
+                <th colSpan="2" width="10%" className="score-user">
+                  User
+                </th>
+                <th width="40%">Comment</th>
+                <th width="5%">Score</th>
+                <th width="10%">IR Score</th>
+              </tr>
             </thead>
             <ScoreTBody
               data={data}
