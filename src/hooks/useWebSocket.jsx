@@ -12,6 +12,7 @@ const useWebSocket = (url) => {
     conn.onmessage = (e) => {
       setMsg(e.data);
       conn.send("ping");
+      console.log("websocket ping pong");
     };
     conn.onclose = (e) => {
       console.log("websocket closed from server");
@@ -28,7 +29,7 @@ const useWebSocket = (url) => {
       connRef.current.close();
       conn.close();
     };
-  }, []);
+  }, [url]);
 
   return msg;
 };

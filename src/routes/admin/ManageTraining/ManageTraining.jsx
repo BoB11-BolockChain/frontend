@@ -36,6 +36,26 @@ const ManageTraining = () => {
     fetchData();
   }, []);
 
+  const deleteHandler = async (trainingId) => {
+    const res = await fetch(
+      `http://pdxf.tk:8000/deletetraining?trainingId=${trainingId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    if (res.ok) {
+      alert("deleted");
+      // swal hae ju say yo
+      const newData = [...data];
+      newData.filter((d) => d.id !== trainingId);
+      setData(newData);
+    }
+  };
+
   return (
     <>
       <header>
@@ -68,6 +88,7 @@ const ManageTraining = () => {
             <p>{d.title}</p>
             <p>{d.description}</p>
           </div>
+          <button onClick={() => deleteHandler(d.id)}>DELETE</button>
           <button onClick={() => navigate(`/admin/edittraining/${d.id}`)}>
             EDIT
           </button>

@@ -53,6 +53,9 @@ const EditChallenge = () => {
         score: Number(state.score),
         system: state.system,
         vm_name: state.vm_name,
+        vm_id: state.vm_id,
+        vm_pw: state.vm_pw,
+        visible: state.visible,
         challenges: challenges.map((d) => ({ ...d, score: Number(d.score) })),
       }),
     });
