@@ -62,6 +62,7 @@
   border: 1px solid #e7e7e7;
   border-radius: 5px;
   justify-content: space-between;
+  height: 100px;
 }
 
 .item button {
@@ -73,15 +74,50 @@
   font-size: 14px;
   border: 0px solid hsl(230, 95%, 70%);
   border-radius: 5px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.delete-btn {
+  background-color: white !important;
+  text-align: left;
+  color: #848484 !important;
+  font-size: 14px;
+  border: 1px solid #848484 !important; 
+}
+
+.delete-btn:hover, .delete-btn:focus {
+  background: #848484 !important;
+  color: rgba(255, 255, 255, 0.9) !important; 
 }
 
 .item button:hover,
 button:focus {
-  background: hsl(230, 95%, 70%);
+  background: hsl(230, 80%, 60%);
   color: rgba(255, 255, 255, 0.9);
 }
 
 .item-title {
+  width: 20%;
+}
+
+.item-des {
+  width: 60%;
+}
+
+.item-des .des-box {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itme-btn {
+  width: 20%;
+}
+
+.item-title, .item-des, .item-btn {
   display: flex;
   align-items: center;
   margin: 10px;
