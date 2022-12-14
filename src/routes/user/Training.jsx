@@ -31,6 +31,7 @@ const Training = () => {
         const windowWidth = window.innerWidth;
         setData(js.scenario);
         setDataLoaded(true);
+        console.log(js);
         if (solveCheck) {
           const i = modalState.index;
           setModalState({ data: js.scenario[i], index: i, isOpen: true });

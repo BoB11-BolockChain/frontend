@@ -1,8 +1,9 @@
 const ScoreTBody = ({ data, setModalState, img }) => {
   return (
     <tbody>
-      {data.map((data) => (
+      {data.map((data, i) => (
         <tr
+          key={i}
           onClick={() => setModalState({ data: data, isOpen: true, img: img })}
         >
           <td>{data.num}</td>
