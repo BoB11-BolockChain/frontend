@@ -49,7 +49,7 @@ const DashboardByUser = () => {
       {isFetched ? (
         <div className="scenarios">
           {data.map((d, i) => (
-            <div className="whitebox">
+            <div key={i} className="whitebox">
               <div className="scenario-info">
                 <p className="scenario-title">{d.title}</p>
                 <p className="scenario-progress">{i}</p>

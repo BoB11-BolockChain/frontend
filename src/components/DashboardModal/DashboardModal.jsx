@@ -29,8 +29,11 @@ const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
           <div className="big">
             <h2 className="dashboard-small-title">Challenge Progress</h2>
             <div className="challenges">
-              {data.challenges.map((d) => (
-                <div className={`item ${d.solved ? "solved" : "notsolved"}`}>
+              {data.challenges.map((d, i) => (
+                <div
+                  key={i}
+                  className={`item ${d.solved ? "solved" : "notsolved"}`}
+                >
                   <p className="bodytext">{d.title}</p>
                   <p>{d.score}</p>
                 </div>
@@ -43,7 +46,7 @@ const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
             <div className="textmarginbox"></div>
             <div className="incident">
               {data?.challenges?.map((d, i) => (
-                <div className="process">
+                <div key={i} className="process">
                   <div className="tactic">
                     <div className="order notsolved">{i}</div>
                     <div className="height-align bodytext chtitle">
