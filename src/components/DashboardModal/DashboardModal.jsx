@@ -17,7 +17,8 @@ const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
           marginLeft: "300px",
           display: "flex",
           flexDirection: "column",
-          gap: "1rem",
+          gap: "0.2rem",
+          padding: "30px",
           border: "1px solid #888",
         },
       }}

@@ -240,15 +240,15 @@ const EditTraining = () => {
         <div className="box">
           <p className="small-title">Training Information</p>
           <div className="flex-row">
-            <input
+            <div className="info-text">Title</div><input
               className="input"
               name="title"
               placeholder="Title"
               onChange={onChange}
               value={state.title}
             />
-            <input
-              className="input"
+            <div className="info-text">Score</div><input
+              className="input score"
               name="score"
               placeholder="score"
               onChange={onChange}

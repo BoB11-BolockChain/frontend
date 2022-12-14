@@ -15,22 +15,56 @@ import {
   MDBRow,
 } from "mdb-react-ui-kit";
 import { NavLink } from "react-router-dom";
+import useInputState from "src/hooks/useInputState";
 import { UserOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Avatar } from 'antd';
 
 
 
 
 function Profile() {
+  const [input, setState, onChange2] = useInputState();
+  useEffect(() => {
+    // const Id = Id
+    const fetchData = async() => {
+      fetch(`http://pdxf.tk:3000/profilepage`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // id: sessionId,
+        }),
+    });}
+});
+
+  const saveProfile = async () => {
+    const res = await fetch(`http://pdxf.tk:3000/profileSave`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json", 
+        },
+      body: JSON.stringify({
+        id: "",
+        email: "",
+        org: "",
+        comment: "",
+      }),
+      });
+    }
+
+
   const fileInput = useRef(null)
   const [Image, setImage] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
 
   const onChange = (e) => {
     if(e.target.files[0]){
               setImage(e.target.files[0])
-          }else{ //업로드 취소할 시
+          }else{
               setImage("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
               return
           }
@@ -69,6 +103,7 @@ function Profile() {
             <input
               className="profile-input"
               name="id"
+              // value={user.id}
               placeholder="Id"
             />
           </div>
@@ -77,6 +112,7 @@ function Profile() {
             <input
               className="profile-input"
               name="email"
+              // value={user.email}
               placeholder="Email"
             />
           </div>
@@ -85,6 +121,7 @@ function Profile() {
             <input
               className="profile-input"
               name="department"
+              onChange={onChange2}
               placeholder="school/club"
             />
           </div>
@@ -93,6 +130,7 @@ function Profile() {
             <textarea
             className="profile-input"
             name="comment"
+            onChange={onChange2}
             placeholder="Comment"
           ></textarea>
           </div>
@@ -102,7 +140,7 @@ function Profile() {
           <MDBCol lg="8">
           </MDBCol>
           <div className="space-box"></div>
-          <button className="pdxf-button">
+          <button className="pdxf-button" onClick={saveProfile}>
             Save
           </button>
         </MDBRow>

@@ -18,6 +18,16 @@ $icon-size: 35px;
   background-color: rgba(0, 0, 0, 0.22);
 }
 
+.info-text {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.score {
+  width: 3%;
+}
+
 .margin-plus {
   margin-bottom: 3px;
 }
