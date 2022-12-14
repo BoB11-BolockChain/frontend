@@ -104,13 +104,18 @@ const ManageTraining = () => {
             <p>{d.title}</p>
           </div>
           <div className="item-des">
-            <div clssName="des-box">{d.description}</div>
+            <div className="des-box">{d.description}</div>
           </div>
           <div className="item-btn">
-            <button className="edit-btn" onClick={() => navigate(`/admin/edittraining/${d.id}`)}>
+            <button
+              className="edit-btn"
+              onClick={() => navigate(`/admin/edittraining/${d.id}`)}
+            >
               EDIT
             </button>
-            <button className="delete-btn" onClick={() => deleteHandler(d.id)}>DELETE</button>
+            <button className="delete-btn" onClick={() => deleteHandler(d.id)}>
+              DELETE
+            </button>
           </div>
         </div>
       ))}
