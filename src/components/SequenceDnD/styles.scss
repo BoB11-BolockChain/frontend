@@ -4,6 +4,17 @@
   vertical-align: middle;
 }
 
+.fold-btn {
+  margin: 10px;
+  margin-top: 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.payload-box {
+  word-break:break-all;
+}
+
 .droppable {
   display: flex;
   flex-direction: column;
@@ -54,12 +65,15 @@
   display: flex;
 
   .icon-btn {
-    height: 25px;
-    width: 25px;
+    display: flex;
+    align-items: center;
+    height: 12px;
+    width: 12px;
+    margin: 8px;
     border: 0;
     padding: 0;
     background-color: white;
-    color: #424242;
+    color: #808080;
     box-shadow: 0 !important;
   }
 }

@@ -1,6 +1,16 @@
 @import "/src/assets/_colors.scss";
 @import "/src/assets/global.scss";
 
+pre.prettyprint {
+  padding: 14px; //padding 설정
+  font-size: 1.1rem;
+  line-height: 1.45; 
+  background-color: #f6f8fa; //code block background color
+  border-radius: 3px; //code block radius border
+  border: 1px solid #fff;
+  margin: 2px; //margin 설정
+}
+
 .title {
   margin-top: 2rem;
   font-size: 2rem;
