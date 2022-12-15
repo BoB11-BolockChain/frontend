@@ -2,7 +2,7 @@ const { useState, useEffect, useRef } = require("react");
 
 const useWebSocket = (url) => {
   const connRef = useRef();
-  const [msg, setMsg] = useState();
+  const [msg, setMsg] = useState({});
 
   useEffect(() => {
     const conn = new WebSocket(url);
@@ -10,7 +10,8 @@ const useWebSocket = (url) => {
       console.log("websocket connected");
     };
     conn.onmessage = (e) => {
-      setMsg(e.data);
+      const parsed = JSON.parse(e.data);
+      setMsg(parsed);
       conn.send("ping");
       console.log("websocket ping pong");
     };

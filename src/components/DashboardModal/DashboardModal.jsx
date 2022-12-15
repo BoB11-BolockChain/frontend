@@ -1,11 +1,21 @@
+import { useEffect, useState } from "react";
 import ReactModal from "react-modal";
+import Loading from "src/components/Loading";
+import useWebSocket from "src/hooks/useWebSocket";
 
 import "./styles.scss";
 
 const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
-  // const socketOperationMsg = useWebSocket(
-  //   `http://pdxf.tk:8000/dashboardir?userId=${userId}&scenarioId=${data.id}`
-  // );
+  const socketOperationMsg = useWebSocket(
+    `ws://pdxf.tk:8000/dashboardir?userId=${userId}&scenarioId=${data.id}`
+  );
+  const [isMsgSent, setIsMsgSent] = useState(false);
+
+  useEffect(() => {
+    if (socketOperationMsg?.Chain) {
+      setIsMsgSent(true);
+    }
+  }, [socketOperationMsg]);
 
   return (
     <ReactModal
@@ -45,25 +55,30 @@ const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
           <div className="big">
             <h2 className="dashboard-small-title">Incident Response Result</h2>
             <div className="textmarginbox"></div>
-            <div className="incident">
-              {data?.challenges?.map((d, i) => (
-                <div key={i} className="process">
-                  <div className="tactic">
-                    <div className="order notsolved">{i}</div>
-                    <div className="height-align bodytext chtitle">
-                      {d.title}
-                    </div>
-                  </div>
-                  <div className="titlemarginbox"></div>
-                  <p className="bodytext">RESULT : {d.solved}</p>
-                </div>
-              ))}
-              {/* {socketOperationMsg.chain.map((d) => (
-                <div>{d.status}</div>
-              ))} */}
-            </div>
+            <div className="incident"></div>
           </div>
         </>
+      )}
+      {isMsgSent ? (
+        socketOperationMsg.Chain.map((d, i) => (
+          <div key={d.id} className="process">
+            <div className="tactic">
+              <div
+                className={`order ${d.status === 0 ? "notsolved" : "solved"}`}
+              >
+                {i}
+              </div>
+              <div className="height-aign bodytext chtitle">
+                {d.executor.command}
+              </div>
+            </div>
+            <div className="titlemarginbox"></div>
+            <p className="bodytext">RESULT : {d.status}</p>
+            <p>{d.finish}</p>
+          </div>
+        ))
+      ) : (
+        <Loading />
       )}
     </ReactModal>
   );

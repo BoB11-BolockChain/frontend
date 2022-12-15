@@ -46,9 +46,8 @@ const DashboardByUser = () => {
     <>
       <div className="marginbox"></div>
       <header>
-      <h1>Dashboard of {userId}</h1>
+        <h1>Dashboard of {userId}</h1>
       </header>
-      
       {isFetched ? (
         <div className="scenarios">
           {data.map((d, i) => (
@@ -66,12 +65,14 @@ const DashboardByUser = () => {
       ) : (
         <Loading />
       )}
-      <DashboardModal
-        isOpen={modalState.isOpen}
-        setModalState={setModalState}
-        data={modalState.data}
-        userId={userId}
-      />
+      {!!modalState.data && (
+        <DashboardModal
+          isOpen={modalState.isOpen}
+          setModalState={setModalState}
+          data={modalState.data}
+          userId={userId}
+        />
+      )}
     </>
   );
 };
