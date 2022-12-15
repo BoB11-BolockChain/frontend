@@ -99,28 +99,28 @@ button:focus {
 
 .item-title {
   width: 20%;
+  margin: 10px;
 }
 
 .item-des {
   width: 60%;
 }
 
-.item-des .des-box {
+.des-box {
   display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+   overflow: hidden;
 }
 
 .itme-btn {
   width: 20%;
+  margin: 10px;
 }
 
 .item-title, .item-des, .item-btn {
   display: flex;
   align-items: center;
-  margin: 10px;
 }
 
 .item-title p {

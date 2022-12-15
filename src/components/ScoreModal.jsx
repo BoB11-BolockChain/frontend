@@ -29,7 +29,7 @@ const ScoreModal = ({ isOpen, setModalState, data, margin, img }) => {
           boxShadow: "0px 0px 60px rgba(0, 0, 0, 0.3)",
           border: "0px",
           background: "#fff",
-          overflow: "auto",
+          // overflow: "auto",
           WebkitOverflowScrolling: "touch",
           borderRadius: "4px",
           outline: "none",

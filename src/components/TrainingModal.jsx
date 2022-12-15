@@ -107,7 +107,7 @@ const TrainingModal = ({
         setSolveCheck(true);
         return <p style={{ background: "#4caf50" }}>Solve a Challenge</p>;
       case "Aleady Solved":
-        return <p style={{ background: "#4860b0" }}>Aleady Solved</p>;
+        return <p style={{ background: "#4860b0" }}>Already Solved</p>;
       default:
         return <p style={{ background: "#e53935" }}>False</p>;
     }
