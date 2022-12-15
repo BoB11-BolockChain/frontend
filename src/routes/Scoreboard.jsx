@@ -27,7 +27,7 @@ const Scoreboard = () => {
         const windowWidth = window.innerWidth;
         setData(js.data);
         setLine(js.line);
-
+        console.log(js);
         setConfig({
           data: line,
           xField: "time",
@@ -95,10 +95,12 @@ const Scoreboard = () => {
             <thead>
               <tr>
                 <th width="5%">No.</th>
-                <th colSpan="2" width="10%" className="score-user">
+                <th width="5%">Profile</th>
+                <th width="10%" className="score-user">
                   User
                 </th>
-                <th width="40%">Comment</th>
+                <th width="10%">Organization</th>
+                <th width="30%">Comment</th>
                 <th width="5%">Score</th>
                 <th width="10%">IR Score</th>
               </tr>

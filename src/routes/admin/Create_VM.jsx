@@ -66,7 +66,6 @@ const Create_VM = () => {
         }
       }
     };
-
     fetchData();
   }, [width]);
 
