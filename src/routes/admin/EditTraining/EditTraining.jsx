@@ -182,8 +182,6 @@ const EditTraining = () => {
     });
   };
 
-  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-
   return (
     <div className="edit-training">
       <header>
