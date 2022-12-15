@@ -12,7 +12,7 @@ const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
   const [isMsgSent, setIsMsgSent] = useState(false);
 
   useEffect(() => {
-    if (socketOperationMsg?.Chain) {
+    if (socketOperationMsg?.chain) {
       setIsMsgSent(true);
     }
   }, [socketOperationMsg]);
@@ -60,7 +60,7 @@ const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
         </>
       )}
       {isMsgSent ? (
-        socketOperationMsg.Chain.map((d, i) => (
+        socketOperationMsg.chain.map((d, i) => (
           <div key={d.id} className="process">
             <div className="tactic">
               <div
