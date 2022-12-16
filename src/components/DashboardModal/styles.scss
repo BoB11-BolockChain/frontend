@@ -13,6 +13,30 @@
   font-weight: 500;
 }
 
+.des-dash {
+  display: flex;
+  margin: 8px;
+  align-items: center;
+}
+
+.red-circle {
+  border-radius: 50%;
+  background-color: red;
+  height: 15px;
+  width: 15px;
+  margin-right: 8px;
+  margin-left: 8px;
+  
+}
+
+.green-circle {
+  border-radius: 50%;
+  background-color: green;
+  height: 15px;
+  width: 15px;
+  margin-right: 5px; 
+}
+
 .chtitle {
   word-break: break-all;
   width: 95%;
@@ -78,11 +102,14 @@
 
   &.solved {
     background-color: green;
-    width: 5%;
+    width: 25px;
+    height: 25px;
   }
   &.notsolved {
     background-color: red;
-    width: 5%;
+    // width: 5%;
+    width: 25px;
+    height: 25px;
   }
 }
 

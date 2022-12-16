@@ -55,7 +55,10 @@ const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
           <div className="divider"></div>
           <div className="big">
             <h2 className="dashboard-small-title">Incident Response Result</h2>
-            <div className="textmarginbox"></div>
+            {/* <div className="textmarginbox"></div> */}
+            <div className="des-dash">
+            <div className="green-circle"></div>defense success
+              <div className="red-circle"></div>defense fail</div>
             <div className="incident"></div>
           </div>
         </>
