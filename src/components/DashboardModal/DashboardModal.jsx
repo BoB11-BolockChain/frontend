@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useMemo } from "react";
+import { useEffect, useState } from "react";
 import ReactModal from "react-modal";
 import Loading from "src/components/Loading";
 import useWebSocket from "src/hooks/useWebSocket";
@@ -41,7 +41,6 @@ const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
             <h2 className="dashboard-small-title">Challenge Progress</h2>
             <div className="challenges">
               {data.challenges.map((d, i) => (
-                
                 <div
                   key={i}
                   className={`item ${d.solved ? "solved" : "notsolved"}`}
@@ -57,8 +56,9 @@ const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
             <h2 className="dashboard-small-title">Incident Response Result</h2>
             {/* <div className="textmarginbox"></div> */}
             <div className="des-dash">
-            <div className="green-circle"></div>defense success
-              <div className="red-circle"></div>defense fail</div>
+              <div className="green-circle"></div>defense success
+              <div className="red-circle"></div>defense fail
+            </div>
             <div className="incident"></div>
           </div>
         </>
@@ -68,11 +68,15 @@ const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
           <div key={d.id} className="process">
             <div className="tactic">
               <div
-                className={`order ${d.status === 0 ? "notsolved" : "solved"}`}>{i}
+                className={`order ${d.status === 0 ? "notsolved" : "solved"}`}
+              >
+                {i}
               </div>
               <div className="height-aign bodytext chtitle">
-                <details><summary>User Payload</summary>{d.executor.command}</details>
-                
+                <details>
+                  <summary>Payload</summary>
+                  {d.executor.command}
+                </details>
               </div>
             </div>
             <div className="titlemarginbox"></div>

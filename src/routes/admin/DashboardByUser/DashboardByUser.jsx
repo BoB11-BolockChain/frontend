@@ -34,6 +34,12 @@ const DashboardByUser = () => {
     fetchData();
   }, [userId]);
 
+  const challengeProgress = (d) => {
+    let progress = 0;
+    d.challenges.forEach((c) => c.solved && progress++);
+    return progress;
+  };
+
   const [modalState, setModalState] = useState({
     data: undefined,
     isOpen: false,
@@ -54,7 +60,10 @@ const DashboardByUser = () => {
             <div key={i} className="whitebox">
               <div className="scenario-info">
                 <p className="scenario-title">{d.title}</p>
-                <p className="scenario-progress">{i}</p>
+                <p className="scenario-progress">
+                  Challenge Progress : {challengeProgress(d)} /{" "}
+                  {d.challenges.length}
+                </p>
               </div>
               <button onClick={() => openModal(d)} className="pdxf-button">
                 Details
