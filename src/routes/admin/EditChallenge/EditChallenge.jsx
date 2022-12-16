@@ -56,7 +56,11 @@ const EditChallenge = () => {
         vm_id: state.vm_id,
         vm_pw: state.vm_pw,
         visible: state.visible,
-        challenges: challenges.map((d) => ({ ...d, score: Number(d.score) })),
+        challenges: challenges.map((d) => ({
+          ...d,
+          score: Number(d.score),
+          tactics: d.tactics.map((t) => ({ ...t, delay: Number(t.delay) })),
+        })),
       }),
     });
     // alert(res.status, res.statusText);
@@ -173,7 +177,10 @@ const EditChallenge = () => {
             >
               <div className={styles.tacticinfo}>
                 <div className={styles.order}>{i}</div>
-                <p>{d.title}</p>
+                <div className={styles.titledelay}>
+                  <p>{d.title}</p>
+                  <p>Delay : {d.delay}</p>
+                </div>
               </div>
               {d.payloads.map((p, i) => (
                 <div key={i} className={styles.payload}>
