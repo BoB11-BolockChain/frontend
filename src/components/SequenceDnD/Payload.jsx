@@ -25,12 +25,11 @@ const Payload = ({ droppableId, index, data, removePayload }) => {
       {(provided, snapshot) => (
         <div
           className="draggable payload-box"
-          ref={provided.innerRef}
-          {...provided.draggableProps}
+          ref={provided.innerRef}     
         >
           {/* <p {...provided.dragHandleProps}>{data.payload}</p> */}
+          <div {...provided.dragHandleProps} {...provided.draggableProps}>{commenter}</div>
           
-      <div>{commenter}</div>
       <div className="fold-btn" onClick={() => setIsShowMore(!isShowMore)}>{(comment.length > textLimit.current) &&	
       (isShowMore ? '▲' : '▶')}
       </div>

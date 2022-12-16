@@ -177,7 +177,7 @@ button:focus {
   border: 1px solid hsl(230, 16%, 93%);
   background: hsl(220, 100%, 99%);
   display: grid;
-  .modal-tr-an-access {
+  .modal-tr-an-access, .modal-connect-info {
     padding: 10px;
     display: flex;
     justify-content: center;
