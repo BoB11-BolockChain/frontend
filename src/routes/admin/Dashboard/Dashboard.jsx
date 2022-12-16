@@ -74,6 +74,7 @@ const Dashboard = () => {
                   </td>
                   <td>{d.id}</td>
                   <td>{d.lastSolution}</td>
+                  <td>{d.lastConnection}</td>
                 </tr>
               ))}
             </tbody>
