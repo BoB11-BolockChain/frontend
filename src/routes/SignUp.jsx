@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BsFacebook, BsGithub, BsGoogle, BsTwitter } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import "src/routes/sign.scss";
+import Swal from "sweetalert2";
 
 function SignUp() {
   const [state, setState] = useState({
@@ -28,9 +29,21 @@ function SignUp() {
       body: JSON.stringify(state),
     });
     if (res.ok) {
-      alert("signup success");
-      navigate("/");
-    } else if (!res.ok) throw new Error(res);
+      Swal.fire({
+        icon: "success",
+        title: "Sign Up Successful",
+        confirmButtonText: "OK",
+        preConfirm: () => {
+          navigate("/");
+        },
+      });
+    } else if (!res.ok) {
+      Swal.fire({
+        icon: "error",
+        title: "ID or Email is exist",
+        confirmButtonText: "OK",
+      });
+    }
   };
   return (
     <>
