@@ -22,10 +22,10 @@ const ScoreModal = ({ isOpen, setModalState, data, margin, img }) => {
         },
         content: {
           position: "absolute",
-          top: "20%",
+          top: "10%",
           left: "10%",
           right: "15%",
-          bottom: "20%",
+          bottom: "15%",
           boxShadow: "0px 0px 60px rgba(0, 0, 0, 0.3)",
           border: "0px",
           background: "#fff",
