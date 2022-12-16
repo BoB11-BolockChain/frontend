@@ -3,6 +3,7 @@ import { BsFacebook, BsGithub, BsGoogle, BsTwitter } from "react-icons/bs";
 import "react-pro-sidebar/dist/css/styles.css";
 import { useNavigate } from "react-router-dom";
 import "src/routes/sign.scss";
+import Swal from "sweetalert2";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -23,20 +24,29 @@ const SignIn = () => {
       },
       body: JSON.stringify(state),
     });
-    const js = await res.json();
-    console.log(js);
-    window.sessionStorage.setItem("sessionId", js.sessionId);
-    window.sessionStorage.setItem(
-      "activatedVM",
-      JSON.stringify({
-        scenarioId: 0,
-        type: "Challenge",
-        system: "Windows",
-        vm: "",
-        port: "",
-      })
-    );
-    navigate("/admin");
+    console.log(res);
+    if (res.ok) {
+      const js = await res.json();
+      console.log(js);
+      window.sessionStorage.setItem("sessionId", js.sessionId);
+      window.sessionStorage.setItem(
+        "activatedVM",
+        JSON.stringify({
+          scenarioId: 0,
+          type: "Challenge",
+          system: "Windows",
+          vm: "",
+          port: "",
+        })
+      );
+      navigate("/admin");
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Wrong PassWord or ID",
+        confirmButtonText: "OK",
+      });
+    }
   };
 
   return (

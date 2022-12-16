@@ -247,6 +247,11 @@ const TrainingModal = ({
             );
             if (windows_atk_res.ok) {
               //공격 성공 alert
+              Swal.fire({
+                icon: "success",
+                title: "Attack Successful",
+                confirmButtonText: "OK",
+              });
               window.sessionStorage.removeItem("activatedVM");
               window.sessionStorage.setItem(
                 "activatedVM",
@@ -284,6 +289,11 @@ const TrainingModal = ({
             );
             if (linux_atk_res.ok) {
               //공격 성공 alert
+              Swal.fire({
+                icon: "success",
+                title: "Attack Successful",
+                confirmButtonText: "OK",
+              });
               window.sessionStorage.removeItem("activatedVM");
               window.sessionStorage.setItem(
                 "activatedVM",
