@@ -42,9 +42,7 @@ const Payload = ({ droppableId, index, data, removePayload }) => {
             >
               <Close />
             </button>
-            <button className="icon-btn">
-              <Edit />
-            </button>
+            
           </div>
         </div>
       )}

@@ -1,4 +1,4 @@
-import { Close, Edit } from "@mui/icons-material";
+import { Close } from "@mui/icons-material";
 import { Droppable } from "react-beautiful-dnd";
 import Payload from "src/components/SequenceDnD/Payload";
 
@@ -15,14 +15,12 @@ const Sequence = ({ index, data, removeTactic, removePayload }) => {
               <p className="text">{data.title}</p>
             </div>
             <div className="btn-group">
+              <p className="delay-s">Delay :</p> <input className="delay-box"></input> <p className="delay-s">s</p>
               <button
                 className="icon-btn"
                 onClick={() => removeTactic(data.hash)}
               >
                 <Close />
-              </button>
-              <button className="icon-btn">
-                <Edit />
               </button>
             </div>
           </div>
