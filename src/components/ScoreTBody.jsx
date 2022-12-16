@@ -6,7 +6,7 @@ const ScoreTBody = ({ data, setModalState, img }) => {
           key={i}
           onClick={() => setModalState({ data: data, isOpen: true, img: img })}
         >
-          <td>{data.num}</td>
+          <td>{i+1}</td>
           <td>
             <img src={img} height="30px" />
           </td>
