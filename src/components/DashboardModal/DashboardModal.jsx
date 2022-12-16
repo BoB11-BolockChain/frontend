@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import ReactModal from "react-modal";
 import Loading from "src/components/Loading";
 import useWebSocket from "src/hooks/useWebSocket";
@@ -41,6 +41,7 @@ const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
             <h2 className="dashboard-small-title">Challenge Progress</h2>
             <div className="challenges">
               {data.challenges.map((d, i) => (
+                
                 <div
                   key={i}
                   className={`item ${d.solved ? "solved" : "notsolved"}`}
@@ -64,12 +65,11 @@ const DashboardModal = ({ isOpen, setModalState, data, userId }) => {
           <div key={d.id} className="process">
             <div className="tactic">
               <div
-                className={`order ${d.status === 0 ? "notsolved" : "solved"}`}
-              >
-                {i}
+                className={`order ${d.status === 0 ? "notsolved" : "solved"}`}>{i}
               </div>
               <div className="height-aign bodytext chtitle">
-                {d.executor.command}
+                <details><summary>User Payload</summary>{d.executor.command}</details>
+                
               </div>
             </div>
             <div className="titlemarginbox"></div>
