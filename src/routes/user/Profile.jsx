@@ -20,7 +20,7 @@ function Profile() {
   const [data, setData] = useState();
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("http://www.pdxf.tk:2999/profilepage", {
+      const res = await fetch("http://www.pdxf.tk:8000/profilepage", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -65,7 +65,7 @@ function Profile() {
     } else {
       Comment = data.Comment.String;
     }
-    const res = await fetch(`http://pdxf.tk:2999/profileSave`, {
+    const res = await fetch(`http://pdxf.tk:8000/profileSave`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -78,7 +78,7 @@ function Profile() {
         Comment: Comment,
       }),
     });
-    const res1 = await fetch(`http://www.pdxf.tk:2999/uploadimg`, {
+    const res1 = await fetch(`http://www.pdxf.tk:8000/uploadimg`, {
       method: "POST",
       headers: {
         encType: "multipart/form-data",
