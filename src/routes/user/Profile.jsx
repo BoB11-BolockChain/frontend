@@ -240,7 +240,7 @@ function Profile() {
                   <MDBCol lg="8"></MDBCol>
                   <div className="space-box"></div>
                   <button
-                    // type="submit"
+                    type="submit"
                     className="pdxf-button"
                     onClick={saveProfile}
                   >
