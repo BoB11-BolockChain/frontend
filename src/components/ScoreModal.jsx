@@ -74,7 +74,9 @@ const ScoreModal = ({ isOpen, setModalState, data, margin, img }) => {
                           <td>{chall.challenge_title}</td>
                           <td>{chall.time}</td>
                           <td>{chall.score}</td>
-                          {i === 0 ? <td rowspan={count}></td> : null}
+                          {i === 0 ? (
+                            <td rowspan={count}>{scene.irscore}</td>
+                          ) : null}
                         </tr>
                       );
                     })}
