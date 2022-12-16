@@ -4,14 +4,14 @@ import ScoreModal from "src/components/ScoreModal";
 import "src/components/Layout/Score.scss";
 import Loading from "src/components/Loading";
 import ScoreTBody from "src/components/ScoreTBody";
-import tempImg from "src/assets/user1.png";
+import tempImg from "src/assets/user3.png";
 
 const Scoreboard = () => {
   const [width, setWidth] = useState("");
   const [modalState, setModalState] = useState({
     data: {},
     isOpen: false,
-    img: tempImg,
+    img: "",
   });
   const [dataLoaded, setDataLoaded] = useState(false);
   const [data, setData] = useState([]);

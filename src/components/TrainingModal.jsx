@@ -29,6 +29,7 @@ const TrainingModal = ({
   const [, setClick] = useState(false);
   const chall_data = data;
   const [dataLoaded, setDataLoaded] = useState(true);
+
   const irCheck = (data) => {
     const check = Object.keys(data.challenge).length - 1;
     if (data.challenge[check].solved === "True") {
@@ -41,7 +42,14 @@ const TrainingModal = ({
               case "Windows":
                 const sessionId = window.sessionStorage.getItem("sessionId");
                 const vm = data.vm_name;
-                makeVM(vm, sessionId, "Scenario");
+                makeVM(
+                  vm, //ir 버튼
+                  sessionId,
+                  "Scenario",
+                  data.system,
+                  data.vm_id,
+                  data.vm_pw
+                );
                 break;
               case "Linux":
                 window.sessionStorage.removeItem("activatedVM");
@@ -161,6 +169,8 @@ const TrainingModal = ({
           VMname: vmname, // DB에서 이름 가져오기
           Username: userId, // 유저 이름
           System: system,
+          SSHuser: vmID,
+          SSHpass: vmPW,
         };
         setDataLoaded(false);
         const res = await fetch("http://www.pdxf.tk:8000/accesswindows", {
@@ -520,12 +530,13 @@ const TrainingModal = ({
                                 const sessionId =
                                   window.sessionStorage.getItem("sessionId");
                                 makeVM(
-                                  data.vm_name,
+                                  data.vm_name, // 챌린지
                                   sessionId,
                                   "Challenge",
                                   data.system,
                                   data.vm_id,
-                                  data.vm_pw
+                                  data.vm_pw,
+                                  data.scenarioId
                                 );
                                 break;
                               case "Linux":
