@@ -1,3 +1,6 @@
+import { UserOutlined } from "@ant-design/icons";
+import { Avatar } from "antd";
+import "antd/dist/antd.css";
 import {
   MDBCard,
   MDBCardBody,
@@ -5,13 +8,10 @@ import {
   MDBContainer,
   MDBRow,
 } from "mdb-react-ui-kit";
-import { useNavigate } from "react-router-dom";
-import { UserOutlined } from "@ant-design/icons";
-import "antd/dist/antd.css";
 import { useEffect, useRef, useState } from "react";
-import { Avatar } from "antd";
-import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 import Loading from "src/components/Loading";
+import Swal from "sweetalert2";
 
 function Profile() {
   const sessionId = window.sessionStorage.getItem("sessionId");
@@ -134,6 +134,17 @@ function Profile() {
     reader.readAsDataURL(e.target.files[0]);
   };
 
+  const [photo, setPhoto] = useState(Image);
+  useEffect(() => {
+    if (data) {
+      try {
+        setPhoto(require(`src/assets/${data.Id}.png`));
+      } catch (error) {
+        setPhoto(Image);
+      }
+    }
+  }, [Image, data]);
+
   return (
     <>
       {fatched ? (
@@ -142,7 +153,7 @@ function Profile() {
             <MDBContainer className="py-5">
               <MDBRow>
                 <Avatar
-                  src={Image}
+                  src={photo}
                   style={{ margin: "20px" }}
                   size={230}
                   icon={<UserOutlined />}
