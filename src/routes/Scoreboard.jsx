@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Line } from "@ant-design/charts";
+// import { Line } from "@ant-design/charts";
+import { Line } from "@ant-design/plots";
+
 import ScoreModal from "src/components/ScoreModal";
 import "src/components/Layout/Score.scss";
 import Loading from "src/components/Loading";
