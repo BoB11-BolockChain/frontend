@@ -37,6 +37,7 @@ function Profile() {
         const js = await res.json();
         setData(js);
         setFatched(true);
+        // setImage(`/Public/${data.Id}.png`);
       }
     };
     fetchData();
@@ -101,7 +102,6 @@ function Profile() {
     }
   };
 
-  const [files, setFiles] = useState("");
   const fileInput = useRef(null);
 
   const onChange = (e) => {
@@ -113,6 +113,12 @@ function Profile() {
       setImage(reader.result);
     };
   };
+
+  useEffect(() => {
+    if (data) {
+      setImage(`/Profile/${data.Id}.png`);
+    }
+  }, [data]);
 
   return (
     <>
