@@ -13,6 +13,13 @@
   font-weight: 500;
 }
 
+.chtitle {
+  word-break: break-all;
+  width: 95%;
+  display: flex;
+  align-items: center;
+}
+
 .challenges {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -52,6 +59,7 @@
   border-radius: 0.5rem;
   padding: 1rem;
   margin: 8px;
+  box-sizing: border-box;
 }
 
 .tactic {
@@ -70,9 +78,11 @@
 
   &.solved {
     background-color: green;
+    width: 5%;
   }
   &.notsolved {
     background-color: red;
+    width: 5%;
   }
 }
 
