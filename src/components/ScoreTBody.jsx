@@ -9,9 +9,8 @@ const ScoreTBody = ({ data, setModalState, img }) => {
           <td>{i + 1}</td>
           <td>
             <img
-              src={`/Profile/${data.id}.png`}
+              src={process.env.PUBLIC_URL + `/Profile/${data.id}.png`}
               onError={({ currentTarget }) => {
-                console.log(currentTarget);
                 currentTarget.onerror = null;
                 currentTarget.src = img;
               }}
