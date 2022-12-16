@@ -240,14 +240,16 @@ const EditTraining = () => {
         <div className="box">
           <p className="small-title">Training Information</p>
           <div className="flex-row">
-            <div className="info-text">Title</div><input
+            <div className="info-text">Title</div>
+            <input
               className="input"
               name="title"
               placeholder="Title"
               onChange={onChange}
               value={state.title}
             />
-            <div className="info-text">Score</div><input
+            <div className="info-text">Score</div>
+            <input
               className="input score"
               name="score"
               placeholder="score"
@@ -317,7 +319,6 @@ const EditTraining = () => {
         </div>
       </div>
       <div className="box">
-        <p className="small-title">Configuration</p>
         <label htmlFor="visible" className="visible-label">
           Users can participate in this training
           <input
