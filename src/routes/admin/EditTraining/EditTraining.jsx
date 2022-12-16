@@ -77,7 +77,6 @@ const EditTraining = () => {
           vm_pw: jsonBody.vm_pw,
           visible: jsonBody.visible,
         });
-        console.log(state);
         const tactics = [];
         jsonBody.challenges.forEach((element) => {
           tactics.push(...element.tactics);
@@ -182,6 +181,12 @@ const EditTraining = () => {
     });
   };
 
+  const delayHandler = (e, i) => {
+    const newTactics = [...tactics];
+    newTactics[i].delay = e.target.value;
+    setTactics(newTactics);
+  };
+
   return (
     <div className="edit-training">
       <header>
@@ -282,6 +287,7 @@ const EditTraining = () => {
                     index={i}
                     removeTactic={removeTactic}
                     removePayload={removePayload}
+                    delayHandler={(e) => delayHandler(e, i)}
                   />
                 ))}
           </DragDropContext>

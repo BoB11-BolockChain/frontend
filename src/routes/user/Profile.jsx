@@ -88,12 +88,12 @@ function Profile() {
         },
       });
     }
-    const res1 = await fetch(`http://www.pdxf.tk:8000/uploadimg`, {
-      method: "POST",
-      headers: {
-        encType: "multipart/form-data",
-      },
-    });
+    // const res1 = await fetch(`http://www.pdxf.tk:8000/uploadimg`, {
+    //   method: "POST",
+    //   headers: {
+    //     encType: "multipart/form-data",
+    //   },
+    // });
     if (res.ok) {
       Swal.fire({
         icon: "success",

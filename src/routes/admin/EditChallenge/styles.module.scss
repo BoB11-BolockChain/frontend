@@ -77,3 +77,9 @@
 .created {
   border-collapse: collapse;
 }
+
+.titledelay {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
