@@ -99,8 +99,8 @@ const Scoreboard = () => {
                 <th width="10%" className="score-user">
                   User
                 </th>
-                <th width="10%">Organization</th>
-                <th width="30%">Comment</th>
+                <th width="15%">Organization</th>
+                <th width="25%">Comment</th>
                 <th width="5%">Score</th>
                 <th width="10%">IR Score</th>
               </tr>

@@ -324,7 +324,7 @@ const TrainingModal = ({
         return (
           <table className={"modal-" + btn_css}>
             <tbody>
-              <tr className="modal-connect-info">
+              <tr className="modal-connect-info" textAlign="center">
                 <td>
                   User ID : <b>{data.vmId}</b> / User PW : <b>{data.vmPw}</b>
                 </td>
