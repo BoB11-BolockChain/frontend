@@ -78,22 +78,22 @@ function Profile() {
         Comment: Comment,
       }),
     });
-    const res1 = await fetch(`http://www.pdxf.tk:8000/uploadimg`, {
-      method: "POST",
-      headers: {
-        encType: "multipart/form-data",
-      },
-    });
-    if (res.ok) {
-      Swal.fire({
-        icon: "success",
-        title: "Profile Save",
-        confirmButtonText: "OK",
-        preConfirm: () => {
-          navigate("/");
-        },
-      });
-    }
+    // const res1 = await fetch(`http://www.pdxf.tk:8000/uploadimg`, {
+    //   method: "POST",
+    //   headers: {
+    //     encType: "multipart/form-data",
+    //   },
+    // });
+    // if (res.ok) {
+    //   Swal.fire({
+    //     icon: "success",
+    //     title: "Profile Save",
+    //     confirmButtonText: "OK",
+    //     preConfirm: () => {
+    //       navigate("/");
+    //     },
+    //   });
+    // }
   };
 
   const [files, setFiles] = useState("");
@@ -141,91 +141,91 @@ function Profile() {
                   }}
                 />
 
-                <form
-                  action="http://www.pdxf.tk:2999/uploadimg"
+                {/* <form
+                  action="http://www.pdxf.tk:8000/uploadimg"
                   method="POST"
                   encType="multipart/form-data"
-                >
-                  <input
-                    type="file"
-                    id="upfiles"
-                    name="upfiles"
-                    style={{ display: "none" }}
-                    accept="image/jpg,impge/png,image/jpeg"
-                    // name="profile_img"
-                    onChange={onChange}
-                    ref={fileInput}
-                  />
-                  {/* <button type="submit" className="pdxf-button">
+                > */}
+                <input
+                  type="file"
+                  id="upfiles"
+                  name="upfiles"
+                  style={{ display: "none" }}
+                  accept="image/jpg,impge/png,image/jpeg"
+                  // name="profile_img"
+                  onChange={onChange}
+                  ref={fileInput}
+                />
+                {/* <button type="submit" className="pdxf-button">
                     Upload
                   </button>
                 </form> */}
-                  <br />
-                  <MDBCol lg="4">
-                    <MDBCard className="mb-4 mb-lg-0">
-                      <MDBCardBody className="p-0 profile-box">
-                        <div className="flex-row profile-line">
-                          <span className="profile-value"> ID </span>
+                <br />
+                <MDBCol lg="4">
+                  <MDBCard className="mb-4 mb-lg-0">
+                    <MDBCardBody className="p-0 profile-box">
+                      <div className="flex-row profile-line">
+                        <span className="profile-value"> ID </span>
+                        <input
+                          className="profile-input"
+                          name="id"
+                          value={data.Id}
+                          placeholder="Id"
+                          readOnly
+                        />
+                      </div>
+                      <div className="flex-row profile-line">
+                        <span className="profile-value"> E-mail </span>
+                        <div style={{ backgroundColor: 808080 }}>
+                          {/*여기 왜 안됨 아오*/}
                           <input
                             className="profile-input"
-                            name="id"
-                            value={data.Id}
-                            placeholder="Id"
+                            name="email"
+                            value={data.Email}
+                            placeholder="Email"
                             readOnly
                           />
                         </div>
-                        <div className="flex-row profile-line">
-                          <span className="profile-value"> E-mail </span>
-                          <div style={{ backgroundColor: 808080 }}>
-                            {/*여기 왜 안됨 아오*/}
-                            <input
-                              className="profile-input"
-                              name="email"
-                              value={data.Email}
-                              placeholder="Email"
-                              readOnly
-                            />
-                          </div>
-                        </div>
-                        <div className="flex-row profile-line">
-                          <span className="profile-value"> 소속 </span>
-                          <input
-                            className="profile-input"
-                            name="department"
-                            value={data.Org.String}
-                            onChange={(e) => {
-                              setData({ ...data, Org: e.target.value });
-                            }}
-                            placeholder="school/club"
-                          />
-                        </div>
-                        <div className="flex-row">
-                          <span className="profile-value profile-line">
-                            Comment
-                          </span>
-                          <textarea
-                            className="profile-input"
-                            name="comment"
-                            value={data.Comment.String}
-                            onChange={(e) => {
-                              setData({ ...data, Comment: e.target.value });
-                            }}
-                            placeholder="Comment"
-                          ></textarea>
-                        </div>
-                      </MDBCardBody>
-                    </MDBCard>
-                  </MDBCol>
-                  <MDBCol lg="8"></MDBCol>
-                  <div className="space-box"></div>
-                  <button
-                    type="submit"
-                    className="pdxf-button"
-                    onClick={saveProfile}
-                  >
-                    Save
-                  </button>
-                </form>
+                      </div>
+                      <div className="flex-row profile-line">
+                        <span className="profile-value"> 소속 </span>
+                        <input
+                          className="profile-input"
+                          name="department"
+                          value={data.Org.String}
+                          onChange={(e) => {
+                            setData({ ...data, Org: e.target.value });
+                          }}
+                          placeholder="school/club"
+                        />
+                      </div>
+                      <div className="flex-row">
+                        <span className="profile-value profile-line">
+                          Comment
+                        </span>
+                        <textarea
+                          className="profile-input"
+                          name="comment"
+                          value={data.Comment.String}
+                          onChange={(e) => {
+                            setData({ ...data, Comment: e.target.value });
+                          }}
+                          placeholder="Comment"
+                        ></textarea>
+                      </div>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBCol>
+                <MDBCol lg="8"></MDBCol>
+                <div className="space-box"></div>
+                <button
+                  type="submit"
+                  className="pdxf-button"
+                  onClick={saveProfile}
+                >
+                  Save
+                </button>
+                {/* </form> */}
               </MDBRow>
             </MDBContainer>
           </section>
