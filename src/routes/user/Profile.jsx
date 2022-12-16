@@ -16,6 +16,11 @@ function Profile() {
   const navigate = useNavigate();
   const [fatched, setFatched] = useState(false);
   const [data, setData] = useState();
+
+  const [Image, setImage] = useState(
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+  );
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch("http://www.pdxf.tk:8000/profilepage", {
@@ -31,12 +36,10 @@ function Profile() {
       if (res.ok) {
         const js = await res.json();
         setData(js);
-        console.log(data);
         setFatched(true);
       }
     };
     fetchData();
-    console.log(data);
   }, [fatched]);
 
   const saveProfile = async () => {
@@ -86,12 +89,6 @@ function Profile() {
         },
       });
     }
-    // const res1 = await fetch(`http://www.pdxf.tk:8000/uploadimg`, {
-    //   method: "POST",
-    //   headers: {
-    //     encType: "multipart/form-data",
-    //   },
-    // });
     if (res.ok) {
       Swal.fire({
         icon: "success",
@@ -106,42 +103,16 @@ function Profile() {
 
   const [files, setFiles] = useState("");
   const fileInput = useRef(null);
-  const [Image, setImage] = useState(
-    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-  );
+
   const onChange = (e) => {
-    const file = e.target.files;
-    console.log(file);
-    setFiles(file);
-
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-    } else {
-      setImage(
-        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-      );
-      return;
-    }
-    //화면에 프로필 사진 표시
     const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setImage(reader.result);
-      }
-    };
-    reader.readAsDataURL(e.target.files[0]);
-  };
-
-  const [photo, setPhoto] = useState(Image);
-  useEffect(() => {
-    if (data) {
-      try {
-        setPhoto(require(`src/assets/${data.Id}.png`));
-      } catch (error) {
-        setPhoto(Image);
-      }
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
     }
-  }, [Image, data]);
+    reader.onload = () => {
+      setImage(reader.result);
+    };
+  };
 
   return (
     <>
@@ -150,33 +121,16 @@ function Profile() {
           <section>
             <MDBContainer className="py-5">
               <MDBRow>
-                {/* <Avatar
-                  src={`/Profile/${data.id}.png`}
-                  style={{ margin: "20px" }}
-                  size={230}
-                  icon={<UserOutlined />}
-                  onClick={() => {
-                    fileInput.current.click();
-                  }}
-                  onError={({ currentTarget }) => {
-                    console.log(currentTarget);
-                    currentTarget.onerror = null;
-                    currentTarget.src = Image;
-                  }}
-                /> */}
                 <img
-                  src={`/Profile/${data.Id}.png`}
-                  onError={({ currentTarget }) => {
-                    console.log(currentTarget);
-                    currentTarget.onerror = null;
-                    currentTarget.src = Image;
-                  }}
+                  src={Image}
                   alt="userimg"
                   className="roundprofile"
                   width="200px"
                   height="200px"
+                  onClick={() => {
+                    fileInput.current.click();
+                  }}
                 />
-
                 <form
                   action="http://www.pdxf.tk:8000/uploadimg"
                   method="POST"
@@ -188,14 +142,9 @@ function Profile() {
                     name="upfiles"
                     style={{ display: "none" }}
                     accept="image/jpg,impge/png,image/jpeg"
-                    // name="profile_img"
                     onChange={onChange}
                     ref={fileInput}
                   />
-                  {/* <button type="submit" className="pdxf-button">
-                    Upload
-                  </button>
-                </form> */}
                   <br />
                   <MDBCol lg="4">
                     <MDBCard className="mb-4 mb-lg-0">
@@ -213,7 +162,6 @@ function Profile() {
                         <div className="flex-row profile-line">
                           <span className="profile-value"> E-mail </span>
                           <div style={{ backgroundColor: 808080 }}>
-                            {/*여기 왜 안됨 아오*/}
                             <input
                               className="profile-input"
                               name="email"
