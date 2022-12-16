@@ -1,8 +1,13 @@
-import { type } from "@testing-library/user-event/dist/type";
-import React from "react";
 import ReactModal from "react-modal";
 
 const ScoreModal = ({ isOpen, setModalState, data, margin, img }) => {
+  const loadImg = (user) => {
+    try {
+      return require(`src/assets/${user}.png`);
+    } catch (error) {
+      return img;
+    }
+  };
   return (
     <ReactModal
       isOpen={isOpen}
@@ -43,7 +48,12 @@ const ScoreModal = ({ isOpen, setModalState, data, margin, img }) => {
       <div className="score-modal">
         <span class="close">&times;</span>
         <div className="modal-profile">
-          <img src={img} />
+          <img
+            src={loadImg(data.id)}
+            alt="userimg"
+            className="roundprofile"
+            width="120px"
+          />
           <div width="100%" display="flex" className="name">
             <p className="profile-id">{data.id}</p>
             <p className="profile-comment">{data.comment}</p>
