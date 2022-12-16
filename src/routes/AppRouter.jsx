@@ -38,7 +38,7 @@ const AppRouter = () => {
             path="admin"
             element={<AdminRouteLayout redirectTo="/signin" />}
           >
-            <Route index element={<Dashboard />} />
+            <Route index element={<Home />} />
             <Route path="homepagesetting" element={<HomepageSetting />} />
 
             <Route path="createvm" element={<CreateVM />} />
