@@ -28,7 +28,6 @@ const AppRouter = () => {
           <Route path="signup" element={<SignUp />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="scoreboard" element={<Scoreboard />} />
-
           <Route path="user" element={<UserRouteLayout redirectTo="/signin" />}>
             <Route path="training" element={<Training />} />
             <Route path="profile" element={<Profile />} />
