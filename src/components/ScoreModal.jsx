@@ -46,7 +46,7 @@ const ScoreModal = ({ isOpen, setModalState, data, margin, img }) => {
           <img src={img} />
           <div width="100%" display="flex" className="name">
             <p className="profile-id">{data.id}</p>
-            <p>설명</p>
+            <p className="profile-comment">{data.comment}</p>
           </div>
         </div>
         <table>
