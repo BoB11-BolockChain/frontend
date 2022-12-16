@@ -1,11 +1,4 @@
 const ScoreTBody = ({ data, setModalState, img }) => {
-  const loadImg = (user) => {
-    try {
-      return require(`src/assets/${user}.png`);
-    } catch (error) {
-      return img;
-    }
-  };
   return (
     <tbody>
       {data.map((data, i) => (
@@ -16,11 +9,16 @@ const ScoreTBody = ({ data, setModalState, img }) => {
           <td>{i + 1}</td>
           <td>
             <img
-              src={loadImg(data.id)}
-              height="30px"
-              width="30px"
+              src={`/Profile/${data.id}.png`}
+              onError={({ currentTarget }) => {
+                console.log(currentTarget);
+                currentTarget.onerror = null;
+                currentTarget.src = img;
+              }}
               alt="userimg"
               className="roundprofile"
+              width="30px"
+              height="30px"
             />
           </td>
           <td id="id">{data.id}</td>

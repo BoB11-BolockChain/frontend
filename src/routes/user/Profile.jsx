@@ -1,5 +1,3 @@
-import { UserOutlined } from "@ant-design/icons";
-import { Avatar } from "antd";
 import "antd/dist/antd.css";
 import {
   MDBCard,
@@ -152,14 +150,31 @@ function Profile() {
           <section>
             <MDBContainer className="py-5">
               <MDBRow>
-                <Avatar
-                  src={photo}
+                {/* <Avatar
+                  src={`/Profile/${data.id}.png`}
                   style={{ margin: "20px" }}
                   size={230}
                   icon={<UserOutlined />}
                   onClick={() => {
                     fileInput.current.click();
                   }}
+                  onError={({ currentTarget }) => {
+                    console.log(currentTarget);
+                    currentTarget.onerror = null;
+                    currentTarget.src = Image;
+                  }}
+                /> */}
+                <img
+                  src={`/Profile/${data.Id}.png`}
+                  onError={({ currentTarget }) => {
+                    console.log(currentTarget);
+                    currentTarget.onerror = null;
+                    currentTarget.src = Image;
+                  }}
+                  alt="userimg"
+                  className="roundprofile"
+                  width="200px"
+                  height="200px"
                 />
 
                 <form

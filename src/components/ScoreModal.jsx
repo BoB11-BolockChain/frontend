@@ -2,8 +2,9 @@ import ReactModal from "react-modal";
 
 const ScoreModal = ({ isOpen, setModalState, data, margin, img }) => {
   const loadImg = (user) => {
+    console.log(process.env.PUBLIC_URL);
     try {
-      return require(`src/assets/${user}.png`);
+      return require(`${process.env.PUBLIC_URL}/${user}.png`);
     } catch (error) {
       return img;
     }
@@ -49,7 +50,12 @@ const ScoreModal = ({ isOpen, setModalState, data, margin, img }) => {
         <span class="close">&times;</span>
         <div className="modal-profile">
           <img
-            src={loadImg(data.id)}
+            src={`/Profile/${data.id}.png`}
+            onError={({ currentTarget }) => {
+              console.log(currentTarget);
+              currentTarget.onerror = null;
+              currentTarget.src = img;
+            }}
             alt="userimg"
             className="roundprofile"
             width="120px"

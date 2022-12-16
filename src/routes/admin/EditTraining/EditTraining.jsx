@@ -190,7 +190,9 @@ const EditTraining = () => {
   return (
     <div className="edit-training">
       <header>
-        <h1 className="h2 fw-bold my-4">Edit Training</h1>
+        <h1 className="h2 fw-bold my-4">
+          {trainingId ? "Edit" : "Create"} Training
+        </h1>
       </header>
       <div className="box">
         <p className="small-title">OS</p>

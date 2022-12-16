@@ -50,7 +50,6 @@ const Dashboard = () => {
             {data.length} Users online
             <div className={`${styles.textmarginbox}`}></div>
           </div>
-
           <table className={styles.dashboard}>
             <thead>
               <tr>
@@ -66,10 +65,20 @@ const Dashboard = () => {
                 <tr key={d.id} className="tritem" onClick={() => onClick(d.id)}>
                   <td>{i + 1}</td>
                   <td>
-                    <img
+                    {/* <img
                       src={tempImg}
                       alt="user profile"
                       className={`${styles.userimg}`}
+                    /> */}
+                    <img
+                      src={`/Profile/${d.id}.png`}
+                      onError={({ currentTarget }) => {
+                        console.log(currentTarget);
+                        currentTarget.onerror = null;
+                        currentTarget.src = tempImg;
+                      }}
+                      alt="userimg"
+                      className={styles.userimg}
                     />
                   </td>
                   <td>{d.id}</td>
