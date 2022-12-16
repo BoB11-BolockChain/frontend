@@ -78,6 +78,16 @@ function Profile() {
         Comment: Comment,
       }),
     });
+    if (res.ok) {
+      Swal.fire({
+        icon: "success",
+        title: "Profile Save",
+        confirmButtonText: "OK",
+        preConfirm: () => {
+          navigate("/");
+        },
+      });
+    }
     // const res1 = await fetch(`http://www.pdxf.tk:8000/uploadimg`, {
     //   method: "POST",
     //   headers: {
@@ -219,7 +229,7 @@ function Profile() {
                 <MDBCol lg="8"></MDBCol>
                 <div className="space-box"></div>
                 <button
-                  type="submit"
+                  // type="submit"
                   className="pdxf-button"
                   onClick={saveProfile}
                 >
